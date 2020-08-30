@@ -83,6 +83,6 @@ usethis::use_data(prototype_lup,overwrite = T)
 ## 11. Document.
 ## Note: You will first need to consult the NAMESPACE file to see which packages you need to add to the DESCRIPTION file with the following function calls:
 ready4fun::write_ns_imps_to_desc(incr_ver_lgl = T)
-
+#
 # 12. Add vignette
 
