@@ -1,0 +1,67 @@
+Package: ready4use
+Title: Methods for retrieving and managing data across the readyforwhatsnext data synthesis and simulation suite.
+Version: 0.0.0.9058
+Authors@R: c(
+    person(given = "Matthew",family = "Hamilton", email = "matthew.hamilton@orygen.org.au",role = c("aut", "cre"),comment = c(ORCID = "0000-0001-7407-9194")),
+    person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au", role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
+    #person("Alexandra", "Parker", email = "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-2398-6306")),
+    #person("Cathrine", "Mihalopoulos", email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
+    #person("Jonathan", "Karnon", email = "Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment = c(ORCID = "0000-0003-3220-2099")),
+    #person("Petra", "Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role = c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
+    person("Orygen", role = c("cph", "fnd")),
+    person("VicHealth", role = c("fnd")),
+    person("Victoria University", role = c("fnd")))
+Description: Provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
+Imports: 
+    methods,
+    data.table,
+    dataverse,
+    dplyr,
+    magrittr,
+    purrr,
+    rlang,
+    stringr,
+    testit,
+    tibble,
+    tidyr
+Collate: 
+    'C3_ready4_dv_import_lup.R'
+    'C3_ready4_all_import_lup.R'
+    'C3_ready4_dist.R'
+    'C3_ready4_par_struc_mape.R'
+    'C4_ready4_local.R'
+    'C4_ready4_local_proc.R'
+    'C4_ready4_local_raw.R'
+    'C4_ready4_script_data.R'
+    'db_abbreviations_lup.R'
+    'db_fn_type_lup_tb.R'
+    'fn_assert.R'
+    'fn_get.R'
+    'fn_make.R'
+    'fn_read.R'
+    'fn_transform.R'
+    'fn_update.R'
+    'fn_write.R'
+    'gnrc_crs_nbr_vec.R'
+    'gnrc_import_chr_vec.R'
+    'gnrc_import_this_ls.R'
+    'gnrc_merge_with_chr_vec.R'
+    'gnrc_overwrite_lgl.R'
+    'gnrc_path_to_starter_sf_chr.R'
+    'gnrc_pckg_chr.R'
+    'gnrc_proc_data_dir_chr.R'
+    'gnrc_raw_data_dir_chr.R'
+    'gnrc_save_lgl.R'
+    'gnrc_save_type.R'
+    'grp_generics.R'
+    'imp_mthds.R'
+    'imp_pipe.R'
+    'mthd_get_data.R'
+    'mthd_update_src_loc_to_url.R'
+    'pkg_ready4use.R'
