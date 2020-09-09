@@ -16,3 +16,4 @@
 \description{
 get_data.ready4_dv_import_lup() is a Get Data method that retrieves data from R objects loaded in memory. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..NA
 }
+\keyword{internal}

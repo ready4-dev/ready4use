@@ -5,6 +5,7 @@
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 download_data <- function (x, ...) 
 {
     UseMethod("download_data", x)
@@ -16,6 +17,7 @@ download_data <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 get_data <- function (x, ...) 
 {
     UseMethod("get_data", x)
@@ -27,6 +29,7 @@ get_data <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 get_import_type_ls <- function (x, ...) 
 {
     UseMethod("get_import_type_ls", x)
@@ -38,6 +41,7 @@ get_import_type_ls <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 get_read_fn <- function (x, ...) 
 {
     UseMethod("get_read_fn", x)
@@ -49,6 +53,7 @@ get_read_fn <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 import_data <- function (x, ...) 
 {
     UseMethod("import_data", x)
@@ -60,6 +65,7 @@ import_data <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 make_dv_import_lup <- function (x, ...) 
 {
     UseMethod("make_dv_import_lup", x)
@@ -71,6 +77,7 @@ make_dv_import_lup <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 make_import_xx <- function (x, ...) 
 {
     UseMethod("make_import_xx", x)
@@ -82,6 +89,7 @@ make_import_xx <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 save_raw <- function (x, ...) 
 {
     UseMethod("save_raw", x)
@@ -95,6 +103,7 @@ save_raw <- function (x, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 update_src_loc_to_url <- function (x, local_to_url_vec, urls_vec, ...) 
 {
     UseMethod("update_src_loc_to_url", x)
@@ -106,6 +115,7 @@ update_src_loc_to_url <- function (x, local_to_url_vec, urls_vec, ...)
 #' @param ... Additional arguments
 #' @export 
 
+#' @keywords internal
 update_this <- function (x, ...) 
 {
     UseMethod("update_this", x)

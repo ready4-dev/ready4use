@@ -14,3 +14,4 @@ get_read_fn(x, ...)
 \description{
 get_read_fn() is a Get Read Function generic that retrieves a read function.NA
 }
+\keyword{internal}

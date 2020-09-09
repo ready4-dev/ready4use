@@ -14,3 +14,4 @@ import_data(x, ...)
 \description{
 import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.NA
 }
+\keyword{internal}

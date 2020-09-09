@@ -114,11 +114,7 @@ ready4fun::write_and_doc_fn_fls(all_fns_dmt_tb,
                                 r_dir_1L_chr = "R",
                                 dev_pkgs_chr = c("ready4fun","ready4class"))
 # ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
-
-##
-## 11. Document.
-## Note: You will first need to consult the NAMESPACE file to see which packages you need to add to the DESCRIPTION file with the following function calls:
-ready4fun::write_ns_imps_to_desc(incr_ver_lgl = T)
+#
 #
 # 12. Add vignette
 

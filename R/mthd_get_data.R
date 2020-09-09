@@ -7,6 +7,7 @@
 #' @rdname get_data.ready4_dv_import_lup
 #' @export 
 #' @importFrom purrr map2
+#' @keywords internal
 get_data.ready4_dv_import_lup <- function (x, save_dir_path_chr = "", unlink_lgl = T) 
 {
     data_ls <- purrr::map2(1:nrow(x), get_read_fn(x), ~get_file_from_dv(database_ui_chr = x$data_repo_db_ui[.x], 

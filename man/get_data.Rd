@@ -14,3 +14,4 @@ get_data(x, ...)
 \description{
 get_data() is a Get Data generic that retrieves data from R objects loaded in memory.NA
 }
+\keyword{internal}

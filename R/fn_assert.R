@@ -5,6 +5,7 @@
 #' @rdname assert_dir_exists
 #' @export 
 #' @importFrom testit assert
+#' @keywords internal
 assert_dir_exists <- function (x) 
 {
     testit::assert("Not a valid path to an existing directory.", 
@@ -17,6 +18,7 @@ assert_dir_exists <- function (x)
 #' @rdname assert_file_exists
 #' @export 
 #' @importFrom testit assert
+#' @keywords internal
 assert_file_exists <- function (x) 
 {
     testit::assert("Not a valid path to an existing file.", file.exists(x))
@@ -29,6 +31,7 @@ assert_file_exists <- function (x)
 #' @rdname assert_matches_chr
 #' @export 
 #' @importFrom testit assert
+#' @keywords internal
 assert_matches_chr <- function (x, match_chr) 
 {
     testit::assert("Length of character vector does not equal one.", 
@@ -44,6 +47,7 @@ assert_matches_chr <- function (x, match_chr)
 #' @export 
 #' @importFrom testit assert
 #' @importFrom tibble is_tibble
+#' @keywords internal
 assert_single_row_tb <- function (x) 
 {
     testit::assert("Object is not a tibble", tibble::is_tibble(x))

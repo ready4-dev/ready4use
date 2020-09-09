@@ -9,6 +9,7 @@
 #' @importFrom dplyr select_if mutate_at select
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map
+#' @keywords internal
 make_r3_from_csv_tb <- function (csv_tb, r3_fn) 
 {
     list_cols <- rlang::exec(r3_fn) %>% dplyr::select_if(is.list) %>% 

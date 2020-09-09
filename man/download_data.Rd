@@ -14,3 +14,4 @@ download_data(x, ...)
 \description{
 download_data() is a Download Data generic that downloads data files.NA
 }
+\keyword{internal}
