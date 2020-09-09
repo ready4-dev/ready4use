@@ -3,82 +3,118 @@
 # 1. Load magrittr package to that the pipe operator ("%>%") can be used in this script.
 library(magrittr)
 #
-# 2. Set up standardised core package elements.
-# For Workflow:
-# https://docs.github.com/en/github/using-git/setting-your-username-in-git
-# plus user.email
+# 2. Create "fns", "gnrcs" and "mthds" sub-directories.
+ready4fun::write_fn_type_dirs()
 #
-ready4fun::write_pkg_setup_fls_R(#make_tmpl_vignette_lgl = T,
-                                 incr_ver_lgl = F)
+# 3. MANUAL STEP. Write all your functions to R files in the new "fns" directory.
 #
-# 3. MANUAL STEP - ADD Function scripts to "fns","gnrcs" and" mthds" directories.
+# 4. Set-up package structure
+options(usethis.description = list(
+  Package = ready4fun::get_dev_pkg_nm(),
+  Title =  "Readyforwhatsnext Methods for retrieving and managing data.",
+  Description = "ready4use provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.",
+  `Authors@R` = c(utils::person(
+    given = "Matthew",family = "Hamilton", email =
+      "matthew.hamilton@orygen.org.au",role = c("aut",
+                                                "cre"),comment = c(ORCID = "0000-0001-7407-9194")
+  ),
+  utils::person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au",
+                role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
+  #person("Alexandra", "Parker", email =  "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID ="0000-0002-2398-6306")),
+  #person("Cathrine", "Mihalopoulos",email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
+  #person("Jonathan", "Karnon", email ="Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment =c(ORCID = "0000-0003-3220-2099")),
+  #person("Petra","Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role =c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
+  utils::person("Orygen", role = c("cph", "fnd")),
+  utils::person("VicHealth",role = c("fnd")),
+  utils::person("Victoria University", role =c("fnd"))
+  ),
+  License = usethis::use_gpl3_license()
+))
+# Deletes contents of R directory and resets DESCRIPTION and NAMESPACE files.
+ready4fun::write_pkg_setup_fls(#make_tmpl_vignette_lgl = T, First time script is run this should be un-commented then switched off again.
+  incr_ver_1L_lgl = F,
+  delete_contents_of_R_dir = T)
+# PAUSE FOR INTERACTIVE
 #
-# 4. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
+# 5. MANUAL STEP - ADD Function scripts to "fns","gnrcs" and" mthds" directories.
+#
+# 6. MAKE CONSTRUCTOR TABLE objects with the metadata about the classes we will be creating.
+source("data-raw/MAKE_CLASSES_S3.R")
+source("data-raw/MAKE_CLASSES_S4.R")
+name_pfx_1L_chr <- "ready4_"
+classes_to_make_tb <- dplyr::bind_rows(s3_classes_to_make_tb, # Bug: Need to delete all named C3_ and C4_ starting files as initial step (ie don't wait for relevant place in sequence)
+                                       s4_classes_to_make_tb)
+#
+# 7. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
 data("abbreviations_lup",package = "ready4class")
-ready4fun::make_abbr_lup_tb(short_name_chr_vec = c("dv","loc","proc","src"#,
-                                                   # "ready4_class_make_tb","ready4_class_pt_lup"
-                                                   ),
-                            long_name_chr_vec = c("dataverse","local","process","source"#,
-                                                  # "Class Make Table readyforwhatsnext S3 class",
-                                                  # "Class Prototype Lookup Table readyforwhatsnext S3 class"
-                                                  ),
-                            custom_plural_ls = list(proc = "es"),
-                            no_plural_chr_vec = NA_character_,# c("ready4_class_make_tb","ready4_class_pt_lup"),
-                            url_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
-                            seed_lup = abbreviations_lup)
+ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","src",
+                                             paste0(name_pfx_1L_chr,classes_to_make_tb$name_stub_chr)),
+long_name_chr = c("dataverse","local","process","source",
+                  classes_to_make_tb$class_desc_chr),
+custom_plural_ls = list(proc = "es"),
+no_plural_chr = classes_to_make_tb$class_desc_chr,
+url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
+seed_lup = abbreviations_lup)
 data("abbreviations_lup")
 #
-# 5. Create function types and generics look-up tables
+# 8. Create function types look-up table and save it as a package dataset
 data("fn_type_lup_tb",package = "ready4class")
+
 fn_type_lup_tb %>%
-  ready4fun::add_rows_to_fn_type_lup_tb(fn_type_nm_chr = c("Download Data","Get Data","Import Data","Get Import Type List",
-                                                           "Get Read Function", "Make Dataverse Import Lookup Table","Make Import Output Object of Multiple Potential Types","Make Local Process Readyforwhatsnext S4",
-                                                           "Save Raw","Update Source Local to Url","Update this"),
-                                        fn_type_desc_chr = c("Downloads data files.",
-                                                            "Retrieves data from R objects loaded in memory.",
-                                                            "Imports data from saved files and loads them into memory as R objects.",
-                                                            "Retrieves data about the type of import to be processed.",
-                                                            "Retrieves a read function.",
-                                                            "Makes a Dataverse import lookup table",
-                                                            "Makes an output object of multiple potential classes.",
-                                                            "Makes an instance of the Make Local Process Readyforwhatsnext S4 Class",
-                                                            "Saves the native version of a file format.",
-                                                            "Updates data from a local file reference to a URL",
-                                                            "Updates and object"),
-                                        is_generic_lgl = T,
-                                        is_method_lgl = T) %>%
-  ready4fun::make_and_doc_fn_type_R(url_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
+  ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
+                                                                                  fn_type_lup_tb = fn_type_lup_tb),
+                                       # c("Download Data",
+                                       #                  "Get Data","Get Import Type List","Get Read Function",
+                                       #                  "Import Data",
+                                       #                  "Make Dataverse Import Lookup Table","Make Import Output Object of Multiple Potential Types",
+                                       #                  #"Make Local Process Readyforwhatsnext S4",
+                                       #                  "Save Raw","Update Source Local to Url","Update this"),
+                                     fn_type_desc_chr = c("Downloads data files.",
+                                                          "Retrieves data from R objects loaded in memory.",
+                                                          "Retrieves data about the type of import to be processed.",
+                                                          "Retrieves a read function.",
+                                                          "Imports data from saved files and loads them into memory as R objects.",
+                                                          "Makes a Dataverse import lookup table",
+                                                          "Makes an output object of multiple potential classes.",
+                                                          #"Makes an instance of the Make Local Process Readyforwhatsnext S4 Class",
+                                                          "Saves the native version of a file format.",
+                                                          "Updates data from a local file reference to a URL",
+                                                          "Updates and object"),
+                                     is_generic_lgl = T,
+                                     is_method_lgl = T) %>%
+  ready4fun::write_dmtd_fn_type_lup(url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
                                     abbreviations_lup = abbreviations_lup)
 data("fn_type_lup_tb")
+##
+data("prototype_lup",package = "ready4class")
+## 9. WRITE and document new classes with the metadata contained in the merged object.
+prototype_lup <- classes_to_make_tb[3,] %>%
+  ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
+                                          name_pfx_1L_chr = "ready4_",
+                                          output_dir_1L_chr = "R",
+                                          file_exists_cdn_1L_chr = "overwrite",
+                                          abbreviations_lup = abbreviations_lup,
+                                          init_class_pt_lup = prototype_lup)
+prototype_lup %>%
+ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
+                            title_1L_chr = "Class prototype lookup table",
+                            desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite")
+
 #
-# 6. Create a table of all functions to document
-all_fns_dmt_tb <- ready4fun::make_all_fns_dmt_tb(custom_dmt_ls = list(details_ls = NULL,
-                                                                      export_ls = list(force_true_chr_vec = NA_character_,
-                                                                                       force_false_chr_vec = NA_character_),
+# 8. Create a table of all functions to document
+all_fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
+                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = NA_character_,
+                                                                                       force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
 
 ## 7. Write and document.
 ## Note files to be rewritten cannot be open in RStudio.
-ready4fun::write_and_doc_fn_fls_R(all_fns_dmt_tb,
-                                  r_dir_chr = "R")
-ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
-## 8. Run script to create MAKE CLASS TABLE objects with the metadata about the classes we will be creating.
-source("data-raw/MAKE_CLASSES_S3.R")
-source("data-raw/MAKE_CLASSES_S4.R")
-##
-## 9. Merge the MAKE CLASS TABLE objects and apply the method to make new classes with the metadata contained in the merged object.
-prototype_lup <- dplyr::bind_rows(s3_classes_to_make_tb, # Bug: Need to delete all named C3_ and C4_ starting files as initial step (ie don't wait for relevant place in sequence)
-                                  s4_classes_to_make_tb
-                                  ) %>%
-  ready4class::make_and_update(dev_pckg_namespace = ready4fun::get_dev_pkg_nm_1L_chr(),
-                               name_prefix = "ready4_",
-                               output_dir = "R",
-                               file_exists_logic = "overwrite")
-##
-## 10. Save a copy of a PROTOTYPE LOOKUP TABLE object with details about the newly created classes.
-usethis::use_data(prototype_lup,overwrite = T)
+# ready4fun::write_and_doc_fn_fls(all_fns_dmt_tb,
+#                                   r_dir_chr = "R")
+# ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
+
 ##
 ## 11. Document.
 ## Note: You will first need to consult the NAMESPACE file to see which packages you need to add to the DESCRIPTION file with the following function calls:
