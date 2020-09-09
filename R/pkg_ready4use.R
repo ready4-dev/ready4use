@@ -1,6 +1,9 @@
-#' ready4use: Methods for retrieving and managing data across the readyforwhatsnext data synthesis and simulation suite.
+#' ready4use: Readyforwhatsnext Methods for retrieving and
+#' managing data.
 #'
-#' Provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.
+#' ready4use provides a set of classes and
+#' methods for general data management tasks throughout the
+#' readyforwhatsnext suite.
 #'
 #' To learn more about ready4use, start with the vignettes:
 #' `browseVignettes(package = "ready4use")`

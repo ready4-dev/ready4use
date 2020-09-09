@@ -5,7 +5,7 @@
 \alias{fn_type_lup_tb}
 \title{Function type lookup table}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 41 rows and 6 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 33 rows and 6 columns.
 }
 \source{
 \url{https://readyforwhatsnext.github.io/readyforwhatsnext/}
@@ -20,12 +20,12 @@ A lookup table to find descriptions for different types of functions used within
 A tibble
 
 \describe{
-  \item{fn_type_nm_chr}{Function type name (a character vector)}
-  \item{fn_type_desc_chr}{Function type description (a character vector)}
-  \item{first_arg_desc_chr}{First argument description (a character vector)}
-  \item{second_arg_desc_chr}{Second argument description (a character vector)}
-  \item{is_generic_lgl}{Is generic (a logical vector)}
-  \item{is_method_lgl}{Is method (a logical vector)}
+\item{fn_type_nm_chr}{Function type name (a character vector)}
+\item{fn_type_desc_chr}{Function type description (a character vector)}
+\item{first_arg_desc_chr}{First argument description (a character vector)}
+\item{second_arg_desc_chr}{Second argument description (a character vector)}
+\item{is_generic_lgl}{Is generic (a logical vector)}
+\item{is_method_lgl}{Is method (a logical vector)}
 }
 }
 \keyword{datasets}

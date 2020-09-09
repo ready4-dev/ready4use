@@ -1,6 +1,6 @@
 #' ready4_local_proc
 #' @name ready4_local_proc
-#' @description An S4 class to represent Object defining data to be saved in local directory in a processed (R) format.
+#' @description An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory in a processed (R) format.
 #' @include C4_ready4_local.R
 #' @slot save_type character
 #' @slot proc_data_dir_chr character
@@ -29,7 +29,7 @@ prototype =  list(save_type = "proc",proc_data_dir_chr = NA_character_,import_ch
 #' @param import_chr_vec character, Default: 'NA'
 #' @param path_to_starter_sf_chr character, Default: 'NA'
 #' @param import_this_ls list, Default: list(list())
-#' @return An S4 object of the ready4_local_proc class
+#' @return An S4 object of the 
 #' @rdname ready4_local_proc
 #' @export 
 #' @importFrom methods new

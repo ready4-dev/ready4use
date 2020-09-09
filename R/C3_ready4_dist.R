@@ -1,33 +1,33 @@
 
-#' 
-#' @description Create a new valid instance of the S3 class: ready4_dist
-#' @param x PARAM_DESCRIPTION, Default: make_prototype_ready4_dist()
-#' @return A validated instance of the ready4_dist class
+#' Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @description Create a new valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @param x A prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution, Default: make_prototype_ready4_dist()
+#' @return A validated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @details Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @rdname ready4_dist
 #' @export 
 
 ready4_dist <- function(x = make_prototype_ready4_dist()){ 
-validate_ready4_dist(new_ready4_dist(x))
+validate_ready4_dist(make_new_ready4_dist(x))
 }
-#' 
-#' @description Create a new unvalidated instance of the S3 class: new_ready4_dist
-#' @param x PARAM_DESCRIPTION
-#' @return An unvalidated instance of the ready4_dist class
+#' Make new Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @description Create a new unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @param x A prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @return An unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @details Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
-#' @rdname new_ready4_dist
+#' @rdname make_new_ready4_dist
 #' @export 
 
-new_ready4_dist <- function(x){ 
+make_new_ready4_dist <- function(x){ 
 stopifnot(is.list(x))
 class(x) <- append(c("ready4_dist",setdiff(make_prototype_ready4_dist() %>% class(),class(x))),
 class(x))
 x
 }
-#' 
-#' @description Create a new prototype for S3 class: make_prototype_ready4_dist
+#' Make prototype Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @description Create a new prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 
-#' @return A prototpe for ready4_dist class
+#' @return A prototype for Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @details Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @rdname make_prototype_ready4_dist
 #' @export 
@@ -40,10 +40,10 @@ dist_param_3 = numeric(0),
 dist_param_4 = numeric(0),
 transformation = character(0))
 }
-#' 
-#' @description Validate an instance of the S3 class: validate_ready4_dist
-#' @param x PARAM_DESCRIPTION
-#' @return A prototpe for ready4_dist class
+#' Validate Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @description Validate an instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @param x An unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @return A prototpe for Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @details Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @rdname validate_ready4_dist
 #' @export 
@@ -81,10 +81,10 @@ stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
 x}
-#' 
-#' @description Check whether an object is a valid instance of the S3 class: is_ready4_dist
-#' @param x PARAM_DESCRIPTION
-#' @return A logical value, TRUE if a valid instance of the ready4_dist class
+#' Is Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @description Check whether an object is a valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+#' @param x An object of any type
+#' @return A logical value, TRUE if a valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @details Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @rdname is_ready4_dist
 #' @export 

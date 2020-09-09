@@ -1,33 +1,33 @@
 
-#' 
-#' @description Create a new valid instance of the S3 class: ready4_dv_import_lup
-#' @param x PARAM_DESCRIPTION, Default: make_prototype_ready4_dv_import_lup()
-#' @return A validated instance of the ready4_dv_import_lup class
+#' Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description Create a new valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @param x A prototype for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_prototype_ready4_dv_import_lup()
+#' @return A validated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname ready4_dv_import_lup
 #' @export 
 
 ready4_dv_import_lup <- function(x = make_prototype_ready4_dv_import_lup()){ 
-validate_ready4_dv_import_lup(new_ready4_dv_import_lup(x))
+validate_ready4_dv_import_lup(make_new_ready4_dv_import_lup(x))
 }
-#' 
-#' @description Create a new unvalidated instance of the S3 class: new_ready4_dv_import_lup
-#' @param x PARAM_DESCRIPTION
-#' @return An unvalidated instance of the ready4_dv_import_lup class
+#' Make new Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description Create a new unvalidated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @param x A prototype for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @return An unvalidated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @rdname new_ready4_dv_import_lup
+#' @rdname make_new_ready4_dv_import_lup
 #' @export 
 #' @importFrom tibble is_tibble
-new_ready4_dv_import_lup <- function(x){ 
+make_new_ready4_dv_import_lup <- function(x){ 
 stopifnot(tibble::is_tibble(x))
 class(x) <- append(c("ready4_dv_import_lup",setdiff(make_prototype_ready4_dv_import_lup() %>% class(),class(x))),
 class(x))
 x
 }
-#' 
-#' @description Create a new prototype for S3 class: make_prototype_ready4_dv_import_lup
+#' Make prototype Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description Create a new prototype for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 
-#' @return A prototpe for ready4_dv_import_lup class
+#' @return A prototype for Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_prototype_ready4_dv_import_lup
 #' @export 
@@ -41,10 +41,10 @@ data_repo_db_ui = character(0),
 data_repo_file_ext = character(0),
 data_repo_save_type = character(0))
 }
-#' 
-#' @description Validate an instance of the S3 class: validate_ready4_dv_import_lup
-#' @param x PARAM_DESCRIPTION
-#' @return A prototpe for ready4_dv_import_lup class
+#' Validate Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description Validate an instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @param x An unvalidated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @return A prototpe for Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname validate_ready4_dv_import_lup
 #' @export 
@@ -81,10 +81,10 @@ stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
 x}
-#' 
-#' @description Check whether an object is a valid instance of the S3 class: is_ready4_dv_import_lup
-#' @param x PARAM_DESCRIPTION
-#' @return A logical value, TRUE if a valid instance of the ready4_dv_import_lup class
+#' Is Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description Check whether an object is a valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @param x An object of any type
+#' @return A logical value, TRUE if a valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname is_ready4_dv_import_lup
 #' @export 

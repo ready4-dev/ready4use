@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_transform.R
 \name{transform_csv_col_to_ls_col}
 \alias{transform_csv_col_to_ls_col}
-\title{Transform csv column to list column}
+\title{Transform comma separated variables file column to list column}
 \usage{
 transform_csv_col_to_ls_col(csv_col)
 }
@@ -10,9 +10,8 @@ transform_csv_col_to_ls_col(csv_col)
 \item{csv_col}{PARAM_DESCRIPTION}
 }
 \value{
-List col (a list)
+List column (a list)
 }
 \description{
-transform_csv_col_to_ls_col() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform csv col to a list col. Function argument csv_col specifies the object to be updated. Argument NA provides the object to be updated.The function returns a list col (a list).
+transform_csv_col_to_ls_col() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform comma separated variables file column to list column. Function argument csv_col specifies the object to be updated. The function returns List column (a list).
 }
-\keyword{internal}

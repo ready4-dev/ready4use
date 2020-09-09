@@ -10,9 +10,8 @@ get_valid_path_chr(x)
 \item{x}{PARAM_DESCRIPTION}
 }
 \value{
-Valid path (a character vector of length 1)
+Valid path (a character vector)
 }
 \description{
-get_valid_path_chr() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get valid path. Function argument x specifies the where to look for the required object.The function returns valid path (a character vector of length 1).
+get_valid_path_chr() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get valid path character vector. Function argument x specifies the where to look for the required object. The function returns Valid path (a character vector).
 }
-\keyword{internal}

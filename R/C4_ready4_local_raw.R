@@ -1,6 +1,6 @@
 #' ready4_local_raw
 #' @name ready4_local_raw
-#' @description An S4 class to represent Object defining data to be saved in local directory in a raw (unprocessed) format.
+#' @description An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory in a raw (unprocessed) format.
 #' @include C4_ready4_local.R
 #' @slot save_type character
 #' @slot merge_with_chr_vec character
@@ -21,7 +21,7 @@ prototype =  list(save_type = "raw"))
 #' @param overwrite_lgl logical, Default: NA
 #' @param save_lgl logical, Default: NA
 #' @param save_type character, Default: 'raw'
-#' @return An S4 object of the ready4_local_raw class
+#' @return An S4 object of the 
 #' @rdname ready4_local_raw
 #' @export 
 #' @importFrom methods new

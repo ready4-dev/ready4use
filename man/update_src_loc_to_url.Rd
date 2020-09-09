@@ -7,15 +7,14 @@
 update_src_loc_to_url(x, local_to_url_vec, urls_vec, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
 \item{local_to_url_vec}{PARAM_DESCRIPTION}
 
 \item{urls_vec}{PARAM_DESCRIPTION}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URL
+update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URLNA
 }
-\keyword{internal}

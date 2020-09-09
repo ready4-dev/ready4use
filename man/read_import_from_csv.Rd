@@ -2,12 +2,12 @@
 % Please edit documentation in R/fn_read.R
 \name{read_import_from_csv}
 \alias{read_import_from_csv}
-\title{Read import from csv}
+\title{Read import from comma separated variables file}
 \usage{
 read_import_from_csv(file_ref_chr, is_url = F)
 }
 \arguments{
-\item{file_ref_chr}{File ref (a character vector of length 1)}
+\item{file_ref_chr}{File reference (a character vector)}
 
 \item{is_url}{PARAM_DESCRIPTION, Default: F}
 }
@@ -15,6 +15,5 @@ read_import_from_csv(file_ref_chr, is_url = F)
 Import (a readyforwhatsnext S3)
 }
 \description{
-read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read an import from csv. Function argument file_ref_chr specifies the path to object.The function returns an import (a readyforwhatsnext s3).
+read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. Function argument file_ref_chr specifies the path to object. The function returns Import (a readyforwhatsnext S3).
 }
-\keyword{internal}

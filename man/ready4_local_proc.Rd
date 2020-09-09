@@ -40,10 +40,10 @@ ready4_local_proc(
 \item{import_this_ls}{list, Default: list(list())}
 }
 \value{
-An S4 object of the ready4_local_proc class
+An S4 object of the
 }
 \description{
-An S4 class to represent Object defining data to be saved in local directory in a processed (R) format.
+An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory in a processed (R) format.
 
 Create a new S4 object of the class:ready4_local_proc
 }

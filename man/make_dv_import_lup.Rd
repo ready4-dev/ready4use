@@ -7,11 +7,10 @@
 make_dv_import_lup(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
 make_dv_import_lup() is a Make Dataverse Import Lookup Table generic that makes a Dataverse import lookup tableNA
 }
-\keyword{internal}

@@ -1,6 +1,6 @@
 #' ready4_script_data
 #' @name ready4_script_data
-#' @description An S4 class to represent Data to be passed to a function that constructs a spatial object from a lookup table.
+#' @description An S4 class to represent Readyforwhatsnext S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.
 #' @include C4_ready4_local_proc.R
 #' @slot crs_nbr_vec numeric
 #' @slot save_type character
@@ -31,7 +31,7 @@ prototype =  list(crs_nbr_vec = NA_real_))
 #' @param overwrite_lgl logical, Default: NA
 #' @param save_lgl logical, Default: NA
 #' @param crs_nbr_vec numeric, Default: NA
-#' @return An S4 object of the ready4_script_data class
+#' @return An S4 object of the 
 #' @rdname ready4_script_data
 #' @export 
 #' @importFrom methods new

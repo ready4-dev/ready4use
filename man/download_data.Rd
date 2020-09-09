@@ -7,11 +7,10 @@
 download_data(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-download_data() is a Download Data generic that downloads data files.
+download_data() is a Download Data generic that downloads data files.NA
 }
-\keyword{internal}

@@ -2,18 +2,17 @@
 % Please edit documentation in R/mthd_get_data.R
 \name{get_data.ready4_dv_import_lup}
 \alias{get_data.ready4_dv_import_lup}
-\title{Get data.ready4 dataverse import}
+\title{Get data method applied toeadyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..}
 \usage{
 \method{get_data}{ready4_dv_import_lup}(x, save_dir_path_chr = "", unlink_lgl = T)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
 
-\item{save_dir_path_chr}{Save directory path (a character vector of length 1), Default: ''}
+\item{save_dir_path_chr}{Save directory path (a character vector), Default: ''}
 
-\item{unlink_lgl}{Unlink (a logical vector of length 1), Default: T}
+\item{unlink_lgl}{Unlink (a logical vector), Default: T}
 }
 \description{
-get_data.ready4_dv_import_lup() is a Get Data generic that retrieves data from R objects loaded in memory.NA
+get_data.ready4_dv_import_lup() is a Get Data method that retrieves data from R objects loaded in memory. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..NA
 }
-\keyword{internal}

@@ -7,11 +7,10 @@
 import_data(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.
+import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.NA
 }
-\keyword{internal}

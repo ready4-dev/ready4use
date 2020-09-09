@@ -2,18 +2,17 @@
 % Please edit documentation in R/mthd_update_src_loc_to_url.R
 \name{update_src_loc_to_url.ready4_all_import_lup}
 \alias{update_src_loc_to_url.ready4_all_import_lup}
-\title{Update source local to url.ready4 all import}
+\title{Update source local to url method applied toeadyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
 \usage{
 \method{update_src_loc_to_url}{ready4_all_import_lup}(x, local_to_url_vec, urls_vec)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
 \item{local_to_url_vec}{PARAM_DESCRIPTION}
 
 \item{urls_vec}{PARAM_DESCRIPTION}
 }
 \description{
-update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url generic that updates data from a local file reference to a URLNA
+update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url method that updates data from a local file reference to a URL This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..NA
 }
-\keyword{internal}

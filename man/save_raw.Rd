@@ -7,11 +7,10 @@
 save_raw(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-save_raw() is a Save Raw generic that saves the native version of a file format.
+save_raw() is a Save Raw generic that saves the native version of a file format.NA
 }
-\keyword{internal}

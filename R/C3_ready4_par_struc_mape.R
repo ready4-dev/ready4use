@@ -1,33 +1,33 @@
 
-#' 
-#' @description Create a new valid instance of the S3 class: ready4_par_struc_mape
-#' @param x PARAM_DESCRIPTION, Default: make_prototype_ready4_par_struc_mape()
-#' @return A validated instance of the ready4_par_struc_mape class
+#' Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @description Create a new valid instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @param x A prototype for the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors., Default: make_prototype_ready4_par_struc_mape()
+#' @return A validated instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname ready4_par_struc_mape
 #' @export 
 
 ready4_par_struc_mape <- function(x = make_prototype_ready4_par_struc_mape()){ 
-validate_ready4_par_struc_mape(new_ready4_par_struc_mape(x))
+validate_ready4_par_struc_mape(make_new_ready4_par_struc_mape(x))
 }
-#' 
-#' @description Create a new unvalidated instance of the S3 class: new_ready4_par_struc_mape
-#' @param x PARAM_DESCRIPTION
-#' @return An unvalidated instance of the ready4_par_struc_mape class
+#' Make new Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @description Create a new unvalidated instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @param x A prototype for the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @return An unvalidated instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @rdname new_ready4_par_struc_mape
+#' @rdname make_new_ready4_par_struc_mape
 #' @export 
 #' @importFrom tibble is_tibble
-new_ready4_par_struc_mape <- function(x){ 
+make_new_ready4_par_struc_mape <- function(x){ 
 stopifnot(tibble::is_tibble(x))
 class(x) <- append(c("ready4_par_struc_mape",setdiff(make_prototype_ready4_par_struc_mape() %>% class(),class(x))),
 class(x))
 x
 }
-#' 
-#' @description Create a new prototype for S3 class: make_prototype_ready4_par_struc_mape
+#' Make prototype Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @description Create a new prototype for the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 
-#' @return A prototpe for ready4_par_struc_mape class
+#' @return A prototype for Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname make_prototype_ready4_par_struc_mape
 #' @export 
@@ -48,10 +48,10 @@ mape_05_yr_shp = numeric(0),
 mape_10_yr_shp = numeric(0),
 mape_15_yr_shp = numeric(0))
 }
-#' 
-#' @description Validate an instance of the S3 class: validate_ready4_par_struc_mape
-#' @param x PARAM_DESCRIPTION
-#' @return A prototpe for ready4_par_struc_mape class
+#' Validate Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @description Validate an instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @param x An unvalidated instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @return A prototpe for Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname validate_ready4_par_struc_mape
 #' @export 
@@ -88,10 +88,10 @@ stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
 x}
-#' 
-#' @description Check whether an object is a valid instance of the S3 class: is_ready4_par_struc_mape
-#' @param x PARAM_DESCRIPTION
-#' @return A logical value, TRUE if a valid instance of the ready4_par_struc_mape class
+#' Is Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @description Check whether an object is a valid instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' @param x An object of any type
+#' @return A logical value, TRUE if a valid instance of the Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname is_ready4_par_struc_mape
 #' @export 

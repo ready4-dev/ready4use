@@ -43,10 +43,10 @@ ready4_script_data(
 \item{crs_nbr_vec}{numeric, Default: NA}
 }
 \value{
-An S4 object of the ready4_script_data class
+An S4 object of the
 }
 \description{
-An S4 class to represent Data to be passed to a function that constructs a spatial object from a lookup table.
+An S4 class to represent Readyforwhatsnext S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.
 
 Create a new S4 object of the class:ready4_script_data
 }

@@ -88,14 +88,13 @@ data("fn_type_lup_tb")
 ##
 data("prototype_lup",package = "ready4class")
 ## 9. WRITE and document new classes with the metadata contained in the merged object.
-prototype_lup <- classes_to_make_tb[3,] %>%
+classes_to_make_tb %>%
   ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
                                           name_pfx_1L_chr = "ready4_",
                                           output_dir_1L_chr = "R",
                                           file_exists_cdn_1L_chr = "overwrite",
                                           abbreviations_lup = abbreviations_lup,
-                                          init_class_pt_lup = prototype_lup)
-prototype_lup %>%
+                                          init_class_pt_lup = prototype_lup) %>%
 ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
                             desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite")
@@ -111,8 +110,9 @@ all_fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_l
 
 ## 7. Write and document.
 ## Note files to be rewritten cannot be open in RStudio.
-# ready4fun::write_and_doc_fn_fls(all_fns_dmt_tb,
-#                                   r_dir_chr = "R")
+ready4fun::write_and_doc_fn_fls(all_fns_dmt_tb,
+                                r_dir_1L_chr = "R",
+                                dev_pkgs_chr = c("ready4fun","ready4class"))
 # ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
 
 ##

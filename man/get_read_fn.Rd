@@ -7,11 +7,10 @@
 get_read_fn(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
 get_read_fn() is a Get Read Function generic that retrieves a read function.NA
 }
-\keyword{internal}

@@ -17,25 +17,27 @@ get_file_from_dv(
 )
 }
 \arguments{
-\item{database_ui_chr}{Database ui (a character vector of length 1)}
+\item{database_ui_chr}{Database ui (a character vector)}
 
-\item{filename_chr}{Filename (a character vector of length 1)}
+\item{filename_chr}{Filename (a character vector)}
 
-\item{save_format_chr}{Save format (a character vector of length 1)}
+\item{save_format_chr}{Save format (a character vector)}
 
 \item{repo_file_format}{PARAM_DESCRIPTION}
 
-\item{dataverse_chr}{Dataverse (a character vector of length 1), Default: Sys.getenv("DATAVERSE_SERVER")}
+\item{dataverse_chr}{Dataverse (a character vector), Default: Sys.getenv("DATAVERSE_SERVER")}
 
-\item{save_type_chr}{Save type (a character vector of length 1), Default: 'original'}
+\item{save_type_chr}{Save type (a character vector), Default: 'original'}
 
-\item{save_dir_path_chr}{Save directory path (a character vector of length 1), Default: ''}
+\item{save_dir_path_chr}{Save directory path (a character vector), Default: ''}
 
 \item{read_fn}{Read (a function)}
 
-\item{unlink_lgl}{Unlink (a logical vector of length 1), Default: T}
+\item{unlink_lgl}{Unlink (a logical vector), Default: T}
+}
+\value{
+NA ()
 }
 \description{
-get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get a file from dv. Function argument database_ui_chr specifies the where to look for the required object.NA
+get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument database_ui_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

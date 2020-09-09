@@ -25,10 +25,10 @@ ready4_local(
 \item{save_lgl}{logical, Default: NA}
 }
 \value{
-An S4 object of the ready4_local class
+An S4 object of the
 }
 \description{
-An S4 class to represent Object defining data to be saved in local directory.
+An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory.
 
 Create a new S4 object of the class:ready4_local
 }

@@ -28,10 +28,10 @@ ready4_local_raw(
 \item{save_type}{character, Default: 'raw'}
 }
 \value{
-An S4 object of the ready4_local_raw class
+An S4 object of the
 }
 \description{
-An S4 class to represent Object defining data to be saved in local directory in a raw (unprocessed) format.
+An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory in a raw (unprocessed) format.
 
 Create a new S4 object of the class:ready4_local_raw
 }

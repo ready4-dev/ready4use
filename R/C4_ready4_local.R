@@ -1,6 +1,6 @@
 #' ready4_local
 #' @name ready4_local
-#' @description An S4 class to represent Object defining data to be saved in local directory.
+#' @description An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory.
 #' @slot merge_with_chr_vec character
 #' @slot raw_data_dir_chr character
 #' @slot pckg_chr character
@@ -17,7 +17,7 @@ prototype =  list(merge_with_chr_vec = NA_character_,raw_data_dir_chr = NA_chara
 #' @param pckg_chr character, Default: 'NA'
 #' @param overwrite_lgl logical, Default: NA
 #' @param save_lgl logical, Default: NA
-#' @return An S4 object of the ready4_local class
+#' @return An S4 object of the 
 #' @rdname ready4_local
 #' @export 
 #' @importFrom methods new

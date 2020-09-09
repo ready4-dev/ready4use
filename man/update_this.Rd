@@ -7,11 +7,10 @@
 update_this(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-update_this() is an Update this generic that updates and object
+update_this() is an Update this generic that updates and objectNA
 }
-\keyword{internal}

@@ -1,35 +1,34 @@
 Package: ready4use
-Title: Methods for retrieving and managing data across the readyforwhatsnext data synthesis and simulation suite.
-Version: 0.0.0.9058
-Authors@R: c(
-    person(given = "Matthew",family = "Hamilton", email = "matthew.hamilton@orygen.org.au",role = c("aut", "cre"),comment = c(ORCID = "0000-0001-7407-9194")),
-    person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au", role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
-    #person("Alexandra", "Parker", email = "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-2398-6306")),
-    #person("Cathrine", "Mihalopoulos", email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
-    #person("Jonathan", "Karnon", email = "Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment = c(ORCID = "0000-0003-3220-2099")),
-    #person("Petra", "Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role = c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
-    person("Orygen", role = c("cph", "fnd")),
-    person("VicHealth", role = c("fnd")),
-    person("Victoria University", role = c("fnd")))
-Description: Provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.
-License: GPL-3 | file LICENSE
+Title: Readyforwhatsnext Methods for retrieving and
+    managing data.
+Version: 0.0.0.9059
+Authors@R: 
+    c(person(given = "Matthew",
+             family = "Hamilton",
+             role = c("aut", "cre"),
+             email = "matthew.hamilton@orygen.org.au",
+             comment = c(ORCID = "0000-0001-7407-9194")),
+      person(given = "Glen",
+             family = "Wiesner",
+             role = "aut",
+             email = "Glen.Wiesner@vu.edu.au",
+             comment = c(ORCID = "0000-0002-0071-130X")),
+      person(given = "Orygen",
+             role = c("cph", "fnd")),
+      person(given = "VicHealth",
+             role = "fnd"),
+      person(given = "Victoria University",
+             role = "fnd"))
+Description: ready4use provides a set of classes and
+    methods for general data management tasks throughout the
+    readyforwhatsnext suite.
+License: FALSE
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
-Imports: 
-    methods,
-    data.table,
-    dataverse,
-    dplyr,
-    magrittr,
-    purrr,
-    rlang,
-    stringr,
-    testit,
-    tibble,
-    tidyr
 Collate: 
     'C3_ready4_dv_import_lup.R'
     'C3_ready4_all_import_lup.R'
@@ -41,6 +40,7 @@ Collate:
     'C4_ready4_script_data.R'
     'db_abbreviations_lup.R'
     'db_fn_type_lup_tb.R'
+    'db_prototype_lup.R'
     'fn_assert.R'
     'fn_get.R'
     'fn_make.R'
@@ -63,5 +63,21 @@ Collate:
     'imp_mthds.R'
     'imp_pipe.R'
     'mthd_get_data.R'
+    'mthd_get_import_type_ls.R'
+    'mthd_get_read_fn.R'
+    'mthd_make_import_xx.R'
     'mthd_update_src_loc_to_url.R'
     'pkg_ready4use.R'
+Imports: 
+    data.table,
+    dataverse,
+    dplyr,
+    magrittr,
+    methods,
+    purrr,
+    readxl,
+    rlang,
+    stringr,
+    testit,
+    tibble,
+    tidyr

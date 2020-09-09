@@ -7,11 +7,10 @@
 get_data(x, ...)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{Additional arguments}
 }
 \description{
-get_data() is a Get Data generic that retrieves data from R objects loaded in memory.
+get_data() is a Get Data generic that retrieves data from R objects loaded in memory.NA
 }
-\keyword{internal}

@@ -4,13 +4,16 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Methods for retrieving and managing data across the readyforwhatsnext data synthesis and simulation suite.}
+\title{ready4use: Readyforwhatsnext Methods for retrieving and
+managing data.}
 \description{
-Provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.
+ready4use provides a set of classes and
+methods for general data management tasks throughout the
+readyforwhatsnext suite.
 }
 \details{
 To learn more about ready4use, start with the vignettes:
-`browseVignettes(package = "ready4use")`
+\code{browseVignettes(package = "ready4use")}
 }
 \author{
 \strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton@orygen.org.au} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
