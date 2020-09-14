@@ -111,25 +111,22 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
 #
 # 10. Create a table of all functions to document
 fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
-                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c("assert_matches_chr",
+                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c(fns_dmt_tb %>%
+                                                                                                                            dplyr::filter(file_pfx_chr %in% c("grp_","mthd_")) %>%
+                                                                                                                            dplyr::pull(fns_chr),
+                                                                                                                          {
+                                                                                                                            slots_chr <- prototype_lup %>%
+                                                                                                                            dplyr::filter(pt_ns_chr == ready4fun::get_dev_pkg_nm() & !old_class_lgl) %>%
+                                                                                                                            dplyr::pull(fn_to_call_chr) %>%
+                                                                                                                            purrr::map(~getSlots(.x) %>%
+                                                                                                                                         names()) %>%
+                                                                                                                            purrr::flatten_chr() %>% unique() %>% sort()
+                                                                                                                            c(slots_chr,paste0(slots_chr,"<-"))
+                                                                                                                            },
+                                                                                                                          "assert_matches_chr",
                                                                                                                           "assert_single_row_tb",
-                                                                                                                          "get_data",
-                                                                                                                          "get_import_type_ls",
-                                                                                                                          "get_r3_from_dv_csv",
-                                                                                                                          "import_data",
-                                                                                                                          "import_this_ls",
-                                                                                                                          "import_this_ls<-",
-                                                                                                                          "local_path_to_dv_data",
-                                                                                                                          "make_import_xx",
-                                                                                                                          "path_to_starter_sf_chr",
-                                                                                                                          "path_to_starter_sf_chr<-",
-                                                                                                                          "proc_data_dir_chr",
-                                                                                                                          "proc_data_dir_chr<-",
-                                                                                                                          "raw_data_dir_chr",
-                                                                                                                          "raw_data_dir_chr<-",
-                                                                                                                          "save_lgl",
-                                                                                                                          "save_lgl<-",
-                                                                                                                          "save_raw"),
+                                                                                                                          "get_local_path_to_dv_data",
+                                                                                                                          "get_r3_from_dv_csv"),
                                                                                        force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
                                                  fn_type_lup_tb = fn_type_lup_tb,
