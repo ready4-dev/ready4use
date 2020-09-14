@@ -15,6 +15,13 @@ readyforwhatsnext suite.
 To learn more about ready4use, start with the vignettes:
 \code{browseVignettes(package = "ready4use")}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://readyforwhatsnext.github.io/readyforwhatsnext/}
+}
+
+}
 \author{
 \strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton@orygen.org.au} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
 

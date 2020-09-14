@@ -33,9 +33,3 @@ pckg_chr = pckg_chr,
 overwrite_lgl = overwrite_lgl,
 save_lgl = save_lgl)
 }
-
-methods::setValidity(methods::className("ready4_local",".GlobalEnv"),
-function(object){
-msg <- NULL
-if (is.null(msg)) TRUE else msg
-})

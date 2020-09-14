@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Readyforwhatsnext Methods for retrieving and
     managing data.
-Version: 0.0.0.9060
+Version: 0.0.0.9061
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -23,52 +23,13 @@ Description: ready4use provides a set of classes and
     methods for general data management tasks throughout the
     readyforwhatsnext suite.
 License: GPL-3
+URL: https://readyforwhatsnext.github.io/readyforwhatsnext/
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Depends: 
-    R (>= 2.10)
-Collate: 
-    'C3_ready4_dv_import_lup.R'
-    'C3_ready4_all_import_lup.R'
-    'C3_ready4_dist.R'
-    'C3_ready4_par_struc_mape.R'
-    'C4_ready4_local.R'
-    'C4_ready4_local_proc.R'
-    'C4_ready4_local_raw.R'
-    'C4_ready4_script_data.R'
-    'db_abbreviations_lup.R'
-    'db_fn_type_lup_tb.R'
-    'db_prototype_lup.R'
-    'fn_assert.R'
-    'fn_get.R'
-    'fn_make.R'
-    'fn_read.R'
-    'fn_transform.R'
-    'fn_update.R'
-    'fn_write.R'
-    'gnrc_crs_nbr_vec.R'
-    'gnrc_import_chr_vec.R'
-    'gnrc_import_this_ls.R'
-    'gnrc_merge_with_chr_vec.R'
-    'gnrc_overwrite_lgl.R'
-    'gnrc_path_to_starter_sf_chr.R'
-    'gnrc_pckg_chr.R'
-    'gnrc_proc_data_dir_chr.R'
-    'gnrc_raw_data_dir_chr.R'
-    'gnrc_save_lgl.R'
-    'gnrc_save_type.R'
-    'grp_generics.R'
-    'imp_mthds.R'
-    'imp_pipe.R'
-    'mthd_get_data.R'
-    'mthd_get_import_type_ls.R'
-    'mthd_get_read_fn.R'
-    'mthd_make_import_xx.R'
-    'mthd_update_src_loc_to_url.R'
-    'pkg_ready4use.R'
 Imports: 
+    lifecycle,
     data.table,
     dataverse,
     dplyr,
@@ -81,3 +42,31 @@ Imports:
     testit,
     tibble,
     tidyr
+RdMacros: lifecycle
+Depends: 
+    R (>= 2.10)
+Collate: 
+    'C3_ready4_dv_import_lup.R'
+    'C3_ready4_all_import_lup.R'
+    'C3_ready4_dist.R'
+    'C3_ready4_par_struc_mape.R'
+    'C4_ready4_local.R'
+    'db_abbreviations_lup.R'
+    'db_fn_type_lup_tb.R'
+    'fn_assert.R'
+    'fn_get.R'
+    'fn_make.R'
+    'fn_read.R'
+    'fn_transform.R'
+    'fn_update.R'
+    'fn_write.R'
+    'grp_generics.R'
+    'gs_merge_with_chr_vec.R'
+    'imp_mthds.R'
+    'imp_pipe.R'
+    'mthd_get_data.R'
+    'mthd_get_import_type_ls.R'
+    'mthd_get_read_fn.R'
+    'mthd_make_import_xx.R'
+    'mthd_update_src_loc_to_url.R'
+    'pkg_ready4use.R'

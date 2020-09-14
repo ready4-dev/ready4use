@@ -3,6 +3,8 @@
 # 1. Load magrittr package to that the pipe operator ("%>%") can be used in this script.
 library(magrittr)
 #
+if(!dir.exists("man/figures"))
+  dir.create("man/figures")
 # 2. Create "fns", "gnrcs" and "mthds" sub-directories.
 ready4fun::write_fn_type_dirs()
 #
@@ -121,8 +123,9 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
                                 dev_pkgs_chr = c("ready4fun","ready4class"),
                                 update_pkgdown_1L_lgl = T)
-# ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
-#
+#ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138.pdf",
+#developer_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138_dev.pdf")
+pkgdown::build_site()
 #
 # 12. Add vignette
 
