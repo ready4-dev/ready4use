@@ -1,0 +1,43 @@
+development:
+  mode: auto
+reference:
+- title: "Datasets"
+- contents:
+  - abbreviations_lup
+  - fn_type_lup_tb
+  - prototype_lup
+- title: "Classes"
+- contents:
+  - ready4_dist
+  - ready4_dv_import_lup
+  - ready4_all_import_lup
+  - ready4_par_struc_mape
+  - ready4_local
+  - ready4_local_raw
+  - ready4_local_proc
+  - ready4_script_data
+- title: "Functions"
+- contents:
+  - assert_matches_chr
+  - assert_single_row_tb
+  - get_local_path_to_dv_data
+  - get_r3_from_dv_csv
+- title: "Generics"
+- contents:
+  - download_data
+  - get_data
+  - get_import_type_ls
+  - get_read_fn
+  - import_data
+  - make_dv_import_lup
+  - make_import_xx
+  - save_raw
+  - update_src_loc_to_url
+  - update_this
+- title: "Methods"
+- contents:
+  - get_data.ready4_dv_import_lup
+  - get_import_type_ls.ready4_all_import_lup
+  - get_read_fn.ready4_dv_import_lup
+  - make_import_xx.ready4_all_import_lup
+  - update_src_loc_to_url.ready4_all_import_lup
