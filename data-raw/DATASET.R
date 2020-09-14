@@ -3,8 +3,8 @@
 # 1. Load magrittr package to that the pipe operator ("%>%") can be used in this script.
 library(magrittr)
 #
-if(!dir.exists("man/figures"))
-  dir.create("man/figures")
+# if(!dir.exists("man/figures"))
+#   dir.create("man/figures")
 # 2. Create "fns", "gnrcs" and "mthds" sub-directories.
 ready4fun::write_fn_type_dirs()
 #
