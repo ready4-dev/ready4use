@@ -111,12 +111,29 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
 #
 # 10. Create a table of all functions to document
 fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
-                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = NA_character_,
+                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c("assert_matches_chr",
+                                                                                                                          "assert_single_row_tb",
+                                                                                                                          "get_data",
+                                                                                                                          "get_import_type_ls",
+                                                                                                                          "get_r3_from_dv_csv",
+                                                                                                                          "import_data",
+                                                                                                                          "import_this_ls",
+                                                                                                                          "import_this_ls<-",
+                                                                                                                          "local_path_to_dv_data",
+                                                                                                                          "make_import_xx",
+                                                                                                                          "path_to_starter_sf_chr",
+                                                                                                                          "path_to_starter_sf_chr<-",
+                                                                                                                          "proc_data_dir_chr",
+                                                                                                                          "proc_data_dir_chr<-",
+                                                                                                                          "raw_data_dir_chr",
+                                                                                                                          "raw_data_dir_chr<-",
+                                                                                                                          "save_lgl",
+                                                                                                                          "save_lgl<-",
+                                                                                                                          "save_raw"),
                                                                                        force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
-
 ## 11. Write and document.
 ## Note files to be rewritten cannot be open in RStudio.
 ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
