@@ -12,6 +12,5 @@ get_import_type_ls(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-get_import_type_ls() is a Get Import Type List generic that retrieves data about the type of import to be processed.NA
+get_import_type_ls() is a Get Import Type List generic that retrieves data about the type of import to be processed.
 }
-\keyword{internal}

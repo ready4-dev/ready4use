@@ -12,6 +12,5 @@ make_import_xx(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-make_import_xx() is a Make Import Output Object of Multiple Potential Types generic that makes an output object of multiple potential classes.NA
+make_import_xx() is a Make Import Output Object of Multiple Potential Types generic that makes an output object of multiple potential classes.
 }
-\keyword{internal}

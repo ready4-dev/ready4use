@@ -14,6 +14,5 @@
 \item{script_args_ls}{Script arguments (a list), Default: NULL}
 }
 \description{
-make_import_xx.ready4_all_import_lup() is a Make Import Output Object of Multiple Potential Types method that makes an output object of multiple potential classes. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..NA
+make_import_xx.ready4_all_import_lup() is a Make Import Output Object of Multiple Potential Types method that makes an output object of multiple potential classes. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

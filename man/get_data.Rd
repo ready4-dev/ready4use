@@ -12,6 +12,5 @@ get_data(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-get_data() is a Get Data generic that retrieves data from R objects loaded in memory.NA
+get_data() is a Get Data generic that retrieves data from R objects loaded in memory.
 }
-\keyword{internal}

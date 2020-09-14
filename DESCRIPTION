@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Readyforwhatsnext Methods for retrieving and
     managing data.
-Version: 0.0.0.9059
+Version: 0.0.0.9060
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -22,7 +22,7 @@ Authors@R:
 Description: ready4use provides a set of classes and
     methods for general data management tasks throughout the
     readyforwhatsnext suite.
-License: FALSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

@@ -12,6 +12,5 @@ import_data(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.NA
+import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.
 }
-\keyword{internal}

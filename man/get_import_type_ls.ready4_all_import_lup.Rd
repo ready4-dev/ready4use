@@ -14,6 +14,5 @@
 \item{forced_choice_chr}{Forced choice (a character vector), Default: 'NA'}
 }
 \description{
-get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..NA
+get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

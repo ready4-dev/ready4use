@@ -26,4 +26,3 @@ Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble)
 \description{
 get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get readyforwhatsnext s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble).
 }
-\keyword{internal}

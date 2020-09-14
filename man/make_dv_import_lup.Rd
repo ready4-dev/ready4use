@@ -12,6 +12,5 @@ make_dv_import_lup(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-make_dv_import_lup() is a Make Dataverse Import Lookup Table generic that makes a Dataverse import lookup tableNA
+make_dv_import_lup() is a Make Dataverse Import Lookup Table generic that makes a Dataverse import lookup table
 }
-\keyword{internal}

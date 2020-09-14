@@ -1,5 +1,5 @@
 #' Get import type list method applied toeadyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..
-#' @description get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..NA
+#' @description get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
 #' @param x An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param inc_script_lgl Include script (a logical vector), Default: T
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
@@ -7,7 +7,6 @@
 #' @rdname get_import_type_ls.ready4_all_import_lup
 #' @export 
 #' @importFrom purrr discard
-#' @keywords internal
 get_import_type_ls.ready4_all_import_lup <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
 {
     assert_single_row_tb(x)

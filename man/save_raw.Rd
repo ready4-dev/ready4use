@@ -12,6 +12,5 @@ save_raw(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-save_raw() is a Save Raw generic that saves the native version of a file format.NA
+save_raw() is a Save Raw generic that saves the native version of a file format.
 }
-\keyword{internal}

@@ -6,7 +6,6 @@
 #' @rdname read_import_from_csv
 #' @export 
 #' @importFrom data.table fread
-#' @keywords internal
 read_import_from_csv <- function (file_ref_chr, is_url = F) 
 {
     if (is_url) 

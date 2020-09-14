@@ -16,6 +16,5 @@ update_src_loc_to_url(x, local_to_url_vec, urls_vec, ...)
 \item{...}{Additional arguments}
 }
 \description{
-update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URLNA
+update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URL
 }
-\keyword{internal}

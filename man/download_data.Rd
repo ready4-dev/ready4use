@@ -12,6 +12,5 @@ download_data(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-download_data() is a Download Data generic that downloads data files.NA
+download_data() is a Download Data generic that downloads data files.
 }
-\keyword{internal}

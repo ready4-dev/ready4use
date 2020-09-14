@@ -28,12 +28,19 @@ options(usethis.description = list(
   utils::person("VicHealth",role = c("fnd")),
   utils::person("Victoria University", role =c("fnd"))
   ),
-  License = usethis::use_gpl3_license()
+  License = usethis::use_gpl3_license("Orygen"),
+  URL = c(#"https://readyforwhatsnext.github.io/ready4class/,
+          #https://github.com/readyforwhatsnext/ready4class,
+          "https://readyforwhatsnext.github.io/readyforwhatsnext/") # Updated from first run
 ))
 # Deletes contents of R directory and resets DESCRIPTION and NAMESPACE files.
-ready4fun::write_pkg_setup_fls(#make_tmpl_vignette_lgl = T, First time script is run this should be un-commented then switched off again.
-  incr_ver_1L_lgl = F,
-  delete_contents_of_R_dir = T)
+ready4fun::write_pkg_setup_fls(incr_ver_1L_lgl = F,
+  delete_contents_of_R_dir = T,
+  copyright_holders_chr = "Orygen",
+  use_travis_1L_lgl = T,
+  path_to_pkg_logo_1L_chr = "../../../../Documentation/Images/ready4use-logo/default.png",
+  github_repo_1L_chr = "readyforwhatsnext/ready4use",
+  lifecycle_stage_1L_chr = "experimental")
 # PAUSE FOR INTERACTIVE
 #
 # 5. MANUAL STEP - ADD Function scripts to "fns","gnrcs" and" mthds" directories.
@@ -100,19 +107,20 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite")
 
 #
-# 8. Create a table of all functions to document
-all_fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
+# 10. Create a table of all functions to document
+fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
                                                                        inc_for_main_user_lgl_ls = list(force_true_chr = NA_character_,
                                                                                        force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
 
-## 7. Write and document.
+## 11. Write and document.
 ## Note files to be rewritten cannot be open in RStudio.
-ready4fun::write_and_doc_fn_fls(all_fns_dmt_tb,
+ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
-                                dev_pkgs_chr = c("ready4fun","ready4class"))
+                                dev_pkgs_chr = c("ready4fun","ready4class"),
+                                update_pkgdown_1L_lgl = T)
 # ready4fun::write_ns_imps_to_desc(incr_ver_lgl = F)
 #
 #

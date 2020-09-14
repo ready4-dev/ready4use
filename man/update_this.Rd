@@ -12,6 +12,5 @@ update_this(x, ...)
 \item{...}{Additional arguments}
 }
 \description{
-update_this() is an Update this generic that updates and objectNA
+update_this() is an Update this generic that updates and object
 }
-\keyword{internal}

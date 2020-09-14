@@ -10,6 +10,5 @@
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
 }
 \description{
-get_read_fn.ready4_dv_import_lup() is a Get Read Function method that retrieves a read function. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..NA
+get_read_fn.ready4_dv_import_lup() is a Get Read Function method that retrieves a read function. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}
