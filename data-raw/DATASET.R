@@ -39,7 +39,7 @@ options(usethis.description = list(
 ready4fun::write_pkg_setup_fls(incr_ver_1L_lgl = F,
   delete_contents_of_R_dir = T,
   copyright_holders_chr = "Orygen",
-  use_travis_1L_lgl = T,
+  use_travis_1L_lgl = F,
   path_to_pkg_logo_1L_chr = "../../../../Documentation/Images/ready4use-logo/default.png",
   github_repo_1L_chr = "readyforwhatsnext/ready4use",
   lifecycle_stage_1L_chr = "experimental")
@@ -56,28 +56,25 @@ classes_to_make_tb <- dplyr::bind_rows(s3_classes_to_make_tb, # Bug: Need to del
 #
 # 7. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
 data("abbreviations_lup",package = "ready4class")
-ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","src",
+data("fn_type_lup_tb",package = "ready4class")
+data("prototype_lup",package = "ready4class")
+
+pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","src",
                                              paste0(name_pfx_1L_chr,classes_to_make_tb$name_stub_chr)),
-long_name_chr = c("dataverse","local","process","source",
-                  classes_to_make_tb$class_desc_chr),
-custom_plural_ls = list(proc = "es"),
-no_plural_chr = classes_to_make_tb$class_desc_chr,
-url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
-seed_lup = abbreviations_lup)
+                          long_name_chr = c("dataverse","local","process","source",
+                                            classes_to_make_tb$class_desc_chr),
+                          custom_plural_ls = list(proc = "es"),
+                          no_plural_chr = classes_to_make_tb$class_desc_chr,
+                          url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
+                          seed_lup = abbreviations_lup)
 data("abbreviations_lup")
 #
 # 8. Create function types look-up table and save it as a package dataset
-data("fn_type_lup_tb",package = "ready4class")
 
-fn_type_lup_tb %>%
+
+pkg_dss_tb <- fn_type_lup_tb %>%
   ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
                                                                                   fn_type_lup_tb = fn_type_lup_tb),
-                                       # c("Download Data",
-                                       #                  "Get Data","Get Import Type List","Get Read Function",
-                                       #                  "Import Data",
-                                       #                  "Make Dataverse Import Lookup Table","Make Import Output Object of Multiple Potential Types",
-                                       #                  #"Make Local Process Readyforwhatsnext S4",
-                                       #                  "Save Raw","Update Source Local to Url","Update this"),
                                      fn_type_desc_chr = c("Downloads data files.",
                                                           "Retrieves data from R objects loaded in memory.",
                                                           "Retrieves data about the type of import to be processed.",
@@ -92,12 +89,13 @@ fn_type_lup_tb %>%
                                      is_generic_lgl = T,
                                      is_method_lgl = T) %>%
   ready4fun::write_dmtd_fn_type_lup(url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/",
-                                    abbreviations_lup = abbreviations_lup)
+                                    abbreviations_lup = abbreviations_lup,
+                                    pkg_dss_tb = pkg_dss_tb)
 data("fn_type_lup_tb")
 ##
-data("prototype_lup",package = "ready4class")
+
 ## 9. WRITE and document new classes with the metadata contained in the merged object.
-classes_to_make_tb %>%
+pkg_dss_tb <- classes_to_make_tb %>%
   ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
                                           name_pfx_1L_chr = "ready4_",
                                           output_dir_1L_chr = "R",
@@ -106,24 +104,13 @@ classes_to_make_tb %>%
                                           init_class_pt_lup = prototype_lup) %>%
 ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
-                            desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite")
+                            desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
+                            pkg_dss_tb = pkg_dss_tb)
 
 #
 # 10. Create a table of all functions to document
 fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
-                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c(fns_dmt_tb %>%
-                                                                                                                            dplyr::filter(file_pfx_chr %in% c("grp_","mthd_")) %>%
-                                                                                                                            dplyr::pull(fns_chr),
-                                                                                                                          {
-                                                                                                                            slots_chr <- prototype_lup %>%
-                                                                                                                            dplyr::filter(pt_ns_chr == ready4fun::get_dev_pkg_nm() & !old_class_lgl) %>%
-                                                                                                                            dplyr::pull(fn_to_call_chr) %>%
-                                                                                                                            purrr::map(~getSlots(.x) %>%
-                                                                                                                                         names()) %>%
-                                                                                                                            purrr::flatten_chr() %>% unique() %>% sort()
-                                                                                                                            c(slots_chr,paste0(slots_chr,"<-"))
-                                                                                                                            },
-                                                                                                                          "assert_matches_chr",
+                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c("assert_matches_chr",
                                                                                                                           "assert_single_row_tb",
                                                                                                                           "get_local_path_to_dv_data",
                                                                                                                           "get_r3_from_dv_csv"),
@@ -142,4 +129,15 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 pkgdown::build_site()
 #
 # 12. Add vignette
-
+# fns_dmt_tb %>%
+#   dplyr::filter(file_pfx_chr %in% c("grp_","mthd_")) %>%
+#   dplyr::pull(fns_chr),
+# {
+#   slots_chr <- prototype_lup %>%
+#     dplyr::filter(pt_ns_chr == ready4fun::get_dev_pkg_nm() & !old_class_lgl) %>%
+#     dplyr::pull(fn_to_call_chr) %>%
+#     purrr::map(~getSlots(.x) %>%
+#                  names()) %>%
+#     purrr::flatten_chr() %>% unique() %>% sort()
+#   c(slots_chr,paste0(slots_chr,"<-"))
+# },

@@ -3,7 +3,6 @@
 ## Readyforwhatsnext Methods for retrieving and managing data.
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/readyforwhatsnext/ready4use.svg?branch=master)](https://travis-ci.com/readyforwhatsnext/ready4use)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 

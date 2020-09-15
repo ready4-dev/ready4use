@@ -10,7 +10,6 @@
 #' @rdname write_dv_file_fl
 #' @export 
 #' @importFrom dataverse get_file
-#' @keywords internal
 write_dv_file_fl <- function (database_ui_chr, filename_chr, repo_file_format, dataverse_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_chr = "original", destination_path_chr) 
 {
