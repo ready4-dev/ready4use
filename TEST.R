@@ -86,14 +86,26 @@ add_files_to_dv <- function(files_tb, ## NEED TO ADD IGNORE/DELETE & REPLACE LOG
                             server_chr){
   fl_ids_int <- purrr::pmap_int(files_tb,
                   ~ {
+                    ds_ls <- dataverse::get_dataset(ds_url_chr)
+                    is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
                     path_1L_chr <- paste0(data_dir_rt_1L_chr,"/",..1,"/",..2,..3)
-                    dataverse::add_dataset_file(file = path_1L_chr,
-                                                dataset = ds_url_chr,
-                                                description = ..4,
-                                                key = key_chr,
-                                                server = server_chr)
+                    file_nm_1L_chr <- paste0(..2,..3)
+                    if(is_draft_1L_lgl){
+                      if(file_nm_1L_chr %in% ds_ls$files$originalFileName){
+                        ready4fun::get_from_lup_obj(ds_ls$files[,names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(),
+                                                    match_var_nm_1L_chr = "originalFileName",
+                                                    match_value_xx = file_nm_1L_chr,
+                                                    target_var_nm_1L_chr = "id",
+                                                    evaluate_lgl = F) %>%
+                          dataverse::delete_file()
+                      }
+                      dataverse::add_dataset_file(file = path_1L_chr,
+                                                  dataset = ds_url_chr,
+                                                  description = ..4,
+                                                  key = key_chr,
+                                                  server = server_chr)
+                    }
                   }
-
   )
   return(fl_ids_int)
 }
@@ -191,6 +203,7 @@ write_dv_ds <- function(ds_meta_ls,
   write_dv_ds_fls(files_tb,
                   fl_ids_int = fl_ids_int,
                   local_dv_dir_1L_chr = local_dv_dir_1L_chr)
+  ds_ls <- dataverse::get_dataset(ds_url_chr)
   return(ds_ls)
 }
 write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
@@ -236,7 +249,16 @@ library(magrittr)
 # r_data_dir_chr <- paste0(data_dir_chr,"/R_Format")
 #dv <- dataverse::create_dataverse("Code")
 #parent_dv_dir_1L_chr = paste0(data_dir_chr,"/Dataverse")
-ds_ls <- write_pkg_dss_to_dv_ds_csvs(dv_nm_1L_chr = "ready4work")
+ds_ls <- write_pkg_dss_to_dv_ds_csvs(pkg_dss_tb,
+                                     dv_nm_1L_chr = "ready4work")
+##
+#AFTER MAKE PUBLIC
+pkg_dss_tb <- prototype_lup %>%
+ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
+                            title_1L_chr = "Class prototype lookup table",
+                            desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
+                            url_1L_chr = "https://doi.org/10.7910/DVN/OZLSLR/YH1WVF",
+                            pkg_dss_tb = pkg_dss_tb)
 #dataverse::publish_dataset(ds_ls$datasetPersistentId)
 #dataverse::delete_dataset(ds_ls$datasetPersistentId)
 # purrr::pwalk(files_tb,

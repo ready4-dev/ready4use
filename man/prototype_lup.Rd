@@ -5,7 +5,10 @@
 \alias{prototype_lup}
 \title{Class prototype lookup table}
 \format{
-An object of class \code{ready4_class_pt_lup} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 17 rows and 6 columns.
+An object of class \code{ready4_class_pt_lup} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 9 rows and 6 columns.
+}
+\source{
+\url{https://doi.org/10.7910/DVN/OZLSLR/YH1WVF}
 }
 \usage{
 prototype_lup
