@@ -106,7 +106,6 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
                             desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
                             pkg_dss_tb = pkg_dss_tb)
-
 #
 # 10. Create a table of all functions to document
 fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
@@ -119,6 +118,12 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
 ## 11. Write and document.
+# dataverse::update_dataset_file("data-raw/abbreviations_lup.csv",
+#                                 dataset = dataverse::get_dataset("https://doi.org/10.7910/DVN/OZLSLR"),
+#                                id = ds_fls_ls[[1]])
+#ds_url <- "https://doi.org/10.7910/DVN/OZLSLR"
+# write_to_add_urls_to_dss("https://doi.org/10.7910/DVN/OZLSLR",
+#                          pkg_dss_tb = pkg_dss_tb)
 ## Note files to be rewritten cannot be open in RStudio.
 ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
@@ -129,15 +134,4 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 pkgdown::build_site()
 #
 # 12. Add vignette
-# fns_dmt_tb %>%
-#   dplyr::filter(file_pfx_chr %in% c("grp_","mthd_")) %>%
-#   dplyr::pull(fns_chr),
-# {
-#   slots_chr <- prototype_lup %>%
-#     dplyr::filter(pt_ns_chr == ready4fun::get_dev_pkg_nm() & !old_class_lgl) %>%
-#     dplyr::pull(fn_to_call_chr) %>%
-#     purrr::map(~getSlots(.x) %>%
-#                  names()) %>%
-#     purrr::flatten_chr() %>% unique() %>% sort()
-#   c(slots_chr,paste0(slots_chr,"<-"))
-# },
+

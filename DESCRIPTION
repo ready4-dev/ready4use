@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Readyforwhatsnext Methods for retrieving and
     managing data.
-Version: 0.0.0.9065
+Version: 0.0.0.9066
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -30,6 +30,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     lifecycle,
+    ready4fun (>= 0.0.0.9222),
+    assertthat,
     data.table,
     dataverse,
     dplyr,
@@ -37,7 +39,10 @@ Imports:
     methods,
     purrr,
     readxl,
+    ready4use,
     rlang,
+    stats,
+    stringi,
     stringr,
     testit,
     tibble,
@@ -57,6 +62,7 @@ Collate:
     'db_abbreviations_lup.R'
     'db_fn_type_lup_tb.R'
     'db_prototype_lup.R'
+    'fn_add.R'
     'fn_assert.R'
     'fn_get.R'
     'fn_make.R'
@@ -84,3 +90,5 @@ Collate:
     'mthd_make_import_xx.R'
     'mthd_update_src_loc_to_url.R'
     'pkg_ready4use.R'
+Remotes: 
+    readyforwhatsnext/ready4fun

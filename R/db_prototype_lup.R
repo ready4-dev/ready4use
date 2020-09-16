@@ -12,5 +12,4 @@
 #'   \item{default_val_chr}{Default val (a character vector)}
 #'   \item{old_class_lgl}{Old class (a logical vector)}
 #' }
-#' @source \url{https://doi.org/10.7910/DVN/OZLSLR/YH1WVF}
 "prototype_lup"

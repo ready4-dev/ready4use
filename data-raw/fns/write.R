@@ -1,12 +1,129 @@
-write_dv_file_fl <- function(database_ui_chr,
-                         filename_chr,
-                         repo_file_format,
-                         dataverse_chr = Sys.getenv("DATAVERSE_SERVER"),
-                         save_type_chr = "original",
-                         destination_path_chr){
-  writeBin(dataverse::get_file(paste0(filename_chr,repo_file_format),
-                               database_ui_chr,
-                               format = save_type_chr,
-                               server = dataverse_chr),
-           destination_path_chr)
+write_dv_fl_to_loc <- function(ds_ui_1L_chr,
+                         fl_nm_1L_chr,
+                         repo_fl_fmt_1L_chr,
+                         key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                         save_type_1L_chr = "original",
+                         dest_path_1L_chr){
+  writeBin(dataverse::get_file(paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
+                               ds_ui_1L_chr,
+                               format = save_type_1L_chr,
+                               server = key_1L_chr),
+           dest_path_1L_chr)
+}
+write_dv_ds_fls <- function(files_tb,
+                            fl_ids_int,
+                            local_dv_dir_1L_chr){
+  purrr::walk(1:length(fl_ids_int),
+              ~{
+                if(!(ds_ls$versionState=="DRAFT" & files_tb$file_type_chr[.x]==".zip")){
+                  write_dv_fl_to_loc(database_ui_chr = ds_url_1L_chr,
+                                   filename_chr = files_tb$file_chr[.x],
+                                   repo_file_format = files_tb$ds_file_ext_chr[.x],
+                                   dataverse_chr = Sys.getenv("DATAVERSE_SERVER"),
+                                   save_type_chr = "original",
+                                   dest_path_1L_chr = get_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr,
+                                                                                    filename_chr = files_tb$file_chr[.x],
+                                                                                    save_format_chr = files_tb$file_type_chr[.x]))
+                }
+              })
+
+}
+write_dv_ds <- function(ds_meta_ls,
+                        dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
+                        dss_tb,
+                        dv_nm_1L_chr,
+                        parent_dv_dir_1L_chr,
+                        paths_to_dirs_chr,
+                        inc_fl_types_chr = NA_character_,
+                        key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                        server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
+  ds_url_1L_chr <- add_ds_to_dv_repo(dv_1L_chr = dv_nm_1L_chr,
+                                     ds_meta_ls = ds_meta_ls)
+  ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+  dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr,"/",dv_nm_1L_chr)
+  if(!dir.exists(dv_dir_1L_chr)){
+    dir.create(dv_dir_1L_chr)
+  }
+  local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr,"/",ds_meta_ls$title)
+  if(!dir.exists(local_dv_dir_1L_chr)){
+    dir.create(local_dv_dir_1L_chr)
+  }
+  ds_chr <- dss_tb$ds_obj_nm_chr
+  files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr,
+                            recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr),
+                            inc_fl_types_chr = inc_fl_types_chr)
+  fl_ids_int <- add_files_to_dv(files_tb,
+                                ds_url_1L_chr = ds_url_1L_chr,
+                                key_1L_chr = key_1L_chr,
+                                server_1L_chr = server_1L_chr)
+  write_dv_ds_fls(files_tb,
+                  fl_ids_int = fl_ids_int,
+                  local_dv_dir_1L_chr = local_dv_dir_1L_chr)
+  ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+  return(ds_ls)
+}
+write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
+                                        dv_nm_1L_chr,
+                                        dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
+                                        parent_dv_dir_1L_chr = "../../../../Data/Dataverse",
+                                        key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                                        server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                                        subject_1L_chr = "Mental health, health economics, data synthesis, simulation."){
+  ds_meta_ls <- list(title = paste0(dev_pkg_nm_1L_chr," Code Library Metadata"),
+                     creator = suppressWarnings(parse(text=(packageDescription(dev_pkg_nm_1L_chr,
+                                                                               fields = "Authors@R"))) %>%
+                                                  eval() %>%
+                                                  purrr::keep(~stringr::str_detect(.x,"aut, cre")) %>%
+                                                  stringr::str_sub(end = stringi::stri_locate_first_fixed(.,"<")[1]-2)),
+                     description = paste0("Metadata relating to the abbreviations, classes, datasets, functions, generics and methods used in the ",dev_pkg_nm_1L_chr," code library."),
+                     subject = subject_1L_chr)
+  ds_chr <- pkg_dss_tb$ds_obj_nm_chr
+  purrr::walk(ds_chr,~ {
+    data(list=.x, package = dev_pkg_nm_1L_chr, envir = environment())
+    eval(parse(text = .x)) %>%
+      dplyr::mutate_if(is.list,
+                       list(~ifelse(stringr::str_c(.)=="NULL",NA_character_ , stringr::str_c (.)))) %>%
+      write.csv(file = paste0("data-raw/",.x,".csv"),
+                row.names = F)
+  })
+  ds_ls <- write_dv_ds(ds_meta_ls = ds_meta_ls,
+                       dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
+                       dv_nm_1L_chr = dv_nm_1L_chr,
+                       parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
+                       inc_fl_types_chr = ".csv",
+                       paths_to_dirs_chr = c("data-raw"),
+                       key_1L_chr = key_1L_chr,
+                       server_1L_chr = server_1L_chr,
+                       dss_tb = pkg_dss_tb)
+  return(ds_ls)
+}
+write_to_copy_fls_to_dv_dir <- function(files_tb,
+                                        local_dv_dir_1L_chr){
+  purrr::pwalk(files_tb,
+               ~ file.copy(paste0(..1,"/",..2,..3),
+                           local_dv_dir_1L_chr))
+}
+write_to_add_urls_to_dss <- function(ds_url, # NOTE WORKING - NEEEDS WORK
+                                     pkg_dss_tb,
+                                     pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()){
+  ds_fls_ls <- dataverse::dataset_files(ds_url)
+  fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
+  fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% stringr::str_remove(".csv") )
+  url_lup <- purrr::map_dfr(1:length(ds_fls_ls), ~ tibble::tibble(ds_obj_nm_chr = ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% stringr::str_remove(".csv"),
+                                                                  url_chr = ds_fls_ls[[.x]][["dataFile"]][["pidURL"]]))
+  pkg_dss_tb <- dplyr::inner_join(pkg_dss_tb %>% dplyr::select(-url_chr),url_lup)
+  purrr::walk(pkg_dss_tb,
+              ~{
+                data(list=..1,
+                     package = pkg_nm_1L_chr,
+                     envir = environment())
+                eval(parse(text = paste0("ds<-", ..1)))
+                ds %>%
+                  ready4fun::write_and_doc_ds(db_1L_chr = ..1,
+                                              title_1L_chr = ..2,
+                                              desc_1L_chr = ..3,
+                                              url_1L_chr = ..4,
+                                              pkg_dss_tb = pkg_dss_tb)
+              })
+  return(pkg_dss_tb)
 }
