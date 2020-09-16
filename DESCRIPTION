@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Readyforwhatsnext Methods for retrieving and
     managing data.
-Version: 0.0.0.9067
+Version: 0.0.0.9068
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -39,7 +39,6 @@ Imports:
     methods,
     purrr,
     readxl,
-    ready4use,
     rlang,
     stats,
     stringi,

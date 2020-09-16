@@ -15,7 +15,6 @@
 #' @importFrom ready4fun get_dev_pkg_nm
 #' @importFrom dataverse get_dataset
 #' @importFrom stats setNames
-#' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     dss_tb, dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
@@ -51,7 +50,6 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' @rdname write_dv_ds_fls
 #' @export 
 #' @importFrom purrr walk
-#' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr) 
 {
     purrr::walk(1:length(fl_ids_int), ~{
@@ -77,7 +75,6 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr)
 #' @rdname write_dv_fl_to_loc
 #' @export 
 #' @importFrom dataverse get_file
-#' @keywords internal
 write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", dest_path_1L_chr) 
 {
@@ -102,7 +99,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, 
 #' @importFrom stringr str_detect str_sub str_c
 #' @importFrom stringi stri_locate_first_fixed
 #' @importFrom dplyr mutate_if
-#' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     parent_dv_dir_1L_chr = "../../../../Data/Dataverse", key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), subject_1L_chr = "Mental health, health economics, data synthesis, simulation.") 
@@ -142,7 +138,6 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, dev_pkg_nm_1L
 #' @importFrom stringr str_remove
 #' @importFrom tibble tibble
 #' @importFrom dplyr inner_join select
-#' @keywords internal
 write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
 {
     ds_fls_ls <- dataverse::dataset_files(ds_url)
@@ -169,7 +164,6 @@ write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk
-#' @keywords internal
 write_to_copy_fls_to_dv_dir <- function (files_tb, local_dv_dir_1L_chr) 
 {
     purrr::pwalk(files_tb, ~file.copy(paste0(..1, "/", ..2, ..3), 

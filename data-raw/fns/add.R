@@ -75,7 +75,7 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                                    ds_ui_1L_chr,
                                    file_type_1L_chr,
                                    save_type_1L_chr){
-  ready4use::assert_single_row_tb(imp_lup)
+  assert_single_row_tb(imp_lup)
   imp_lup <- imp_lup %>%
     dplyr::mutate(data_repo_db_ui = ds_ui_1L_chr,
                   data_repo_file_ext = file_type_1L_chr,
