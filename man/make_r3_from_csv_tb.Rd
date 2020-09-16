@@ -17,3 +17,4 @@ Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble)
 \description{
 make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make readyforwhatsnext s3 from comma separated variables file tibble. The function returns Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble).
 }
+\keyword{internal}
