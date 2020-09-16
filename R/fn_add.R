@@ -7,9 +7,8 @@
 #' @return Dataset url (a character vector of length one)
 #' @rdname add_ds_to_dv_repo
 #' @export 
-#' @importFrom dataverse get_dataverse dataverse_contents get_dataset initiate_sword_dataset update_dataset
+#' @importFrom dataverse get_dataverse dataverse_contents get_dataset create_dataset update_dataset
 #' @importFrom purrr map_chr pluck discard map_lgl
-#' @keywords internal
 add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -29,7 +28,7 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
         add_ds_lgl <- !(ds_meta_ls$title %in% db_nm_chr_vec)
     }
     if (add_ds_lgl) {
-        dataverse:::initiate_sword_dataset(dv_1L_chr, body = ds_meta_ls, 
+        dataverse:::create_dataset(dv_1L_chr, body = ds_meta_ls, 
             key = key_1L_chr, server = server_1L_chr)
         dv_ls <- dataverse::dataverse_contents(dv)
     }
@@ -77,7 +76,6 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
 #' @export 
 #' @importFrom ready4use assert_single_row_tb
 #' @importFrom dplyr mutate
-#' @keywords internal
 add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, save_type_1L_chr) 
 {
     ready4use::assert_single_row_tb(imp_lup)
@@ -99,7 +97,6 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @importFrom dataverse get_dataset delete_file add_dataset_file
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom tibble as_tibble
-#' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr, server_1L_chr) 
 {
