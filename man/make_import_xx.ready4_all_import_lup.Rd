@@ -4,7 +4,11 @@
 \alias{make_import_xx.ready4_all_import_lup}
 \title{Make import output object of multiple potential types method applied toeadyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
 \usage{
-\method{make_import_xx}{ready4_all_import_lup}(x, forced_choice_chr = NA_character_, script_args_ls = NULL)
+make_import_xx.ready4_all_import_lup(
+  x,
+  forced_choice_chr = NA_character_,
+  script_args_ls = NULL
+)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}

@@ -4,7 +4,7 @@
 \alias{get_read_fn.ready4_dv_import_lup}
 \title{Get read function method applied toeadyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..}
 \usage{
-\method{get_read_fn}{ready4_dv_import_lup}(x)
+get_read_fn.ready4_dv_import_lup(x)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}

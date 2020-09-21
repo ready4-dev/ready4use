@@ -4,7 +4,11 @@
 \alias{get_import_type_ls.ready4_all_import_lup}
 \title{Get import type list method applied toeadyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
 \usage{
-\method{get_import_type_ls}{ready4_all_import_lup}(x, inc_script_lgl = T, forced_choice_chr = NA_character_)
+get_import_type_ls.ready4_all_import_lup(
+  x,
+  inc_script_lgl = T,
+  forced_choice_chr = NA_character_
+)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}

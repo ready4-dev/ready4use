@@ -4,7 +4,7 @@
 \alias{update_src_loc_to_url.ready4_all_import_lup}
 \title{Update source local to url method applied toeadyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
 \usage{
-\method{update_src_loc_to_url}{ready4_all_import_lup}(x, local_to_url_vec, urls_vec)
+update_src_loc_to_url.ready4_all_import_lup(x, local_to_url_vec, urls_vec)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}

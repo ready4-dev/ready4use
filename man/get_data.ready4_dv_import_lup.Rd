@@ -4,7 +4,7 @@
 \alias{get_data.ready4_dv_import_lup}
 \title{Get data method applied toeadyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..}
 \usage{
-\method{get_data}{ready4_dv_import_lup}(x, save_dir_path_chr = "", unlink_lgl = T)
+get_data.ready4_dv_import_lup(x, save_dir_path_chr = "", unlink_lgl = T)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
