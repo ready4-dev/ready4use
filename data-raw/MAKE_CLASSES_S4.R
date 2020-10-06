@@ -35,5 +35,4 @@ s4_classes_to_make_tb <- ready4class::ready4_constructor_tbl() %>%
                    class_desc_chr= "Readyforwhatsnext S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",
                    parent_class_chr = "ready4_local_proc",
                    inc_clss_ls = list("ready4_local_proc")) %>%
-  dplyr::mutate(make_s3_lgl = FALSE) %>%
-  ready4class::remake_ls_cols()
+  dplyr::mutate(make_s3_lgl = FALSE) #%>%  ready4class::remake_ls_cols()

@@ -118,10 +118,14 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
 ## 11. Write and document.
+# ds_ls <- dataverse::get_dataset("https://doi.org/10.7910/DVN/OZLSLR")
 # dataverse::update_dataset_file("data-raw/abbreviations_lup.csv",
-#                                 dataset = dataverse::get_dataset("https://doi.org/10.7910/DVN/OZLSLR"),
-#                                id = ds_fls_ls[[1]])
-#ds_url <- "https://doi.org/10.7910/DVN/OZLSLR"
+#                                 dataset = ds_ls,
+#                                id = ds_ls[["files"]][,c("id", "originalFileName")] %>%
+#                                  tibble::as_tibble() %>%
+#                                  dplyr::filter(originalFileName=="abbreviations_lup.csv") %>%
+#                                  dplyr::pull(id))
+# ds_url <- "https://doi.org/10.7910/DVN/OZLSLR"
 # write_to_add_urls_to_dss("https://doi.org/10.7910/DVN/OZLSLR",
 #                          pkg_dss_tb = pkg_dss_tb)
 ## Note files to be rewritten cannot be open in RStudio.

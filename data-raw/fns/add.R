@@ -25,11 +25,11 @@ add_ds_to_dv_repo <- function(dv_1L_chr,
     add_ds_lgl <- !(ds_meta_ls$title %in% db_nm_chr_vec)
   }
   if(add_ds_lgl){
-    #dataverse:::initiate_sword_dataset
-    dataverse:::create_dataset(dv_1L_chr,
-                                       body = ds_meta_ls,
-                                       key = key_1L_chr,
-                                       server = server_1L_chr)
+    add_sword_ds <- utils::getFromNamespace("initiate_sword_dataset", "dataverse")
+    add_sword_ds(dv_1L_chr,
+                 body = ds_meta_ls,
+                 key = key_1L_chr,
+                 server = server_1L_chr)
     dv_ls <- dataverse::dataverse_contents(dv)
   }else{
     ds_ls <- dataverse::get_dataset(per_chr_vec[ds_meta_ls$title == db_nm_chr_vec])
