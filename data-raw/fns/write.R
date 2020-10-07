@@ -39,12 +39,32 @@ write_dv_ds <- function(ds_meta_ls,
                         server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
   ds_url_1L_chr <- add_ds_to_dv_repo(dv_1L_chr = dv_nm_1L_chr,
                                      ds_meta_ls = ds_meta_ls)
+  ds_ls <- write_fls_to_dv_ds(dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
+                              dss_tb = dss_tb,
+                              dv_nm_1L_chr = dv_nm_1L_chr,
+                              parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
+                              paths_to_dirs_chr = paths_to_dirs_chr,
+                              inc_fl_types_chr = inc_fl_types_chr,
+                              key_1L_chr = key_1L_chr,
+                              server_1L_chr = server_1L_chr)
+  return(ds_ls)
+}
+write_fls_to_dv_ds <- function(dss_tb,
+                               dv_nm_1L_chr,
+                               ds_url_1L_chr,
+                               wait_time_in_secs_int = 5L,
+                               dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
+                               parent_dv_dir_1L_chr,
+                               paths_to_dirs_chr,
+                               inc_fl_types_chr = NA_character_,
+                               key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                               server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
   ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
   dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr,"/",dv_nm_1L_chr)
   if(!dir.exists(dv_dir_1L_chr)){
     dir.create(dv_dir_1L_chr)
   }
-  local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr,"/",ds_meta_ls$title)
+  local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr,"/",ds_ls$metadataBlocks$citation$fields$value[[1]])
   if(!dir.exists(local_dv_dir_1L_chr)){
     dir.create(local_dv_dir_1L_chr)
   }
@@ -52,10 +72,15 @@ write_dv_ds <- function(ds_meta_ls,
   files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr,
                             recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr),
                             inc_fl_types_chr = inc_fl_types_chr)
-  fl_ids_int <- add_files_to_dv(files_tb,
-                                ds_url_1L_chr = ds_url_1L_chr,
-                                key_1L_chr = key_1L_chr,
-                                server_1L_chr = server_1L_chr)
+  fl_ids_int <- 1:nrow(files_tb) %>%
+    purrr::map_int(~{
+      Sys.sleep(wait_time_in_secs_int)
+      add_files_to_dv(files_tb[.x,],
+                      ds_url_1L_chr = ds_url_1L_chr,
+                      key_1L_chr = key_1L_chr,
+                      server_1L_chr = server_1L_chr)
+    }
+    )
   write_dv_ds_fls(files_tb,
                   fl_ids_int = fl_ids_int,
                   local_dv_dir_1L_chr = local_dv_dir_1L_chr)
@@ -64,19 +89,22 @@ write_dv_ds <- function(ds_meta_ls,
 }
 write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
                                         dv_nm_1L_chr,
+                                        ds_url_1L_chr,
+                                        wait_time_in_secs_int = 5L,
                                         dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
                                         parent_dv_dir_1L_chr = "../../../../Data/Dataverse",
                                         key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
-                                        server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
-                                        subject_1L_chr = "Mental health, health economics, data synthesis, simulation."){
-  ds_meta_ls <- list(title = paste0(dev_pkg_nm_1L_chr," Code Library Metadata"),
-                     creator = suppressWarnings(parse(text=(packageDescription(dev_pkg_nm_1L_chr,
-                                                                               fields = "Authors@R"))) %>%
-                                                  eval() %>%
-                                                  purrr::keep(~stringr::str_detect(.x,"aut, cre")) %>%
-                                                  stringr::str_sub(end = stringi::stri_locate_first_fixed(.,"<")[1]-2)),
-                     description = paste0("Metadata relating to the abbreviations, classes, datasets, functions, generics and methods used in the ",dev_pkg_nm_1L_chr," code library."),
-                     subject = subject_1L_chr)
+                                        server_1L_chr = Sys.getenv("DATAVERSE_SERVER")#,
+                                        #subject_1L_chr = "Mental health, health economics, data synthesis, simulation."
+                                        ){
+  # ds_meta_ls <- list(title = paste0(dev_pkg_nm_1L_chr," Code Library Metadata"),
+  #                    creator = suppressWarnings(parse(text=(packageDescription(dev_pkg_nm_1L_chr,
+  #                                                                              fields = "Authors@R"))) %>%
+  #                                                 eval() %>%
+  #                                                 purrr::keep(~stringr::str_detect(.x,"aut, cre")) %>%
+  #                                                 stringr::str_sub(end = stringi::stri_locate_first_fixed(.,"<")[1]-2)),
+  #                    description = paste0("Metadata relating to the abbreviations, classes, datasets, functions, generics and methods used in the ",dev_pkg_nm_1L_chr," code library."),
+  #                    subject = subject_1L_chr)
   ds_chr <- pkg_dss_tb$ds_obj_nm_chr
   purrr::walk(ds_chr,~ {
     data(list=.x, package = dev_pkg_nm_1L_chr, envir = environment())
@@ -86,15 +114,25 @@ write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
       write.csv(file = paste0("data-raw/",.x,".csv"),
                 row.names = F)
   })
-  ds_ls <- write_dv_ds(ds_meta_ls = ds_meta_ls,
-                       dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
-                       dv_nm_1L_chr = dv_nm_1L_chr,
-                       parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
-                       inc_fl_types_chr = ".csv",
-                       paths_to_dirs_chr = c("data-raw"),
-                       key_1L_chr = key_1L_chr,
-                       server_1L_chr = server_1L_chr,
-                       dss_tb = pkg_dss_tb)
+  ds_ls <- write_fls_to_dv_ds(dss_tb = pkg_dss_tb,
+                              dv_nm_1L_chr  = dv_nm_1L_chr,
+                              ds_url_1L_chr = ds_url_1L_chr,
+                              wait_time_in_secs_int = wait_time_in_secs_int,
+                              dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
+                              parent_dv_dir_1L_chr  = parent_dv_dir_1L_chr,
+                              paths_to_dirs_chr  = c("data-raw"),
+                              inc_fl_types_chr = ".csv",
+                              key_1L_chr = key_1L_chr,
+                              server_1L_chr = server_1L_chr)
+    # write_dv_ds(ds_meta_ls = ds_meta_ls,
+    #                    dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
+    #                    dv_nm_1L_chr = dv_nm_1L_chr,
+    #                    parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
+    #                    inc_fl_types_chr = ".csv",
+    #                    paths_to_dirs_chr = c("data-raw"),
+    #                    key_1L_chr = key_1L_chr,
+    #                    server_1L_chr = server_1L_chr,
+    #                    dss_tb = pkg_dss_tb)
   return(ds_ls)
 }
 write_to_copy_fls_to_dv_dir <- function(files_tb,

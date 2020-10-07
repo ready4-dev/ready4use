@@ -82,7 +82,7 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                   data_repo_save_type = save_type_1L_chr)
   return(imp_lup)
 }
-add_files_to_dv <- function(files_tb, ## NEED TO ADD IGNORE/DELETE & REPLACE LOGIC IF FILES ALREADY IN ONLINE REPO
+add_files_to_dv <- function(files_tb,
                             data_dir_rt_1L_chr = ".",
                             ds_url_1L_chr,
                             key_1L_chr,

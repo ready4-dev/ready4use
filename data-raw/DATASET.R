@@ -118,7 +118,7 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
 ## 11. Write and document.
-# NOTE: There seems to be a choice: either create the datavetrse dataset from script and then manage updates from
+# NOTE: There seems to be a choice: either create the dataverse dataset from script and then manage updates from
 # the web or vice versa. No satisfactory resolution that I can identify.
 #
 # ds_ls <- dataverse::get_dataset("https://doi.org/10.7910/DVN/OZLSLR")

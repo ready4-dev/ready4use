@@ -35,6 +35,8 @@ make_files_tb <- function(paths_to_dirs_chr,
   if(!is.na(inc_fl_types_chr))
     files_tb <- files_tb %>%
       dplyr::filter(file_type_chr %in% inc_fl_types_chr)
+  files_tb <- files_tb %>%
+    dplyr::filter(file_chr %in% names(recode_ls))
   description_chr <- purrr::map_chr(files_tb$file_chr,
                                     ~ {
                                       arg_ls <- append(list(EXPR=.x),recode_ls)

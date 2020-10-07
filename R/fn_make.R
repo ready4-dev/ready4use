@@ -13,7 +13,6 @@
 #' @importFrom dplyr filter mutate
 #' @importFrom rlang exec
 #' @importFrom assertthat are_equal
-#' @keywords internal
 make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_character_) 
 {
     files_tb <- purrr::map_dfr(paths_to_dirs_chr, ~{
@@ -31,6 +30,7 @@ make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_c
     if (!is.na(inc_fl_types_chr)) 
         files_tb <- files_tb %>% dplyr::filter(file_type_chr %in% 
             inc_fl_types_chr)
+    files_tb <- files_tb %>% dplyr::filter(file_chr %in% names(recode_ls))
     description_chr <- purrr::map_chr(files_tb$file_chr, ~{
         arg_ls <- append(list(EXPR = .x), recode_ls)
         rlang::exec(.fn = switch, !!!arg_ls)
@@ -53,7 +53,6 @@ make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_c
 #' @importFrom dplyr select_if mutate_at select
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map
-#' @keywords internal
 make_r3_from_csv_tb <- function (csv_tb, r3_fn) 
 {
     list_cols <- rlang::exec(r3_fn) %>% dplyr::select_if(is.list) %>% 

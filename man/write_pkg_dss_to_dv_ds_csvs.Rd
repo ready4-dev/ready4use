@@ -7,17 +7,22 @@
 write_pkg_dss_to_dv_ds_csvs(
   pkg_dss_tb,
   dv_nm_1L_chr,
+  ds_url_1L_chr,
+  wait_time_in_secs_int = 5L,
   dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
   parent_dv_dir_1L_chr = "../../../../Data/Dataverse",
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
-  server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
-  subject_1L_chr = "Mental health, health economics, data synthesis, simulation."
+  server_1L_chr = Sys.getenv("DATAVERSE_SERVER")
 )
 }
 \arguments{
 \item{pkg_dss_tb}{Package datasets (a tibble)}
 
 \item{dv_nm_1L_chr}{Dataverse name (a character vector of length one)}
+
+\item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
+
+\item{wait_time_in_secs_int}{Wait time in secs (an integer vector), Default: 5}
 
 \item{dev_pkg_nm_1L_chr}{Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()}
 
@@ -26,8 +31,6 @@ write_pkg_dss_to_dv_ds_csvs(
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
 \item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
-
-\item{subject_1L_chr}{Subject (a character vector of length one), Default: 'Mental health, health economics, data synthesis, simulation.'}
 }
 \value{
 Dataset (a list)
@@ -35,4 +38,3 @@ Dataset (a list)
 \description{
 write_pkg_dss_to_dv_ds_csvs() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write package datasets to dataverse dataset comma separated variables files. The function returns Dataset (a list).
 }
-\keyword{internal}

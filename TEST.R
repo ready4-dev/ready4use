@@ -1,5 +1,3 @@
-
-
 devtools::load_all()
 #crs_nbr_vec <- c(4283,3577)
 library(magrittr)

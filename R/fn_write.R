@@ -13,9 +13,6 @@
 #' @rdname write_dv_ds
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
-#' @importFrom dataverse get_dataset
-#' @importFrom stats setNames
-#' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     dss_tb, dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
@@ -23,23 +20,10 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 {
     ds_url_1L_chr <- add_ds_to_dv_repo(dv_1L_chr = dv_nm_1L_chr, 
         ds_meta_ls = ds_meta_ls)
-    ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
-    dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr, "/", dv_nm_1L_chr)
-    if (!dir.exists(dv_dir_1L_chr)) {
-        dir.create(dv_dir_1L_chr)
-    }
-    local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr, "/", ds_meta_ls$title)
-    if (!dir.exists(local_dv_dir_1L_chr)) {
-        dir.create(local_dv_dir_1L_chr)
-    }
-    ds_chr <- dss_tb$ds_obj_nm_chr
-    files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr, 
-        recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr), 
-        inc_fl_types_chr = inc_fl_types_chr)
-    fl_ids_int <- add_files_to_dv(files_tb, ds_url_1L_chr = ds_url_1L_chr, 
+    ds_ls <- write_fls_to_dv_ds(dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr, 
+        dss_tb = dss_tb, dv_nm_1L_chr = dv_nm_1L_chr, parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, 
+        paths_to_dirs_chr = paths_to_dirs_chr, inc_fl_types_chr = inc_fl_types_chr, 
         key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
-    write_dv_ds_fls(files_tb, fl_ids_int = fl_ids_int, local_dv_dir_1L_chr = local_dv_dir_1L_chr)
-    ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     return(ds_ls)
 }
 #' Write dataverse dataset files
@@ -51,7 +35,6 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' @rdname write_dv_ds_fls
 #' @export 
 #' @importFrom purrr walk
-#' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr) 
 {
     purrr::walk(1:length(fl_ids_int), ~{
@@ -77,7 +60,6 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr)
 #' @rdname write_dv_fl_to_loc
 #' @export 
 #' @importFrom dataverse get_file
-#' @keywords internal
 write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", dest_path_1L_chr) 
 {
@@ -85,34 +67,73 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, 
         ds_ui_1L_chr, format = save_type_1L_chr, server = key_1L_chr), 
         dest_path_1L_chr)
 }
+#' Write files to dataverse dataset
+#' @description write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list).
+#' @param dss_tb Datasets (a tibble)
+#' @param dv_nm_1L_chr Dataverse name (a character vector of length one)
+#' @param ds_url_1L_chr Dataset url (a character vector of length one)
+#' @param wait_time_in_secs_int Wait time in secs (an integer vector), Default: 5
+#' @param dev_pkg_nm_1L_chr Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
+#' @param parent_dv_dir_1L_chr Parent dataverse directory (a character vector of length one)
+#' @param paths_to_dirs_chr Paths to directories (a character vector)
+#' @param inc_fl_types_chr Include file types (a character vector), Default: 'NA'
+#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
+#' @return Dataset (a list)
+#' @rdname write_fls_to_dv_ds
+#' @export 
+#' @importFrom ready4fun get_dev_pkg_nm
+#' @importFrom dataverse get_dataset
+#' @importFrom stats setNames
+#' @importFrom purrr map_int
+write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
+    dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr, 
+    paths_to_dirs_chr, inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
+    server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
+{
+    ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+    dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr, "/", dv_nm_1L_chr)
+    if (!dir.exists(dv_dir_1L_chr)) {
+        dir.create(dv_dir_1L_chr)
+    }
+    local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr, "/", ds_ls$metadataBlocks$citation$fields$value[[1]])
+    if (!dir.exists(local_dv_dir_1L_chr)) {
+        dir.create(local_dv_dir_1L_chr)
+    }
+    ds_chr <- dss_tb$ds_obj_nm_chr
+    files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr, 
+        recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr), 
+        inc_fl_types_chr = inc_fl_types_chr)
+    fl_ids_int <- 1:nrow(files_tb) %>% purrr::map_int(~{
+        Sys.sleep(wait_time_in_secs_int)
+        add_files_to_dv(files_tb[.x, ], ds_url_1L_chr = ds_url_1L_chr, 
+            key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
+    })
+    write_dv_ds_fls(files_tb, fl_ids_int = fl_ids_int, local_dv_dir_1L_chr = local_dv_dir_1L_chr)
+    ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+    return(ds_ls)
+}
 #' Write package datasets to dataverse dataset comma separated variables files
 #' @description write_pkg_dss_to_dv_ds_csvs() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write package datasets to dataverse dataset comma separated variables files. The function returns Dataset (a list).
 #' @param pkg_dss_tb Package datasets (a tibble)
 #' @param dv_nm_1L_chr Dataverse name (a character vector of length one)
+#' @param ds_url_1L_chr Dataset url (a character vector of length one)
+#' @param wait_time_in_secs_int Wait time in secs (an integer vector), Default: 5
 #' @param dev_pkg_nm_1L_chr Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
 #' @param parent_dv_dir_1L_chr Parent dataverse directory (a character vector of length one), Default: '../../../../Data/Dataverse'
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
-#' @param subject_1L_chr Subject (a character vector of length one), Default: 'Mental health, health economics, data synthesis, simulation.'
 #' @return Dataset (a list)
 #' @rdname write_pkg_dss_to_dv_ds_csvs
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
-#' @importFrom purrr keep walk
-#' @importFrom stringr str_detect str_sub str_c
-#' @importFrom stringi stri_locate_first_fixed
+#' @importFrom purrr walk
 #' @importFrom dplyr mutate_if
-#' @keywords internal
-write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
-    parent_dv_dir_1L_chr = "../../../../Data/Dataverse", key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
-    server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), subject_1L_chr = "Mental health, health economics, data synthesis, simulation.") 
+#' @importFrom stringr str_c
+write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
+    dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
-    ds_meta_ls <- list(title = paste0(dev_pkg_nm_1L_chr, " Code Library Metadata"), 
-        creator = suppressWarnings(parse(text = (packageDescription(dev_pkg_nm_1L_chr, 
-            fields = "Authors@R"))) %>% eval() %>% purrr::keep(~stringr::str_detect(.x, 
-            "aut, cre")) %>% stringr::str_sub(end = stringi::stri_locate_first_fixed(., 
-            "<")[1] - 2)), description = paste0("Metadata relating to the abbreviations, classes, datasets, functions, generics and methods used in the ", 
-            dev_pkg_nm_1L_chr, " code library."), subject = subject_1L_chr)
     ds_chr <- pkg_dss_tb$ds_obj_nm_chr
     purrr::walk(ds_chr, ~{
         data(list = .x, package = dev_pkg_nm_1L_chr, envir = environment())
@@ -121,11 +142,11 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, dev_pkg_nm_1L
                 stringr::str_c(.)))) %>% write.csv(file = paste0("data-raw/", 
             .x, ".csv"), row.names = F)
     })
-    ds_ls <- write_dv_ds(ds_meta_ls = ds_meta_ls, dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr, 
-        dv_nm_1L_chr = dv_nm_1L_chr, parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, 
-        inc_fl_types_chr = ".csv", paths_to_dirs_chr = c("data-raw"), 
-        key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr, 
-        dss_tb = pkg_dss_tb)
+    ds_ls <- write_fls_to_dv_ds(dss_tb = pkg_dss_tb, dv_nm_1L_chr = dv_nm_1L_chr, 
+        ds_url_1L_chr = ds_url_1L_chr, wait_time_in_secs_int = wait_time_in_secs_int, 
+        dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr, parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, 
+        paths_to_dirs_chr = c("data-raw"), inc_fl_types_chr = ".csv", 
+        key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
     return(ds_ls)
 }
 #' Write to add urls to datasets
@@ -142,7 +163,6 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, dev_pkg_nm_1L
 #' @importFrom stringr str_remove
 #' @importFrom tibble tibble
 #' @importFrom dplyr inner_join select
-#' @keywords internal
 write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
 {
     ds_fls_ls <- dataverse::dataset_files(ds_url)
@@ -169,7 +189,6 @@ write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk
-#' @keywords internal
 write_to_copy_fls_to_dv_dir <- function (files_tb, local_dv_dir_1L_chr) 
 {
     purrr::pwalk(files_tb, ~file.copy(paste0(..1, "/", ..2, ..3), 
