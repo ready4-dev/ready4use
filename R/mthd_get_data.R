@@ -20,3 +20,4 @@ get_data.ready4_dv_import_lup <- function (x, save_dir_path_chr = "", unlink_lgl
         data_ls
     else data_ls[[1]]
 }
+methods::setMethod("get_data", "ready4_dv_import_lup", get_data.ready4_dv_import_lup)

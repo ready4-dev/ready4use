@@ -11,3 +11,4 @@ get_read_fn.ready4_dv_import_lup <- function (x)
     purrr::map(x$file_type, ~switch(.x, .csv = read.csv, .xls = readxl::read_excel, 
         .xlsx = readxl::read_excel, .rds = readRDS()), )
 }
+methods::setMethod("get_read_fn", "ready4_dv_import_lup", get_read_fn.ready4_dv_import_lup)

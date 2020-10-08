@@ -22,3 +22,4 @@ get_import_type_ls.ready4_all_import_lup <- function (x, inc_script_lgl = T, for
     }
     options_ls[1]
 }
+methods::setMethod("get_import_type_ls", "ready4_all_import_lup", get_import_type_ls.ready4_all_import_lup)

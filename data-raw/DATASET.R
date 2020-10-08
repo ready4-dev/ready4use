@@ -131,6 +131,12 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
 # ds_url <- "https://doi.org/10.7910/DVN/OZLSLR"
 # write_to_add_urls_to_dss("https://doi.org/10.7910/DVN/OZLSLR",
 #                          pkg_dss_tb = pkg_dss_tb)
+## BELOW LINE MAY NOT WORK AS DATASET IS SWORD NOT NATIVE
+# ds_ls <- write_pkg_dss_to_dv_ds_csvs(pkg_dss_tb,
+#                                      dv_nm_1L_chr = "ready4work",
+#                                      ds_url_1L_chr = "https://doi.org/10.7910/DVN/OZLSLR",
+#                                      parent_dv_dir_1L_chr = "../../../../Data/Dataverse",
+#                                      wait_time_in_secs_int = 5L)
 ## Note files to be rewritten cannot be open in RStudio.
 ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
