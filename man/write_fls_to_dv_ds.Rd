@@ -9,7 +9,6 @@ write_fls_to_dv_ds(
   dv_nm_1L_chr,
   ds_url_1L_chr,
   wait_time_in_secs_int = 5L,
-  dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
   parent_dv_dir_1L_chr,
   paths_to_dirs_chr,
   inc_fl_types_chr = NA_character_,
@@ -25,8 +24,6 @@ write_fls_to_dv_ds(
 \item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
 
 \item{wait_time_in_secs_int}{Wait time in secs (an integer vector), Default: 5}
-
-\item{dev_pkg_nm_1L_chr}{Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()}
 
 \item{parent_dv_dir_1L_chr}{Parent dataverse directory (a character vector of length one)}
 
@@ -44,4 +41,3 @@ Dataset (a list)
 \description{
 write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list).
 }
-\keyword{internal}
