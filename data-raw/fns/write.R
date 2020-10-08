@@ -1,29 +1,17 @@
-write_dv_fl_to_loc <- function(ds_ui_1L_chr,
-                         fl_nm_1L_chr,
-                         repo_fl_fmt_1L_chr,
-                         key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
-                         save_type_1L_chr = "original",
-                         dest_path_1L_chr){
-  writeBin(dataverse::get_file(paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
-                               ds_ui_1L_chr,
-                               format = save_type_1L_chr,
-                               server = key_1L_chr),
-           dest_path_1L_chr)
-}
 write_dv_ds_fls <- function(files_tb,
                             fl_ids_int,
                             local_dv_dir_1L_chr){
   purrr::walk(1:length(fl_ids_int),
               ~{
                 if(!(ds_ls$versionState=="DRAFT" & files_tb$file_type_chr[.x]==".zip")){
-                  write_dv_fl_to_loc(database_ui_chr = ds_url_1L_chr,
-                                   filename_chr = files_tb$file_chr[.x],
-                                   repo_file_format = files_tb$ds_file_ext_chr[.x],
-                                   dataverse_chr = Sys.getenv("DATAVERSE_SERVER"),
-                                   save_type_chr = "original",
-                                   dest_path_1L_chr = get_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr,
-                                                                                    filename_chr = files_tb$file_chr[.x],
-                                                                                    save_format_chr = files_tb$file_type_chr[.x]))
+                  write_dv_fl_to_loc(ds_ui_1L_chr= ds_url_1L_chr,
+                                     fl_nm_1L_chr = files_tb$file_chr[.x],
+                                     repo_fl_fmt_1L_chr = files_tb$ds_file_ext_chr[.x],
+                                     key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                                     save_type_1L_chr = "original",
+                                     dest_path_1L_chr = get_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr,
+                                                                                  filename_chr = files_tb$file_chr[.x],
+                                                                                  save_format_chr = files_tb$file_type_chr[.x]))
                 }
               })
 
@@ -48,6 +36,18 @@ write_dv_ds <- function(ds_meta_ls,
                               key_1L_chr = key_1L_chr,
                               server_1L_chr = server_1L_chr)
   return(ds_ls)
+}
+write_dv_fl_to_loc <- function(ds_ui_1L_chr,
+                               fl_nm_1L_chr,
+                               repo_fl_fmt_1L_chr,
+                               key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                               save_type_1L_chr = "original",
+                               dest_path_1L_chr){
+  writeBin(dataverse::get_file(paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
+                               ds_ui_1L_chr,
+                               format = save_type_1L_chr,
+                               server = key_1L_chr),
+           dest_path_1L_chr)
 }
 write_fls_to_dv_ds <- function(dss_tb,
                                dv_nm_1L_chr,
@@ -124,15 +124,6 @@ write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
                               inc_fl_types_chr = ".csv",
                               key_1L_chr = key_1L_chr,
                               server_1L_chr = server_1L_chr)
-    # write_dv_ds(ds_meta_ls = ds_meta_ls,
-    #                    dev_pkg_nm_1L_chr = dev_pkg_nm_1L_chr,
-    #                    dv_nm_1L_chr = dv_nm_1L_chr,
-    #                    parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
-    #                    inc_fl_types_chr = ".csv",
-    #                    paths_to_dirs_chr = c("data-raw"),
-    #                    key_1L_chr = key_1L_chr,
-    #                    server_1L_chr = server_1L_chr,
-    #                    dss_tb = pkg_dss_tb)
   return(ds_ls)
 }
 write_to_copy_fls_to_dv_dir <- function(files_tb,
