@@ -13,6 +13,7 @@
 #' @rdname get_file_from_dv
 #' @export 
 #' @importFrom rlang exec
+#' @keywords internal
 get_file_from_dv <- function (database_ui_chr, filename_chr, save_format_chr, repo_file_format, 
     dataverse_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_chr = "original", 
     save_dir_path_chr = "", read_fn, unlink_lgl = T) 
@@ -70,6 +71,7 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
 #' @rdname get_valid_path_chr
 #' @export 
 
+#' @keywords internal
 get_valid_path_chr <- function (x) 
 {
     assert_file_exists(x)
