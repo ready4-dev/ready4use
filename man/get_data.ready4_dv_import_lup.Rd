@@ -4,14 +4,24 @@
 \alias{get_data.ready4_dv_import_lup}
 \title{Get data method applied toeadyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse..}
 \usage{
-get_data.ready4_dv_import_lup(x, save_dir_path_chr = "", unlink_lgl = T)
+get_data.ready4_dv_import_lup(
+  x,
+  save_dir_path_1L_chr = "",
+  unlink_1L_lgl = T,
+  server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY")
+)
 }
 \arguments{
 \item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
 
-\item{save_dir_path_chr}{Save directory path (a character vector), Default: ''}
+\item{save_dir_path_1L_chr}{Save directory path (a character vector of length one), Default: ''}
 
-\item{unlink_lgl}{Unlink (a logical vector), Default: T}
+\item{unlink_1L_lgl}{Unlink (a logical vector of length one), Default: T}
+
+\item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
+
+\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 }
 \description{
 get_data.ready4_dv_import_lup() is a Get Data method that retrieves data from R objects loaded in memory. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.. The function is called for its side effects and does not return a value.

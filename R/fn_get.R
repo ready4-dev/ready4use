@@ -1,47 +1,50 @@
 #' Get file from dataverse
-#' @description get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument database_ui_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
-#' @param database_ui_chr Database ui (a character vector)
-#' @param filename_chr Filename (a character vector)
-#' @param save_format_chr Save format (a character vector)
-#' @param repo_file_format PARAM_DESCRIPTION
-#' @param dataverse_chr Dataverse (a character vector), Default: Sys.getenv("DATAVERSE_SERVER")
-#' @param save_type_chr Save type (a character vector), Default: 'original'
-#' @param save_dir_path_chr Save directory path (a character vector), Default: ''
+#' @description get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
+#' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
+#' @param fl_nm_1L_chr File name (a character vector of length one)
+#' @param save_fmt_1L_chr Save fmt (a character vector of length one)
+#' @param repo_fl_fmt_1L_chr Repo file fmt (a character vector of length one)
+#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
+#' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
+#' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
 #' @param read_fn Read (a function)
-#' @param unlink_lgl Unlink (a logical vector), Default: T
+#' @param unlink_1L_lgl Unlink (a logical vector of length one), Default: T
 #' @return NA ()
 #' @rdname get_file_from_dv
 #' @export 
 #' @importFrom rlang exec
-#' @keywords internal
-get_file_from_dv <- function (database_ui_chr, filename_chr, save_format_chr, repo_file_format, 
-    dataverse_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_chr = "original", 
-    save_dir_path_chr = "", read_fn, unlink_lgl = T) 
+get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
+    save_type_1L_chr = "original", save_dir_path_1L_chr = "", 
+    read_fn, unlink_1L_lgl = T) 
 {
-    destination_path_chr <- ifelse(unlink_lgl, tempfile(), get_local_path_to_dv_data(save_dir_path_chr = save_dir_path_chr, 
-        filename_chr = filename_chr, save_format_chr = save_format_chr))
-    write_dv_file_fl(database_ui_chr = database_ui_chr, filename_chr = filename_chr, 
-        repo_file_format = repo_file_format, dataverse_chr = dataverse_chr, 
-        save_type_chr = save_type_chr, destination_path_chr = destination_path_chr)
+    destination_path_chr <- ifelse(unlink_1L_lgl, tempfile(), 
+        get_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr, 
+            fl_nm_1L_chr = fl_nm_1L_chr, save_fmt_1L_chr = save_fmt_1L_chr))
+    write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr, fl_nm_1L_chr = fl_nm_1L_chr, 
+        repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr, key_1L_chr = key_1L_chr, 
+        server_1L_chr = dataverse_chr, save_type_1L_chr = save_type_1L_chr, 
+        dest_path_1L_chr = destination_path_chr)
     file_xxx <- rlang::exec(read_fn, destination_path_chr, stringsAsFactors = F)
-    if (unlink_lgl) 
+    if (unlink_1L_lgl) 
         unlink(destination_path_chr)
     file_xxx
     return(file_xxx)
 }
 #' Get local path to dataverse data
-#' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_chr specifies the where to look for the required object. The function returns Path (a character vector).
-#' @param save_dir_path_chr Save directory path (a character vector)
-#' @param filename_chr Filename (a character vector)
-#' @param save_format_chr Save format (a character vector)
+#' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
+#' @param save_dir_path_1L_chr Save directory path (a character vector of length one)
+#' @param fl_nm_1L_chr File name (a character vector of length one)
+#' @param save_fmt_1L_chr Save fmt (a character vector of length one)
 #' @return Path (a character vector)
 #' @rdname get_local_path_to_dv_data
 #' @export 
 
-get_local_path_to_dv_data <- function (save_dir_path_chr, filename_chr, save_format_chr) 
+get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr) 
 {
-    path_chr <- paste0(ifelse(save_dir_path_chr != "", paste0(save_dir_path_chr, 
-        "/"), ""), filename_chr, save_format_chr)
+    path_chr <- paste0(ifelse(save_dir_path_1L_chr != "", paste0(save_dir_path_1L_chr, 
+        "/"), ""), fl_nm_1L_chr, save_fmt_1L_chr)
     return(path_chr)
 }
 #' Get readyforwhatsnext S3 from dataverse comma separated variables file
@@ -71,7 +74,6 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
 #' @rdname get_valid_path_chr
 #' @export 
 
-#' @keywords internal
 get_valid_path_chr <- function (x) 
 {
     assert_file_exists(x)

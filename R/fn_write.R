@@ -13,7 +13,6 @@
 #' @rdname write_dv_ds
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
-#' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     dss_tb, dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
@@ -36,7 +35,6 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' @rdname write_dv_ds_fls
 #' @export 
 #' @importFrom purrr walk
-#' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr) 
 {
     purrr::walk(1:length(fl_ids_int), ~{
@@ -55,20 +53,21 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr)
 #' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
 #' @param repo_fl_fmt_1L_chr Repo file fmt (a character vector of length one)
-#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
+#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
 #' @param dest_path_1L_chr Dest path (a character vector of length one)
 #' @return NULL
 #' @rdname write_dv_fl_to_loc
 #' @export 
 #' @importFrom dataverse get_file
-#' @keywords internal
-write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
-    save_type_1L_chr = "original", dest_path_1L_chr) 
+write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
+    server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_1L_chr = "original", 
+    dest_path_1L_chr) 
 {
     writeBin(dataverse::get_file(paste0(fl_nm_1L_chr, repo_fl_fmt_1L_chr), 
-        ds_ui_1L_chr, format = save_type_1L_chr, server = key_1L_chr), 
-        dest_path_1L_chr)
+        ds_ui_1L_chr, format = save_type_1L_chr, key = key_1L_chr, 
+        server = server_1L_chr), dest_path_1L_chr)
 }
 #' Write files to dataverse dataset
 #' @description write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list).
@@ -87,7 +86,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, 
 #' @importFrom dataverse get_dataset
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
-#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     parent_dv_dir_1L_chr, paths_to_dirs_chr, inc_fl_types_chr = NA_character_, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -131,7 +129,6 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @importFrom purrr walk
 #' @importFrom dplyr mutate_if
 #' @importFrom stringr str_c
-#' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -164,7 +161,6 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @importFrom stringr str_remove
 #' @importFrom tibble tibble
 #' @importFrom dplyr inner_join select
-#' @keywords internal
 write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
 {
     ds_fls_ls <- dataverse::dataset_files(ds_url)
@@ -191,7 +187,6 @@ write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk
-#' @keywords internal
 write_to_copy_fls_to_dv_dir <- function (files_tb, local_dv_dir_1L_chr) 
 {
     purrr::pwalk(files_tb, ~file.copy(paste0(..1, "/", ..2, ..3), 

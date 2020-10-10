@@ -5,40 +5,42 @@
 \title{Get file from dataverse}
 \usage{
 get_file_from_dv(
-  database_ui_chr,
-  filename_chr,
-  save_format_chr,
-  repo_file_format,
-  dataverse_chr = Sys.getenv("DATAVERSE_SERVER"),
-  save_type_chr = "original",
-  save_dir_path_chr = "",
+  ds_ui_1L_chr,
+  fl_nm_1L_chr,
+  save_fmt_1L_chr,
+  repo_fl_fmt_1L_chr,
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+  save_type_1L_chr = "original",
+  save_dir_path_1L_chr = "",
   read_fn,
-  unlink_lgl = T
+  unlink_1L_lgl = T
 )
 }
 \arguments{
-\item{database_ui_chr}{Database ui (a character vector)}
+\item{ds_ui_1L_chr}{Dataset ui (a character vector of length one)}
 
-\item{filename_chr}{Filename (a character vector)}
+\item{fl_nm_1L_chr}{File name (a character vector of length one)}
 
-\item{save_format_chr}{Save format (a character vector)}
+\item{save_fmt_1L_chr}{Save fmt (a character vector of length one)}
 
-\item{repo_file_format}{PARAM_DESCRIPTION}
+\item{repo_fl_fmt_1L_chr}{Repo file fmt (a character vector of length one)}
 
-\item{dataverse_chr}{Dataverse (a character vector), Default: Sys.getenv("DATAVERSE_SERVER")}
+\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
-\item{save_type_chr}{Save type (a character vector), Default: 'original'}
+\item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
 
-\item{save_dir_path_chr}{Save directory path (a character vector), Default: ''}
+\item{save_type_1L_chr}{Save type (a character vector of length one), Default: 'original'}
+
+\item{save_dir_path_1L_chr}{Save directory path (a character vector of length one), Default: ''}
 
 \item{read_fn}{Read (a function)}
 
-\item{unlink_lgl}{Unlink (a logical vector), Default: T}
+\item{unlink_1L_lgl}{Unlink (a logical vector of length one), Default: T}
 }
 \value{
 NA ()
 }
 \description{
-get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument database_ui_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
+get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

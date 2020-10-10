@@ -1,35 +1,37 @@
-get_file_from_dv <- function(database_ui_chr,
-                             filename_chr,
-                             save_format_chr,
-                             repo_file_format,
-                             dataverse_chr = Sys.getenv("DATAVERSE_SERVER"),
-                             save_type_chr = "original",
-                             save_dir_path_chr = "",
+get_file_from_dv <- function(ds_ui_1L_chr,
+                             fl_nm_1L_chr,
+                             save_fmt_1L_chr,
+                             repo_fl_fmt_1L_chr,
+                             key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                             server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), # was dataverse_chr
+                             save_type_1L_chr = "original",
+                             save_dir_path_1L_chr = "",
                              read_fn,
-                             unlink_lgl = T){
-  destination_path_chr <- ifelse(unlink_lgl,
+                             unlink_1L_lgl = T){
+  destination_path_chr <- ifelse(unlink_1L_lgl,
                                  tempfile(),
-                                 get_local_path_to_dv_data(save_dir_path_chr = save_dir_path_chr,
-                                                       filename_chr = filename_chr,
-                                                       save_format_chr = save_format_chr))
-  write_dv_file_fl(database_ui_chr = database_ui_chr,
-               filename_chr = filename_chr,
-               repo_file_format = repo_file_format,
-               dataverse_chr = dataverse_chr,
-               save_type_chr = save_type_chr,
-               destination_path_chr = destination_path_chr)
+                                 get_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr,
+                                                       fl_nm_1L_chr = fl_nm_1L_chr,
+                                                       save_fmt_1L_chr = save_fmt_1L_chr))
+  write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr,
+                     fl_nm_1L_chr = fl_nm_1L_chr,
+                     repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr,
+                     key_1L_chr = key_1L_chr,
+                     server_1L_chr = dataverse_chr,
+                     save_type_1L_chr = save_type_1L_chr,
+                     dest_path_1L_chr = destination_path_chr)
   file_xxx <- rlang::exec(read_fn,destination_path_chr,stringsAsFactors = F)
-  if(unlink_lgl)
+  if(unlink_1L_lgl)
     unlink(destination_path_chr)
   file_xxx
   return(file_xxx)
 }
-get_local_path_to_dv_data <- function(save_dir_path_chr,
-                                      filename_chr,
-                                      save_format_chr){
-  path_chr <- paste0(ifelse(save_dir_path_chr!="",paste0(save_dir_path_chr,"/"),""),
-         filename_chr,
-         save_format_chr)
+get_local_path_to_dv_data <- function(save_dir_path_1L_chr,
+                                      fl_nm_1L_chr,
+                                      save_fmt_1L_chr){
+  path_chr <- paste0(ifelse(save_dir_path_1L_chr!="",paste0(save_dir_path_1L_chr,"/"),""),
+         fl_nm_1L_chr,
+         save_fmt_1L_chr)
   return(path_chr)
 }
 get_r3_from_dv_csv <- function(file_name_chr,

@@ -39,13 +39,15 @@ write_dv_ds <- function(ds_meta_ls,
 write_dv_fl_to_loc <- function(ds_ui_1L_chr,
                                fl_nm_1L_chr,
                                repo_fl_fmt_1L_chr,
-                               key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                               key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                               server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
                                save_type_1L_chr = "original",
                                dest_path_1L_chr){
   writeBin(dataverse::get_file(paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
                                ds_ui_1L_chr,
                                format = save_type_1L_chr,
-                               server = key_1L_chr),
+                               key = key_1L_chr,
+                               server = server_1L_chr),
            dest_path_1L_chr)
 }
 write_fls_to_dv_ds <- function(dss_tb,

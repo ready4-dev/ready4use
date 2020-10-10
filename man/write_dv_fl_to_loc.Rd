@@ -8,7 +8,8 @@ write_dv_fl_to_loc(
   ds_ui_1L_chr,
   fl_nm_1L_chr,
   repo_fl_fmt_1L_chr,
-  key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
   save_type_1L_chr = "original",
   dest_path_1L_chr
 )
@@ -20,7 +21,9 @@ write_dv_fl_to_loc(
 
 \item{repo_fl_fmt_1L_chr}{Repo file fmt (a character vector of length one)}
 
-\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
+\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
+
+\item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
 
 \item{save_type_1L_chr}{Save type (a character vector of length one), Default: 'original'}
 
@@ -29,4 +32,3 @@ write_dv_fl_to_loc(
 \description{
 write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 }
-\keyword{internal}
