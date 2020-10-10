@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Readyforwhatsnext Methods for retrieving and
     managing data.
-Version: 0.0.0.9080
+Version: 0.0.0.9081
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",

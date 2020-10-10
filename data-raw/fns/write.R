@@ -1,13 +1,16 @@
 write_dv_ds_fls <- function(files_tb,
                             fl_ids_int,
-                            local_dv_dir_1L_chr){
+                            local_dv_dir_1L_chr,
+                            key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                            server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
   purrr::walk(1:length(fl_ids_int),
               ~{
                 if(!(ds_ls$versionState=="DRAFT" & files_tb$file_type_chr[.x]==".zip")){
                   write_dv_fl_to_loc(ds_ui_1L_chr= ds_url_1L_chr,
                                      fl_nm_1L_chr = files_tb$file_chr[.x],
                                      repo_fl_fmt_1L_chr = files_tb$ds_file_ext_chr[.x],
-                                     key_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                                     key_1L_chr = key_1L_chr,
+                                     server_1L_chr = server_1L_chr,
                                      save_type_1L_chr = "original",
                                      dest_path_1L_chr = get_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr,
                                                                                   filename_chr = files_tb$file_chr[.x],

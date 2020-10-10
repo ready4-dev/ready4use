@@ -17,7 +17,7 @@ get_file_from_dv <- function(ds_ui_1L_chr,
                      fl_nm_1L_chr = fl_nm_1L_chr,
                      repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr,
                      key_1L_chr = key_1L_chr,
-                     server_1L_chr = dataverse_chr,
+                     server_1L_chr = server_1L_chr,
                      save_type_1L_chr = save_type_1L_chr,
                      dest_path_1L_chr = destination_path_chr)
   file_xxx <- rlang::exec(read_fn,destination_path_chr,stringsAsFactors = F)
