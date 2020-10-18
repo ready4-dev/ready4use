@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Get file from dataverse — get_file_from_dv" />
-<meta property="og:description" content="get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument database_ui_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value." />
+<meta property="og:description" content="get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9068</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9082</span>
       </span>
     </div>
 
@@ -120,59 +120,64 @@
     </div>
 
     <div class="ref-description">
-    <p>get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument database_ui_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.</p>
+    <p>get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_file_from_dv</span>(
-  <span class='kw'>database_ui_chr</span>,
-  <span class='kw'>filename_chr</span>,
-  <span class='kw'>save_format_chr</span>,
-  <span class='kw'>repo_file_format</span>,
-  dataverse_chr = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"DATAVERSE_SERVER"</span>),
-  save_type_chr = <span class='st'>"original"</span>,
-  save_dir_path_chr = <span class='st'>""</span>,
-  <span class='kw'>read_fn</span>,
-  unlink_lgl = <span class='kw'>T</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_file_from_dv</span><span class='op'>(</span>
+  <span class='va'>ds_ui_1L_chr</span>,
+  <span class='va'>fl_nm_1L_chr</span>,
+  <span class='va'>save_fmt_1L_chr</span>,
+  <span class='va'>repo_fl_fmt_1L_chr</span>,
+  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>,
+  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>,
+  save_type_1L_chr <span class='op'>=</span> <span class='st'>"original"</span>,
+  save_dir_path_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
+  <span class='va'>read_fn</span>,
+  unlink_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>database_ui_chr</th>
-      <td><p>Database ui (a character vector)</p></td>
+      <th>ds_ui_1L_chr</th>
+      <td><p>Dataset ui (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>filename_chr</th>
-      <td><p>Filename (a character vector)</p></td>
+      <th>fl_nm_1L_chr</th>
+      <td><p>File name (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>save_format_chr</th>
-      <td><p>Save format (a character vector)</p></td>
+      <th>save_fmt_1L_chr</th>
+      <td><p>Save fmt (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>repo_file_format</th>
-      <td><p>PARAM_DESCRIPTION</p></td>
+      <th>repo_fl_fmt_1L_chr</th>
+      <td><p>Repo file fmt (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>dataverse_chr</th>
-      <td><p>Dataverse (a character vector), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
+      <th>key_1L_chr</th>
+      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
     </tr>
     <tr>
-      <th>save_type_chr</th>
-      <td><p>Save type (a character vector), Default: 'original'</p></td>
+      <th>server_1L_chr</th>
+      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
     </tr>
     <tr>
-      <th>save_dir_path_chr</th>
-      <td><p>Save directory path (a character vector), Default: ''</p></td>
+      <th>save_type_1L_chr</th>
+      <td><p>Save type (a character vector of length one), Default: 'original'</p></td>
+    </tr>
+    <tr>
+      <th>save_dir_path_1L_chr</th>
+      <td><p>Save directory path (a character vector of length one), Default: ''</p></td>
     </tr>
     <tr>
       <th>read_fn</th>
       <td><p>Read (a function)</p></td>
     </tr>
     <tr>
-      <th>unlink_lgl</th>
-      <td><p>Unlink (a logical vector), Default: T</p></td>
+      <th>unlink_1L_lgl</th>
+      <td><p>Unlink (a logical vector of length one), Default: T</p></td>
     </tr>
     </table>
 
