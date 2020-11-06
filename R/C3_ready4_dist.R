@@ -1,5 +1,4 @@
 
-setOldClass(c("ready4_dist","tbl_df", "tbl", "data.frame"))
 #' Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
 #' @param x A prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution, Default: make_prototype_ready4_dist()
