@@ -11,38 +11,6 @@ ready4fun::write_fn_type_dirs()
 # 3. MANUAL STEP. Write all your functions to R files in the new "fns" directory.
 #
 # 4. Set-up package structure
-# options(usethis.description = list(
-#   Package = ready4fun::get_dev_pkg_nm(),
-#   Title =  "Readyforwhatsnext Methods for retrieving and managing data.",
-#   Description = "ready4use provides a set of classes and methods for general data management tasks throughout the readyforwhatsnext suite.",
-#   `Authors@R` = c(utils::person(
-#     given = "Matthew",family = "Hamilton", email =
-#       "matthew.hamilton@orygen.org.au",role = c("aut",
-#                                                 "cre"),comment = c(ORCID = "0000-0001-7407-9194")
-#   ),
-#   utils::person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au",
-#                 role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
-#   #person("Alexandra", "Parker", email =  "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID ="0000-0002-2398-6306")),
-#   #person("Cathrine", "Mihalopoulos",email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
-#   #person("Jonathan", "Karnon", email ="Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment =c(ORCID = "0000-0003-3220-2099")),
-#   #person("Petra","Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role =c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
-#   utils::person("Orygen", role = c("cph", "fnd")),
-#   utils::person("VicHealth",role = c("fnd")),
-#   utils::person("Victoria University", role =c("fnd"))
-#   ),
-#   License = usethis::use_gpl3_license("Orygen"),
-#   URL = c(#"https://readyforwhatsnext.github.io/ready4class/,
-#           #https://github.com/readyforwhatsnext/ready4class,
-#           "https://readyforwhatsnext.github.io/readyforwhatsnext/") # Updated from first run
-# ))
-# # Deletes contents of R directory and resets DESCRIPTION and NAMESPACE files.
-# ready4fun::write_pkg_setup_fls(incr_ver_1L_lgl = F,
-#   delete_contents_of_R_dir = T,
-#   copyright_holders_chr = "Orygen",
-#   use_travis_1L_lgl = F,
-#   path_to_pkg_logo_1L_chr = "../../../../Documentation/Images/ready4use-logo/default.png",
-#   github_repo_1L_chr = "readyforwhatsnext/ready4use",
-#   lifecycle_stage_1L_chr = "experimental")
 ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For Retrieving and Managing Data In Projects Developed With The Ready4 Suite",
                             pkg_desc_1L_chr = "ready4use provides a set of classes and methods for general data management tasks throughout the ready4 suite of tools for mental health data synthesis and modelling projects.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package. That means this should be regarded as UNTESTED software, which is provided for free WITHOUT ANY WARRANTY. Importantly, the tools contained in this test release automate a number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.
@@ -148,6 +116,17 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
                                                                       args_ls_ls = NULL),
                                                  fn_type_lup_tb = fn_type_lup_tb,
                                                  abbreviations_lup = abbreviations_lup)
+
+pkg_dss_tb <- fns_dmt_tb %>%
+  write_and_doc_ds(overwrite_1L_lgl = T,
+                   db_1L_chr = "fns_dmt_tb",
+                   title_1L_chr = "ready4fun function documentation table",
+                   desc_1L_chr = "A table with the summary information on functions included in the ready4use package.",
+                   format_1L_chr = "A tibble",
+                   url_1L_chr = "https://ready4-dev.github.io/ready4/",
+                   abbreviations_lup = abbreviations_lup,
+                   #object_type_lup = object_type_lup,
+                   pkg_dss_tb = pkg_dss_tb)
 ## 11. Write and document.
 # NOTE: There seems to be a choice: either create the dataverse dataset from script and then manage updates from
 # the web or vice versa. No satisfactory resolution that I can identify.
@@ -177,5 +156,6 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 #developer_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138_dev.pdf")
 #pkgdown::build_site()
 #
+usethis::use_build_ignore("initial_setup.R")
 # 12. Add vignette
 

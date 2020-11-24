@@ -28,3 +28,5 @@
 ^data-raw/mthds/make_import_xx\.R$
 ^data-raw/mthds/update_src_loc_to_url\.R$
 ^data-raw/prototype_lup\.csv$
+^initial_setup\.R$
+^data-raw/TEST\.R$
