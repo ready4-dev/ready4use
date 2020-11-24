@@ -111,7 +111,7 @@ write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
   #                    subject = subject_1L_chr)
   ds_chr <- pkg_dss_tb$ds_obj_nm_chr
   purrr::walk(ds_chr,~ {
-    data(list=.x, package = dev_pkg_nm_1L_chr, envir = environment())
+    utils::data(list=.x, package = dev_pkg_nm_1L_chr, envir = environment())
     eval(parse(text = .x)) %>%
       dplyr::mutate_if(is.list,
                        list(~ifelse(stringr::str_c(.)=="NULL",NA_character_ , stringr::str_c (.)))) %>%
@@ -147,7 +147,7 @@ write_to_add_urls_to_dss <- function(ds_url, # NOTE WORKING - NEEEDS WORK
   pkg_dss_tb <- dplyr::inner_join(pkg_dss_tb %>% dplyr::select(-url_chr),url_lup)
   purrr::walk(pkg_dss_tb,
               ~{
-                data(list=..1,
+                utils::data(list=..1,
                      package = pkg_nm_1L_chr,
                      envir = environment())
                 eval(parse(text = paste0("ds<-", ..1)))

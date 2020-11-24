@@ -1,6 +1,6 @@
 #' save_type
 #' @description S4 Generic function to get the value of the slot save_type
-#' @name save_type
+#' @rdname save_type-methods
 #' @param x An object 
 #' 
 #' @export
@@ -17,7 +17,7 @@ methods::setMethod("save_type", methods::className("ready4_local_raw",".GlobalEn
 })
 #' save_type<-
 #' @description S4 Generic function to set the value of the slot save_type
-#' @name save_type<-
+#' @rdname save_type<--methods
 #' @param x An object 
 #' 
 #' @export

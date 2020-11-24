@@ -1,7 +1,7 @@
 Package: ready4use
-Title: Readyforwhatsnext Methods for retrieving and
-    managing data.
-Version: 0.0.0.9084
+Title: Standardised Developer Tools For Retrieving and Managing
+    Data In Projects Developed With The Ready4 Suite
+Version: 0.0.0.9085
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -20,17 +20,33 @@ Authors@R:
       person(given = "Victoria University",
              role = "fnd"))
 Description: ready4use provides a set of classes and
-    methods for general data management tasks throughout the
-    readyforwhatsnext suite.
-License: GPL-3
-URL: https://readyforwhatsnext.github.io/readyforwhatsnext/
+    methods for general data management tasks throughout the ready4 suite
+    of tools for mental health data synthesis and modelling projects.
+    This development version of the ready4use package has been made
+    available as part of the process of testing and documenting the
+    package. That means this should be regarded as UNTESTED software,
+    which is provided for free WITHOUT ANY WARRANTY. Importantly, the
+    tools contained in this test release automate a number of tasks which
+    MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.  While we
+    welcome and appreciate anyone who takes the time to provide us with
+    feedback on this test release, we caution you that you should only
+    test this software if you feel confident you understand what it does
+    and have created a sandpit area in which you can safely undertake
+    testing. If you have any questions, please contact the authors
+    (matthew.hamilton@orygen.org.au).
+License: GPL-3 + file LICENSE
+URL: https://ready4-dev.github.io/ready4use/,
+    https://github.com/ready4-dev/ready4use,
+    https://ready4-dev.github.io/ready4/
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
+    testthat,
+    knitr,
     lifecycle,
-    ready4fun (>= 0.0.0.9230),
+    ready4fun (>= 0.0.0.9245),
     assertthat,
     data.table,
     dataverse,
@@ -47,6 +63,7 @@ Imports:
     tibble,
     tidyr,
     utils
+VignetteBuilder: knitr
 RdMacros: lifecycle
 Depends: 
     R (>= 2.10)
@@ -83,4 +100,4 @@ Collate:
     'mthd_update_src_loc_to_url.R'
     'pkg_ready4use.R'
 Remotes: 
-    readyforwhatsnext/ready4fun
+    ready4-dev/ready4fun

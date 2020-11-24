@@ -14,7 +14,6 @@
 #' @rdname get_file_from_dv
 #' @export 
 #' @importFrom rlang exec
-#' @keywords internal
 get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", save_dir_path_1L_chr = "", 
@@ -48,13 +47,13 @@ get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_
         "/"), ""), fl_nm_1L_chr, save_fmt_1L_chr)
     return(path_chr)
 }
-#' Get readyforwhatsnext S3 from dataverse comma separated variables file
-#' @description get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get readyforwhatsnext s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble).
+#' Get ready4 S3 from dataverse comma separated variables file
+#' @description get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get ready4 s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 #' @param file_name_chr File name (a character vector)
 #' @param data_repo_db_ui_chr Data repo database ui (a character vector)
 #' @param data_repo_ui_chr Data repo ui (a character vector), Default: 'NA'
-#' @param r3_fn Readyforwhatsnext S3 (a function), Default: ready4_all_import_lup
-#' @return Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble)
+#' @param r3_fn Ready4 S3 (a function), Default: ready4_all_import_lup
+#' @return Tibble ready4 S3 (a ready4 S3 extension of tibble)
 #' @rdname get_r3_from_dv_csv
 #' @export 
 #' @importFrom tibble tibble
@@ -75,7 +74,6 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
 #' @rdname get_valid_path_chr
 #' @export 
 
-#' @keywords internal
 get_valid_path_chr <- function (x) 
 {
     assert_file_exists(x)

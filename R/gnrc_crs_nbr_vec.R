@@ -1,6 +1,6 @@
 #' crs_nbr_vec
 #' @description S4 Generic function to get the value of the slot crs_nbr_vec
-#' @name crs_nbr_vec
+#' @rdname crs_nbr_vec-methods
 #' @param x An object 
 #' 
 #' @export
@@ -17,7 +17,7 @@ methods::setMethod("crs_nbr_vec", methods::className("ready4_script_data",".Glob
 })
 #' crs_nbr_vec<-
 #' @description S4 Generic function to set the value of the slot crs_nbr_vec
-#' @name crs_nbr_vec<-
+#' @rdname crs_nbr_vec<--methods
 #' @param x An object 
 #' 
 #' @export

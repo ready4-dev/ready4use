@@ -4,7 +4,7 @@
 #' @param inc_script_lgl Include script (a logical vector), Default: T
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
 #' @return NULL
-#' @rdname get_import_type_ls.ready4_all_import_lup
+#' @rdname get_import_type_ls-methods
 #' @export 
 #' @importFrom purrr discard
 get_import_type_ls.ready4_all_import_lup <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
@@ -22,4 +22,6 @@ get_import_type_ls.ready4_all_import_lup <- function (x, inc_script_lgl = T, for
     }
     options_ls[1]
 }
+#' @rdname get_import_type_ls-methods
+#' @aliases get_import_type_ls,ready4_all_import_lup-method
 methods::setMethod("get_import_type_ls", "ready4_all_import_lup", get_import_type_ls.ready4_all_import_lup)

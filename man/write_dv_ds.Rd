@@ -41,4 +41,3 @@ Dataset (a list)
 \description{
 write_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse dataset. The function returns Dataset (a list).
 }
-\keyword{internal}

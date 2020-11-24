@@ -6,7 +6,7 @@
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @return NULL
-#' @rdname get_data.ready4_dv_import_lup
+#' @rdname get_data-methods
 #' @export 
 #' @importFrom purrr map2
 get_data.ready4_dv_import_lup <- function (x, save_dir_path_1L_chr = "", unlink_1L_lgl = T, server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
@@ -23,4 +23,6 @@ get_data.ready4_dv_import_lup <- function (x, save_dir_path_1L_chr = "", unlink_
         data_ls
     else data_ls[[1]]
 }
+#' @rdname get_data-methods
+#' @aliases get_data,ready4_dv_import_lup-method
 methods::setMethod("get_data", "ready4_dv_import_lup", get_data.ready4_dv_import_lup)

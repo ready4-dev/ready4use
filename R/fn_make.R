@@ -13,7 +13,6 @@
 #' @importFrom dplyr filter mutate
 #' @importFrom rlang exec
 #' @importFrom assertthat are_equal
-#' @keywords internal
 make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_character_) 
 {
     files_tb <- purrr::map_dfr(paths_to_dirs_chr, ~{
@@ -43,18 +42,17 @@ make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_c
         files_tb$file_type_chr) %>% unique() %>% length())
     return(files_tb)
 }
-#' Make readyforwhatsnext S3 from comma separated variables file
-#' @description make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make readyforwhatsnext s3 from comma separated variables file tibble. The function returns Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble).
+#' Make ready4 S3 from comma separated variables file
+#' @description make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make ready4 s3 from comma separated variables file tibble. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 #' @param csv_tb Comma separated variables file (a tibble)
-#' @param r3_fn Readyforwhatsnext S3 (a function)
-#' @return Tibble readyforwhatsnext S3 (a ready4 S3 extension of tibble)
+#' @param r3_fn Ready4 S3 (a function)
+#' @return Tibble ready4 S3 (a ready4 S3 extension of tibble)
 #' @rdname make_r3_from_csv_tb
 #' @export 
 #' @importFrom rlang exec
 #' @importFrom dplyr select_if mutate_at select
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map
-#' @keywords internal
 make_r3_from_csv_tb <- function (csv_tb, r3_fn) 
 {
     list_cols <- rlang::exec(r3_fn) %>% dplyr::select_if(is.list) %>% 

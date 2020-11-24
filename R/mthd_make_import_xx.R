@@ -4,7 +4,7 @@
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
 #' @param script_args_ls Script arguments (a list), Default: NULL
 #' @return NULL
-#' @rdname make_import_xx.ready4_all_import_lup
+#' @rdname make_import_xx-methods
 #' @export 
 #' @importFrom rlang exec
 make_import_xx.ready4_all_import_lup <- function (x, forced_choice_chr = NA_character_, script_args_ls = NULL) 
@@ -16,4 +16,6 @@ make_import_xx.ready4_all_import_lup <- function (x, forced_choice_chr = NA_char
         x, !!!script_args_ls), local_chr = get_valid_path_chr(import_type_ls[[1]]), 
         repo_chr = make_dv_import_lup(x), source_url_chr = url(import_type_ls[[1]]))
 }
+#' @rdname make_import_xx-methods
+#' @aliases make_import_xx,ready4_all_import_lup-method
 methods::setMethod("make_import_xx", "ready4_all_import_lup", make_import_xx.ready4_all_import_lup)

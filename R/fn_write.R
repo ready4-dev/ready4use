@@ -13,7 +13,6 @@
 #' @rdname write_dv_ds
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
-#' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     dss_tb, dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
@@ -38,7 +37,6 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' @rdname write_dv_ds_fls
 #' @export 
 #' @importFrom purrr walk
-#' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -66,7 +64,6 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, local_dv_dir_1L_chr, key_1L_c
 #' @rdname write_dv_fl_to_loc
 #' @export 
 #' @importFrom dataverse get_file
-#' @keywords internal
 write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_1L_chr = "original", 
     dest_path_1L_chr) 
@@ -92,7 +89,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr, repo_fl_fmt_1L_chr, 
 #' @importFrom dataverse get_dataset
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
-#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     parent_dv_dir_1L_chr, paths_to_dirs_chr, inc_fl_types_chr = NA_character_, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -134,16 +130,16 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
 #' @importFrom purrr walk
+#' @importFrom utils data
 #' @importFrom dplyr mutate_if
 #' @importFrom stringr str_c
-#' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
     ds_chr <- pkg_dss_tb$ds_obj_nm_chr
     purrr::walk(ds_chr, ~{
-        data(list = .x, package = dev_pkg_nm_1L_chr, envir = environment())
+        utils::data(list = .x, package = dev_pkg_nm_1L_chr, envir = environment())
         eval(parse(text = .x)) %>% dplyr::mutate_if(is.list, 
             list(~ifelse(stringr::str_c(.) == "NULL", NA_character_, 
                 stringr::str_c(.)))) %>% write.csv(file = paste0("data-raw/", 
@@ -169,7 +165,7 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @importFrom stringr str_remove
 #' @importFrom tibble tibble
 #' @importFrom dplyr inner_join select
-#' @keywords internal
+#' @importFrom utils data
 write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
 {
     ds_fls_ls <- dataverse::dataset_files(ds_url)
@@ -181,7 +177,7 @@ write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4
     pkg_dss_tb <- dplyr::inner_join(pkg_dss_tb %>% dplyr::select(-url_chr), 
         url_lup)
     purrr::walk(pkg_dss_tb, ~{
-        data(list = ..1, package = pkg_nm_1L_chr, envir = environment())
+        utils::data(list = ..1, package = pkg_nm_1L_chr, envir = environment())
         eval(parse(text = paste0("ds<-", ..1)))
         ds %>% ready4fun::write_and_doc_ds(db_1L_chr = ..1, title_1L_chr = ..2, 
             desc_1L_chr = ..3, url_1L_chr = ..4, pkg_dss_tb = pkg_dss_tb)
@@ -196,7 +192,6 @@ write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk
-#' @keywords internal
 write_to_copy_fls_to_dv_dir <- function (files_tb, local_dv_dir_1L_chr) 
 {
     purrr::pwalk(files_tb, ~file.copy(paste0(..1, "/", ..2, ..3), 

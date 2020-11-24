@@ -1,6 +1,6 @@
 #' merge_with_chr_vec
 #' @description S4 Generic function to get the value of the slot merge_with_chr_vec
-#' @name merge_with_chr_vec
+#' @rdname merge_with_chr_vec-methods
 #' @param x An object 
 #' 
 #' @export
@@ -17,7 +17,7 @@ methods::setMethod("merge_with_chr_vec", methods::className("ready4_local",".Glo
 })
 #' merge_with_chr_vec<-
 #' @description S4 Generic function to set the value of the slot merge_with_chr_vec
-#' @name merge_with_chr_vec<-
+#' @rdname merge_with_chr_vec<--methods
 #' @param x An object 
 #' 
 #' @export
