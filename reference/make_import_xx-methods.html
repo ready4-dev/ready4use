@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write package datasets to dataverse dataset comma separated variables files — write_pkg_dss_to_dv_ds_csvs • ready4use</title>
+<title>Make import output object of multiple potential types — make_import_xx • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Write package datasets to dataverse dataset comma separated variables files — write_pkg_dss_to_dv_ds_csvs" />
-<meta property="og:description" content="write_pkg_dss_to_dv_ds_csvs() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write package datasets to dataverse dataset comma separated variables files. The function returns Dataset (a list)." />
+<meta property="og:title" content="Make import output object of multiple potential types — make_import_xx" />
+<meta property="og:description" content="make_import_xx() is a Make Import Output Object of Multiple Potential Types generic that makes an output object of multiple potential classes.
+make_import_xx.ready4_all_import_lup() is a Make Import Output Object of Multiple Potential Types method that makes an output object of multiple potential classes. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,66 +120,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write package datasets to dataverse dataset comma separated variables files</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_write.R'><code>R/fn_write.R</code></a></small>
-    <div class="hidden name"><code>write_pkg_dss_to_dv_ds_csvs.Rd</code></div>
+    <h1>Make import output object of multiple potential types</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/grp_generics.R'><code>R/grp_generics.R</code></a>, <a href='https://github.com/ready4-dev/ready4use/blob/master/R/mthd_make_import_xx.R'><code>R/mthd_make_import_xx.R</code></a></small>
+    <div class="hidden name"><code>make_import_xx-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>write_pkg_dss_to_dv_ds_csvs() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write package datasets to dataverse dataset comma separated variables files. The function returns Dataset (a list).</p>
+    <p>make_import_xx() is a Make Import Output Object of Multiple Potential Types generic that makes an output object of multiple potential classes.</p>
+<p>make_import_xx.ready4_all_import_lup() is a Make Import Output Object of Multiple Potential Types method that makes an output object of multiple potential classes. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>write_pkg_dss_to_dv_ds_csvs</span><span class='op'>(</span>
-  <span class='va'>pkg_dss_tb</span>,
-  <span class='va'>dv_nm_1L_chr</span>,
-  <span class='va'>ds_url_1L_chr</span>,
-  wait_time_in_secs_int <span class='op'>=</span> <span class='fl'>5L</span>,
-  dev_pkg_nm_1L_chr <span class='op'>=</span> <span class='fu'>ready4fun</span><span class='fu'>::</span><span class='fu'><a href='https://ready4-dev.github.io/ready4fun/reference/get_dev_pkg_nm.html'>get_dev_pkg_nm</a></span><span class='op'>(</span><span class='op'>)</span>,
-  parent_dv_dir_1L_chr <span class='op'>=</span> <span class='st'>"../../../../Data/Dataverse"</span>,
-  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>,
-  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_import_xx</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>make_import_xx.ready4_all_import_lup</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
+  script_args_ls <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='co'># S4 method for ready4_all_import_lup</span>
+<span class='fu'>make_import_xx</span><span class='op'>(</span><span class='va'>x</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>, script_args_ls <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pkg_dss_tb</th>
-      <td><p>Package datasets (a tibble)</p></td>
+      <th>x</th>
+      <td><p>An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.</p></td>
     </tr>
     <tr>
-      <th>dv_nm_1L_chr</th>
-      <td><p>Dataverse name (a character vector of length one)</p></td>
+      <th>...</th>
+      <td><p>Additional arguments</p></td>
     </tr>
     <tr>
-      <th>ds_url_1L_chr</th>
-      <td><p>Dataset url (a character vector of length one)</p></td>
+      <th>forced_choice_chr</th>
+      <td><p>Forced choice (a character vector), Default: 'NA'</p></td>
     </tr>
     <tr>
-      <th>wait_time_in_secs_int</th>
-      <td><p>Wait time in secs (an integer vector), Default: 5</p></td>
-    </tr>
-    <tr>
-      <th>dev_pkg_nm_1L_chr</th>
-      <td><p>Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()</p></td>
-    </tr>
-    <tr>
-      <th>parent_dv_dir_1L_chr</th>
-      <td><p>Parent dataverse directory (a character vector of length one), Default: '../../../../Data/Dataverse'</p></td>
-    </tr>
-    <tr>
-      <th>key_1L_chr</th>
-      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
-    </tr>
-    <tr>
-      <th>server_1L_chr</th>
-      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
+      <th>script_args_ls</th>
+      <td><p>Script arguments (a list), Default: NULL</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Dataset (a list)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
