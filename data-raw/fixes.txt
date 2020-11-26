@@ -1,0 +1,44 @@
+Assign class creation to ready4_script_
+
+Added:
+#' @param value Value to be assigned to x [for setter]
+#' @rdname crs_nbr_vec-methods
+#' @rdname crs_nbr_vec_set-methods [for setter]
+#' @aliases crs_nbr_vec,ready4_script_data-method
+#' @aliases crs_nbr_vec<-,ready4_script_data-method [for setter]
+
+REmove: 
+,".GlobalEnv"
+#' 
+#' @description Create a new S4 object of the class:ready4_script_data
+#' @param save_type character, Default: 'NA'
+#' @param merge_with_chr_vec character, Default: 'NA'
+#' @param crs_nbr_vec numeric, Default: NA
+#' @return An S4 object of the 
+#' @rdname ready4_script_data
+#' @export 
+#' @importFrom methods new
+ready4_script_data <- function(save_type = NA_character_,
+merge_with_chr_vec = NA_character_,
+crs_nbr_vec = NA_real_){ 
+methods::new("ready4_script_data",
+save_type = save_type,
+merge_with_chr_vec = merge_with_chr_vec,
+crs_nbr_vec = crs_nbr_vec)
+}
+
+
+
+
+
+Writing S3 generic: use #' @rdname order_tb-methods instead of #' @name order_tb
+
+Writing method:
+- use #' @rdname order_tb-methods instead of #' @rdname order_tb.ready4_constructor_tbl
+
+- add before methods::setMethod....
+#' @rdname order_tb-methods
+#' @aliases order_tb,ready4_constructor_tbl-method
+
+
+
