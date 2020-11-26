@@ -4,19 +4,8 @@
 \name{ready4_local}
 \alias{ready4_local}
 \title{ready4_local}
-\usage{
-ready4_local(merge_with_chr_vec = NA_character_)
-}
-\arguments{
-\item{merge_with_chr_vec}{character, Default: 'NA'}
-}
-\value{
-An S4 object of the
-}
 \description{
 An S4 class to represent Readyforwhatsnext S4 class defining data to be saved in local directory.
-
-Create a new S4 object of the class:ready4_local
 }
 \section{Slots}{
 

@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools For Retrieving and Managing
     Data In Projects Developed With The Ready4 Suite
-Version: 0.0.0.9087
+Version: 0.0.0.9088
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -24,15 +24,12 @@ Description: ready4use provides a set of classes and
     of tools for mental health data synthesis and modelling projects.
     This development version of the ready4use package has been made
     available as part of the process of testing and documenting the
-    package. That means this should be regarded as UNTESTED software,
-    which is provided for free WITHOUT ANY WARRANTY. Importantly, the
-    tools contained in this test release automate a number of tasks which
-    MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.  While we
-    welcome and appreciate anyone who takes the time to provide us with
-    feedback on this test release, we caution you that you should only
-    test this software if you feel confident you understand what it does
-    and have created a sandpit area in which you can safely undertake
-    testing. If you have any questions, please contact the authors
+    package. The tools contained in this development release automate a
+    number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL
+    MACHINE.  Therefore you should only trial this software if you feel
+    confident that you understand what it does and have created a sandpit
+    area in which you can safely undertake testing. If you have any
+    questions, please contact the authors
     (matthew.hamilton@orygen.org.au).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/ready4use/,
@@ -46,7 +43,7 @@ Imports:
     testthat,
     knitr,
     lifecycle,
-    ready4fun (>= 0.0.0.9245),
+    ready4fun (>= 0.0.0.9254),
     assertthat,
     data.table,
     dataverse,
@@ -73,12 +70,8 @@ Collate:
     'C3_ready4_dist.R'
     'C3_ready4_par_struc_mape.R'
     'C4_ready4_local.R'
-    'C4_ready4_local_proc.R'
-    'C4_ready4_local_raw.R'
-    'C4_ready4_script_data.R'
     'db_abbreviations_lup.R'
     'db_fn_type_lup_tb.R'
-    'db_prototype_lup.R'
     'fn_add.R'
     'fn_assert.R'
     'fn_get.R'
@@ -87,9 +80,6 @@ Collate:
     'fn_transform.R'
     'fn_update.R'
     'fn_write.R'
-    'gnrc_crs_nbr_vec.R'
-    'gnrc_merge_with_chr_vec.R'
-    'gnrc_save_type.R'
     'grp_generics.R'
     'imp_mthds.R'
     'imp_pipe.R'

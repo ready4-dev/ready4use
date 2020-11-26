@@ -30,3 +30,4 @@
 ^data-raw/prototype_lup\.csv$
 ^initial_setup\.R$
 ^data-raw/TEST\.R$
+^data-raw/fixes\.txt$

@@ -13,8 +13,8 @@ ready4fun::write_fn_type_dirs()
 # 4. Set-up package structure
 ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For Retrieving and Managing Data In Projects Developed With The Ready4 Suite",
                             pkg_desc_1L_chr = "ready4use provides a set of classes and methods for general data management tasks throughout the ready4 suite of tools for mental health data synthesis and modelling projects.
-  This development version of the ready4use package has been made available as part of the process of testing and documenting the package. That means this should be regarded as UNTESTED software, which is provided for free WITHOUT ANY WARRANTY. Importantly, the tools contained in this test release automate a number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.
-  While we welcome and appreciate anyone who takes the time to provide us with feedback on this test release, we caution you that you should only test this software if you feel confident you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
+  This development version of the ready4use package has been made available as part of the process of testing and documenting the package. The tools contained in this development release automate a number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.
+  Therefore you should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                             authors_prsns = c(utils::person(
                               given = "Matthew",family = "Hamilton", email =
                                 "matthew.hamilton@orygen.org.au",role = c("aut",
@@ -148,6 +148,7 @@ pkg_dss_tb <- fns_dmt_tb %>%
 #                                      parent_dv_dir_1L_chr = "../../../../Data/Dataverse",
 #                                      wait_time_in_secs_int = 5L)
 ## Note files to be rewritten cannot be open in RStudio.
+usethis::use_build_ignore("initial_setup.R")
 ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
                                 dev_pkgs_chr = c("ready4fun","ready4class"),
@@ -156,6 +157,5 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 #developer_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138_dev.pdf")
 #pkgdown::build_site()
 #
-usethis::use_build_ignore("initial_setup.R")
 # 12. Add vignette
 
