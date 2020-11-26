@@ -4,7 +4,6 @@
 #' @include C4_ready4_local.R
 #' @slot save_type character
 #' @slot merge_with_chr_vec character
-#' @exportClass ready4_local_raw
 ready4_local_raw <- methods::setClass("ready4_local_raw",
 contains = "ready4_local",
 slots = c(save_type = "character"),

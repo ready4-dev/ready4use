@@ -5,7 +5,6 @@
 #' @slot crs_nbr_vec numeric
 #' @slot save_type character
 #' @slot merge_with_chr_vec character
-#' @exportClass ready4_script_data
 ready4_script_data <- methods::setClass("ready4_script_data",
 contains = "ready4_local_proc",
 slots = c(crs_nbr_vec = "numeric"),
