@@ -7,3 +7,9 @@ ready4_local <- methods::setClass("ready4_local",
 slots = c(merge_with_chr_vec = "character"),
 prototype =  list(merge_with_chr_vec = NA_character_))
 
+
+methods::setValidity(methods::className("ready4_local",".GlobalEnv"),
+function(object){
+msg <- NULL
+if (is.null(msg)) TRUE else msg
+})
