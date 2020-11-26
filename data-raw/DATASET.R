@@ -57,7 +57,6 @@ classes_to_make_tb <- dplyr::bind_rows(s3_classes_to_make_tb, # Bug: Need to del
 utils::data("abbreviations_lup",package = "ready4class")
 utils::data("fn_type_lup_tb",package = "ready4class")
 utils::data("prototype_lup",package = "ready4class")
-
 pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","src",
                                              paste0(name_pfx_1L_chr,classes_to_make_tb$name_stub_chr)),
                           long_name_chr = c("dataverse","local","process","source",
@@ -69,8 +68,6 @@ pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","sr
 utils::data("abbreviations_lup")
 #
 # 8. Create function types look-up table and save it as a package dataset
-
-
 pkg_dss_tb <- fn_type_lup_tb %>%
   ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
                                                                                   fn_type_lup_tb = fn_type_lup_tb),
@@ -92,7 +89,6 @@ pkg_dss_tb <- fn_type_lup_tb %>%
                                     pkg_dss_tb = pkg_dss_tb)
 utils::data("fn_type_lup_tb")
 ##
-
 ## 9. WRITE and document new classes with the metadata contained in the merged object.
 pkg_dss_tb <- classes_to_make_tb %>%
   ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
@@ -103,7 +99,7 @@ pkg_dss_tb <- classes_to_make_tb %>%
                                           init_class_pt_lup = prototype_lup) %>%
 ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
-                            desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
+                            desc_1L_chr = "Metadata on classes used in ready4 suite",
                             pkg_dss_tb = pkg_dss_tb)
 #
 # 10. Create a table of all functions to document
