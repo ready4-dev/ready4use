@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools For Retrieving and Managing
     Data In Projects Developed With The Ready4 Suite
-Version: 0.0.0.9091
+Version: 0.0.0.9092
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -43,7 +43,7 @@ Imports:
     testthat,
     knitr,
     lifecycle,
-    ready4fun (>= 0.0.0.9254),
+    ready4fun (>= 0.0.0.9256),
     assertthat,
     data.table,
     dataverse,

@@ -6,7 +6,6 @@
 #' @export 
 #' @importFrom purrr map
 #' @importFrom stringr str_split str_sub
-#' @keywords internal
 transform_csv_col_to_ls_col <- function (csv_col) 
 {
     ls_col_ls <- purrr::map(csv_col, ~ifelse(is.na(.x), .x, ifelse(startsWith(.x, 
