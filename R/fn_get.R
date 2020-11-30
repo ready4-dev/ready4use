@@ -14,7 +14,6 @@
 #' @rdname get_file_from_dv
 #' @export 
 #' @importFrom rlang exec
-#' @keywords internal
 get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", save_dir_path_1L_chr = "", 
@@ -75,7 +74,6 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
 #' @rdname get_valid_path_chr
 #' @export 
 
-#' @keywords internal
 get_valid_path_chr <- function (x) 
 {
     assert_file_exists(x)
