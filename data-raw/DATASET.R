@@ -116,7 +116,7 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
 pkg_dss_tb <- fns_dmt_tb %>%
   write_and_doc_ds(overwrite_1L_lgl = T,
                    db_1L_chr = "fns_dmt_tb",
-                   title_1L_chr = "ready4fun function documentation table",
+                   title_1L_chr = "ready4use function documentation table",
                    desc_1L_chr = "A table with the summary information on functions included in the ready4use package.",
                    format_1L_chr = "A tibble",
                    url_1L_chr = "https://ready4-dev.github.io/ready4/",

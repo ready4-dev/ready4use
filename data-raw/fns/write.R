@@ -1,5 +1,6 @@
 write_dv_ds_fls <- function(files_tb,
                             fl_ids_int,
+                            ds_url_1L_chr,
                             local_dv_dir_1L_chr,
                             key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
                             server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
@@ -8,6 +9,7 @@ write_dv_ds_fls <- function(files_tb,
                 if(!(ds_ls$versionState=="DRAFT" & files_tb$file_type_chr[.x]==".zip")){
                   write_dv_fl_to_loc(ds_ui_1L_chr= ds_url_1L_chr,
                                      fl_nm_1L_chr = files_tb$file_chr[.x],
+                                     fl_id_1L_int = fl_ids_int[.x],
                                      repo_fl_fmt_1L_chr = files_tb$ds_file_ext_chr[.x],
                                      key_1L_chr = key_1L_chr,
                                      server_1L_chr = server_1L_chr,
@@ -39,15 +41,21 @@ write_dv_ds <- function(ds_meta_ls,
                               server_1L_chr = server_1L_chr)
   return(ds_ls)
 }
-write_dv_fl_to_loc <- function(ds_ui_1L_chr,
-                               fl_nm_1L_chr,
+write_dv_fl_to_loc <- function(ds_ui_1L_chr = NULL,
+                               fl_nm_1L_chr = NA_character_,
+                               fl_id_1L_int = NA_integer_,
                                repo_fl_fmt_1L_chr,
                                key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
                                server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
                                save_type_1L_chr = "original",
                                dest_path_1L_chr){
-  writeBin(dataverse::get_file(paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
-                               ds_ui_1L_chr,
+  if(is.na(fl_id_1L_int)){
+    ds_ui_1L_chr <- NULL
+  }
+  writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int),
+                                            paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
+                                            fl_id_1L_int),
+                               dataset = ds_ui_1L_chr,
                                format = save_type_1L_chr,
                                key = key_1L_chr,
                                server = server_1L_chr),
@@ -57,6 +65,7 @@ write_fls_to_dv_ds <- function(dss_tb,
                                dv_nm_1L_chr,
                                ds_url_1L_chr,
                                wait_time_in_secs_int = 5L,
+                               make_local_copy_1L_lgl = F,
                                #dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
                                parent_dv_dir_1L_chr,
                                paths_to_dirs_chr,
@@ -85,10 +94,13 @@ write_fls_to_dv_ds <- function(dss_tb,
                       server_1L_chr = server_1L_chr)
     }
     )
-  write_dv_ds_fls(files_tb,
-                  fl_ids_int = fl_ids_int,
-                  local_dv_dir_1L_chr = local_dv_dir_1L_chr)
   ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+  if(make_local_copy_1L_lgl | ds_ls$versionState == "DRAFT"){
+    write_dv_ds_fls(files_tb,
+                    fl_ids_int = fl_ids_int,
+                    ds_url_1L_chr = ds_url_1L_chr,
+                    local_dv_dir_1L_chr = local_dv_dir_1L_chr)
+  }
   return(ds_ls)
 }
 write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,

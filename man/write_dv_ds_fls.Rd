@@ -7,6 +7,7 @@
 write_dv_ds_fls(
   files_tb,
   fl_ids_int,
+  ds_url_1L_chr,
   local_dv_dir_1L_chr,
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
   server_1L_chr = Sys.getenv("DATAVERSE_SERVER")
@@ -17,6 +18,8 @@ write_dv_ds_fls(
 
 \item{fl_ids_int}{File ids (an integer vector)}
 
+\item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
+
 \item{local_dv_dir_1L_chr}{Local dataverse directory (a character vector of length one)}
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
@@ -26,4 +29,3 @@ write_dv_ds_fls(
 \description{
 write_dv_ds_fls() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse dataset files. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 }
-\keyword{internal}

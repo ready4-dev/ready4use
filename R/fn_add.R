@@ -10,7 +10,6 @@
 #' @importFrom dataverse get_dataverse dataverse_contents get_dataset update_dataset
 #' @importFrom purrr map_chr pluck discard map_lgl
 #' @importFrom utils getFromNamespace
-#' @keywords internal
 add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -79,7 +78,6 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
 #' @rdname add_dv_meta_to_imp_lup
 #' @export 
 #' @importFrom dplyr mutate
-#' @keywords internal
 add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, save_type_1L_chr) 
 {
     assert_single_row_tb(imp_lup)
@@ -97,30 +95,46 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @return File ids (an integer vector)
 #' @rdname add_files_to_dv
 #' @export 
-#' @importFrom purrr pmap_int
-#' @importFrom dataverse get_dataset delete_file add_dataset_file
+#' @importFrom purrr map2_chr pmap_int
+#' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom tibble as_tibble
-#' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr, server_1L_chr) 
 {
+    nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName, 
+        ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
     fl_ids_int <- purrr::pmap_int(files_tb, ~{
         ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
         is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
         path_1L_chr <- paste0(data_dir_rt_1L_chr, "/", ..1, "/", 
             ..2, ..3)
         file_nm_1L_chr <- paste0(..2, ..3)
-        if (is_draft_1L_lgl) {
-            if (file_nm_1L_chr %in% ds_ls$files$originalFileName) {
-                ready4fun::get_from_lup_obj(ds_ls$files[, names(ds_ls$files) %>% 
-                  unique()] %>% tibble::as_tibble(), match_var_nm_1L_chr = "originalFileName", 
-                  match_value_xx = file_nm_1L_chr, target_var_nm_1L_chr = "id", 
-                  evaluate_lgl = F) %>% dataverse::delete_file()
+        if (file_nm_1L_chr %in% nms_chr) {
+            id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[, 
+                names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(), 
+                match_var_nm_1L_chr = ifelse(file_nm_1L_chr %in% 
+                  ds_ls$files$originalFileName, "originalFileName", 
+                  "filename"), match_value_xx = file_nm_1L_chr, 
+                target_var_nm_1L_chr = "id", evaluate_lgl = F)
+            if (is_draft_1L_lgl) {
+                id_1L_chr %>% dataverse::delete_file()
+                id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr, 
+                  dataset = ds_url_1L_chr, description = ..4, 
+                  key = key_1L_chr, server = server_1L_chr)
             }
-            dataverse::add_dataset_file(file = path_1L_chr, dataset = ds_url_1L_chr, 
-                description = ..4, key = key_1L_chr, server = server_1L_chr)
+            else {
+                dataverse::update_dataset_file(file = path_1L_chr, 
+                  dataset = ds_url_1L_chr, id = id_1L_chr, force = T, 
+                  description = ..4, key = key_1L_chr, server = server_1L_chr)
+            }
         }
+        else {
+            id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr, 
+                dataset = ds_url_1L_chr, description = ..4, key = key_1L_chr, 
+                server = server_1L_chr)
+        }
+        id_1L_chr
     })
     return(fl_ids_int)
 }
