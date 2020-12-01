@@ -10,7 +10,6 @@
 #' @importFrom dataverse get_dataverse dataverse_contents get_dataset update_dataset
 #' @importFrom purrr map_chr pluck discard map_lgl
 #' @importFrom utils getFromNamespace
-#' @keywords internal
 add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -79,7 +78,6 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
 #' @rdname add_dv_meta_to_imp_lup
 #' @export 
 #' @importFrom dplyr mutate
-#' @keywords internal
 add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, save_type_1L_chr) 
 {
     assert_single_row_tb(imp_lup)
@@ -99,9 +97,6 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @export 
 #' @importFrom purrr map2_chr pmap_int
 #' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
-#' @importFrom ready4fun get_from_lup_obj
-#' @importFrom tibble as_tibble
-#' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr, server_1L_chr) 
 {
@@ -114,12 +109,8 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
             ..2, ..3)
         file_nm_1L_chr <- paste0(..2, ..3)
         if (file_nm_1L_chr %in% nms_chr) {
-            id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[, 
-                names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(), 
-                match_var_nm_1L_chr = ifelse(file_nm_1L_chr %in% 
-                  ds_ls$files$originalFileName, "originalFileName", 
-                  "filename"), match_value_xx = file_nm_1L_chr, 
-                target_var_nm_1L_chr = "id", evaluate_lgl = F)
+            id_1L_chr <- get_fl_id_from_dv_ls(ds_ls, fl_nm_1L_chr = fl_nm_1L_chr, 
+                nms_chr = nms_chr)
             if (is_draft_1L_lgl) {
                 id_1L_chr %>% dataverse::delete_file()
                 id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr, 

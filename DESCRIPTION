@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools For Retrieving and Managing
     Data In Projects Developed With The Ready4 Suite
-Version: 0.0.0.9094
+Version: 0.0.0.9095
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",

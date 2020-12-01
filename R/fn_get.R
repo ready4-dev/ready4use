@@ -14,7 +14,6 @@
 #' @rdname get_file_from_dv
 #' @export 
 #' @importFrom rlang exec
-#' @keywords internal
 get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", save_dir_path_1L_chr = "", 
@@ -32,6 +31,36 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
         unlink(destination_path_chr)
     file_xxx
     return(file_xxx)
+}
+#' Get file id from dataverse
+#' @description get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file id from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Id (a character vector of length one).
+#' @param ds_ls Dataset (a list)
+#' @param fl_nm_1L_chr File name (a character vector of length one)
+#' @param nms_chr Names (a character vector), Default: 'NA'
+#' @return Id (a character vector of length one)
+#' @rdname get_fl_id_from_dv_ls
+#' @export 
+#' @importFrom purrr map2_chr
+#' @importFrom ready4fun get_from_lup_obj
+#' @importFrom tibble as_tibble
+get_fl_id_from_dv_ls <- function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_) 
+{
+    if (is.na(nms_chr)) {
+        nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName, 
+            ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
+    }
+    if (file_nm_1L_chr %in% nms_chr) {
+        id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[, 
+            names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(), 
+            match_var_nm_1L_chr = ifelse(file_nm_1L_chr %in% 
+                ds_ls$files$originalFileName, "originalFileName", 
+                "filename"), match_value_xx = file_nm_1L_chr, 
+            target_var_nm_1L_chr = "id", evaluate_lgl = F)
+    }
+    else {
+        id_1L_chr <- NA_character_
+    }
+    return(id_1L_chr)
 }
 #' Get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
@@ -75,7 +104,6 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
 #' @rdname get_valid_path_chr
 #' @export 
 
-#' @keywords internal
 get_valid_path_chr <- function (x) 
 {
     assert_file_exists(x)

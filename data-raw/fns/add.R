@@ -82,6 +82,7 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                   data_repo_save_type = save_type_1L_chr)
   return(imp_lup)
 }
+
 add_files_to_dv <- function(files_tb,
                             data_dir_rt_1L_chr = ".",
                             ds_url_1L_chr,
@@ -97,13 +98,7 @@ add_files_to_dv <- function(files_tb,
                                   path_1L_chr <- paste0(data_dir_rt_1L_chr,"/",..1,"/",..2,..3)
                                   file_nm_1L_chr <- paste0(..2,..3)
                                   if(file_nm_1L_chr %in% nms_chr){
-                                    id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[,names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(),
-                                                                             match_var_nm_1L_chr = ifelse(file_nm_1L_chr %in% ds_ls$files$originalFileName,
-                                                                                                          "originalFileName",
-                                                                                                          "filename"),
-                                                                             match_value_xx = file_nm_1L_chr,
-                                                                             target_var_nm_1L_chr = "id",
-                                                                             evaluate_lgl = F)
+                                    id_1L_chr <- get_fl_id_from_dv_ls(ds_ls,fl_nm_1L_chr = fl_nm_1L_chr, nms_chr = nms_chr)
                                     if(is_draft_1L_lgl){
                                       id_1L_chr %>%
                                         dataverse::delete_file()
