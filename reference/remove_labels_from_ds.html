@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read import from comma separated variables file — read_import_from_csv • ready4use</title>
+<title>Remove labels from dataset — remove_labels_from_ds • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Read import from comma separated variables file — read_import_from_csv" />
-<meta property="og:description" content="read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. Function argument file_ref_chr specifies the path to object. The function returns Import (a ready4 S3)." />
+<meta property="og:title" content="Remove labels from dataset — remove_labels_from_ds" />
+<meta property="og:description" content="remove_labels_from_ds() is a Remove function that edits an object, removing a specified element or elements. Specifically, this function implements an algorithm to remove labels from dataset. Function argument ds_tb specifies the object to be updated. The function returns Unlabelled dataset (a tibble)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,33 +119,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read import from comma separated variables file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_read.R'><code>R/fn_read.R</code></a></small>
-    <div class="hidden name"><code>read_import_from_csv.Rd</code></div>
+    <h1>Remove labels from dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_remove.R'><code>R/fn_remove.R</code></a></small>
+    <div class="hidden name"><code>remove_labels_from_ds.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. Function argument file_ref_chr specifies the path to object. The function returns Import (a ready4 S3).</p>
+    <p>remove_labels_from_ds() is a Remove function that edits an object, removing a specified element or elements. Specifically, this function implements an algorithm to remove labels from dataset. Function argument ds_tb specifies the object to be updated. The function returns Unlabelled dataset (a tibble).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_import_from_csv</span><span class='op'>(</span><span class='va'>file_ref_chr</span>, is_url <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>remove_labels_from_ds</span><span class='op'>(</span><span class='va'>ds_tb</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file_ref_chr</th>
-      <td><p>File reference (a character vector)</p></td>
-    </tr>
-    <tr>
-      <th>is_url</th>
-      <td><p>PARAM_DESCRIPTION, Default: F</p></td>
+      <th>ds_tb</th>
+      <td><p>Dataset (a tibble)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Import (a ready4 S3)</p>
+    <p>Unlabelled dataset (a tibble)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
