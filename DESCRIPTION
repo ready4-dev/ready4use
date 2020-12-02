@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools For Retrieving and Managing
     Data In Projects Developed With The Ready4 Suite
-Version: 0.0.0.9095
+Version: 0.0.0.9096
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -48,6 +48,7 @@ Imports:
     data.table,
     dataverse,
     dplyr,
+    Hmisc,
     magrittr,
     methods,
     purrr,
@@ -81,6 +82,7 @@ Collate:
     'fn_get.R'
     'fn_make.R'
     'fn_read.R'
+    'fn_remove.R'
     'fn_transform.R'
     'fn_update.R'
     'fn_write.R'

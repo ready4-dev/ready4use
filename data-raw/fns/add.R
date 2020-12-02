@@ -129,3 +129,23 @@ add_files_to_dv <- function(files_tb,
   )
   return(fl_ids_int)
 }
+add_labels_from_dictionary <- function(ds_tb,
+                                       dictionary_tb){
+  data_dictionary_tb <- dictionary_tb %>%
+    dplyr::filter(var_nm_chr %in% names(ds_tb)) %>%
+    dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ var_nm_chr,
+                                                  TRUE ~ var_desc_chr))
+
+  if(nrow(data_dictionary_tb) > 0){
+    labelled_ds_tb <- seq_len(nrow(data_dictionary_tb)) %>%
+      purrr::reduce(.init = ds_tb,
+                    ~ {
+                      Hmisc::label(.x[[data_dictionary_tb$var_nm_chr[.y]]]) <- data_dictionary_tb$var_desc_chr[.y]
+                      .x
+                    }
+      )
+  }else{
+    labelled_ds_tb <- ds_tb
+  }
+  return(labelled_ds_tb)
+}

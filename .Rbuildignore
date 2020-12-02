@@ -31,3 +31,4 @@
 ^initial_setup\.R$
 ^data-raw/TEST\.R$
 ^data-raw/fixes\.txt$
+^data-raw/fns/remove\.R$

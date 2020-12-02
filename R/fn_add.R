@@ -10,7 +10,6 @@
 #' @importFrom dataverse get_dataverse dataverse_contents get_dataset update_dataset
 #' @importFrom purrr map_chr pluck discard map_lgl
 #' @importFrom utils getFromNamespace
-#' @keywords internal
 add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -79,7 +78,6 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
 #' @rdname add_dv_meta_to_imp_lup
 #' @export 
 #' @importFrom dplyr mutate
-#' @keywords internal
 add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, save_type_1L_chr) 
 {
     assert_single_row_tb(imp_lup)
@@ -99,7 +97,6 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @export 
 #' @importFrom purrr map2_chr pmap_int
 #' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
-#' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr, server_1L_chr) 
 {
@@ -134,4 +131,31 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
         id_1L_chr
     })
     return(fl_ids_int)
+}
+#' Add labels from dictionary
+#' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
+#' @param ds_tb Dataset (a tibble)
+#' @param dictionary_tb Dictionary (a tibble)
+#' @return Labelled dataset (a tibble)
+#' @rdname add_labels_from_dictionary
+#' @export 
+#' @importFrom dplyr filter mutate case_when
+#' @importFrom purrr reduce
+#' @importFrom Hmisc label
+add_labels_from_dictionary <- function (ds_tb, dictionary_tb) 
+{
+    data_dictionary_tb <- dictionary_tb %>% dplyr::filter(var_nm_chr %in% 
+        names(ds_tb)) %>% dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ 
+        var_nm_chr, TRUE ~ var_desc_chr))
+    if (nrow(data_dictionary_tb) > 0) {
+        labelled_ds_tb <- seq_len(nrow(data_dictionary_tb)) %>% 
+            purrr::reduce(.init = ds_tb, ~{
+                Hmisc::label(.x[[data_dictionary_tb$var_nm_chr[.y]]]) <- data_dictionary_tb$var_desc_chr[.y]
+                .x
+            })
+    }
+    else {
+        labelled_ds_tb <- ds_tb
+    }
+    return(labelled_ds_tb)
 }
