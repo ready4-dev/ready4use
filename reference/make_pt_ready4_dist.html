@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. — ready4_dv_import_lup • ready4use</title>
+<title>Make prototype ready4 S3 class for list object that summarises the parameters of each distribution — make_pt_ready4_dist • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. — ready4_dv_import_lup" />
-<meta property="og:description" content="Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse." />
+<meta property="og:title" content="Make prototype ready4 S3 class for list object that summarises the parameters of each distribution — make_pt_ready4_dist" />
+<meta property="og:description" content="Create a new prototype for the" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,32 +119,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/C3_ready4_dv_import_lup.R'><code>R/C3_ready4_dv_import_lup.R</code></a></small>
-    <div class="hidden name"><code>ready4_dv_import_lup.Rd</code></div>
+    <h1>Make prototype ready4 S3 class for list object that summarises the parameters of each distribution</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/C3_ready4_dist.R'><code>R/C3_ready4_dist.R</code></a></small>
+    <div class="hidden name"><code>make_pt_ready4_dist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.</p>
+    <p>Create a new prototype for the</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ready4_dv_import_lup</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='make_pt_ready4_dv_import_lup.html'>make_pt_ready4_dv_import_lup</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_pt_ready4_dist</span><span class='op'>(</span>
+  distribution <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>,
+  dist_param_1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>numeric</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>,
+  dist_param_2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>numeric</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>,
+  dist_param_3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>numeric</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>,
+  dist_param_4 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>numeric</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>,
+  transformation <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_pt_ready4_dv_import_lup()</p></td>
+      <th>distribution</th>
+      <td><p>PARAM_DESCRIPTION, Default: character(0)</p></td>
+    </tr>
+    <tr>
+      <th>dist_param_1</th>
+      <td><p>PARAM_DESCRIPTION, Default: numeric(0)</p></td>
+    </tr>
+    <tr>
+      <th>dist_param_2</th>
+      <td><p>PARAM_DESCRIPTION, Default: numeric(0)</p></td>
+    </tr>
+    <tr>
+      <th>dist_param_3</th>
+      <td><p>PARAM_DESCRIPTION, Default: numeric(0)</p></td>
+    </tr>
+    <tr>
+      <th>dist_param_4</th>
+      <td><p>PARAM_DESCRIPTION, Default: numeric(0)</p></td>
+    </tr>
+    <tr>
+      <th>transformation</th>
+      <td><p>PARAM_DESCRIPTION, Default: character(0)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A validated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.</p>
+    <p>A prototype for</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.</p>
+    <p>ready4 S3 class for list object that summarises the parameters of each distribution</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
