@@ -7,7 +7,7 @@ write_dv_ds_fls <- function(files_tb,
   purrr::walk(1:length(fl_ids_int),
               ~{
                 if(!(ds_ls$versionState=="DRAFT" | files_tb$file_type_chr[.x]==".zip")){
-                  write_dv_fl_to_loc(ds_ui_1L_chr= ds_url_1L_chr,
+                  write_dv_fl_to_loc(ds_ui_1L_chr = ds_url_1L_chr,
                                      fl_nm_1L_chr = files_tb$file_chr[.x],
                                      fl_id_1L_int = fl_ids_int[.x],
                                      repo_fl_fmt_1L_chr = files_tb$ds_file_ext_chr[.x],
@@ -34,6 +34,7 @@ write_dv_ds <- function(ds_meta_ls,
                                      ds_meta_ls = ds_meta_ls)
   ds_ls <- write_fls_to_dv_ds(dss_tb = dss_tb,
                               dv_nm_1L_chr = dv_nm_1L_chr,
+                              ds_url_1L_chr = ds_url_1L_chr, #
                               parent_dv_dir_1L_chr = parent_dv_dir_1L_chr,
                               paths_to_dirs_chr = paths_to_dirs_chr,
                               inc_fl_types_chr = inc_fl_types_chr,
