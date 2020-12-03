@@ -15,3 +15,4 @@ Unlabelled dataset (a tibble)
 \description{
 remove_labels_from_ds() is a Remove function that edits an object, removing a specified element or elements. Specifically, this function implements an algorithm to remove labels from dataset. Function argument ds_tb specifies the object to be updated. The function returns Unlabelled dataset (a tibble).
 }
+\keyword{internal}
