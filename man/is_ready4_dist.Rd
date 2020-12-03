@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4_dist.R
 \name{is_ready4_dist}
 \alias{is_ready4_dist}
-\title{Is Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\title{Is ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 is_ready4_dist(x)
 }
@@ -10,11 +10,11 @@ is_ready4_dist(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
-Check whether an object is a valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+ready4 S3 class for list object that summarises the parameters of each distribution
 }

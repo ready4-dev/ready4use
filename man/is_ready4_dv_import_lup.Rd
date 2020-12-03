@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4_dv_import_lup.R
 \name{is_ready4_dv_import_lup}
 \alias{is_ready4_dv_import_lup}
-\title{Is Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{Is ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 is_ready4_dv_import_lup(x)
 }
@@ -10,11 +10,11 @@ is_ready4_dv_import_lup(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Check whether an object is a valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
-Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }

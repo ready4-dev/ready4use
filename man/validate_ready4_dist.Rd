@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_ready4_dist.R
 \name{validate_ready4_dist}
 \alias{validate_ready4_dist}
-\title{Validate Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\title{Validate ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 validate_ready4_dist(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\item{x}{An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution}
 }
 \value{
-A prototpe for Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+A prototpe for ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
-Validate an instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+Validate an instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+ready4 S3 class for list object that summarises the parameters of each distribution
 }

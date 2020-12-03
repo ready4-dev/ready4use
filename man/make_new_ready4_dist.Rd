@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_ready4_dist.R
 \name{make_new_ready4_dist}
 \alias{make_new_ready4_dist}
-\title{Make new Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\title{Make new ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 make_new_ready4_dist(x)
 }
 \arguments{
-\item{x}{A prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\item{x}{A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution}
 }
 \value{
-An unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
-Create a new unvalidated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+Create a new unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+ready4 S3 class for list object that summarises the parameters of each distribution
 }

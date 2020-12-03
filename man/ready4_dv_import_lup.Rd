@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_ready4_dv_import_lup.R
 \name{ready4_dv_import_lup}
 \alias{ready4_dv_import_lup}
-\title{Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
-ready4_dv_import_lup(x = make_prototype_ready4_dv_import_lup())
+ready4_dv_import_lup(x = make_pt_ready4_dv_import_lup())
 }
 \arguments{
-\item{x}{A prototype for the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_prototype_ready4_dv_import_lup()}
+\item{x}{A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_pt_ready4_dv_import_lup()}
 }
 \value{
-A validated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+A validated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Create a new valid instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
-Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }

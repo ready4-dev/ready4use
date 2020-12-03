@@ -17,7 +17,7 @@ get_import_type_ls.ready4_all_import_lup(
 \S4method{get_import_type_ls}{ready4_all_import_lup}(x, inc_script_lgl = T, forced_choice_chr = NA_character_)
 }
 \arguments{
-\item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
 \item{...}{Additional arguments}
 
@@ -28,5 +28,5 @@ get_import_type_ls.ready4_all_import_lup(
 \description{
 get_import_type_ls() is a Get Import Type List generic that retrieves data about the type of import to be processed.
 
-get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
+get_import_type_ls.ready4_all_import_lup() is a Get Import Type List method that retrieves data about the type of import to be processed. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
 }

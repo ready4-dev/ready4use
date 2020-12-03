@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools For Retrieving and Managing
     Data In Projects Developed With The Ready4 Suite
-Version: 0.0.0.9097
+Version: 0.0.0.9098
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -65,38 +65,5 @@ VignetteBuilder: knitr
 RdMacros: lifecycle
 Depends: 
     R (>= 2.10)
-Collate: 
-    'C3_ready4_dv_import_lup.R'
-    'C3_ready4_all_import_lup.R'
-    'C3_ready4_dist.R'
-    'C3_ready4_par_struc_mape.R'
-    'C4_ready4_local.R'
-    'C4_ready4_local_proc.R'
-    'C4_ready4_local_raw.R'
-    'C4_ready4_script_data.R'
-    'db_abbreviations_lup.R'
-    'db_fn_type_lup_tb.R'
-    'db_prototype_lup.R'
-    'fn_add.R'
-    'fn_assert.R'
-    'fn_get.R'
-    'fn_make.R'
-    'fn_read.R'
-    'fn_remove.R'
-    'fn_transform.R'
-    'fn_update.R'
-    'fn_write.R'
-    'gnrc_crs_nbr_vec.R'
-    'gnrc_merge_with_chr_vec.R'
-    'gnrc_save_type.R'
-    'grp_generics.R'
-    'imp_mthds.R'
-    'imp_pipe.R'
-    'mthd_get_data.R'
-    'mthd_get_import_type_ls.R'
-    'mthd_get_read_fn.R'
-    'mthd_make_import_xx.R'
-    'mthd_update_src_loc_to_url.R'
-    'pkg_ready4use.R'
 Remotes: 
     ready4-dev/ready4fun

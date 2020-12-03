@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_ready4_dist.R
 \name{ready4_dist}
 \alias{ready4_dist}
-\title{Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution}
+\title{ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
-ready4_dist(x = make_prototype_ready4_dist())
+ready4_dist(x = make_pt_ready4_dist())
 }
 \arguments{
-\item{x}{A prototype for the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution, Default: make_prototype_ready4_dist()}
+\item{x}{A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution, Default: make_pt_ready4_dist()}
 }
 \value{
-A validated instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+A validated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
-Create a new valid instance of the Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+Create a new valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution
+ready4 S3 class for list object that summarises the parameters of each distribution
 }

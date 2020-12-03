@@ -13,7 +13,7 @@ update_src_loc_to_url.ready4_all_import_lup(x, local_to_url_vec, urls_vec)
 \S4method{update_src_loc_to_url}{ready4_all_import_lup}(x, local_to_url_vec, urls_vec)
 }
 \arguments{
-\item{x}{An instance of Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
 \item{local_to_url_vec}{PARAM_DESCRIPTION}
 
@@ -24,5 +24,5 @@ update_src_loc_to_url.ready4_all_import_lup(x, local_to_url_vec, urls_vec)
 \description{
 update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URL
 
-update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url method that updates data from a local file reference to a URL This method is implemented for the Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
+update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url method that updates data from a local file reference to a URL This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.
 }

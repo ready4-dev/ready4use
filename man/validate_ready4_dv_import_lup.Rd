@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_ready4_dv_import_lup.R
 \name{validate_ready4_dv_import_lup}
 \alias{validate_ready4_dv_import_lup}
-\title{Validate Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{Validate ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 validate_ready4_dv_import_lup(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\item{x}{An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 }
 \value{
-A prototpe for Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+A prototpe for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Validate an instance of the Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+Validate an instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
-Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.
+ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }

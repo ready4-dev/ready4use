@@ -17,4 +17,3 @@ Import (a ready4 S3)
 \description{
 read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. Function argument file_ref_chr specifies the path to object. The function returns Import (a ready4 S3).
 }
-\keyword{internal}
