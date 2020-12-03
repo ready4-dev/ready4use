@@ -5,6 +5,7 @@
 #' @rdname assert_dir_exists
 #' @export 
 #' @importFrom testit assert
+#' @keywords internal
 assert_dir_exists <- function (x) 
 {
     testit::assert("Not a valid path to an existing directory.", 
@@ -17,6 +18,7 @@ assert_dir_exists <- function (x)
 #' @rdname assert_file_exists
 #' @export 
 #' @importFrom testit assert
+#' @keywords internal
 assert_file_exists <- function (x) 
 {
     testit::assert("Not a valid path to an existing file.", file.exists(x))
