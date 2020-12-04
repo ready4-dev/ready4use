@@ -12,6 +12,7 @@ reference:
   - ready4_dv_import_lup
   - ready4_all_import_lup
   - ready4_par_struc_mape
+  - ready4_dictionary
   - ready4_local
   - ready4_local_raw
   - ready4_local_proc
