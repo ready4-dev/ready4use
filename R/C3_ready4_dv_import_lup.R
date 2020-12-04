@@ -26,7 +26,7 @@ class(x))
 x
 }
 #' Make prototype ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @description Create a new prototype for the 
+#' @description Create a new prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param file_type PARAM_DESCRIPTION, Default: character(0)
 #' @param file_name PARAM_DESCRIPTION, Default: character(0)
 #' @param data_repo PARAM_DESCRIPTION, Default: character(0)
@@ -34,11 +34,12 @@ x
 #' @param data_repo_db_ui PARAM_DESCRIPTION, Default: character(0)
 #' @param data_repo_file_ext PARAM_DESCRIPTION, Default: character(0)
 #' @param data_repo_save_type PARAM_DESCRIPTION, Default: character(0)
-#' @return A prototype for 
+#' @return A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_pt_ready4_dv_import_lup
 #' @export 
-#' @importFrom purrr map_dbl
+#' @importFrom ready4class update_pt_fn_args_ls
+#' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4_dv_import_lup <- function(file_type = character(0),
 file_name = character(0),
@@ -47,50 +48,14 @@ data_repo_ui = character(0),
 data_repo_db_ui = character(0),
 data_repo_file_ext = character(0),
 data_repo_save_type = character(0)){ 
-arg_lgths_dbl <- list(file_type,
-file_name,
-data_repo,
-data_repo_ui,
-data_repo_db_ui,
-data_repo_file_ext,
-data_repo_save_type) %>% purrr::map_dbl(~length(.x))
-arg_max_lgth_1L_dbl <- max(arg_lgths_dbl)
-if(arg_max_lgth_1L_dbl >0){
-if(0 == arg_lgths_dbl[1] & arg_lgths_dbl[1] != arg_max_lgth_1L_dbl){
-file_type <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[2] & arg_lgths_dbl[2] != arg_max_lgth_1L_dbl){
-file_name <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[3] & arg_lgths_dbl[3] != arg_max_lgth_1L_dbl){
-data_repo <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[4] & arg_lgths_dbl[4] != arg_max_lgth_1L_dbl){
-data_repo_ui <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[5] & arg_lgths_dbl[5] != arg_max_lgth_1L_dbl){
-data_repo_db_ui <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[6] & arg_lgths_dbl[6] != arg_max_lgth_1L_dbl){
-data_repo_file_ext <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[7] & arg_lgths_dbl[7] != arg_max_lgth_1L_dbl){
-data_repo_save_type <- NA_character_
-}
-}
-tibble::tibble(file_type = file_type,
+args_ls <- list(file_type = file_type,
 file_name = file_name,
 data_repo = data_repo,
 data_repo_ui = data_repo_ui,
 data_repo_db_ui = data_repo_db_ui,
 data_repo_file_ext = data_repo_file_ext,
-data_repo_save_type = data_repo_save_type)
+data_repo_save_type = data_repo_save_type) %>% ready4class::update_pt_fn_args_ls()
+rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Validate an instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

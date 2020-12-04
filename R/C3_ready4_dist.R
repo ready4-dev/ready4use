@@ -25,62 +25,32 @@ class(x))
 x
 }
 #' Make prototype ready4 S3 class for list object that summarises the parameters of each distribution
-#' @description Create a new prototype for the 
+#' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param distribution PARAM_DESCRIPTION, Default: character(0)
 #' @param dist_param_1 PARAM_DESCRIPTION, Default: numeric(0)
 #' @param dist_param_2 PARAM_DESCRIPTION, Default: numeric(0)
 #' @param dist_param_3 PARAM_DESCRIPTION, Default: numeric(0)
 #' @param dist_param_4 PARAM_DESCRIPTION, Default: numeric(0)
 #' @param transformation PARAM_DESCRIPTION, Default: character(0)
-#' @return A prototype for 
+#' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
 #' @details ready4 S3 class for list object that summarises the parameters of each distribution
 #' @rdname make_pt_ready4_dist
 #' @export 
-#' @importFrom purrr map_dbl
+#' @importFrom ready4class update_pt_fn_args_ls
+#' @importFrom rlang exec
 make_pt_ready4_dist <- function(distribution = character(0),
 dist_param_1 = numeric(0),
 dist_param_2 = numeric(0),
 dist_param_3 = numeric(0),
 dist_param_4 = numeric(0),
 transformation = character(0)){ 
-arg_lgths_dbl <- list(distribution,
-dist_param_1,
-dist_param_2,
-dist_param_3,
-dist_param_4,
-transformation) %>% purrr::map_dbl(~length(.x))
-arg_max_lgth_1L_dbl <- max(arg_lgths_dbl)
-if(arg_max_lgth_1L_dbl >0){
-if(0 == arg_lgths_dbl[1] & arg_lgths_dbl[1] != arg_max_lgth_1L_dbl){
-distribution <- NA_character_
-}
-
-if(0 == arg_lgths_dbl[2] & arg_lgths_dbl[2] != arg_max_lgth_1L_dbl){
-dist_param_1 <- NA_real_
-}
-
-if(0 == arg_lgths_dbl[3] & arg_lgths_dbl[3] != arg_max_lgth_1L_dbl){
-dist_param_2 <- NA_real_
-}
-
-if(0 == arg_lgths_dbl[4] & arg_lgths_dbl[4] != arg_max_lgth_1L_dbl){
-dist_param_3 <- NA_real_
-}
-
-if(0 == arg_lgths_dbl[5] & arg_lgths_dbl[5] != arg_max_lgth_1L_dbl){
-dist_param_4 <- NA_real_
-}
-
-if(0 == arg_lgths_dbl[6] & arg_lgths_dbl[6] != arg_max_lgth_1L_dbl){
-transformation <- NA_character_
-}
-}
-list(distribution = distribution,
+args_ls <- list(distribution = distribution,
 dist_param_1 = dist_param_1,
 dist_param_2 = dist_param_2,
 dist_param_3 = dist_param_3,
 dist_param_4 = dist_param_4,
-transformation = transformation)
+transformation = transformation) %>% ready4class::update_pt_fn_args_ls()
+rlang::exec(list,!!!args_ls)
 }
 #' Validate ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Validate an instance of the ready4 S3 class for list object that summarises the parameters of each distribution

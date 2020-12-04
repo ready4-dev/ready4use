@@ -27,10 +27,10 @@ make_pt_ready4_dist(
 \item{transformation}{PARAM_DESCRIPTION, Default: character(0)}
 }
 \value{
-A prototype for
+A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
-Create a new prototype for the
+Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
 ready4 S3 class for list object that summarises the parameters of each distribution

@@ -1,6 +1,6 @@
 # ready4use <img src="man/figures/fav120.png" align="right" />
 
-## Standardised Developer Tools For Retrieving and Managing Data In Projects Developed With The Ready4 Suite
+## Standardised Developer Tools for Retrieving and Managing Data in Projects Developed with the Ready4 Suite
 
 <!-- badges: start -->
 [![R build status](https://github.com/ready4-dev/ready4use/workflows/R-CMD-check/badge.svg)](https://github.com/ready4-dev/ready4use/actions)

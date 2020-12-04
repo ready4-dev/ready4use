@@ -4,8 +4,8 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Standardised Developer Tools For Retrieving and Managing
-Data In Projects Developed With The Ready4 Suite}
+\title{ready4use: Standardised Developer Tools for Retrieving and Managing
+Data in Projects Developed with the Ready4 Suite}
 \description{
 ready4use provides a set of classes and
 methods for general data management tasks throughout the ready4 suite

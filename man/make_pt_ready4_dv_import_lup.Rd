@@ -30,10 +30,10 @@ make_pt_ready4_dv_import_lup(
 \item{data_repo_save_type}{PARAM_DESCRIPTION, Default: character(0)}
 }
 \value{
-A prototype for
+A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Create a new prototype for the
+Create a new prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
 ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
