@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing
     Data in Projects Developed with the Ready4 Suite
-Version: 0.0.0.9099
+Version: 0.0.0.9100
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -43,8 +43,8 @@ Imports:
     testthat,
     knitr,
     lifecycle,
-    ready4class (>= 0.0.0.9174),
-    ready4fun (>= 0.0.0.9259),
+    ready4class (>= 0.0.0.9176),
+    ready4fun (>= 0.0.0.9262),
     assertthat,
     data.table,
     dataverse,
@@ -77,7 +77,6 @@ Collate:
     'C4_ready4_local_raw.R'
     'C4_ready4_script_data.R'
     'db_abbreviations_lup.R'
-    'db_fn_type_lup_tb.R'
     'db_prototype_lup.R'
     'fn_add.R'
     'fn_assert.R'
@@ -89,9 +88,9 @@ Collate:
     'fn_update.R'
     'fn_write.R'
     'gnrc_crs_nbr_vec.R'
-    'gnrc_merge_with_chr_vec.R'
-    'gnrc_save_type.R'
     'grp_generics.R'
+    'gs_merge_with_chr_vec.R'
+    'gs_save_type.R'
     'imp_mthds.R'
     'imp_pipe.R'
     'mthd_get_data.R'

@@ -32,3 +32,4 @@
 ^data-raw/TEST\.R$
 ^data-raw/fixes\.txt$
 ^data-raw/fns/remove\.R$
+^data-raw/mthds/add_lups\.R$
