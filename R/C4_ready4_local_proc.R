@@ -6,11 +6,11 @@
 #' @slot merge_with_chr_vec character
 ready4_local_proc <- methods::setClass("ready4_local_proc",
 contains = "ready4_local",
-slots = c(save_type = "character"),
+slots = c(save_type = "character",merge_with_chr_vec = "character"),
 prototype =  list(save_type = "proc"))
 
 
-methods::setValidity(methods::className("ready4_local_proc",".GlobalEnv"),
+methods::setValidity(methods::className("ready4_local_proc"),
 function(object){
 msg <- NULL
 if (is.null(msg)) TRUE else msg

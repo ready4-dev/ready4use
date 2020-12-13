@@ -7,7 +7,7 @@ slots = c(merge_with_chr_vec = "character"),
 prototype =  list(merge_with_chr_vec = NA_character_))
 
 
-methods::setValidity(methods::className("ready4_local",".GlobalEnv"),
+methods::setValidity(methods::className("ready4_local"),
 function(object){
 msg <- NULL
 if (is.null(msg)) TRUE else msg

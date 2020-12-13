@@ -7,11 +7,11 @@
 #' @slot merge_with_chr_vec character
 ready4_script_data <- methods::setClass("ready4_script_data",
 contains = "ready4_local_proc",
-slots = c(crs_nbr_vec = "numeric"),
+slots = c(crs_nbr_vec = "numeric",save_type = "character",merge_with_chr_vec = "character"),
 prototype =  list(crs_nbr_vec = NA_real_))
 
 
-methods::setValidity(methods::className("ready4_script_data",".GlobalEnv"),
+methods::setValidity(methods::className("ready4_script_data"),
 function(object){
 msg <- NULL
 if (is.null(msg)) TRUE else msg
