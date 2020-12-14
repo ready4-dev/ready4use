@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing
     Data in Projects Developed with the Ready4 Suite
-Version: 0.0.0.9102
+Version: 0.0.0.9103
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -41,7 +41,26 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     testthat,
-    knitr
+    knitr,
+    ready4class (>= 0.0.0.9182),
+    ready4fun (>= 0.0.0.9265),
+    assertthat,
+    data.table,
+    dataverse,
+    dplyr,
+    Hmisc,
+    magrittr,
+    methods,
+    purrr,
+    readxl,
+    rlang,
+    stats,
+    stringi,
+    stringr,
+    testit,
+    tibble,
+    tidyr,
+    utils
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
@@ -59,9 +78,28 @@ Collate:
     'db_fn_type_lup_tb.R'
     'db_fns_dmt_tb.R'
     'db_prototype_lup.R'
+    'fn_add.R'
+    'fn_assert.R'
+    'fn_get.R'
+    'fn_make.R'
+    'fn_read.R'
+    'fn_remove.R'
+    'fn_transform.R'
+    'fn_update.R'
+    'fn_write.R'
     'gnrc_crs_nbr_vec.R'
+    'grp_generics.R'
     'gs_merge_with_chr_vec.R'
     'gs_save_type.R'
     'imp_mthds.R'
     'imp_pipe.R'
+    'mthd_bind_lups.R'
+    'mthd_get_data.R'
+    'mthd_get_import_type_ls.R'
+    'mthd_get_read_fn.R'
+    'mthd_make_import_xx.R'
+    'mthd_update_src_loc_to_url.R'
     'pkg_ready4use.R'
+Remotes: 
+    ready4-dev/ready4class,
+    ready4-dev/ready4fun
