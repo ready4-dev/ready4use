@@ -5,6 +5,7 @@ reference:
 - contents:
   - abbreviations_lup
   - fn_type_lup_tb
+  - fns_dmt_tb
   - prototype_lup
 - title: "Classes"
 - contents:
@@ -25,6 +26,7 @@ reference:
   - get_r3_from_dv_csv
 - title: "Generics"
 - contents:
+  - bind_lups
   - download_data
   - get_data
   - get_import_type_ls
@@ -37,6 +39,7 @@ reference:
   - update_this
 - title: "Methods"
 - contents:
+  - bind_lups.ready4_dictionary
   - get_data.ready4_dv_import_lup
   - get_import_type_ls.ready4_all_import_lup
   - get_read_fn.ready4_dv_import_lup

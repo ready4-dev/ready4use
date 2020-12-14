@@ -155,14 +155,15 @@ classes_to_make_tb <- dplyr::bind_rows(
 utils::data("abbreviations_lup",package = "ready4class")
 utils::data("fn_type_lup_tb",package = "ready4class")
 utils::data("prototype_lup",package = "ready4class")
-pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","proc","src",
+pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c("dv","loc","lup","proc","src",
                                              paste0(name_pfx_1L_chr,classes_to_make_tb$name_stub_chr)),
-                          long_name_chr = c("dataverse","local","process","source",
+                          long_name_chr = c("dataverse","local","lookup table","process","source",
                                             classes_to_make_tb$class_desc_chr),
                           custom_plural_ls = list(proc = "es"),
                           no_plural_chr = classes_to_make_tb$class_desc_chr,
                           url_1L_chr = "https://ready4-dev.github.io/ready4/",
-                          seed_lup = abbreviations_lup)
+                          seed_lup = abbreviations_lup %>%
+                            dplyr::filter(short_name_chr != "lup"))
 utils::data("abbreviations_lup")
 #
 # 8. Create function types look-up table and save it as a package dataset
@@ -202,15 +203,17 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             pkg_dss_tb = pkg_dss_tb)
 #
 # 10. Create a table of all functions to document
-fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = NULL,
-                                                                       inc_for_main_user_lgl_ls = list(force_true_chr = c("assert_matches_chr",
+fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = make_fn_nms(),
+                                              undocumented_fns_dir_chr = make_undmtd_fns_dir_chr(),
+                                              custom_dmt_ls = list(details_ls = NULL,
+                                                                   inc_for_main_user_lgl_ls = list(force_true_chr = c("assert_matches_chr",
                                                                                                                           "assert_single_row_tb",
                                                                                                                           "get_local_path_to_dv_data",
                                                                                                                           "get_r3_from_dv_csv"),
-                                                                                       force_false_chr = NA_character_),
+                                                                                                   force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
-                                                 fn_type_lup_tb = fn_type_lup_tb,
-                                                 abbreviations_lup = abbreviations_lup)
+                                              fn_type_lup_tb = fn_type_lup_tb,
+                                              abbreviations_lup = abbreviations_lup)
 
 pkg_dss_tb <- fns_dmt_tb %>%
   ready4fun::write_and_doc_ds(overwrite_1L_lgl = T,

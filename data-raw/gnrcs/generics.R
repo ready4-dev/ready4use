@@ -1,6 +1,6 @@
-add_lups <- function(x,
+bind_lups <- function(x,
                      ...){
-  UseMethod("add_lups",x)
+  UseMethod("bind_lups",x)
 }
 download_data <- function(x,
                           ...){
