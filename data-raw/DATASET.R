@@ -169,7 +169,8 @@ utils::data("abbreviations_lup")
 pkg_dss_tb <- fn_type_lup_tb %>%
   ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
                                                                                   fn_type_lup_tb = fn_type_lup_tb),
-                                     fn_type_desc_chr = c("Downloads data files.",
+                                     fn_type_desc_chr = c("Rowbinds lookup tables of the same class, removing duplicates based on priority.",
+                                                          "Downloads data files.",
                                                           "Retrieves data from R objects loaded in memory.",
                                                           "Retrieves data about the type of import to be processed.",
                                                           "Retrieves a read function.",
@@ -212,7 +213,7 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(custom_dmt_ls = list(details_ls = 
                                                  abbreviations_lup = abbreviations_lup)
 
 pkg_dss_tb <- fns_dmt_tb %>%
-  write_and_doc_ds(overwrite_1L_lgl = T,
+  ready4fun::write_and_doc_ds(overwrite_1L_lgl = T,
                    db_1L_chr = "fns_dmt_tb",
                    title_1L_chr = "ready4use function documentation table",
                    desc_1L_chr = "A table with the summary information on functions included in the ready4use package.",

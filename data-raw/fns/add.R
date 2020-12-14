@@ -83,50 +83,39 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
   return(imp_lup)
 }
 
-add_files_to_dv <- function(files_tb,
-                            data_dir_rt_1L_chr = ".",
-                            ds_url_1L_chr,
-                            key_1L_chr,
-                            server_1L_chr){
+add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
+                             key_1L_chr, server_1L_chr)
+{
+  ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+  is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
   nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName,
-                             ds_ls$files$filename,
-                             ~ ifelse(is.na(.x),.y,.x))
-  fl_ids_int <- purrr::pmap_int(files_tb,
-                                ~ {
-                                  ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
-                                  is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
-                                  path_1L_chr <- paste0(data_dir_rt_1L_chr,"/",..1,"/",..2,..3)
-                                  file_nm_1L_chr <- paste0(..2,..3)
-                                  if(file_nm_1L_chr %in% nms_chr){
-                                    id_1L_chr <- get_fl_id_from_dv_ls(ds_ls,fl_nm_1L_chr = fl_nm_1L_chr, nms_chr = nms_chr)
-                                    if(is_draft_1L_lgl){
-                                      id_1L_chr %>%
-                                        dataverse::delete_file()
-                                      id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
-                                                                               dataset = ds_url_1L_chr,
-                                                                               description = ..4,
-                                                                               key = key_1L_chr,
-                                                                               server = server_1L_chr)
-                                    }else{
-                                      dataverse::update_dataset_file(file = path_1L_chr,
-                                                                     dataset = ds_url_1L_chr,
-                                                                     id = id_1L_chr,
-                                                                     force = T, ## CHECK IF F BETTER
-                                                                     description = ..4,
-                                                                     key = key_1L_chr,
-                                                                     server = server_1L_chr)
-                                    }
-                                  }else{
-                                    id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
-                                                                             dataset = ds_url_1L_chr,
-                                                                             description = ..4,
-                                                                             key = key_1L_chr,
-                                                                             server = server_1L_chr)
-
-                                  }
-                                  id_1L_chr
-                                }
-  )
+                             ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
+  fl_ids_int <- purrr::pmap_int(files_tb, ~{
+    path_1L_chr <- paste0(data_dir_rt_1L_chr, "/",
+                          ..1, "/", ..2, ..3)
+    fl_nm_1L_chr <- paste0(..2, ..3)
+    if (fl_nm_1L_chr %in% nms_chr) {
+      id_1L_chr <- get_fl_id_from_dv_ls(ds_ls, fl_nm_1L_chr = fl_nm_1L_chr,
+                                        nms_chr = nms_chr)
+      if (is_draft_1L_lgl) {
+        id_1L_chr %>% dataverse::delete_file()
+        id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
+                                                 dataset = ds_url_1L_chr, description = ..4,
+                                                 key = key_1L_chr, server = server_1L_chr)
+      }
+      else {
+        dataverse::update_dataset_file(file = path_1L_chr,
+                                       dataset = ds_url_1L_chr, id = id_1L_chr, force = T,
+                                       description = ..4, key = key_1L_chr, server = server_1L_chr)
+      }
+    }
+    else {
+      id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
+                                               dataset = ds_url_1L_chr, description = ..4, key = key_1L_chr,
+                                               server = server_1L_chr)
+    }
+    id_1L_chr
+  })
   return(fl_ids_int)
 }
 add_labels_from_dictionary <- function(ds_tb,

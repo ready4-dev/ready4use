@@ -26,23 +26,21 @@ get_file_from_dv <- function(ds_ui_1L_chr,
   file_xxx
   return(file_xxx)
 }
-get_fl_id_from_dv_ls <- function(ds_ls,
-                                 fl_nm_1L_chr,
-                                 nms_chr = NA_character_){
-  if(is.na(nms_chr)){
+get_fl_id_from_dv_ls <-  function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_)
+{
+  if (is.na(nms_chr[1])) {
     nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName,
-                               ds_ls$files$filename,
-                               ~ ifelse(is.na(.x),.y,.x))
+                               ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
   }
-  if(file_nm_1L_chr %in% nms_chr){
-    id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[,names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(),
-                                             match_var_nm_1L_chr = ifelse(file_nm_1L_chr %in% ds_ls$files$originalFileName,
-                                                                          "originalFileName",
-                                                                          "filename"),
-                                             match_value_xx = file_nm_1L_chr,
-                                             target_var_nm_1L_chr = "id",
-                                             evaluate_lgl = F)
-  }else{
+  if (fl_nm_1L_chr %in% nms_chr) {
+    id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[,
+                                                         names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(),
+                                             match_var_nm_1L_chr = ifelse(fl_nm_1L_chr %in%
+                                                                            ds_ls$files$originalFileName, "originalFileName",
+                                                                          "filename"), match_value_xx = fl_nm_1L_chr,
+                                             target_var_nm_1L_chr = "id", evaluate_lgl = F)
+  }
+  else {
     id_1L_chr <- NA_character_
   }
   return(id_1L_chr)
