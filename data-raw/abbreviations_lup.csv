@@ -179,24 +179,24 @@
 "ptrn","pattern",FALSE
 "ptrns","patterns",TRUE
 "pts","prototypes",TRUE
-"r3","readyforwhatsnext S3",FALSE
-"r3_ls","list of readyforwhatsnext S3s",FALSE
-"r3_r4","ready4 S4 collection of readyforwhatsnext S3s",FALSE
-"r4","readyforwhatsnext S4",FALSE
-"r4_ls","list of readyforwhatsnext S4s",FALSE
-"r4_r4","ready4 S4 collection of readyforwhatsnext S4s",FALSE
-"ready4_all_import_lup","Readyforwhatsnext S3 class for tibble object lookup table of sources of raw (un-processed) data to import.",NA
-"ready4_class_pt_lup","readyforwhatsnext S3 class CLASS PROTOTYPE LOOKUP TABLE",FALSE
-"ready4_class_pt_lups","readyforwhatsnext S3 class CLASS PROTOTYPE LOOKUP TABLEs",TRUE
-"ready4_constructor_tbl","readyforwhatsnext S3 class CLASS CONSTRUCTOR TABLE",FALSE
-"ready4_constructor_tbls","readyforwhatsnext S3 class CLASS CONSTRUCTOR TABLEs",TRUE
-"ready4_dist","Readyforwhatsnext S3 class for list object that summarises the parameters of each distribution",NA
-"ready4_dv_import_lup","Readyforwhatsnext S3 class for tibble object lookup table of files to be imported from a dataverse.",NA
-"ready4_local","Readyforwhatsnext S4 class defining data to be saved in local directory.",NA
-"ready4_local_proc","Readyforwhatsnext S4 class defining data to be saved in local directory in a processed (R) format.",NA
-"ready4_local_raw","Readyforwhatsnext S4 class defining data to be saved in local directory in a raw (unprocessed) format.",NA
-"ready4_par_struc_mape","Readyforwhatsnext S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.",NA
-"ready4_script_data","Readyforwhatsnext S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",NA
+"r3","ready4 S3",FALSE
+"r3_ls","list of ready4 S3s",FALSE
+"r3_r4","ready4 S4 collection of ready4 S3s",FALSE
+"r4","ready4 S4",FALSE
+"r4_ls","list of ready4 S4s",FALSE
+"r4_r4","ready4 S4 collection of ready4 S4s",FALSE
+"ready4_all_import_lup","ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.",NA
+"ready4_class_pt_lup","ready4 S3 class CLASS PROTOTYPE LOOKUP TABLE",FALSE
+"ready4_class_pt_lups","ready4 S3 class CLASS PROTOTYPE LOOKUP TABLEs",TRUE
+"ready4_constructor_tbl","ready4 S3 class CLASS CONSTRUCTOR TABLE",FALSE
+"ready4_constructor_tbls","ready4 S3 class CLASS CONSTRUCTOR TABLEs",TRUE
+"ready4_dist","ready4 S3 class for list object that summarises the parameters of each distribution",NA
+"ready4_dv_import_lup","ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.",NA
+"ready4_local","ready4 S4 class defining data to be saved in local directory.",NA
+"ready4_local_proc","ready4 S4 class defining data to be saved in local directory in a processed (R) format.",NA
+"ready4_local_raw","ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.",NA
+"ready4_par_struc_mape","ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.",NA
+"ready4_script_data","ready4 S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",NA
 "ref","reference",FALSE
 "refs","references",TRUE
 "reqd","required",FALSE

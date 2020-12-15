@@ -178,7 +178,7 @@ pkg_dss_tb <- fn_type_lup_tb %>%
                                                           "Imports data from saved files and loads them into memory as R objects.",
                                                           "Makes a Dataverse import lookup table",
                                                           "Makes an output object of multiple potential classes.",
-                                                          #"Makes an instance of the Make Local Process Readyforwhatsnext S4 Class",
+                                                          #"Makes an instance of the Make Local Process ready4 S4 Class",
                                                           "Saves the native version of a file format.",
                                                           "Updates data from a local file reference to a URL",
                                                           "Updates and object"),

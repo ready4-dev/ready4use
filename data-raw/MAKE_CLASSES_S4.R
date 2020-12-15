@@ -8,14 +8,14 @@
 #   tibble::add_case(name_stub_chr = "local",
 #                    slots_ls = c("merge_with_chr_vec","raw_data_dir_chr","pckg_chr","overwrite_lgl", "save_lgl") %>% list(), # Cut: "lup_tbs_r4",
 #                    pt_ls = c("character","character","character","logical", "logical") %>% list(), # Cut: "ready4_lookup",
-#                    class_desc_chr= "Readyforwhatsnext S4 class defining data to be saved in local directory.",
+#                    class_desc_chr= "ready4 S4 class defining data to be saved in local directory.",
 #                    parent_class_chr = NA_character_) %>% # Cut: ,include_classes = list("ready4_lookup")
 #   tibble::add_case(name_stub_chr = "local_raw",
 #                    slots_ls = c("save_type") %>% list(),
 #                    pt_ls = c("character") %>% list(),
 #                    vals_ls = list(save_type ="raw"),
 #                    allowed_vals_ls = list(save_type = "raw"),
-#                    class_desc_chr= "Readyforwhatsnext S4 class defining data to be saved in local directory in a raw (unprocessed) format.",
+#                    class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.",
 #                    parent_class_chr = "ready4_local",
 #                    inc_clss_ls = list("ready4_local")) %>%
 #   tibble::add_case(name_stub_chr = "local_proc",
@@ -23,7 +23,7 @@
 #                    pt_ls = c("character","character","character","character","list") %>% list(),
 #                    vals_ls = list(save_type = "proc"),
 #                    allowed_vals_ls = list(save_type = "proc"),
-#                    class_desc_chr= "Readyforwhatsnext S4 class defining data to be saved in local directory in a processed (R) format.",
+#                    class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a processed (R) format.",
 #                    parent_class_chr = "ready4_local",
 #                    inc_clss_ls = list("ready4_local")) %>%
 #   tibble::add_case(name_stub_chr = "script_data",
@@ -32,7 +32,7 @@
 #                      "crs_nbr_vec") %>% list(),
 #                    pt_ls = c(#"character",
 #                                  "numeric") %>% list(),
-#                    class_desc_chr= "Readyforwhatsnext S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",
+#                    class_desc_chr= "ready4 S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",
 #                    parent_class_chr = "ready4_local_proc",
 #                    inc_clss_ls = list("ready4_local_proc")) %>%
 #   dplyr::mutate(make_s3_lgl = FALSE) #%>%  ready4class::remake_ls_cols()
