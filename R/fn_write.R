@@ -104,24 +104,15 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @return Dataset (a list)
 #' @rdname write_fls_to_dv_ds
 #' @export 
-#' @importFrom dataverse get_dataset
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
+#' @importFrom dataverse get_dataset
 #' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
-    ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
-    dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr, "/", dv_nm_1L_chr)
-    if (!dir.exists(dv_dir_1L_chr)) {
-        dir.create(dv_dir_1L_chr)
-    }
-    local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr, "/", ds_ls$metadataBlocks$citation$fields$value[[1]])
-    if (!dir.exists(local_dv_dir_1L_chr)) {
-        dir.create(local_dv_dir_1L_chr)
-    }
     ds_chr <- dss_tb$ds_obj_nm_chr
     files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr, 
         recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr), 
@@ -133,6 +124,15 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
     })
     ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     if (make_local_copy_1L_lgl | ds_ls$versionState != "DRAFT") {
+        ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+        dv_dir_1L_chr <- paste0(parent_dv_dir_1L_chr, "/", dv_nm_1L_chr)
+        if (!dir.exists(dv_dir_1L_chr)) {
+            dir.create(dv_dir_1L_chr)
+        }
+        local_dv_dir_1L_chr <- paste0(dv_dir_1L_chr, "/", ds_ls$metadataBlocks$citation$fields$value[[3]])
+        if (!dir.exists(local_dv_dir_1L_chr)) {
+            dir.create(local_dv_dir_1L_chr)
+        }
         write_dv_ds_fls(files_tb, fl_ids_int = fl_ids_int, ds_url_1L_chr = ds_url_1L_chr, 
             local_dv_dir_1L_chr = local_dv_dir_1L_chr)
     }

@@ -100,16 +100,15 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
       if (is_draft_1L_lgl) {
         id_1L_chr %>% dataverse::delete_file()
         id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
-                                                 dataset = ds_url_1L_chr, description = ..4,
+                                                 dataset = ds_url_1L_chr,
+                                                 description = ..4,
                                                  key = key_1L_chr, server = server_1L_chr)
-      }
-      else {
+      }else {
         dataverse::update_dataset_file(file = path_1L_chr,
                                        dataset = ds_url_1L_chr, id = id_1L_chr, force = T,
                                        description = ..4, key = key_1L_chr, server = server_1L_chr)
       }
-    }
-    else {
+    }else {
       id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr,
                                                dataset = ds_url_1L_chr, description = ..4, key = key_1L_chr,
                                                server = server_1L_chr)
