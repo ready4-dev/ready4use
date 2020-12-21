@@ -50,9 +50,9 @@ write_dv_fl_to_loc <- function(ds_ui_1L_chr,
                                server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
                                save_type_1L_chr = "original",
                                dest_path_1L_chr){
-  ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
+  ds_ls <- dataverse::get_dataset(ds_ui_1L_chr)
   if(ds_ls$versionState != "DRAFT"){
-    if(is.na(fl_id_1L_int)){
+    if(!is.na(fl_id_1L_int)){
       ds_ui_1L_chr <- NULL
     }
     writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int),
