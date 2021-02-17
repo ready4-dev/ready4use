@@ -143,6 +143,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @rdname add_labels_from_dictionary
 #' @export 
 #' @importFrom dplyr filter mutate case_when
+#' @importFrom sjlabelled unlabel
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
 #' @keywords internal
@@ -150,7 +151,7 @@ add_labels_from_dictionary <- function (ds_tb, dictionary_tb)
 {
     data_dictionary_tb <- dictionary_tb %>% dplyr::filter(var_nm_chr %in% 
         names(ds_tb)) %>% dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ 
-        var_nm_chr, TRUE ~ var_desc_chr))
+        var_nm_chr, TRUE ~ var_desc_chr)) %>% sjlabelled::unlabel()
     if (nrow(data_dictionary_tb) > 0) {
         labelled_ds_tb <- seq_len(nrow(data_dictionary_tb)) %>% 
             purrr::reduce(.init = ds_tb, ~{
