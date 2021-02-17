@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing
     Data in Projects Developed with the Ready4 Suite
-Version: 0.0.0.9109
+Version: 0.0.0.9110
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -43,11 +43,11 @@ Imports:
     testthat,
     knitr,
     lifecycle,
+    dataverse (>= 0.3.0),
     ready4class (>= 0.0.0.9185),
     ready4fun (>= 0.0.0.9270),
     assertthat,
     data.table,
-    dataverse,
     dplyr,
     Hmisc,
     magrittr,
@@ -102,5 +102,6 @@ Collate:
     'mthd_update_src_loc_to_url.R'
     'pkg_ready4use.R'
 Remotes: 
+    iqss/dataverse-client-r,
     ready4-dev/ready4class,
     ready4-dev/ready4fun
