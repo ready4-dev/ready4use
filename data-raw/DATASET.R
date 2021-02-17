@@ -251,7 +251,7 @@ readLines(".github/workflows/R-CMD-check.yaml")[-28] %>%
   writeLines(".github/workflows/R-CMD-check.yaml")
 ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
-                                dev_pkgs_chr = c("ready4fun","ready4class"),
+                                dev_pkgs_chr = c("ready4fun","ready4class","dataverse"),
                                 update_pkgdown_1L_lgl = T)
 #ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138.pdf",
 #developer_manual_url_1L_chr = "https://readyforwhatsnext.github.io/readyforwhatsnext/pdfs/ready4class_0.0.0.9138_dev.pdf")
