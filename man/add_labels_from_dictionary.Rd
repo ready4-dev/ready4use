@@ -4,12 +4,14 @@
 \alias{add_labels_from_dictionary}
 \title{Add labels from dictionary}
 \usage{
-add_labels_from_dictionary(ds_tb, dictionary_tb)
+add_labels_from_dictionary(ds_tb, dictionary_tb, strip_old_lbls_1L_lgl = F)
 }
 \arguments{
 \item{ds_tb}{Dataset (a tibble)}
 
 \item{dictionary_tb}{Dictionary (a tibble)}
+
+\item{strip_old_lbls_1L_lgl}{PARAM_DESCRIPTION, Default: F}
 }
 \value{
 Labelled dataset (a tibble)

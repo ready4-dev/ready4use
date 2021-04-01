@@ -139,16 +139,19 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param dictionary_tb Dictionary (a tibble)
+#' @param strip_old_lbls_1L_lgl PARAM_DESCRIPTION, Default: F
 #' @return Labelled dataset (a tibble)
 #' @rdname add_labels_from_dictionary
 #' @export 
-#' @importFrom dplyr filter mutate case_when
 #' @importFrom sjlabelled unlabel
+#' @importFrom dplyr filter mutate case_when
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
 #' @keywords internal
-add_labels_from_dictionary <- function (ds_tb, dictionary_tb) 
+add_labels_from_dictionary <- function (ds_tb, dictionary_tb, strip_old_lbls_1L_lgl = F) 
 {
+    if (strip_old_lbls_1L_lgl) 
+        ds_tb <- ds_tb %>% sjlabelled::unlabel()
     data_dictionary_tb <- dictionary_tb %>% dplyr::filter(var_nm_chr %in% 
         names(ds_tb)) %>% dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ 
         var_nm_chr, TRUE ~ var_desc_chr)) %>% sjlabelled::unlabel()

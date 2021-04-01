@@ -82,7 +82,6 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                   data_repo_save_type = save_type_1L_chr)
   return(imp_lup)
 }
-
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
                              key_1L_chr, server_1L_chr)
 {
@@ -118,7 +117,10 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
   return(fl_ids_int)
 }
 add_labels_from_dictionary <- function(ds_tb,
-                                       dictionary_tb){
+                                       dictionary_tb,
+                                       strip_old_lbls_1L_lgl = F){
+  if(strip_old_lbls_1L_lgl)
+    ds_tb <- ds_tb %>% sjlabelled::unlabel()
   data_dictionary_tb <- dictionary_tb %>%
     dplyr::filter(var_nm_chr %in% names(ds_tb)) %>%
     dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ var_nm_chr,
