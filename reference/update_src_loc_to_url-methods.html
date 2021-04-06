@@ -81,7 +81,7 @@ update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9115</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9117</span>
       </span>
     </div>
 
@@ -130,12 +130,16 @@ update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url m
 <p>update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url method that updates data from a local file reference to a URL This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_src_loc_to_url</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>local_to_url_vec</span>, <span class='va'>urls_vec</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>update_src_loc_to_url</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>local_to_url_vec_chr</span>, <span class='va'>urls_vec_chr</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>update_src_loc_to_url.ready4_all_import_lup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>local_to_url_vec</span>, <span class='va'>urls_vec</span><span class='op'>)</span>
+<span class='fu'>update_src_loc_to_url.ready4_all_import_lup</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>local_to_url_vec_chr</span>,
+  <span class='va'>urls_vec_chr</span>
+<span class='op'>)</span>
 
 <span class='co'># S4 method for ready4_all_import_lup</span>
-<span class='fu'>update_src_loc_to_url</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>local_to_url_vec</span>, <span class='va'>urls_vec</span><span class='op'>)</span></pre>
+<span class='fu'>update_src_loc_to_url</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>local_to_url_vec_chr</span>, <span class='va'>urls_vec_chr</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,11 +149,11 @@ update_src_loc_to_url.ready4_all_import_lup() is an Update Source Local to Url m
       <td><p>An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.</p></td>
     </tr>
     <tr>
-      <th>local_to_url_vec</th>
+      <th>local_to_url_vec_chr</th>
       <td><p>PARAM_DESCRIPTION</p></td>
     </tr>
     <tr>
-      <th>urls_vec</th>
+      <th>urls_vec_chr</th>
       <td><p>PARAM_DESCRIPTION</p></td>
     </tr>
     <tr>

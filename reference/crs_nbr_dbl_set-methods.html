@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write dataverse file to local — write_dv_fl_to_loc • ready4use</title>
+<title>crs_nbr_dbl&lt;- — crs_nbr_dbl&lt;- • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Write dataverse file to local — write_dv_fl_to_loc" />
-<meta property="og:description" content="write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour" />
+<meta property="og:title" content="crs_nbr_dbl&lt;- — crs_nbr_dbl&lt;-" />
+<meta property="og:description" content="S4 Generic function to set the value of the slot crs_nbr_dbl
+Set the value of the slot crs_nbr_dbl for S4 objects of class ready4_script_data" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,60 +120,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write dataverse file to local</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_write.R'><code>R/fn_write.R</code></a></small>
-    <div class="hidden name"><code>write_dv_fl_to_loc.Rd</code></div>
+    <h1>crs_nbr_dbl&lt;-</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/gnrc_crs_nbr_dbl.R'><code>R/gnrc_crs_nbr_dbl.R</code></a></small>
+    <div class="hidden name"><code>crs_nbr_dbl_set-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour</p>
+    <p>S4 Generic function to set the value of the slot crs_nbr_dbl</p>
+<p>Set the value of the slot crs_nbr_dbl for S4 objects of class ready4_script_data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>write_dv_fl_to_loc</span><span class='op'>(</span>
-  <span class='va'>ds_ui_1L_chr</span>,
-  fl_nm_1L_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
-  fl_id_1L_int <span class='op'>=</span> <span class='cn'>NA_integer_</span>,
-  <span class='va'>repo_fl_fmt_1L_chr</span>,
-  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>,
-  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>,
-  save_type_1L_chr <span class='op'>=</span> <span class='st'>"original"</span>,
-  <span class='va'>dest_path_1L_chr</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'><a href='crs_nbr_dbl.html'>crs_nbr_dbl</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for ready4_script_data</span>
+<span class='fu'><a href='crs_nbr_dbl.html'>crs_nbr_dbl</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ds_ui_1L_chr</th>
-      <td><p>Dataset ui (a character vector of length one)</p></td>
+      <th>x</th>
+      <td><p>An object of class ready4_script_data</p></td>
     </tr>
     <tr>
-      <th>fl_nm_1L_chr</th>
-      <td><p>File name (a character vector of length one), Default: 'NA'</p></td>
-    </tr>
-    <tr>
-      <th>fl_id_1L_int</th>
-      <td><p>File id (an integer vector of length one), Default: NA</p></td>
-    </tr>
-    <tr>
-      <th>repo_fl_fmt_1L_chr</th>
-      <td><p>Repo file fmt (a character vector of length one)</p></td>
-    </tr>
-    <tr>
-      <th>key_1L_chr</th>
-      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
-    </tr>
-    <tr>
-      <th>server_1L_chr</th>
-      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
-    </tr>
-    <tr>
-      <th>save_type_1L_chr</th>
-      <td><p>Save type (a character vector of length one), Default: 'original'</p></td>
-    </tr>
-    <tr>
-      <th>dest_path_1L_chr</th>
-      <td><p>Dest path (a character vector of length one)</p></td>
+      <th>value</th>
+      <td><p>Value to be assigned to x</p></td>
     </tr>
     </table>
 
