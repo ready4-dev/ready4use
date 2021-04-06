@@ -7,7 +7,7 @@
 assert_matches_chr(x, match_chr)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
 \item{match_chr}{Match (a character vector)}
 }

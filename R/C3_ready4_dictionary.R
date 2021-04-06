@@ -66,6 +66,7 @@ stop(paste0("TIBBLE must include columns named: ",
 names(make_pt_ready4_dictionary()) %>% stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
  if(!identical(make_pt_ready4_dictionary() %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
@@ -87,6 +88,7 @@ dplyr::pull(2),
 stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
 x}
 #' Is ready4 s3 class defining a data dictionary tibble.
 #' @description Check whether an object is a valid instance of the ready4 s3 class defining a data dictionary tibble.

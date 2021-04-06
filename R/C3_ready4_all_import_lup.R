@@ -94,6 +94,7 @@ stop(paste0("TIBBLE must include columns named: ",
 names(make_pt_ready4_all_import_lup()) %>% stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
  if(!identical(make_pt_ready4_all_import_lup() %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
@@ -115,6 +116,7 @@ dplyr::pull(2),
 stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
 x}
 #' Is ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.

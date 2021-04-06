@@ -7,7 +7,7 @@
 update_tb_src_loc_to_url_sgl_tb(x, y, local_to_url_vec, urls_vec)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 
 \item{y}{PARAM_DESCRIPTION}
 

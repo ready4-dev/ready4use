@@ -109,6 +109,33 @@ write_fls_to_dv_ds <- function(dss_tb,
   }
   return(ds_ls)
 }
+write_paired_ds_fls_to_dv <- function(ds_tb,
+                                      fl_nm_1L_chr,
+                                      desc_1L_chr,
+                                      ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9",
+                                      pkg_dv_dir_1L_chr  = "data-raw/dataverse",
+                                      data_dir_rt_1L_chr = ".",
+                                      key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                                      server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
+
+  if(!dir.exists(pkg_dv_dir_1L_chr))
+    dir.create(pkg_dv_dir_1L_chr)
+  pkg_dv_dir_1L_chr <- paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr)
+  if(!dir.exists(pkg_dv_dir_1L_chr))
+    dir.create(pkg_dv_dir_1L_chr)
+  ds_tb %>%
+    saveRDS(paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".RDS"))
+  readRDS(paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".RDS")) %>%
+    utils::write.csv(file = paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".csv"),
+                     row.names = F)
+  make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr,
+                recode_ls = c(rep(desc_1L_chr,2)) %>% as.list() %>% stats::setNames(c(rep(fl_nm_1L_chr,2)))) %>%
+    add_files_to_dv(data_dir_rt_1L_chr = data_dir_rt_1L_chr,
+                    ds_url_1L_chr = ds_url_1L_chr,
+                    key_1L_chr = key_1L_chr,
+                    server_1L_chr = server_1L_chr
+    )
+}
 write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
                                         dv_nm_1L_chr,
                                         ds_url_1L_chr,

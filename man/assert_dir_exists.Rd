@@ -7,7 +7,7 @@
 assert_dir_exists(x)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 }
 \description{
 assert_dir_exists() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert directory exists. Function argument x specifies the object on which assert validation checks are to be performed. The function is called for its side effects and does not return a value.

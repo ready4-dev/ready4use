@@ -75,6 +75,7 @@ stop(paste0("TIBBLE must include columns named: ",
 names(make_pt_ready4_dv_import_lup()) %>% stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
  if(!identical(make_pt_ready4_dv_import_lup() %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
@@ -96,6 +97,7 @@ dplyr::pull(2),
 stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
 x}
 #' Is ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

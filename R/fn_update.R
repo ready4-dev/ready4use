@@ -1,6 +1,6 @@
 #' Update tibble source local to url sgl
 #' @description update_tb_src_loc_to_url_sgl_tb() is an Update function that edits an object, while preserving core object attributes. Specifically, this function implements an algorithm to update tibble source local to url sgl tibble. Function argument x specifies the object to be updated. Argument y provides the object to be updated. The function returns Updated (a tibble).
-#' @param x PARAM_DESCRIPTION
+#' @param x An object
 #' @param y PARAM_DESCRIPTION
 #' @param local_to_url_vec PARAM_DESCRIPTION
 #' @param urls_vec PARAM_DESCRIPTION

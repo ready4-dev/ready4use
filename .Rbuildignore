@@ -34,3 +34,9 @@
 ^data-raw/fns/remove\.R$
 ^data-raw/mthds/add_lups\.R$
 ^data-raw/mthds/bind_lups\.R$
+^data-raw/MAKE_CLASSES\.R$
+^data-raw/MAKE_HOUSESTYLE_DSS\.R$
+^data-raw/dataverse/abbreviations_lup/abbreviations_lup\.csv$
+^data-raw/dataverse/abbreviations_lup/abbreviations_lup\.RDS$
+^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.csv$
+^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.RDS$

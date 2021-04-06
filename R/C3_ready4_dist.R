@@ -71,6 +71,7 @@ stop(paste0("LIST must include elements named: ",
 names(make_pt_ready4_dist()) %>% stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
  if(!identical(make_pt_ready4_dist() %>% 
 lapply(class) %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
@@ -92,6 +93,7 @@ dplyr::pull(2),
 stringr::str_c(sep="", collapse = ", ")),
 call. = FALSE)
 }
+
 x}
 #' Is ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution

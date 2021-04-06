@@ -7,7 +7,7 @@
 get_valid_path_chr(x)
 }
 \arguments{
-\item{x}{PARAM_DESCRIPTION}
+\item{x}{An object}
 }
 \value{
 Valid path (a character vector)
