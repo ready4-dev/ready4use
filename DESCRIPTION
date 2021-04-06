@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing Data in
     Projects Developed with the Ready4 Suite
-Version: 0.0.0.9113
+Version: 0.0.0.9114
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -51,7 +51,7 @@ Imports:
     purrr,
     readxl,
     ready4class (>= 0.0.0.9186),
-    ready4fun (>= 0.0.0.9279),
+    ready4fun (>= 0.0.0.9284),
     rlang,
     sjlabelled,
     stats,
