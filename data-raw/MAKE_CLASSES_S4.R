@@ -29,7 +29,7 @@
 #   tibble::add_case(name_stub_chr = "script_data",
 #                    slots_ls = c(#"proc_data_dir_chr",
 #                     # "raw_data_dir_chr",
-#                      "crs_nbr_vec") %>% list(),
+#                      "crs_nbr_dbl") %>% list(),
 #                    pt_ls = c(#"character",
 #                                  "numeric") %>% list(),
 #                    class_desc_chr= "ready4 S4 class containint data to be passed to a function that constructs a spatial object from a lookup table.",

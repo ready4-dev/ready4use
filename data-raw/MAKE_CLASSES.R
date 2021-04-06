@@ -94,7 +94,7 @@ classes_to_make_tb <- dplyr::bind_rows(
                                               inc_clss_ls = list("ready4_local")),
   ready4class::make_pt_ready4_constructor_tbl(make_s3_lgl = FALSE,
                                               name_stub_chr = "script_data",
-                                              slots_ls = c("crs_nbr_vec") %>% list(), # Change
+                                              slots_ls = c("crs_nbr_dbl") %>% list(), # Change
                                               pt_ls = c("numeric") %>% list(),
                                               class_desc_chr= "ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.",
                                               parent_class_chr = "ready4_local_proc",

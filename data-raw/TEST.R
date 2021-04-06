@@ -1,5 +1,5 @@
 devtools::load_all()
-#crs_nbr_vec <- c(4283,3577)
+#crs_nbr_dbl <- c(4283,3577)
 library(magrittr)
 #data_dir_chr <- "../../../../Data"
 # raw_data_dir_chr <- paste0(data_dir_chr,"/Raw_Format")

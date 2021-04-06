@@ -2,10 +2,10 @@ Assign class creation to ready4_script_
 
 Added:
 #' @param value Value to be assigned to x [for setter]
-#' @rdname crs_nbr_vec-methods
-#' @rdname crs_nbr_vec_set-methods [for setter]
-#' @aliases crs_nbr_vec,ready4_script_data-method
-#' @aliases crs_nbr_vec<-,ready4_script_data-method [for setter]
+#' @rdname crs_nbr_dbl-methods
+#' @rdname crs_nbr_dbl_set-methods [for setter]
+#' @aliases crs_nbr_dbl,ready4_script_data-method
+#' @aliases crs_nbr_dbl<-,ready4_script_data-method [for setter]
 
 REmove: 
 ,".GlobalEnv"
@@ -13,18 +13,18 @@ REmove:
 #' @description Create a new S4 object of the class:ready4_script_data
 #' @param save_type character, Default: 'NA'
 #' @param merge_with_chr_vec character, Default: 'NA'
-#' @param crs_nbr_vec numeric, Default: NA
+#' @param crs_nbr_dbl numeric, Default: NA
 #' @return An S4 object of the 
 #' @rdname ready4_script_data
 #' @export 
 #' @importFrom methods new
 ready4_script_data <- function(save_type = NA_character_,
 merge_with_chr_vec = NA_character_,
-crs_nbr_vec = NA_real_){ 
+crs_nbr_dbl = NA_real_){ 
 methods::new("ready4_script_data",
 save_type = save_type,
 merge_with_chr_vec = merge_with_chr_vec,
-crs_nbr_vec = crs_nbr_vec)
+crs_nbr_dbl = crs_nbr_dbl)
 }
 
 

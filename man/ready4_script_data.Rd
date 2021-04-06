@@ -10,7 +10,7 @@ An S4 class to represent ready4 S4 class containing data to be passed to a funct
 \section{Slots}{
 
 \describe{
-\item{\code{crs_nbr_vec}}{numeric}
+\item{\code{crs_nbr_dbl}}{numeric}
 
 \item{\code{save_type}}{character}
 
