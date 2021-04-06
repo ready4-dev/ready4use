@@ -47,8 +47,8 @@ save_raw <- function(x,
 #methods::setGeneric("save_raw")
 
 update_src_loc_to_url <- function(x,
-                                  local_to_url_vec,
-                                  urls_vec,
+                                  local_to_url_vec_chr,
+                                  urls_vec_chr,
                                   ...){
   UseMethod("update_src_loc_to_url",x)
 }

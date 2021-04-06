@@ -8,16 +8,16 @@
 \usage{
 bind_lups(x, ...)
 
-bind_lups.ready4_dictionary(x, new_ready4_dictionary)
+bind_lups.ready4_dictionary(x, new_ready4_dict_r3)
 
-\S4method{bind_lups}{ready4_dictionary}(x, new_ready4_dictionary)
+\S4method{bind_lups}{ready4_dictionary}(x, new_ready4_dict_r3)
 }
 \arguments{
 \item{x}{An instance of ready4 s3 class defining a data dictionary tibble.}
 
 \item{...}{Additional arguments}
 
-\item{new_ready4_dictionary}{PARAM_DESCRIPTION}
+\item{new_ready4_dict_r3}{PARAM_DESCRIPTION}
 }
 \value{
 NA ()

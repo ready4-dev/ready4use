@@ -1,5 +1,5 @@
 make_r3_from_csv_tb <- function(csv_tb,
-                                r3_fn){ ## NEED TO EDIT inc_files_to_rename list col logic
+                                r3_fn){ ## NEED TO EDIT inc_fls_to_rename_ls list col logic
   list_cols <- rlang::exec(r3_fn) %>%
     dplyr::select_if(is.list) %>% names()
   char_cols <- rlang::exec(r3_fn) %>%

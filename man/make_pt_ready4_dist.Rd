@@ -5,26 +5,26 @@
 \title{Make prototype ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 make_pt_ready4_dist(
-  distribution = character(0),
-  dist_param_1 = numeric(0),
-  dist_param_2 = numeric(0),
-  dist_param_3 = numeric(0),
-  dist_param_4 = numeric(0),
-  transformation = character(0)
+  distribution_chr = character(0),
+  dist_param_1_dbl = numeric(0),
+  dist_param_2_dbl = numeric(0),
+  dist_param_3_dbl = numeric(0),
+  dist_param_4_dbl = numeric(0),
+  transformation_chr = character(0)
 )
 }
 \arguments{
-\item{distribution}{PARAM_DESCRIPTION, Default: character(0)}
+\item{distribution_chr}{Distribution (a character vector), Default: character(0)}
 
-\item{dist_param_1}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{dist_param_1_dbl}{Dist param 1 (a double vector), Default: numeric(0)}
 
-\item{dist_param_2}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{dist_param_2_dbl}{Dist param 2 (a double vector), Default: numeric(0)}
 
-\item{dist_param_3}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{dist_param_3_dbl}{Dist param 3 (a double vector), Default: numeric(0)}
 
-\item{dist_param_4}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{dist_param_4_dbl}{Dist param 4 (a double vector), Default: numeric(0)}
 
-\item{transformation}{PARAM_DESCRIPTION, Default: character(0)}
+\item{transformation_chr}{Transformation (a character vector), Default: character(0)}
 }
 \value{
 A prototype for ready4 S3 class for list object that summarises the parameters of each distribution

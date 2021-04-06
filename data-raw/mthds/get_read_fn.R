@@ -1,5 +1,5 @@
 get_read_fn.ready4_dv_import_lup <- function(x){
-  purrr::map(x$file_type,
+  purrr::map(x$file_type_chr,
              ~ switch(.x,
                       ".csv" = read.csv, ## Need to add fread
                       ".xls" = readxl::read_excel,

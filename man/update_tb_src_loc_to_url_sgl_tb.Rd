@@ -4,16 +4,16 @@
 \alias{update_tb_src_loc_to_url_sgl_tb}
 \title{Update tibble source local to url sgl}
 \usage{
-update_tb_src_loc_to_url_sgl_tb(x, y, local_to_url_vec, urls_vec)
+update_tb_src_loc_to_url_sgl_tb(x, y, local_to_url_vec_chr, urls_vec_chr)
 }
 \arguments{
 \item{x}{An object}
 
 \item{y}{PARAM_DESCRIPTION}
 
-\item{local_to_url_vec}{PARAM_DESCRIPTION}
+\item{local_to_url_vec_chr}{PARAM_DESCRIPTION}
 
-\item{urls_vec}{PARAM_DESCRIPTION}
+\item{urls_vec_chr}{PARAM_DESCRIPTION}
 }
 \value{
 Updated (a tibble)

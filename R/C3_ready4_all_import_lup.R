@@ -28,19 +28,19 @@ x
 }
 #' Make prototype ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Create a new prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @param file_type PARAM_DESCRIPTION, Default: character(0)
-#' @param file_name PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_ui PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_db_ui PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_file_ext PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_save_type PARAM_DESCRIPTION, Default: character(0)
-#' @param local_file_src PARAM_DESCRIPTION, Default: character(0)
-#' @param make_script_src PARAM_DESCRIPTION, Default: character(0)
-#' @param download_url PARAM_DESCRIPTION, Default: character(0)
-#' @param inc_file_main PARAM_DESCRIPTION, Default: character(0)
-#' @param inc_files_to_rename PARAM_DESCRIPTION, Default: list()
-#' @param new_names_for_inc_files PARAM_DESCRIPTION, Default: list()
+#' @param file_type_chr File type (a character vector), Default: character(0)
+#' @param file_name_chr File name (a character vector), Default: character(0)
+#' @param data_repo_chr Data repo (a character vector), Default: character(0)
+#' @param data_repo_ui_chr Data repo ui (a character vector), Default: character(0)
+#' @param data_repo_db_ui_chr Data repo database ui (a character vector), Default: character(0)
+#' @param data_repo_file_ext_chr Data repo file ext (a character vector), Default: character(0)
+#' @param data_repo_save_type_chr Data repo save type (a character vector), Default: character(0)
+#' @param local_file_src_chr Local file source (a character vector), Default: character(0)
+#' @param path_to_make_script_chr Path to make script (a character vector), Default: character(0)
+#' @param download_url_chr Download url (a character vector), Default: character(0)
+#' @param inc_file_main_chr Include file main (a character vector), Default: character(0)
+#' @param inc_fls_to_rename_ls Include files to rename (a list), Default: list()
+#' @param new_nms_for_inc_fls_ls New names for include files (a list), Default: list()
 #' @return A prototype for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @details ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @rdname make_pt_ready4_all_import_lup
@@ -48,32 +48,32 @@ x
 #' @importFrom ready4class update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
-make_pt_ready4_all_import_lup <- function(file_type = character(0),
-file_name = character(0),
-data_repo = character(0),
-data_repo_ui = character(0),
-data_repo_db_ui = character(0),
-data_repo_file_ext = character(0),
-data_repo_save_type = character(0),
-local_file_src = character(0),
-make_script_src = character(0),
-download_url = character(0),
-inc_file_main = character(0),
-inc_files_to_rename = list(),
-new_names_for_inc_files = list()){ 
-args_ls <- list(file_type = file_type,
-file_name = file_name,
-data_repo = data_repo,
-data_repo_ui = data_repo_ui,
-data_repo_db_ui = data_repo_db_ui,
-data_repo_file_ext = data_repo_file_ext,
-data_repo_save_type = data_repo_save_type,
-local_file_src = local_file_src,
-make_script_src = make_script_src,
-download_url = download_url,
-inc_file_main = inc_file_main,
-inc_files_to_rename = inc_files_to_rename,
-new_names_for_inc_files = new_names_for_inc_files) %>% ready4class::update_pt_fn_args_ls()
+make_pt_ready4_all_import_lup <- function(file_type_chr = character(0),
+file_name_chr = character(0),
+data_repo_chr = character(0),
+data_repo_ui_chr = character(0),
+data_repo_db_ui_chr = character(0),
+data_repo_file_ext_chr = character(0),
+data_repo_save_type_chr = character(0),
+local_file_src_chr = character(0),
+path_to_make_script_chr = character(0),
+download_url_chr = character(0),
+inc_file_main_chr = character(0),
+inc_fls_to_rename_ls = list(),
+new_nms_for_inc_fls_ls = list()){ 
+args_ls <- list(file_type_chr = file_type_chr,
+file_name_chr = file_name_chr,
+data_repo_chr = data_repo_chr,
+data_repo_ui_chr = data_repo_ui_chr,
+data_repo_db_ui_chr = data_repo_db_ui_chr,
+data_repo_file_ext_chr = data_repo_file_ext_chr,
+data_repo_save_type_chr = data_repo_save_type_chr,
+local_file_src_chr = local_file_src_chr,
+path_to_make_script_chr = path_to_make_script_chr,
+download_url_chr = download_url_chr,
+inc_file_main_chr = inc_file_main_chr,
+inc_fls_to_rename_ls = inc_fls_to_rename_ls,
+new_nms_for_inc_fls_ls = new_nms_for_inc_fls_ls) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.

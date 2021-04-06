@@ -4,10 +4,10 @@
 \alias{transform_csv_col_to_ls_col}
 \title{Transform comma separated variables file column to list column}
 \usage{
-transform_csv_col_to_ls_col(csv_col)
+transform_csv_col_to_ls_col(csv_col_xx)
 }
 \arguments{
-\item{csv_col}{PARAM_DESCRIPTION}
+\item{csv_col_xx}{PARAM_DESCRIPTION}
 }
 \value{
 List column (a list)

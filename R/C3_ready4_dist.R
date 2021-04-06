@@ -26,30 +26,30 @@ x
 }
 #' Make prototype ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
-#' @param distribution PARAM_DESCRIPTION, Default: character(0)
-#' @param dist_param_1 PARAM_DESCRIPTION, Default: numeric(0)
-#' @param dist_param_2 PARAM_DESCRIPTION, Default: numeric(0)
-#' @param dist_param_3 PARAM_DESCRIPTION, Default: numeric(0)
-#' @param dist_param_4 PARAM_DESCRIPTION, Default: numeric(0)
-#' @param transformation PARAM_DESCRIPTION, Default: character(0)
+#' @param distribution_chr Distribution (a character vector), Default: character(0)
+#' @param dist_param_1_dbl Dist param 1 (a double vector), Default: numeric(0)
+#' @param dist_param_2_dbl Dist param 2 (a double vector), Default: numeric(0)
+#' @param dist_param_3_dbl Dist param 3 (a double vector), Default: numeric(0)
+#' @param dist_param_4_dbl Dist param 4 (a double vector), Default: numeric(0)
+#' @param transformation_chr Transformation (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
 #' @details ready4 S3 class for list object that summarises the parameters of each distribution
 #' @rdname make_pt_ready4_dist
 #' @export 
 #' @importFrom ready4class update_pt_fn_args_ls
 #' @importFrom rlang exec
-make_pt_ready4_dist <- function(distribution = character(0),
-dist_param_1 = numeric(0),
-dist_param_2 = numeric(0),
-dist_param_3 = numeric(0),
-dist_param_4 = numeric(0),
-transformation = character(0)){ 
-args_ls <- list(distribution = distribution,
-dist_param_1 = dist_param_1,
-dist_param_2 = dist_param_2,
-dist_param_3 = dist_param_3,
-dist_param_4 = dist_param_4,
-transformation = transformation) %>% ready4class::update_pt_fn_args_ls()
+make_pt_ready4_dist <- function(distribution_chr = character(0),
+dist_param_1_dbl = numeric(0),
+dist_param_2_dbl = numeric(0),
+dist_param_3_dbl = numeric(0),
+dist_param_4_dbl = numeric(0),
+transformation_chr = character(0)){ 
+args_ls <- list(distribution_chr = distribution_chr,
+dist_param_1_dbl = dist_param_1_dbl,
+dist_param_2_dbl = dist_param_2_dbl,
+dist_param_3_dbl = dist_param_3_dbl,
+dist_param_4_dbl = dist_param_4_dbl,
+transformation_chr = transformation_chr) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(list,!!!args_ls)
 }
 #' Validate ready4 S3 class for list object that summarises the parameters of each distribution

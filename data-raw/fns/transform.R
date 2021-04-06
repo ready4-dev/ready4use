@@ -1,5 +1,5 @@
-transform_csv_col_to_ls_col <- function(csv_col){
-  ls_col_ls <- purrr::map(csv_col,
+transform_csv_col_to_ls_col <- function(csv_col_xx){
+  ls_col_ls <- purrr::map(csv_col_xx,
                        ~ ifelse(is.na(.x),
                               .x,
                               ifelse(startsWith(.x,"c("),

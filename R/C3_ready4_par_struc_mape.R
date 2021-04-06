@@ -27,20 +27,20 @@ x
 }
 #' Make prototype ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Create a new prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @param param_name PARAM_DESCRIPTION, Default: character(0)
-#' @param sex_age_band PARAM_DESCRIPTION, Default: character(0)
-#' @param mape_05_yr_mde PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_10_yr_mde PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_15_yr_mde PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_05_yr_min PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_10_yr_min PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_15_yr_min PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_05_yr_max PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_10_yr_max PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_15_yr_max PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_05_yr_shp PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_10_yr_shp PARAM_DESCRIPTION, Default: numeric(0)
-#' @param mape_15_yr_shp PARAM_DESCRIPTION, Default: numeric(0)
+#' @param param_name_chr Param name (a character vector), Default: character(0)
+#' @param sex_age_band_chr Sex age band (a character vector), Default: character(0)
+#' @param mape_05_yr_mde_dbl Mape 05 yr mde (a double vector), Default: numeric(0)
+#' @param mape_10_yr_mde_dbl Mape 10 yr mde (a double vector), Default: numeric(0)
+#' @param mape_15_yr_mde_dbl Mape 15 yr mde (a double vector), Default: numeric(0)
+#' @param mape_05_yr_min_dbl Mape 05 yr min (a double vector), Default: numeric(0)
+#' @param mape_10_yr_min_dbl Mape 10 yr min (a double vector), Default: numeric(0)
+#' @param mape_15_yr_min_dbl Mape 15 yr min (a double vector), Default: numeric(0)
+#' @param mape_05_yr_max_dbl Mape 05 yr max (a double vector), Default: numeric(0)
+#' @param mape_10_yr_max_dbl Mape 10 yr max (a double vector), Default: numeric(0)
+#' @param mape_15_yr_max_dbl Mape 15 yr max (a double vector), Default: numeric(0)
+#' @param mape_05_yr_shp_dbl Mape 05 yr shp (a double vector), Default: numeric(0)
+#' @param mape_10_yr_shp_dbl Mape 10 yr shp (a double vector), Default: numeric(0)
+#' @param mape_15_yr_shp_dbl Mape 15 yr shp (a double vector), Default: numeric(0)
 #' @return A prototype for ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @details ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname make_pt_ready4_par_struc_mape
@@ -48,34 +48,34 @@ x
 #' @importFrom ready4class update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
-make_pt_ready4_par_struc_mape <- function(param_name = character(0),
-sex_age_band = character(0),
-mape_05_yr_mde = numeric(0),
-mape_10_yr_mde = numeric(0),
-mape_15_yr_mde = numeric(0),
-mape_05_yr_min = numeric(0),
-mape_10_yr_min = numeric(0),
-mape_15_yr_min = numeric(0),
-mape_05_yr_max = numeric(0),
-mape_10_yr_max = numeric(0),
-mape_15_yr_max = numeric(0),
-mape_05_yr_shp = numeric(0),
-mape_10_yr_shp = numeric(0),
-mape_15_yr_shp = numeric(0)){ 
-args_ls <- list(param_name = param_name,
-sex_age_band = sex_age_band,
-mape_05_yr_mde = mape_05_yr_mde,
-mape_10_yr_mde = mape_10_yr_mde,
-mape_15_yr_mde = mape_15_yr_mde,
-mape_05_yr_min = mape_05_yr_min,
-mape_10_yr_min = mape_10_yr_min,
-mape_15_yr_min = mape_15_yr_min,
-mape_05_yr_max = mape_05_yr_max,
-mape_10_yr_max = mape_10_yr_max,
-mape_15_yr_max = mape_15_yr_max,
-mape_05_yr_shp = mape_05_yr_shp,
-mape_10_yr_shp = mape_10_yr_shp,
-mape_15_yr_shp = mape_15_yr_shp) %>% ready4class::update_pt_fn_args_ls()
+make_pt_ready4_par_struc_mape <- function(param_name_chr = character(0),
+sex_age_band_chr = character(0),
+mape_05_yr_mde_dbl = numeric(0),
+mape_10_yr_mde_dbl = numeric(0),
+mape_15_yr_mde_dbl = numeric(0),
+mape_05_yr_min_dbl = numeric(0),
+mape_10_yr_min_dbl = numeric(0),
+mape_15_yr_min_dbl = numeric(0),
+mape_05_yr_max_dbl = numeric(0),
+mape_10_yr_max_dbl = numeric(0),
+mape_15_yr_max_dbl = numeric(0),
+mape_05_yr_shp_dbl = numeric(0),
+mape_10_yr_shp_dbl = numeric(0),
+mape_15_yr_shp_dbl = numeric(0)){ 
+args_ls <- list(param_name_chr = param_name_chr,
+sex_age_band_chr = sex_age_band_chr,
+mape_05_yr_mde_dbl = mape_05_yr_mde_dbl,
+mape_10_yr_mde_dbl = mape_10_yr_mde_dbl,
+mape_15_yr_mde_dbl = mape_15_yr_mde_dbl,
+mape_05_yr_min_dbl = mape_05_yr_min_dbl,
+mape_10_yr_min_dbl = mape_10_yr_min_dbl,
+mape_15_yr_min_dbl = mape_15_yr_min_dbl,
+mape_05_yr_max_dbl = mape_05_yr_max_dbl,
+mape_10_yr_max_dbl = mape_10_yr_max_dbl,
+mape_15_yr_max_dbl = mape_15_yr_max_dbl,
+mape_05_yr_shp_dbl = mape_05_yr_shp_dbl,
+mape_10_yr_shp_dbl = mape_10_yr_shp_dbl,
+mape_15_yr_shp_dbl = mape_15_yr_shp_dbl) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

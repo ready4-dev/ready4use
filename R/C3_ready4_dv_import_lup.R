@@ -27,13 +27,13 @@ x
 }
 #' Make prototype ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Create a new prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @param file_type PARAM_DESCRIPTION, Default: character(0)
-#' @param file_name PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_ui PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_db_ui PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_file_ext PARAM_DESCRIPTION, Default: character(0)
-#' @param data_repo_save_type PARAM_DESCRIPTION, Default: character(0)
+#' @param file_type_chr File type (a character vector), Default: character(0)
+#' @param file_name_chr File name (a character vector), Default: character(0)
+#' @param data_repo_chr Data repo (a character vector), Default: character(0)
+#' @param data_repo_ui_chr Data repo ui (a character vector), Default: character(0)
+#' @param data_repo_db_ui_chr Data repo database ui (a character vector), Default: character(0)
+#' @param data_repo_file_ext_chr Data repo file ext (a character vector), Default: character(0)
+#' @param data_repo_save_type_chr Data repo save type (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_pt_ready4_dv_import_lup
@@ -41,20 +41,20 @@ x
 #' @importFrom ready4class update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
-make_pt_ready4_dv_import_lup <- function(file_type = character(0),
-file_name = character(0),
-data_repo = character(0),
-data_repo_ui = character(0),
-data_repo_db_ui = character(0),
-data_repo_file_ext = character(0),
-data_repo_save_type = character(0)){ 
-args_ls <- list(file_type = file_type,
-file_name = file_name,
-data_repo = data_repo,
-data_repo_ui = data_repo_ui,
-data_repo_db_ui = data_repo_db_ui,
-data_repo_file_ext = data_repo_file_ext,
-data_repo_save_type = data_repo_save_type) %>% ready4class::update_pt_fn_args_ls()
+make_pt_ready4_dv_import_lup <- function(file_type_chr = character(0),
+file_name_chr = character(0),
+data_repo_chr = character(0),
+data_repo_ui_chr = character(0),
+data_repo_db_ui_chr = character(0),
+data_repo_file_ext_chr = character(0),
+data_repo_save_type_chr = character(0)){ 
+args_ls <- list(file_type_chr = file_type_chr,
+file_name_chr = file_name_chr,
+data_repo_chr = data_repo_chr,
+data_repo_ui_chr = data_repo_ui_chr,
+data_repo_db_ui_chr = data_repo_db_ui_chr,
+data_repo_file_ext_chr = data_repo_file_ext_chr,
+data_repo_save_type_chr = data_repo_save_type_chr) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

@@ -177,7 +177,7 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 }
 #' Write to add urls to datasets
 #' @description write_to_add_urls_to_dss() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to add urls to datasets. The function returns Package datasets (a tibble).
-#' @param ds_url PARAM_DESCRIPTION
+#' @param ds_url_1L_chr PARAM_DESCRIPTION
 #' @param pkg_dss_tb Package datasets (a tibble)
 #' @param pkg_nm_1L_chr Package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
 #' @return Package datasets (a tibble)
@@ -191,9 +191,9 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @importFrom dplyr inner_join select
 #' @importFrom utils data
 #' @keywords internal
-write_to_add_urls_to_dss <- function (ds_url, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
+write_to_add_urls_to_dss <- function (ds_url_1L_chr, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
 {
-    ds_fls_ls <- dataverse::dataset_files(ds_url)
+    ds_fls_ls <- dataverse::dataset_files(ds_url_1L_chr)
     fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
     fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% 
         stringr::str_remove(".csv"))

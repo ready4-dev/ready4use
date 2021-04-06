@@ -119,7 +119,7 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
                                 dev_pkgs_chr = c("ready4fun","ready4class","dataverse"),
                                 update_pkgdown_1L_lgl = T)
-##
+## PAUSE FOR INTERACTIV
 data("prototype_lup")
 prototype_lup %>%
   write_paired_ds_fls_to_dv(fl_nm_1L_chr = "abbreviations_lup",

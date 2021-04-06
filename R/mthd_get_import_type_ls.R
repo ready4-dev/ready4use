@@ -10,9 +10,9 @@
 get_import_type_ls.ready4_all_import_lup <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
 {
     assert_single_row_tb(x)
-    options_ls <- list(script_chr = x$make_script_src, local_chr = x$local_file_src, 
-        repo_chr = x$data_repo_db_ui, source_url_chr = x$download_url) %>% 
-        purrr::discard(is.na)
+    options_ls <- list(script_chr = x$path_to_make_script_chr, 
+        local_chr = x$local_file_src_chr, repo_chr = x$data_repo_db_ui_chr, 
+        source_url_chr = x$download_url_chr) %>% purrr::discard(is.na)
     if ("script_chr" %in% names(options_ls) & !inc_script_lgl) 
         options_ls$script_chr <- NULL
     if (!is.na(forced_choice_chr)) {

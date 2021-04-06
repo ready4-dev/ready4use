@@ -6,18 +6,22 @@
 \alias{update_src_loc_to_url,ready4_all_import_lup-method}
 \title{Update source local to url}
 \usage{
-update_src_loc_to_url(x, local_to_url_vec, urls_vec, ...)
+update_src_loc_to_url(x, local_to_url_vec_chr, urls_vec_chr, ...)
 
-update_src_loc_to_url.ready4_all_import_lup(x, local_to_url_vec, urls_vec)
+update_src_loc_to_url.ready4_all_import_lup(
+  x,
+  local_to_url_vec_chr,
+  urls_vec_chr
+)
 
-\S4method{update_src_loc_to_url}{ready4_all_import_lup}(x, local_to_url_vec, urls_vec)
+\S4method{update_src_loc_to_url}{ready4_all_import_lup}(x, local_to_url_vec_chr, urls_vec_chr)
 }
 \arguments{
 \item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
-\item{local_to_url_vec}{PARAM_DESCRIPTION}
+\item{local_to_url_vec_chr}{PARAM_DESCRIPTION}
 
-\item{urls_vec}{PARAM_DESCRIPTION}
+\item{urls_vec_chr}{PARAM_DESCRIPTION}
 
 \item{...}{Additional arguments}
 }

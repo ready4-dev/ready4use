@@ -110,12 +110,12 @@ methods::setGeneric("save_raw")
 #' @rdname update_src_loc_to_url-methods
 #' @description update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URL
 #' @param x An object
-#' @param local_to_url_vec PARAM_DESCRIPTION
-#' @param urls_vec PARAM_DESCRIPTION
+#' @param local_to_url_vec_chr PARAM_DESCRIPTION
+#' @param urls_vec_chr PARAM_DESCRIPTION
 #' @param ... Additional arguments
 #' @export 
 
-update_src_loc_to_url <- function (x, local_to_url_vec, urls_vec, ...) 
+update_src_loc_to_url <- function (x, local_to_url_vec_chr, urls_vec_chr, ...) 
 {
     UseMethod("update_src_loc_to_url", x)
 }

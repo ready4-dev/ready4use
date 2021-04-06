@@ -77,9 +77,9 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                                    save_type_1L_chr){
   assert_single_row_tb(imp_lup)
   imp_lup <- imp_lup %>%
-    dplyr::mutate(data_repo_db_ui = ds_ui_1L_chr,
-                  data_repo_file_ext = file_type_1L_chr,
-                  data_repo_save_type = save_type_1L_chr)
+    dplyr::mutate(data_repo_db_ui_chr = ds_ui_1L_chr,
+                  data_repo_file_ext_chr = file_type_1L_chr,
+                  data_repo_save_type_chr = save_type_1L_chr)
   return(imp_lup)
 }
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
@@ -118,8 +118,8 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 }
 add_labels_from_dictionary <- function(ds_tb,
                                        dictionary_tb,
-                                       strip_old_lbls_1L_lgl = F){
-  if(strip_old_lbls_1L_lgl)
+                                       remove_old_lbls_1L_lgl = F){
+  if(remove_old_lbls_1L_lgl)
     ds_tb <- ds_tb %>% sjlabelled::unlabel()
   data_dictionary_tb <- dictionary_tb %>%
     dplyr::filter(var_nm_chr %in% names(ds_tb)) %>%

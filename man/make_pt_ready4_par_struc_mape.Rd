@@ -5,50 +5,50 @@
 \title{Make prototype ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 make_pt_ready4_par_struc_mape(
-  param_name = character(0),
-  sex_age_band = character(0),
-  mape_05_yr_mde = numeric(0),
-  mape_10_yr_mde = numeric(0),
-  mape_15_yr_mde = numeric(0),
-  mape_05_yr_min = numeric(0),
-  mape_10_yr_min = numeric(0),
-  mape_15_yr_min = numeric(0),
-  mape_05_yr_max = numeric(0),
-  mape_10_yr_max = numeric(0),
-  mape_15_yr_max = numeric(0),
-  mape_05_yr_shp = numeric(0),
-  mape_10_yr_shp = numeric(0),
-  mape_15_yr_shp = numeric(0)
+  param_name_chr = character(0),
+  sex_age_band_chr = character(0),
+  mape_05_yr_mde_dbl = numeric(0),
+  mape_10_yr_mde_dbl = numeric(0),
+  mape_15_yr_mde_dbl = numeric(0),
+  mape_05_yr_min_dbl = numeric(0),
+  mape_10_yr_min_dbl = numeric(0),
+  mape_15_yr_min_dbl = numeric(0),
+  mape_05_yr_max_dbl = numeric(0),
+  mape_10_yr_max_dbl = numeric(0),
+  mape_15_yr_max_dbl = numeric(0),
+  mape_05_yr_shp_dbl = numeric(0),
+  mape_10_yr_shp_dbl = numeric(0),
+  mape_15_yr_shp_dbl = numeric(0)
 )
 }
 \arguments{
-\item{param_name}{PARAM_DESCRIPTION, Default: character(0)}
+\item{param_name_chr}{Param name (a character vector), Default: character(0)}
 
-\item{sex_age_band}{PARAM_DESCRIPTION, Default: character(0)}
+\item{sex_age_band_chr}{Sex age band (a character vector), Default: character(0)}
 
-\item{mape_05_yr_mde}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_05_yr_mde_dbl}{Mape 05 yr mde (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_mde}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_10_yr_mde_dbl}{Mape 10 yr mde (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_mde}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_15_yr_mde_dbl}{Mape 15 yr mde (a double vector), Default: numeric(0)}
 
-\item{mape_05_yr_min}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_05_yr_min_dbl}{Mape 05 yr min (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_min}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_10_yr_min_dbl}{Mape 10 yr min (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_min}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_15_yr_min_dbl}{Mape 15 yr min (a double vector), Default: numeric(0)}
 
-\item{mape_05_yr_max}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_05_yr_max_dbl}{Mape 05 yr max (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_max}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_10_yr_max_dbl}{Mape 10 yr max (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_max}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_15_yr_max_dbl}{Mape 15 yr max (a double vector), Default: numeric(0)}
 
-\item{mape_05_yr_shp}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_05_yr_shp_dbl}{Mape 05 yr shp (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_shp}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_10_yr_shp_dbl}{Mape 10 yr shp (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_shp}{PARAM_DESCRIPTION, Default: numeric(0)}
+\item{mape_15_yr_shp_dbl}{Mape 15 yr shp (a double vector), Default: numeric(0)}
 }
 \value{
 A prototype for ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

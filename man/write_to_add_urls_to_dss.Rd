@@ -5,13 +5,13 @@
 \title{Write to add urls to datasets}
 \usage{
 write_to_add_urls_to_dss(
-  ds_url,
+  ds_url_1L_chr,
   pkg_dss_tb,
   pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()
 )
 }
 \arguments{
-\item{ds_url}{PARAM_DESCRIPTION}
+\item{ds_url_1L_chr}{PARAM_DESCRIPTION}
 
 \item{pkg_dss_tb}{Package datasets (a tibble)}
 
