@@ -1,3 +1,4 @@
+library(magrittr)
 ready4fun::read_fns("data-raw/fns")
 source("data-raw/MAKE_CLASSES.R")
 abbreviations_lup <- ready4fun::get_rds_from_dv("abbreviations_lup")

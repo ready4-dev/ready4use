@@ -143,7 +143,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @return Labelled dataset (a tibble)
 #' @rdname add_labels_from_dictionary
 #' @export 
-#' @importFrom sjlabelled unlabel
+#' @importFrom ready4fun remove_lbls_from_df
 #' @importFrom dplyr filter mutate case_when
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
@@ -151,10 +151,10 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 add_labels_from_dictionary <- function (ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F) 
 {
     if (remove_old_lbls_1L_lgl) 
-        ds_tb <- ds_tb %>% sjlabelled::unlabel()
+        ds_tb <- ds_tb %>% ready4fun::remove_lbls_from_df()
     data_dictionary_tb <- dictionary_tb %>% dplyr::filter(var_nm_chr %in% 
         names(ds_tb)) %>% dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ 
-        var_nm_chr, TRUE ~ var_desc_chr)) %>% sjlabelled::unlabel()
+        var_nm_chr, TRUE ~ var_desc_chr)) %>% ready4fun::remove_lbls_from_df()
     if (nrow(data_dictionary_tb) > 0) {
         labelled_ds_tb <- seq_len(nrow(data_dictionary_tb)) %>% 
             purrr::reduce(.init = ds_tb, ~{

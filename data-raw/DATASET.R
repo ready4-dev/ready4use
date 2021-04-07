@@ -122,8 +122,8 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 ## PAUSE FOR INTERACTIV
 data("prototype_lup")
 prototype_lup %>%
-  write_paired_ds_fls_to_dv(fl_nm_1L_chr = "abbreviations_lup",
-                            desc_1L_chr = "Abbreviations lookup table")
+  write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
+                            desc_1L_chr = "Prototypes lookup table")
 ##
 ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9117/ready4use_user_0.0.0.9117.pdf",
 developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9117/ready4use_developer_0.0.0.9117.pdf")
