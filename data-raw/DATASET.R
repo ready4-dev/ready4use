@@ -50,29 +50,24 @@ ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For
 source("data-raw/MAKE_CLASSES.R")
 #
 # 7. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
-# Temporarily relies on MAKE_HOUSESTYLE_DSS.R
-#fn_type_lup_tb <- ready4fun::get_rds_from_dv("abbreviations_lup") # Uncomment once dataverse DRAFT published
-pkg_dss_tb <- abbreviations_lup %>%
+pkg_dss_tb <- ready4fun::get_rds_from_dv("abbreviations_lup") %>%
   ready4fun::write_abbr_lup()
 utils::data("abbreviations_lup")
 #
 # 8. Create function types look-up table and save it as a package dataset
-# Temporarily relies on MAKE_HOUSESTYLE_DSS.R
-#fn_type_lup_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb") # Uncomment once dataverse DRAFT published
-pkg_dss_tb <- fn_type_lup_tb %>%
+pkg_dss_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb") %>%
   ready4fun::write_dmtd_fn_type_lup(abbreviations_lup = abbreviations_lup,
                                     pkg_dss_tb = pkg_dss_tb)
 utils::data("fn_type_lup_tb")
 ##
 ## 9. WRITE and document new classes with the metadata contained in the merged object.
-prototype_lup <- ready4fun::get_rds_from_dv("prototype_lup")
 pkg_dss_tb <- classes_to_make_tb %>%
   ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
                                           name_pfx_1L_chr = "ready4_",
                                           output_dir_1L_chr = "R",
                                           file_exists_cdn_1L_chr = "overwrite",
                                           abbreviations_lup = abbreviations_lup,
-                                          init_class_pt_lup = prototype_lup) %>%
+                                          init_class_pt_lup = ready4fun::get_rds_from_dv("prototype_lup")) %>%
 ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
                             desc_1L_chr = "Metadata on classes used in ready4 suite",
@@ -121,9 +116,11 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 update_pkgdown_1L_lgl = T)
 ## PAUSE FOR INTERACTIV
 data("prototype_lup")
-prototype_lup %>%
-  write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
-                            desc_1L_chr = "Prototypes lookup table")
+if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
+  prototype_lup %>%
+    write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
+                              desc_1L_chr = "Prototypes lookup table")
+}
 ##
 ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_user_0.0.0.9120.pdf",
 developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_developer_0.0.0.9120.pdf")
