@@ -11,7 +11,7 @@ add_labels_from_dictionary(ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F)
 
 \item{dictionary_tb}{Dictionary (a tibble)}
 
-\item{remove_old_lbls_1L_lgl}{PARAM_DESCRIPTION, Default: F}
+\item{remove_old_lbls_1L_lgl}{Remove old lbls (a logical vector of length one), Default: F}
 }
 \value{
 Labelled dataset (a tibble)
@@ -19,4 +19,3 @@ Labelled dataset (a tibble)
 \description{
 add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 }
-\keyword{internal}

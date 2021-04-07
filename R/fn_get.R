@@ -44,7 +44,6 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
 #' @importFrom purrr map2_chr
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom tibble as_tibble
-#' @keywords internal
 get_fl_id_from_dv_ls <- function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_) 
 {
     if (is.na(nms_chr[1])) {

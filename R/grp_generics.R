@@ -1,6 +1,6 @@
-#' Bind lookup tables
+#' Bind lups
 #' @rdname bind_lups-methods
-#' @description bind_lups() is a Bind Lookup Tables generic that rowbinds lookup tables of the same class, removing duplicates based on priority.
+#' @description bind_lups() is a Bind Lups generic that rowbinds lookup tables of the same class, removing duplicates based on priority.
 #' @param x An object
 #' @param ... Additional arguments
 #' @export 
@@ -110,8 +110,8 @@ methods::setGeneric("save_raw")
 #' @rdname update_src_loc_to_url-methods
 #' @description update_src_loc_to_url() is an Update Source Local to Url generic that updates data from a local file reference to a URL
 #' @param x An object
-#' @param local_to_url_vec_chr PARAM_DESCRIPTION
-#' @param urls_vec_chr PARAM_DESCRIPTION
+#' @param local_to_url_vec_chr Local to url vec (a character vector)
+#' @param urls_vec_chr Urls vec (a character vector)
 #' @param ... Additional arguments
 #' @export 
 

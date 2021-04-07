@@ -7,12 +7,12 @@
 transform_csv_col_to_ls_col(csv_col_xx)
 }
 \arguments{
-\item{csv_col_xx}{PARAM_DESCRIPTION}
+\item{csv_col_xx}{Comma separated variables file column (an output object of multiple potential types)}
 }
 \value{
 List column (a list)
 }
 \description{
-transform_csv_col_to_ls_col() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform comma separated variables file column to list column. Function argument csv_col specifies the object to be updated. The function returns List column (a list).
+transform_csv_col_to_ls_col() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform comma separated variables file column to list column. Function argument csv_col_xx specifies the object to be updated. The function returns List column (a list).
 }
 \keyword{internal}

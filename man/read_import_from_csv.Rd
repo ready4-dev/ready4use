@@ -9,7 +9,7 @@ read_import_from_csv(file_ref_chr, is_url_1L_lgl = F)
 \arguments{
 \item{file_ref_chr}{File reference (a character vector)}
 
-\item{is_url_1L_lgl}{PARAM_DESCRIPTION, Default: F}
+\item{is_url_1L_lgl}{Is url (a logical vector of length one), Default: F}
 }
 \value{
 Import (a ready4 S3)

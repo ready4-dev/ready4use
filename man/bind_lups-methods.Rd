@@ -4,7 +4,7 @@
 \alias{bind_lups}
 \alias{bind_lups.ready4_dictionary}
 \alias{bind_lups,ready4_dictionary-method}
-\title{Bind lookup tables}
+\title{Bind lups}
 \usage{
 bind_lups(x, ...)
 
@@ -17,13 +17,13 @@ bind_lups.ready4_dictionary(x, new_ready4_dict_r3)
 
 \item{...}{Additional arguments}
 
-\item{new_ready4_dict_r3}{PARAM_DESCRIPTION}
+\item{new_ready4_dict_r3}{New ready4 dict (a ready4 S3)}
 }
 \value{
 NA ()
 }
 \description{
-bind_lups() is a Bind Lookup Tables generic that rowbinds lookup tables of the same class, removing duplicates based on priority.
+bind_lups() is a Bind Lups generic that rowbinds lookup tables of the same class, removing duplicates based on priority.
 
-bind_lups.ready4_dictionary() is a Bind Lookup Tables method that rowbinds lookup tables of the same class, removing duplicates based on priority. This method is implemented for the ready4 s3 class defining a data dictionary tibble.. The function is called for its side effects and does not return a value.
+bind_lups.ready4_dictionary() is a Bind Lups method that rowbinds lookup tables of the same class, removing duplicates based on priority. This method is implemented for the ready4 s3 class defining a data dictionary tibble.. The function is called for its side effects and does not return a value.
 }

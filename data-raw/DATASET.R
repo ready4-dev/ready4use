@@ -79,8 +79,8 @@ ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             pkg_dss_tb = pkg_dss_tb)
 #
 # 10. Create a table of all functions to document
-fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = make_fn_nms(),
-                                              undocumented_fns_dir_chr = make_undmtd_fns_dir_chr(),
+fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = ready4fun::make_fn_nms(),
+                                              undocumented_fns_dir_chr = ready4fun::make_undmtd_fns_dir_chr(),
                                               custom_dmt_ls = list(details_ls = NULL,
                                                                    inc_for_main_user_lgl_ls = list(force_true_chr = c("add_labels_from_dictionary",
                                                                                                                       "assert_matches_chr",

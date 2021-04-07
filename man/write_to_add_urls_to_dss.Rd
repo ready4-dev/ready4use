@@ -11,7 +11,7 @@ write_to_add_urls_to_dss(
 )
 }
 \arguments{
-\item{ds_url_1L_chr}{PARAM_DESCRIPTION}
+\item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
 
 \item{pkg_dss_tb}{Package datasets (a tibble)}
 

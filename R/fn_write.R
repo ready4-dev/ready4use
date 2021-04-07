@@ -107,7 +107,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
 #' @importFrom dataverse get_dataset
-#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
@@ -138,6 +137,41 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
     }
     return(ds_ls)
 }
+#' Write paired dataset files to dataverse
+#' @description write_paired_ds_fls_to_dv() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write paired dataset files to dataverse. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
+#' @param ds_tb Dataset (a tibble)
+#' @param fl_nm_1L_chr File name (a character vector of length one)
+#' @param desc_1L_chr Description (a character vector of length one)
+#' @param ds_url_1L_chr Dataset url (a character vector of length one), Default: 'https://doi.org/10.7910/DVN/2Y9VF9'
+#' @param pkg_dv_dir_1L_chr Package dataverse directory (a character vector of length one), Default: 'data-raw/dataverse'
+#' @param data_dir_rt_1L_chr Data directory root (a character vector of length one), Default: '.'
+#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
+#' @return NULL
+#' @rdname write_paired_ds_fls_to_dv
+#' @export 
+#' @importFrom utils write.csv
+#' @importFrom stats setNames
+write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9", 
+    pkg_dv_dir_1L_chr = "data-raw/dataverse", data_dir_rt_1L_chr = ".", 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
+{
+    if (!dir.exists(pkg_dv_dir_1L_chr)) 
+        dir.create(pkg_dv_dir_1L_chr)
+    pkg_dv_dir_1L_chr <- paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr)
+    if (!dir.exists(pkg_dv_dir_1L_chr)) 
+        dir.create(pkg_dv_dir_1L_chr)
+    ds_tb %>% saveRDS(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, 
+        ".RDS"))
+    readRDS(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, ".RDS")) %>% 
+        utils::write.csv(file = paste0(pkg_dv_dir_1L_chr, "/", 
+            fl_nm_1L_chr, ".csv"), row.names = F)
+    make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr, recode_ls = c(rep(desc_1L_chr, 
+        2)) %>% as.list() %>% stats::setNames(c(rep(fl_nm_1L_chr, 
+        2)))) %>% add_files_to_dv(data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
+        ds_url_1L_chr = ds_url_1L_chr, key_1L_chr = key_1L_chr, 
+        server_1L_chr = server_1L_chr)
+}
 #' Write package datasets to dataverse dataset comma separated variables files
 #' @description write_pkg_dss_to_dv_ds_csvs() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write package datasets to dataverse dataset comma separated variables files. The function returns Dataset (a list).
 #' @param pkg_dss_tb Package datasets (a tibble)
@@ -156,7 +190,6 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @importFrom utils data
 #' @importFrom dplyr mutate_if
 #' @importFrom stringr str_c
-#' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -177,7 +210,7 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 }
 #' Write to add urls to datasets
 #' @description write_to_add_urls_to_dss() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to add urls to datasets. The function returns Package datasets (a tibble).
-#' @param ds_url_1L_chr PARAM_DESCRIPTION
+#' @param ds_url_1L_chr Dataset url (a character vector of length one)
 #' @param pkg_dss_tb Package datasets (a tibble)
 #' @param pkg_nm_1L_chr Package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
 #' @return Package datasets (a tibble)

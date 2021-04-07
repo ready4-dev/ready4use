@@ -139,7 +139,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param dictionary_tb Dictionary (a tibble)
-#' @param remove_old_lbls_1L_lgl PARAM_DESCRIPTION, Default: F
+#' @param remove_old_lbls_1L_lgl Remove old lbls (a logical vector of length one), Default: F
 #' @return Labelled dataset (a tibble)
 #' @rdname add_labels_from_dictionary
 #' @export 
@@ -147,7 +147,6 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @importFrom dplyr filter mutate case_when
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
-#' @keywords internal
 add_labels_from_dictionary <- function (ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F) 
 {
     if (remove_old_lbls_1L_lgl) 

@@ -26,10 +26,15 @@ reference:
   - ready4_script_data
 - title: "Functions"
 - contents:
+  - add_labels_from_dictionary
   - assert_matches_chr
   - assert_single_row_tb
+  - get_fl_id_from_dv_ls
   - get_local_path_to_dv_data
   - get_r3_from_dv_csv
+  - write_fls_to_dv_ds
+  - write_paired_ds_fls_to_dv
+  - write_pkg_dss_to_dv_ds_csvs
 - title: "Generics"
 - contents:
   - bind_lups

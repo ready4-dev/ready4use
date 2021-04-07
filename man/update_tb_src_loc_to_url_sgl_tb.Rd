@@ -11,9 +11,9 @@ update_tb_src_loc_to_url_sgl_tb(x, y, local_to_url_vec_chr, urls_vec_chr)
 
 \item{y}{PARAM_DESCRIPTION}
 
-\item{local_to_url_vec_chr}{PARAM_DESCRIPTION}
+\item{local_to_url_vec_chr}{Local to url vec (a character vector)}
 
-\item{urls_vec_chr}{PARAM_DESCRIPTION}
+\item{urls_vec_chr}{Urls vec (a character vector)}
 }
 \value{
 Updated (a tibble)
