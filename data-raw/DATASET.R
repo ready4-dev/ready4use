@@ -125,8 +125,8 @@ prototype_lup %>%
   write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
                             desc_1L_chr = "Prototypes lookup table")
 ##
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9119/ready4use_user_0.0.0.9119.pdf",
-developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9119/ready4use_developer_0.0.0.9119.pdf")
+ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_user_0.0.0.9120.pdf",
+developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_developer_0.0.0.9120.pdf")
 #pkgdown::build_site()
 #
 # 12. Add vignette
