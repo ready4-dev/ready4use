@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get local path to dataverse data — get_local_path_to_dv_data • ready4use</title>
+<title>Write paired dataset files to dataverse — write_paired_ds_fls_to_dv • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Get local path to dataverse data — get_local_path_to_dv_data" />
-<meta property="og:description" content="get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector)." />
+<meta property="og:title" content="Write paired dataset files to dataverse — write_paired_ds_fls_to_dv" />
+<meta property="og:description" content="write_paired_ds_fls_to_dv() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write paired dataset files to dataverse. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,37 +119,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get local path to dataverse data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_get.R'><code>R/fn_get.R</code></a></small>
-    <div class="hidden name"><code>get_local_path_to_dv_data.Rd</code></div>
+    <h1>Write paired dataset files to dataverse</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_write.R'><code>R/fn_write.R</code></a></small>
+    <div class="hidden name"><code>write_paired_ds_fls_to_dv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).</p>
+    <p>write_paired_ds_fls_to_dv() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write paired dataset files to dataverse. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_local_path_to_dv_data</span><span class='op'>(</span><span class='va'>save_dir_path_1L_chr</span>, <span class='va'>fl_nm_1L_chr</span>, <span class='va'>save_fmt_1L_chr</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>write_paired_ds_fls_to_dv</span><span class='op'>(</span>
+  <span class='va'>ds_tb</span>,
+  <span class='va'>fl_nm_1L_chr</span>,
+  <span class='va'>desc_1L_chr</span>,
+  ds_url_1L_chr <span class='op'>=</span> <span class='st'>"https://doi.org/10.7910/DVN/2Y9VF9"</span>,
+  pkg_dv_dir_1L_chr <span class='op'>=</span> <span class='st'>"data-raw/dataverse"</span>,
+  data_dir_rt_1L_chr <span class='op'>=</span> <span class='st'>"."</span>,
+  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>,
+  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>save_dir_path_1L_chr</th>
-      <td><p>Save directory path (a character vector of length one)</p></td>
+      <th>ds_tb</th>
+      <td><p>Dataset (a tibble)</p></td>
     </tr>
     <tr>
       <th>fl_nm_1L_chr</th>
       <td><p>File name (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>save_fmt_1L_chr</th>
-      <td><p>Save fmt (a character vector of length one)</p></td>
+      <th>desc_1L_chr</th>
+      <td><p>Description (a character vector of length one)</p></td>
+    </tr>
+    <tr>
+      <th>ds_url_1L_chr</th>
+      <td><p>Dataset url (a character vector of length one), Default: 'https://doi.org/10.7910/DVN/2Y9VF9'</p></td>
+    </tr>
+    <tr>
+      <th>pkg_dv_dir_1L_chr</th>
+      <td><p>Package dataverse directory (a character vector of length one), Default: 'data-raw/dataverse'</p></td>
+    </tr>
+    <tr>
+      <th>data_dir_rt_1L_chr</th>
+      <td><p>Data directory root (a character vector of length one), Default: '.'</p></td>
+    </tr>
+    <tr>
+      <th>key_1L_chr</th>
+      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
+    </tr>
+    <tr>
+      <th>server_1L_chr</th>
+      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Path (a character vector)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
