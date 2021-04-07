@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing Data in
     Projects Developed with the Ready4 Suite
-Version: 0.0.0.9119
+Version: 0.0.0.9120
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -87,10 +87,10 @@ Collate:
     'fn_transform.R'
     'fn_update.R'
     'fn_write.R'
+    'gnrc_crs_nbr_dbl.R'
+    'gnrc_merge_with_chr_vec.R'
+    'gnrc_save_type.R'
     'grp_generics.R'
-    'gs_crs_nbr_dbl.R'
-    'gs_merge_with_chr_vec.R'
-    'gs_save_type.R'
     'imp_mthds.R'
     'imp_pipe.R'
     'mthd_bind_lups.R'
