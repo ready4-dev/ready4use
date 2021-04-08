@@ -122,9 +122,8 @@ if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
                               desc_1L_chr = "Prototypes lookup table")
 }
 ##
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_user_0.0.0.9120.pdf",
-developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9120/ready4use_developer_0.0.0.9120.pdf")
-#pkgdown::build_site()
+ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/files/6277539/ready4use_user_0.0.0.9122.pdf",
+developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/files/6277542/ready4use_developer_0.0.0.9122.pdf)")
 #
 # 12. Add vignette
 

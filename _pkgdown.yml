@@ -1,3 +1,9 @@
+home:
+  links:
+  - text: User manual (PDF)
+    href: https://github.com/ready4-dev/ready4use/files/6277539/ready4use_user_0.0.0.9122.pdf
+  - text: Developer version of usual manual (PDF)
+    href: https://github.com/ready4-dev/ready4use/files/6277542/ready4use_developer_0.0.0.9122.pdf)
 development:
   mode: auto
 reference:
