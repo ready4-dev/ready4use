@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_fl_id_from_dv_ls}
 \alias{get_fl_id_from_dv_ls}
-\title{Get file id from dataverse}
+\title{Get file identity from dataverse}
 \usage{
 get_fl_id_from_dv_ls(ds_ls, fl_nm_1L_chr, nms_chr = NA_character_)
 }
@@ -14,8 +14,8 @@ get_fl_id_from_dv_ls(ds_ls, fl_nm_1L_chr, nms_chr = NA_character_)
 \item{nms_chr}{Names (a character vector), Default: 'NA'}
 }
 \value{
-Id (a character vector of length one)
+Identity (a character vector of length one)
 }
 \description{
-get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file id from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Id (a character vector of length one).
+get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file identity from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Identity (a character vector of length one).
 }

@@ -17,7 +17,7 @@ bind_lups.ready4_dictionary(x, new_ready4_dict_r3)
 
 \item{...}{Additional arguments}
 
-\item{new_ready4_dict_r3}{New ready4 dict (a ready4 S3)}
+\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3)}
 }
 \value{
 NA ()

@@ -24,9 +24,9 @@ add_files_to_dv(
 \item{server_1L_chr}{Server (a character vector of length one)}
 }
 \value{
-File ids (an integer vector)
+File identities (an integer vector)
 }
 \description{
-add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File ids (an integer vector).
+add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File identities (an integer vector).
 }
 \keyword{internal}

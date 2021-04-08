@@ -16,7 +16,7 @@ write_dv_ds_fls(
 \arguments{
 \item{files_tb}{Files (a tibble)}
 
-\item{fl_ids_int}{File ids (an integer vector)}
+\item{fl_ids_int}{File identities (an integer vector)}
 
 \item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
 

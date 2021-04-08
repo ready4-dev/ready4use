@@ -32,17 +32,17 @@ make_pt_ready4_par_struc_mape(
 
 \item{mape_15_yr_mde_dbl}{Mape 15 yr mde (a double vector), Default: numeric(0)}
 
-\item{mape_05_yr_min_dbl}{Mape 05 yr min (a double vector), Default: numeric(0)}
+\item{mape_05_yr_min_dbl}{Mape 05 yr minimum (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_min_dbl}{Mape 10 yr min (a double vector), Default: numeric(0)}
+\item{mape_10_yr_min_dbl}{Mape 10 yr minimum (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_min_dbl}{Mape 15 yr min (a double vector), Default: numeric(0)}
+\item{mape_15_yr_min_dbl}{Mape 15 yr minimum (a double vector), Default: numeric(0)}
 
-\item{mape_05_yr_max_dbl}{Mape 05 yr max (a double vector), Default: numeric(0)}
+\item{mape_05_yr_max_dbl}{Mape 05 yr maximum (a double vector), Default: numeric(0)}
 
-\item{mape_10_yr_max_dbl}{Mape 10 yr max (a double vector), Default: numeric(0)}
+\item{mape_10_yr_max_dbl}{Mape 10 yr maximum (a double vector), Default: numeric(0)}
 
-\item{mape_15_yr_max_dbl}{Mape 15 yr max (a double vector), Default: numeric(0)}
+\item{mape_15_yr_max_dbl}{Mape 15 yr maximum (a double vector), Default: numeric(0)}
 
 \item{mape_05_yr_shp_dbl}{Mape 05 yr shp (a double vector), Default: numeric(0)}
 

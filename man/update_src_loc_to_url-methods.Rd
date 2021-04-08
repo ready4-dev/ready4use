@@ -19,9 +19,9 @@ update_src_loc_to_url.ready4_all_import_lup(
 \arguments{
 \item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
-\item{local_to_url_vec_chr}{Local to url vec (a character vector)}
+\item{local_to_url_vec_chr}{Local to url vector (a character vector)}
 
-\item{urls_vec_chr}{Urls vec (a character vector)}
+\item{urls_vec_chr}{Urls vector (a character vector)}
 
 \item{...}{Additional arguments}
 }

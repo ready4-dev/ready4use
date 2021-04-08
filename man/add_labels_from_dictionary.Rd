@@ -11,7 +11,7 @@ add_labels_from_dictionary(ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F)
 
 \item{dictionary_tb}{Dictionary (a tibble)}
 
-\item{remove_old_lbls_1L_lgl}{Remove old lbls (a logical vector of length one), Default: F}
+\item{remove_old_lbls_1L_lgl}{Remove old labels (a logical vector of length one), Default: F}
 }
 \value{
 Labelled dataset (a tibble)

@@ -64,7 +64,7 @@ classes_to_make_tb <- dplyr::bind_rows(
                                               pt_chkr_pfx_ls = list(list("is_")),
                                               pt_ns_ls = list(list("tibble")),
                                               vals_ls = list(list(var_nm_chr = "character(0)",
-                                                                  var_cat_chr = "character(0)",
+                                                                  var_ctg_chr = "character(0)",
                                                                   var_desc_chr = "character(0)",
                                                                   var_type_chr = "character(0)")),
                                               class_desc_chr= "ready4 s3 class defining a data dictionary tibble."),

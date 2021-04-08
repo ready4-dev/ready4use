@@ -20,7 +20,7 @@ write_dv_fl_to_loc(
 
 \item{fl_nm_1L_chr}{File name (a character vector of length one), Default: 'NA'}
 
-\item{fl_id_1L_int}{File id (an integer vector of length one), Default: NA}
+\item{fl_id_1L_int}{File identity (an integer vector of length one), Default: NA}
 
 \item{repo_fl_fmt_1L_chr}{Repo file fmt (a character vector of length one)}
 

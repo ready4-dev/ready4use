@@ -6,19 +6,19 @@
 \usage{
 make_pt_ready4_dictionary(
   var_nm_chr = character(0),
-  var_cat_chr = character(0),
+  var_ctg_chr = character(0),
   var_desc_chr = character(0),
   var_type_chr = character(0)
 )
 }
 \arguments{
-\item{var_nm_chr}{Var name (a character vector), Default: character(0)}
+\item{var_nm_chr}{Variable name (a character vector), Default: character(0)}
 
-\item{var_cat_chr}{Var cat (a character vector), Default: character(0)}
+\item{var_ctg_chr}{Variable category categories (a character vector), Default: character(0)}
 
-\item{var_desc_chr}{Var description (a character vector), Default: character(0)}
+\item{var_desc_chr}{Variable description (a character vector), Default: character(0)}
 
-\item{var_type_chr}{Var type (a character vector), Default: character(0)}
+\item{var_type_chr}{Variable type (a character vector), Default: character(0)}
 }
 \value{
 A prototype for ready4 s3 class defining a data dictionary tibble.

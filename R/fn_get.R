@@ -33,12 +33,12 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
     file_xxx
     return(file_xxx)
 }
-#' Get file id from dataverse
-#' @description get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file id from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Id (a character vector of length one).
+#' Get file identity from dataverse
+#' @description get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file identity from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Identity (a character vector of length one).
 #' @param ds_ls Dataset (a list)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
 #' @param nms_chr Names (a character vector), Default: 'NA'
-#' @return Id (a character vector of length one)
+#' @return Identity (a character vector of length one)
 #' @rdname get_fl_id_from_dv_ls
 #' @export 
 #' @importFrom purrr map2_chr

@@ -88,13 +88,13 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
     return(imp_lup)
 }
 #' Add files to dataverse
-#' @description add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File ids (an integer vector).
+#' @description add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File identities (an integer vector).
 #' @param files_tb Files (a tibble)
 #' @param data_dir_rt_1L_chr Data directory root (a character vector of length one), Default: '.'
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
 #' @param key_1L_chr Key (a character vector of length one)
 #' @param server_1L_chr Server (a character vector of length one)
-#' @return File ids (an integer vector)
+#' @return File identities (an integer vector)
 #' @rdname add_files_to_dv
 #' @export 
 #' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
@@ -139,7 +139,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param dictionary_tb Dictionary (a tibble)
-#' @param remove_old_lbls_1L_lgl Remove old lbls (a logical vector of length one), Default: F
+#' @param remove_old_lbls_1L_lgl Remove old labels (a logical vector of length one), Default: F
 #' @return Labelled dataset (a tibble)
 #' @rdname add_labels_from_dictionary
 #' @export 

@@ -1,7 +1,7 @@
 #' Bind lups method applied to ready4 S3 class defining a data dictionary tibble..
 #' @description bind_lups.ready4_dictionary() is a Bind Lups method that rowbinds lookup tables of the same class, removing duplicates based on priority. This method is implemented for the ready4 s3 class defining a data dictionary tibble.. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a data dictionary tibble.
-#' @param new_ready4_dict_r3 New ready4 dict (a ready4 S3)
+#' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3)
 #' @return NA ()
 #' @rdname bind_lups-methods
 #' @export 

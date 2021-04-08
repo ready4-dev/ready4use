@@ -27,10 +27,10 @@ x
 }
 #' Make prototype ready4 s3 class defining a data dictionary tibble.
 #' @description Create a new prototype for the ready4 s3 class defining a data dictionary tibble.
-#' @param var_nm_chr Var name (a character vector), Default: character(0)
-#' @param var_cat_chr Var cat (a character vector), Default: character(0)
-#' @param var_desc_chr Var description (a character vector), Default: character(0)
-#' @param var_type_chr Var type (a character vector), Default: character(0)
+#' @param var_nm_chr Variable name (a character vector), Default: character(0)
+#' @param var_ctg_chr Variable category categories (a character vector), Default: character(0)
+#' @param var_desc_chr Variable description (a character vector), Default: character(0)
+#' @param var_type_chr Variable type (a character vector), Default: character(0)
 #' @return A prototype for ready4 s3 class defining a data dictionary tibble.
 #' @details ready4 s3 class defining a data dictionary tibble.
 #' @rdname make_pt_ready4_dictionary
@@ -39,11 +39,11 @@ x
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4_dictionary <- function(var_nm_chr = character(0),
-var_cat_chr = character(0),
+var_ctg_chr = character(0),
 var_desc_chr = character(0),
 var_type_chr = character(0)){ 
 args_ls <- list(var_nm_chr = var_nm_chr,
-var_cat_chr = var_cat_chr,
+var_ctg_chr = var_ctg_chr,
 var_desc_chr = var_desc_chr,
 var_type_chr = var_type_chr) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)

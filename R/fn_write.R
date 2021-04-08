@@ -30,7 +30,7 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' Write dataverse dataset files
 #' @description write_dv_ds_fls() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse dataset files. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param files_tb Files (a tibble)
-#' @param fl_ids_int File ids (an integer vector)
+#' @param fl_ids_int File identities (an integer vector)
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
 #' @param local_dv_dir_1L_chr Local dataverse directory (a character vector of length one)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
@@ -59,7 +59,7 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
 #' @description write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one), Default: 'NA'
-#' @param fl_id_1L_int File id (an integer vector of length one), Default: NA
+#' @param fl_id_1L_int File identity (an integer vector of length one), Default: NA
 #' @param repo_fl_fmt_1L_chr Repo file fmt (a character vector of length one)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
