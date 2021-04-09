@@ -27,10 +27,10 @@ x
 #' Make prototype ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param distribution_chr Distribution (a character vector), Default: character(0)
-#' @param dist_param_1_dbl Dist param 1 (a double vector), Default: numeric(0)
-#' @param dist_param_2_dbl Dist param 2 (a double vector), Default: numeric(0)
-#' @param dist_param_3_dbl Dist param 3 (a double vector), Default: numeric(0)
-#' @param dist_param_4_dbl Dist param 4 (a double vector), Default: numeric(0)
+#' @param dstr_par_1_dbl Dstr parameter 1 (a double vector), Default: numeric(0)
+#' @param dstr_par_2_dbl Dstr parameter 2 (a double vector), Default: numeric(0)
+#' @param dstr_par_3_dbl Dstr parameter 3 (a double vector), Default: numeric(0)
+#' @param dstr_par_4_dbl Dstr parameter 4 (a double vector), Default: numeric(0)
 #' @param transformation_chr Transformation (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
 #' @details ready4 S3 class for list object that summarises the parameters of each distribution
@@ -39,16 +39,16 @@ x
 #' @importFrom ready4class update_pt_fn_args_ls
 #' @importFrom rlang exec
 make_pt_ready4_dist <- function(distribution_chr = character(0),
-dist_param_1_dbl = numeric(0),
-dist_param_2_dbl = numeric(0),
-dist_param_3_dbl = numeric(0),
-dist_param_4_dbl = numeric(0),
+dstr_par_1_dbl = numeric(0),
+dstr_par_2_dbl = numeric(0),
+dstr_par_3_dbl = numeric(0),
+dstr_par_4_dbl = numeric(0),
 transformation_chr = character(0)){ 
 args_ls <- list(distribution_chr = distribution_chr,
-dist_param_1_dbl = dist_param_1_dbl,
-dist_param_2_dbl = dist_param_2_dbl,
-dist_param_3_dbl = dist_param_3_dbl,
-dist_param_4_dbl = dist_param_4_dbl,
+dstr_par_1_dbl = dstr_par_1_dbl,
+dstr_par_2_dbl = dstr_par_2_dbl,
+dstr_par_3_dbl = dstr_par_3_dbl,
+dstr_par_4_dbl = dstr_par_4_dbl,
 transformation_chr = transformation_chr) %>% ready4class::update_pt_fn_args_ls()
 rlang::exec(list,!!!args_ls)
 }
