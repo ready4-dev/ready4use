@@ -26,7 +26,8 @@ fn_type_lup_tb %>%
 #     no_plural_chr = classes_to_make_tb$class_desc_chr)
 # fn_type_lup_tb <- fn_type_lup_tb %>%
 #   ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
-#                                                                                   fn_type_lup_tb = fn_type_lup_tb),
+#                                                                                   fn_type_lup_tb = fn_type_lup_tb,
+#                                                                                   object_type_lup = object_type_lup),
 #                                      fn_type_desc_chr = c("Rowbinds lookup tables of the same class, removing duplicates based on priority.",
 #                                                           "Downloads data files.",
 #                                                           "Retrieves data from R objects loaded in memory.",

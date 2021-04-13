@@ -218,10 +218,11 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
 #' @param pkg_dss_tb Package datasets (a tibble)
 #' @param pkg_nm_1L_chr Package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
+#' @param object_type_lup Object type (a lookup table), Default: NULL
 #' @return Package datasets (a tibble)
 #' @rdname write_to_add_urls_to_dss
 #' @export 
-#' @importFrom ready4fun get_dev_pkg_nm write_and_doc_ds
+#' @importFrom ready4fun get_dev_pkg_nm get_rds_from_dv write_and_doc_ds
 #' @importFrom dataverse dataset_files
 #' @importFrom purrr map_chr map_dfr walk
 #' @importFrom stringr str_remove
@@ -229,8 +230,11 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @importFrom dplyr inner_join select
 #' @importFrom utils data
 #' @keywords internal
-write_to_add_urls_to_dss <- function (ds_url_1L_chr, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()) 
+write_to_add_urls_to_dss <- function (ds_url_1L_chr, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
+    object_type_lup = NULL) 
 {
+    if (is.null(object_type_lup)) 
+        object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
     ds_fls_ls <- dataverse::dataset_files(ds_url_1L_chr)
     fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
     fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% 
@@ -243,7 +247,8 @@ write_to_add_urls_to_dss <- function (ds_url_1L_chr, pkg_dss_tb, pkg_nm_1L_chr =
         utils::data(list = ..1, package = pkg_nm_1L_chr, envir = environment())
         eval(parse(text = paste0("ds<-", ..1)))
         ds %>% ready4fun::write_and_doc_ds(db_1L_chr = ..1, title_1L_chr = ..2, 
-            desc_1L_chr = ..3, url_1L_chr = ..4, pkg_dss_tb = pkg_dss_tb)
+            desc_1L_chr = ..3, url_1L_chr = ..4, abbreviations_lup = abbreviations_lup, 
+            object_type_lup = object_type_lup, pkg_dss_tb = pkg_dss_tb)
     })
     return(pkg_dss_tb)
 }

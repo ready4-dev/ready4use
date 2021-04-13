@@ -185,9 +185,12 @@ write_to_copy_fls_to_dv_dir <- function(files_tb,
                ~ file.copy(paste0(..1,"/",..2,..3),
                            local_dv_dir_1L_chr))
 }
-write_to_add_urls_to_dss <- function(ds_url_1L_chr, # NOTE WORKING - NEEEDS WORK
+write_to_add_urls_to_dss <- function(ds_url_1L_chr, # NOT WORKING - NEEEDS WORK
                                      pkg_dss_tb,
-                                     pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm()){
+                                     pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
+                                     object_type_lup = NULL){
+  if(is.null(object_type_lup))
+    object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
   ds_fls_ls <- dataverse::dataset_files(ds_url_1L_chr)
   fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
   fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% stringr::str_remove(".csv") )
@@ -205,6 +208,8 @@ write_to_add_urls_to_dss <- function(ds_url_1L_chr, # NOTE WORKING - NEEEDS WORK
                                               title_1L_chr = ..2,
                                               desc_1L_chr = ..3,
                                               url_1L_chr = ..4,
+                                              abbreviations_lup = abbreviations_lup,
+                                              object_type_lup = object_type_lup,
                                               pkg_dss_tb = pkg_dss_tb)
               })
   return(pkg_dss_tb)

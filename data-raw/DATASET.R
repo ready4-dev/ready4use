@@ -50,13 +50,15 @@ ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For
 source("data-raw/MAKE_CLASSES.R")
 #
 # 7. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
+object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
 pkg_dss_tb <- ready4fun::get_rds_from_dv("abbreviations_lup") %>%
-  ready4fun::write_abbr_lup()
+  ready4fun::write_abbr_lup(object_type_lup = object_type_lup)
 utils::data("abbreviations_lup")
 #
 # 8. Create function types look-up table and save it as a package dataset
 pkg_dss_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb") %>%
   ready4fun::write_dmtd_fn_type_lup(abbreviations_lup = abbreviations_lup,
+                                    object_type_lup = object_type_lup,
                                     pkg_dss_tb = pkg_dss_tb)
 utils::data("fn_type_lup_tb")
 ##
@@ -67,10 +69,13 @@ pkg_dss_tb <- classes_to_make_tb %>%
                                           output_dir_1L_chr = "R",
                                           file_exists_cdn_1L_chr = "overwrite",
                                           abbreviations_lup = abbreviations_lup,
-                                          init_class_pt_lup = ready4fun::get_rds_from_dv("prototype_lup")) %>%
+                                          init_class_pt_lup = ready4fun::get_rds_from_dv("prototype_lup"),
+                                          object_type_lup = object_type_lup) %>%
 ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                             title_1L_chr = "Class prototype lookup table",
                             desc_1L_chr = "Metadata on classes used in ready4 suite",
+                            abbreviations_lup = abbreviations_lup,
+                            object_type_lup = object_type_lup,
                             pkg_dss_tb = pkg_dss_tb)
 #
 # 10. Create a table of all functions to document
@@ -90,7 +95,8 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = ready4fun::make_fn_nms(
                                                                                                    force_false_chr = NA_character_),
                                                                       args_ls_ls = NULL),
                                               fn_type_lup_tb = fn_type_lup_tb,
-                                              abbreviations_lup = abbreviations_lup)
+                                              abbreviations_lup = abbreviations_lup,
+                                              object_type_lup = object_type_lup)
 
 pkg_dss_tb <- fns_dmt_tb %>%
   ready4fun::write_and_doc_ds(overwrite_1L_lgl = T,
@@ -100,7 +106,7 @@ pkg_dss_tb <- fns_dmt_tb %>%
                    format_1L_chr = "A tibble",
                    url_1L_chr = "https://ready4-dev.github.io/ready4/",
                    abbreviations_lup = abbreviations_lup,
-                   #object_type_lup = object_type_lup,
+                   object_type_lup = object_type_lup,
                    pkg_dss_tb = pkg_dss_tb)
 ## 11. Write and document.
 # NOTE: There seems to be a choice: either create the dataverse dataset from script and then manage updates from
