@@ -114,7 +114,7 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 r_dir_1L_chr = "R",
                                 dev_pkgs_chr = c("ready4fun","ready4class","dataverse"),
                                 update_pkgdown_1L_lgl = T)
-## PAUSE FOR INTERACTIV
+## PAUSE FOR INTERACTIVE
 data("prototype_lup")
 if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
   prototype_lup %>%
