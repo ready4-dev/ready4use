@@ -129,7 +129,7 @@ write_paired_ds_fls_to_dv <- function(ds_tb,
     utils::write.csv(file = paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".csv"),
                      row.names = F)
   if(identical(readRDS(paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".RDS")),
-               ready4fun::get_rds_from_dv("fl_nm_1L_chr"))){
+               ready4fun::get_rds_from_dv(fl_nm_1L_chr))){
     unlink(paste0(pkg_dv_dir_1L_chr,"/",fl_nm_1L_chr,".RDS"))
   }
   make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr,
@@ -137,8 +137,7 @@ write_paired_ds_fls_to_dv <- function(ds_tb,
     add_files_to_dv(data_dir_rt_1L_chr = data_dir_rt_1L_chr,
                     ds_url_1L_chr = ds_url_1L_chr,
                     key_1L_chr = key_1L_chr,
-                    server_1L_chr = server_1L_chr
-    )
+                    server_1L_chr = server_1L_chr)
 }
 write_pkg_dss_to_dv_ds_csvs <- function(pkg_dss_tb,
                                         dv_nm_1L_chr,

@@ -168,7 +168,7 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
         utils::write.csv(file = paste0(pkg_dv_dir_1L_chr, "/", 
             fl_nm_1L_chr, ".csv"), row.names = F)
     if (identical(readRDS(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, 
-        ".RDS")), ready4fun::get_rds_from_dv("fl_nm_1L_chr"))) {
+        ".RDS")), ready4fun::get_rds_from_dv(fl_nm_1L_chr))) {
         unlink(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, ".RDS"))
     }
     make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr, recode_ls = c(rep(desc_1L_chr, 
