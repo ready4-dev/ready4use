@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Standardised Developer Tools for Retrieving and Managing Data in
     Projects Developed with the Ready4 Suite
-Version: 0.0.0.9126
+Version: 0.0.0.9127
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -41,7 +41,7 @@ RoxygenNote: 7.1.1
 Imports: 
     assertthat,
     data.table,
-    dataverse (>= 0.3.7),
+    dataverse (>= 0.3.8),
     dplyr,
     Hmisc,
     knitr,
