@@ -12,6 +12,7 @@ write_fls_to_dv_ds(
   make_local_copy_1L_lgl = F,
   parent_dv_dir_1L_chr,
   paths_to_dirs_chr,
+  paths_are_rltv_1L_lgl = T,
   inc_fl_types_chr = NA_character_,
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
   server_1L_chr = Sys.getenv("DATAVERSE_SERVER")
@@ -31,6 +32,8 @@ write_fls_to_dv_ds(
 \item{parent_dv_dir_1L_chr}{Parent dataverse directory (a character vector of length one)}
 
 \item{paths_to_dirs_chr}{Paths to directories (a character vector)}
+
+\item{paths_are_rltv_1L_lgl}{Paths are relative (a logical vector of length one), Default: T}
 
 \item{inc_fl_types_chr}{Include file types (a character vector), Default: 'NA'}
 

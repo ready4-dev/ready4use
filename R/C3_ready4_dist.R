@@ -27,10 +27,10 @@ x
 #' Make prototype ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param distribution_chr Distribution (a character vector), Default: character(0)
-#' @param dstr_par_1_dbl Dstr parameter 1 (a double vector), Default: numeric(0)
-#' @param dstr_par_2_dbl Dstr parameter 2 (a double vector), Default: numeric(0)
-#' @param dstr_par_3_dbl Dstr parameter 3 (a double vector), Default: numeric(0)
-#' @param dstr_par_4_dbl Dstr parameter 4 (a double vector), Default: numeric(0)
+#' @param dstr_par_1_dbl Distribution parameter 1 (a double vector), Default: numeric(0)
+#' @param dstr_par_2_dbl Distribution parameter 2 (a double vector), Default: numeric(0)
+#' @param dstr_par_3_dbl Distribution parameter 3 (a double vector), Default: numeric(0)
+#' @param dstr_par_4_dbl Distribution parameter 4 (a double vector), Default: numeric(0)
 #' @param transformation_chr Transformation (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
 #' @details ready4 S3 class for list object that summarises the parameters of each distribution

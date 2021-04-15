@@ -98,6 +98,7 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @param make_local_copy_1L_lgl Make local copy (a logical vector of length one), Default: F
 #' @param parent_dv_dir_1L_chr Parent dataverse directory (a character vector of length one)
 #' @param paths_to_dirs_chr Paths to directories (a character vector)
+#' @param paths_are_rltv_1L_lgl Paths are relative (a logical vector of length one), Default: T
 #' @param inc_fl_types_chr Include file types (a character vector), Default: 'NA'
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
@@ -109,17 +110,24 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @importFrom dataverse get_dataset
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
-    inc_fl_types_chr = NA_character_, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
-    server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
+    paths_are_rltv_1L_lgl = T, inc_fl_types_chr = NA_character_, 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
     ds_chr <- dss_tb$ds_obj_nm_chr
     files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr, 
         recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr), 
         inc_fl_types_chr = inc_fl_types_chr)
+    if (paths_are_rltv_1L_lgl) {
+        data_dir_rt_1L_chr <- "."
+    }
+    else {
+        data_dir_rt_1L_chr <- character(0)
+    }
     fl_ids_int <- 1:nrow(files_tb) %>% purrr::map_int(~{
         Sys.sleep(wait_time_in_secs_int)
-        add_files_to_dv(files_tb[.x, ], ds_url_1L_chr = ds_url_1L_chr, 
-            key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
+        add_files_to_dv(files_tb[.x, ], data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
+            ds_url_1L_chr = ds_url_1L_chr, key_1L_chr = key_1L_chr, 
+            server_1L_chr = server_1L_chr)
     })
     ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     if (make_local_copy_1L_lgl | ds_ls$versionState != "DRAFT") {

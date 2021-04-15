@@ -90,7 +90,9 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
   nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName,
                              ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
   fl_ids_int <- purrr::pmap_int(files_tb, ~{
-    path_1L_chr <- paste0(data_dir_rt_1L_chr, "/",
+    path_1L_chr <- paste0(ifelse(identical(character(0),data_dir_rt_1L_chr),
+                                 "",
+                                 paste0(data_dir_rt_1L_chr, "/")),
                           ..1, "/", ..2, ..3)
     fl_nm_1L_chr <- paste0(..2, ..3)
     if (fl_nm_1L_chr %in% nms_chr) {

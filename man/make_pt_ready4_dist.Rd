@@ -16,13 +16,13 @@ make_pt_ready4_dist(
 \arguments{
 \item{distribution_chr}{Distribution (a character vector), Default: character(0)}
 
-\item{dstr_par_1_dbl}{Dstr parameter 1 (a double vector), Default: numeric(0)}
+\item{dstr_par_1_dbl}{Distribution parameter 1 (a double vector), Default: numeric(0)}
 
-\item{dstr_par_2_dbl}{Dstr parameter 2 (a double vector), Default: numeric(0)}
+\item{dstr_par_2_dbl}{Distribution parameter 2 (a double vector), Default: numeric(0)}
 
-\item{dstr_par_3_dbl}{Dstr parameter 3 (a double vector), Default: numeric(0)}
+\item{dstr_par_3_dbl}{Distribution parameter 3 (a double vector), Default: numeric(0)}
 
-\item{dstr_par_4_dbl}{Dstr parameter 4 (a double vector), Default: numeric(0)}
+\item{dstr_par_4_dbl}{Distribution parameter 4 (a double vector), Default: numeric(0)}
 
 \item{transformation_chr}{Transformation (a character vector), Default: character(0)}
 }

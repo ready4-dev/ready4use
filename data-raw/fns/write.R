@@ -75,6 +75,7 @@ write_fls_to_dv_ds <- function(dss_tb,
                                #dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
                                parent_dv_dir_1L_chr,
                                paths_to_dirs_chr,
+                               paths_are_rltv_1L_lgl = T,
                                inc_fl_types_chr = NA_character_,
                                key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
                                server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
@@ -82,10 +83,16 @@ write_fls_to_dv_ds <- function(dss_tb,
   files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr,
                             recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr),
                             inc_fl_types_chr = inc_fl_types_chr)
+  if(paths_are_rltv_1L_lgl){
+    data_dir_rt_1L_chr <- "."
+  }else{
+    data_dir_rt_1L_chr <- character(0)
+  }
   fl_ids_int <- 1:nrow(files_tb) %>%
     purrr::map_int(~{
       Sys.sleep(wait_time_in_secs_int)
       add_files_to_dv(files_tb[.x,],
+                      data_dir_rt_1L_chr = data_dir_rt_1L_chr,
                       ds_url_1L_chr = ds_url_1L_chr,
                       key_1L_chr = key_1L_chr,
                       server_1L_chr = server_1L_chr)
