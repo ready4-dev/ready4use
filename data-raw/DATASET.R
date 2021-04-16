@@ -113,6 +113,7 @@ pkg_dss_tb <- fns_dmt_tb %>%
 # the web or vice versa. No satisfactory resolution that I can identify.
 #
 ## Note files to be rewritten cannot be open in RStudio.
+usethis::use_package("rmarkdown", type = "Suggests")
 usethis::use_build_ignore("initial_setup.R")
 readLines(".github/workflows/R-CMD-check.yaml")[-28] %>%
   writeLines(".github/workflows/R-CMD-check.yaml")
