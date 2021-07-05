@@ -98,15 +98,14 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @rdname add_files_to_dv
 #' @export 
 #' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
-#' @importFrom purrr map2_chr pmap_int
+#' @importFrom purrr pmap_int
 #' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr, server_1L_chr) 
 {
     ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
-    nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName, 
-        ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
+    nms_chr <- ds_ls$files$filename
     fl_ids_int <- purrr::pmap_int(files_tb, ~{
         path_1L_chr <- paste0(ifelse(identical(character(0), 
             data_dir_rt_1L_chr), "", paste0(data_dir_rt_1L_chr, 

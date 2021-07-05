@@ -5,7 +5,8 @@ remove_labels_from_ds <- function(ds_tb){
                     col_vec <- .x[[names(.x[.y])]]
                     class(col_vec) <- setdiff(class(col_vec), "labelled")
                     attr(col_vec, "label") <- NULL
-                    .x
+                    .x %>%
+                      dplyr::mutate(!!rlang::sym(names(.x[.y])) := col_vec)
                   })
   return(unlabelled_ds_tb)
 }

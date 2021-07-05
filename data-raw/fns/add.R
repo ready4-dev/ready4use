@@ -87,8 +87,9 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 {
   ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
   is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
-  nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName,
-                             ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
+  nms_chr <- ds_ls$files$filename
+    # purrr::map2_chr(ds_ls$files$originalFileName,
+    #                          ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
   fl_ids_int <- purrr::pmap_int(files_tb, ~{
     path_1L_chr <- paste0(ifelse(identical(character(0),data_dir_rt_1L_chr),
                                  "",
