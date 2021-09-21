@@ -1,9 +1,9 @@
 #' Get file from dataverse
 #' @description get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
-#' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
+#' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
-#' @param save_fmt_1L_chr Save fmt (a character vector of length one)
-#' @param repo_fl_fmt_1L_chr Repo file fmt (a character vector of length one)
+#' @param save_fmt_1L_chr Save format (a character vector of length one)
+#' @param repo_fl_fmt_1L_chr Repository file format (a character vector of length one)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
@@ -33,44 +33,16 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
     file_xxx
     return(file_xxx)
 }
-#' Get file identity from dataverse
-#' @description get_fl_id_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file identity from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Identity (a character vector of length one).
-#' @param ds_ls Dataset (a list)
-#' @param fl_nm_1L_chr File name (a character vector of length one)
-#' @param nms_chr Names (a character vector), Default: 'NA'
-#' @return Identity (a character vector of length one)
-#' @rdname get_fl_id_from_dv_ls
-#' @export 
-#' @importFrom purrr map2_chr
-#' @importFrom ready4fun get_from_lup_obj
-#' @importFrom tibble as_tibble
-get_fl_id_from_dv_ls <- function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_) 
-{
-    if (is.na(nms_chr[1])) {
-        nms_chr <- purrr::map2_chr(ds_ls$files$originalFileName, 
-            ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
-    }
-    if (fl_nm_1L_chr %in% nms_chr) {
-        id_1L_chr <- ready4fun::get_from_lup_obj(ds_ls$files[, 
-            names(ds_ls$files) %>% unique()] %>% tibble::as_tibble(), 
-            match_var_nm_1L_chr = ifelse(fl_nm_1L_chr %in% ds_ls$files$originalFileName, 
-                "originalFileName", "filename"), match_value_xx = fl_nm_1L_chr, 
-            target_var_nm_1L_chr = "id", evaluate_lgl = F)
-    }
-    else {
-        id_1L_chr <- NA_character_
-    }
-    return(id_1L_chr)
-}
 #' Get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
-#' @param save_fmt_1L_chr Save fmt (a character vector of length one)
+#' @param save_fmt_1L_chr Save format (a character vector of length one)
 #' @return Path (a character vector)
 #' @rdname get_local_path_to_dv_data
 #' @export 
 
+#' @keywords internal
 get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr) 
 {
     path_chr <- paste0(ifelse(save_dir_path_1L_chr != "", paste0(save_dir_path_1L_chr, 
@@ -80,13 +52,14 @@ get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_
 #' Get ready4 S3 from dataverse comma separated variables file
 #' @description get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get ready4 s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 #' @param file_name_chr File name (a character vector)
-#' @param data_repo_db_ui_chr Data repo database ui (a character vector)
-#' @param data_repo_ui_chr Data repo ui (a character vector), Default: 'NA'
+#' @param data_repo_db_ui_chr Data repository database user interface (a character vector)
+#' @param data_repo_ui_chr Data repository user interface (a character vector), Default: 'NA'
 #' @param r3_fn Ready4 S3 (a function), Default: ready4_all_import_lup
 #' @return Tibble ready4 S3 (a ready4 S3 extension of tibble)
 #' @rdname get_r3_from_dv_csv
 #' @export 
 #' @importFrom tibble tibble
+#' @keywords internal
 get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui_chr = NA_character_, 
     r3_fn = ready4_all_import_lup) 
 {
@@ -97,7 +70,7 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
         get_data() %>% make_r3_from_csv_tb(r3_fn)
     return(tb_r3)
 }
-#' Get valid path
+#' Get valid path character vector
 #' @description get_valid_path_chr() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get valid path character vector. Function argument x specifies the where to look for the required object. The function returns Valid path (a character vector).
 #' @param x An object
 #' @return Valid path (a character vector)

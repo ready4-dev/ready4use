@@ -192,11 +192,10 @@ write_to_copy_fls_to_dv_dir <- function(files_tb,
                            local_dv_dir_1L_chr))
 }
 write_to_add_urls_to_dss <- function(ds_url_1L_chr, # NOT WORKING - NEEEDS WORK
+                                     abbreviations_lup, # NEW
                                      pkg_dss_tb,
                                      pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
-                                     object_type_lup = NULL){
-  if(is.null(object_type_lup))
-    object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
+                                     object_type_lup){
   ds_fls_ls <- dataverse::dataset_files(ds_url_1L_chr)
   fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
   fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% stringr::str_remove(".csv") )
@@ -206,8 +205,8 @@ write_to_add_urls_to_dss <- function(ds_url_1L_chr, # NOT WORKING - NEEEDS WORK
   purrr::walk(pkg_dss_tb,
               ~{
                 utils::data(list=..1,
-                     package = pkg_nm_1L_chr,
-                     envir = environment())
+                            package = pkg_nm_1L_chr,
+                            envir = environment())
                 eval(parse(text = paste0("ds<-", ..1)))
                 ds %>%
                   ready4fun::write_and_doc_ds(db_1L_chr = ..1,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_valid_path_chr}
 \alias{get_valid_path_chr}
-\title{Get valid path}
+\title{Get valid path character vector}
 \usage{
 get_valid_path_chr(x)
 }

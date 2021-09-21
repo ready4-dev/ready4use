@@ -18,13 +18,13 @@ get_file_from_dv(
 )
 }
 \arguments{
-\item{ds_ui_1L_chr}{Dataset ui (a character vector of length one)}
+\item{ds_ui_1L_chr}{Dataset user interface (a character vector of length one)}
 
 \item{fl_nm_1L_chr}{File name (a character vector of length one)}
 
-\item{save_fmt_1L_chr}{Save fmt (a character vector of length one)}
+\item{save_fmt_1L_chr}{Save format (a character vector of length one)}
 
-\item{repo_fl_fmt_1L_chr}{Repo file fmt (a character vector of length one)}
+\item{repo_fl_fmt_1L_chr}{Repository file format (a character vector of length one)}
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 

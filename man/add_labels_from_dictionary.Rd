@@ -19,3 +19,4 @@ Labelled dataset (a tibble)
 \description{
 add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 }
+\keyword{internal}

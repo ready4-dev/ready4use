@@ -9,7 +9,7 @@ update_this(x, ...)
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 }
 \description{
 update_this() is an Update this generic that updates and object

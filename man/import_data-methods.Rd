@@ -9,7 +9,7 @@ import_data(x, ...)
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 }
 \description{
 import_data() is an Import Data generic that imports data from saved files and loads them into memory as R objects.

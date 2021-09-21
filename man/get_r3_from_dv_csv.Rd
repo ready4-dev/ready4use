@@ -14,9 +14,9 @@ get_r3_from_dv_csv(
 \arguments{
 \item{file_name_chr}{File name (a character vector)}
 
-\item{data_repo_db_ui_chr}{Data repo database ui (a character vector)}
+\item{data_repo_db_ui_chr}{Data repository database user interface (a character vector)}
 
-\item{data_repo_ui_chr}{Data repo ui (a character vector), Default: 'NA'}
+\item{data_repo_ui_chr}{Data repository user interface (a character vector), Default: 'NA'}
 
 \item{r3_fn}{Ready4 S3 (a function), Default: ready4_all_import_lup}
 }
@@ -26,3 +26,4 @@ Tibble ready4 S3 (a ready4 S3 extension of tibble)
 \description{
 get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get ready4 s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 }
+\keyword{internal}

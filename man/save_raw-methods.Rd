@@ -9,7 +9,7 @@ save_raw(x, ...)
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 }
 \description{
 save_raw() is a Save Raw generic that saves the native version of a file format.

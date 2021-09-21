@@ -1,60 +1,19 @@
 home:
   links:
-  - text: User manual (PDF)
-    href: https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9122/ready4use_user_0.0.0.9122.pdf
-  - text: Developer version of usual manual (PDF)
-    href: https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9122/ready4use_developer_0.0.0.9122.pdf
+  - text: Manual - User (PDF)
+    href: https://dataverse.harvard.edu/api/access/datafile/5192240
+  - text: Manual - Developer (PDF)
+    href: https://dataverse.harvard.edu/api/access/datafile/5192239
   - text: Project website
-    href: https://www.ready4-dev.com/
+    href:  https://ready4-dev.github.io/ready4/
 development:
   mode: auto
 reference:
-- title: "Datasets"
-- contents:
-  - abbreviations_lup
-  - fn_type_lup_tb
-  - fns_dmt_tb
-  - prototype_lup
 - title: "Classes"
 - contents:
-  - ready4_dist
-  - ready4_dv_import_lup
-  - ready4_all_import_lup
-  - ready4_par_struc_mape
-  - ready4_dictionary
-  - ready4_local
-  - ready4_local_raw
-  - ready4_local_proc
-  - ready4_script_data
-- title: "Functions"
-- contents:
-  - add_labels_from_dictionary
-  - assert_matches_chr
-  - assert_single_row_tb
-  - get_fl_id_from_dv_ls
-  - get_local_path_to_dv_data
-  - get_r3_from_dv_csv
-  - write_fls_to_dv_ds
-  - write_paired_ds_fls_to_dv
-  - write_pkg_dss_to_dv_ds_csvs
-- title: "Generics"
-- contents:
-  - bind_lups
-  - download_data
-  - get_data
-  - get_import_type_ls
-  - get_read_fn
-  - import_data
-  - make_dv_import_lup
-  - make_import_xx
-  - save_raw
-  - update_src_loc_to_url
-  - update_this
+  - ready4use_dist
+  - ready4use_dv_import_lup
 - title: "Methods"
 - contents:
-  - bind_lups.ready4_dictionary
   - get_data.ready4_dv_import_lup
-  - get_import_type_ls.ready4_all_import_lup
-  - get_read_fn.ready4_dv_import_lup
-  - make_import_xx.ready4_all_import_lup
   - update_src_loc_to_url.ready4_all_import_lup

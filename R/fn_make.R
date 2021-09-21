@@ -1,4 +1,4 @@
-#' Make files
+#' Make files tibble
 #' @description make_files_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make files tibble. The function returns Files (a tibble).
 #' @param paths_to_dirs_chr Paths to directories (a character vector)
 #' @param recode_ls Recode (a list)
@@ -43,7 +43,7 @@ make_files_tb <- function (paths_to_dirs_chr, recode_ls, inc_fl_types_chr = NA_c
         files_tb$file_type_chr) %>% unique() %>% length())
     return(files_tb)
 }
-#' Make ready4 S3 from comma separated variables file
+#' Make ready4 S3 from comma separated variables file tibble
 #' @description make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make ready4 s3 from comma separated variables file tibble. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 #' @param csv_tb Comma separated variables file (a tibble)
 #' @param r3_fn Ready4 S3 (a function)

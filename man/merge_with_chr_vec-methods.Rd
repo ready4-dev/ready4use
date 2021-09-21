@@ -2,19 +2,19 @@
 % Please edit documentation in R/gnrc_merge_with_chr_vec.R
 \name{merge_with_chr_vec}
 \alias{merge_with_chr_vec}
-\alias{merge_with_chr_vec-ready4_local}
-\alias{merge_with_chr_vec,ready4_local-method}
+\alias{merge_with_chr_vec-ready4use_local}
+\alias{merge_with_chr_vec,ready4use_local-method}
 \title{merge_with_chr_vec}
 \usage{
 merge_with_chr_vec(x)
 
-\S4method{merge_with_chr_vec}{ready4_local}(x)
+\S4method{merge_with_chr_vec}{ready4use_local}(x)
 }
 \arguments{
-\item{x}{An object of class ready4_local}
+\item{x}{An object of class ready4use_local}
 }
 \description{
 S4 Generic function to get the value of the slot merge_with_chr_vec
 
-Get the value of the slot merge_with_chr_vec for S4 objects of class ready4_local
+Get the value of the slot merge_with_chr_vec for S4 objects of class ready4use_local
 }

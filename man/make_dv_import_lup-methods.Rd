@@ -9,7 +9,7 @@ make_dv_import_lup(x, ...)
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 }
 \description{
 make_dv_import_lup() is a Make Dataverse Import Lookup Table generic that makes a Dataverse import lookup table

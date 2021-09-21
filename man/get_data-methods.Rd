@@ -25,9 +25,9 @@ get_data.ready4_dv_import_lup(
 )
 }
 \arguments{
-\item{x}{An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\item{x}{An instance of}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 
 \item{save_dir_path_1L_chr}{Save directory path (a character vector of length one), Default: ''}
 
@@ -40,5 +40,5 @@ get_data.ready4_dv_import_lup(
 \description{
 get_data() is a Get Data generic that retrieves data from R objects loaded in memory.
 
-get_data.ready4_dv_import_lup() is a Get Data method that retrieves data from R objects loaded in memory. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.. The function is called for its side effects and does not return a value.
+get_data.ready4_dv_import_lup() is a Get Data generic that retrieves data from R objects loaded in memory. The function is called for its side effects and does not return a value.
 }

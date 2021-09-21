@@ -6,19 +6,22 @@
 \usage{
 write_to_add_urls_to_dss(
   ds_url_1L_chr,
+  abbreviations_lup,
   pkg_dss_tb,
   pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
-  object_type_lup = NULL
+  object_type_lup
 )
 }
 \arguments{
 \item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
 
+\item{abbreviations_lup}{Abbreviations (a lookup table)}
+
 \item{pkg_dss_tb}{Package datasets (a tibble)}
 
 \item{pkg_nm_1L_chr}{Package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()}
 
-\item{object_type_lup}{Object type (a lookup table), Default: NULL}
+\item{object_type_lup}{Object type (a lookup table)}
 }
 \value{
 Package datasets (a tibble)

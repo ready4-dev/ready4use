@@ -57,14 +57,14 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
 }
 #' Write dataverse file to local
 #' @description write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
-#' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
+#' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one), Default: 'NA'
 #' @param fl_id_1L_int File identity (an integer vector of length one), Default: NA
-#' @param repo_fl_fmt_1L_chr Repo file fmt (a character vector of length one)
+#' @param repo_fl_fmt_1L_chr Repository file format (a character vector of length one)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
-#' @param dest_path_1L_chr Dest path (a character vector of length one)
+#' @param dest_path_1L_chr Destination path (a character vector of length one)
 #' @return NULL
 #' @rdname write_dv_fl_to_loc
 #' @export 
@@ -108,6 +108,7 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
 #' @importFrom dataverse get_dataset
+#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     paths_are_rltv_1L_lgl = T, inc_fl_types_chr = NA_character_, 
@@ -161,6 +162,7 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @importFrom utils write.csv
 #' @importFrom ready4fun get_rds_from_dv
 #' @importFrom stats setNames
+#' @keywords internal
 write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9", 
     pkg_dv_dir_1L_chr = "data-raw/dataverse", data_dir_rt_1L_chr = ".", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -203,6 +205,7 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
 #' @importFrom utils data
 #' @importFrom dplyr mutate_if
 #' @importFrom stringr str_c
+#' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -224,13 +227,14 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' Write to add urls to datasets
 #' @description write_to_add_urls_to_dss() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to add urls to datasets. The function returns Package datasets (a tibble).
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
+#' @param abbreviations_lup Abbreviations (a lookup table)
 #' @param pkg_dss_tb Package datasets (a tibble)
 #' @param pkg_nm_1L_chr Package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()
-#' @param object_type_lup Object type (a lookup table), Default: NULL
+#' @param object_type_lup Object type (a lookup table)
 #' @return Package datasets (a tibble)
 #' @rdname write_to_add_urls_to_dss
 #' @export 
-#' @importFrom ready4fun get_dev_pkg_nm get_rds_from_dv write_and_doc_ds
+#' @importFrom ready4fun get_dev_pkg_nm write_and_doc_ds
 #' @importFrom dataverse dataset_files
 #' @importFrom purrr map_chr map_dfr walk
 #' @importFrom stringr str_remove
@@ -238,11 +242,9 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
 #' @importFrom dplyr inner_join select
 #' @importFrom utils data
 #' @keywords internal
-write_to_add_urls_to_dss <- function (ds_url_1L_chr, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
-    object_type_lup = NULL) 
+write_to_add_urls_to_dss <- function (ds_url_1L_chr, abbreviations_lup, pkg_dss_tb, pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
+    object_type_lup) 
 {
-    if (is.null(object_type_lup)) 
-        object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
     ds_fls_ls <- dataverse::dataset_files(ds_url_1L_chr)
     fl_ids_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["pidURL"]])
     fl_nms_chr <- purrr::map_chr(1:length(ds_fls_ls), ~ds_fls_ls[[.x]][["dataFile"]][["originalFileName"]] %>% 

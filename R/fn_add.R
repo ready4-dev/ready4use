@@ -1,5 +1,5 @@
-#' Add dataset to dataverse repo
-#' @description add_ds_to_dv_repo() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataset to dataverse repo. Function argument dv_1L_chr specifies the object to be updated. The function returns Dataset url (a character vector of length one).
+#' Add dataset to dataverse repository
+#' @description add_ds_to_dv_repo() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataset to dataverse repository. Function argument dv_1L_chr specifies the object to be updated. The function returns Dataset url (a character vector of length one).
 #' @param dv_1L_chr Dataverse (a character vector of length one)
 #' @param ds_meta_ls Dataset meta (a list)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
@@ -69,10 +69,10 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
     ds_url_1L_chr <- dv_ls[[1]]$persistentUrl
     return(ds_url_1L_chr)
 }
-#' Add dataverse meta to import
+#' Add dataverse meta to import lookup table
 #' @description add_dv_meta_to_imp_lup() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. Function argument imp_lup specifies the object to be updated. The function returns Import (a lookup table).
 #' @param imp_lup Import (a lookup table)
-#' @param ds_ui_1L_chr Dataset ui (a character vector of length one)
+#' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param file_type_1L_chr File type (a character vector of length one)
 #' @param save_type_1L_chr Save type (a character vector of length one)
 #' @return Import (a lookup table)
@@ -92,16 +92,17 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @param files_tb Files (a tibble)
 #' @param data_dir_rt_1L_chr Data directory root (a character vector of length one), Default: '.'
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
-#' @param key_1L_chr Key (a character vector of length one)
-#' @param server_1L_chr Server (a character vector of length one)
+#' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @return File identities (an integer vector)
 #' @rdname add_files_to_dv
 #' @export 
-#' @importFrom dataverse get_dataset delete_file add_dataset_file update_dataset_file
+#' @importFrom dataverse get_dataset
 #' @importFrom purrr pmap_int
+#' @importFrom ready4fun write_fls_to_dv
 #' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
-    key_1L_chr, server_1L_chr) 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
     ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
@@ -111,27 +112,9 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
             data_dir_rt_1L_chr), "", paste0(data_dir_rt_1L_chr, 
             "/")), ..1, "/", ..2, ..3)
         fl_nm_1L_chr <- paste0(..2, ..3)
-        if (fl_nm_1L_chr %in% nms_chr) {
-            id_1L_chr <- get_fl_id_from_dv_ls(ds_ls, fl_nm_1L_chr = fl_nm_1L_chr, 
-                nms_chr = nms_chr)
-            if (is_draft_1L_lgl) {
-                id_1L_chr %>% dataverse::delete_file()
-                id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr, 
-                  dataset = ds_url_1L_chr, description = ..4, 
-                  key = key_1L_chr, server = server_1L_chr)
-            }
-            else {
-                dataverse::update_dataset_file(file = path_1L_chr, 
-                  dataset = ds_url_1L_chr, id = id_1L_chr, force = T, 
-                  description = ..4, key = key_1L_chr, server = server_1L_chr)
-            }
-        }
-        else {
-            id_1L_chr <- dataverse::add_dataset_file(file = path_1L_chr, 
-                dataset = ds_url_1L_chr, description = ..4, key = key_1L_chr, 
-                server = server_1L_chr)
-        }
-        id_1L_chr
+        ready4fun::write_fls_to_dv(path_1L_chr, descriptions_chr = ..4, 
+            ds_url_1L_chr = ds_url_1L_chr, ds_ls = ds_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
+            server_1L_chr = Sys.getenv("DATAVERSE_SERVER"))
     })
     return(fl_ids_int)
 }
@@ -147,6 +130,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @importFrom dplyr filter mutate case_when
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
+#' @keywords internal
 add_labels_from_dictionary <- function (ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F) 
 {
     if (remove_old_lbls_1L_lgl) 

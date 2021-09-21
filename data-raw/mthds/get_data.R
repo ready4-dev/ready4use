@@ -1,4 +1,4 @@
-get_data.ready4_dv_import_lup <- function(x,
+get_data.ready4use_dv_import_lup <- function(x,
                                           save_dir_path_1L_chr = "",
                                           unlink_1L_lgl = T,
                                           server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),

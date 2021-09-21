@@ -8,8 +8,8 @@ add_files_to_dv(
   files_tb,
   data_dir_rt_1L_chr = ".",
   ds_url_1L_chr,
-  key_1L_chr,
-  server_1L_chr
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  server_1L_chr = Sys.getenv("DATAVERSE_SERVER")
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ add_files_to_dv(
 
 \item{ds_url_1L_chr}{Dataset url (a character vector of length one)}
 
-\item{key_1L_chr}{Key (a character vector of length one)}
+\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
-\item{server_1L_chr}{Server (a character vector of length one)}
+\item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
 }
 \value{
 File identities (an integer vector)

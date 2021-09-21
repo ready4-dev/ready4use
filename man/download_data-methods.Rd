@@ -9,7 +9,7 @@ download_data(x, ...)
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments (an additional arguments)}
 }
 \description{
 download_data() is a Download Data generic that downloads data files.

@@ -5,6 +5,6 @@ read_import_from_csv <- function(file_ref_chr,
   else
     read_in_file <- utils::read.csv(file = file_ref_chr,stringsAsFactors = F)
   import_r3 <- make_r3_from_csv_tb(read_in_file,
-                                   ready4_import_lup)
+                                   ready4use_import_lup) # CHECK
   return(import_r3)
 }

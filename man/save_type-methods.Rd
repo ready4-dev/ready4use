@@ -2,25 +2,25 @@
 % Please edit documentation in R/gnrc_save_type.R
 \name{save_type}
 \alias{save_type}
-\alias{save_type-ready4_local_raw}
-\alias{save_type,ready4_local_raw-method}
-\alias{save_type-ready4_local_proc}
-\alias{save_type,ready4_local_proc-method}
+\alias{save_type-ready4use_local_raw}
+\alias{save_type,ready4use_local_raw-method}
+\alias{save_type-ready4use_local_proc}
+\alias{save_type,ready4use_local_proc-method}
 \title{save_type}
 \usage{
 save_type(x)
 
-\S4method{save_type}{ready4_local_raw}(x)
+\S4method{save_type}{ready4use_local_raw}(x)
 
-\S4method{save_type}{ready4_local_proc}(x)
+\S4method{save_type}{ready4use_local_proc}(x)
 }
 \arguments{
-\item{x}{An object of class ready4_local_proc}
+\item{x}{An object of class ready4use_local_proc}
 }
 \description{
 S4 Generic function to get the value of the slot save_type
 
-Get the value of the slot save_type for S4 objects of class ready4_local_raw
+Get the value of the slot save_type for S4 objects of class ready4use_local_raw
 
-Get the value of the slot save_type for S4 objects of class ready4_local_proc
+Get the value of the slot save_type for S4 objects of class ready4use_local_proc
 }

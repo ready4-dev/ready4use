@@ -1,5 +1,5 @@
 
-get_import_type_ls.ready4_all_import_lup <- function(x,
+get_import_type_ls.ready4use_all_import_lup <- function(x,
                                                     inc_script_lgl = T,
                                                     forced_choice_chr = NA_character_){
   assert_single_row_tb(x)

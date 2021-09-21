@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_assert.R
 \name{assert_single_row_tb}
 \alias{assert_single_row_tb}
-\title{Assert single row}
+\title{Assert single row tibble}
 \usage{
 assert_single_row_tb(x)
 }
@@ -12,3 +12,4 @@ assert_single_row_tb(x)
 \description{
 assert_single_row_tb() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert single row tibble. Function argument x specifies the object on which assert validation checks are to be performed. The function is called for its side effects and does not return a value.
 }
+\keyword{internal}

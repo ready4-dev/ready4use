@@ -1,137 +1,156 @@
-## Script to make classes and save updated prototype table.
-## This script creates the data files embedded with this package.
-# 1. Load magrittr package to that the pipe operator ("%>%") can be used in this script.
-library(magrittr)
-#
-# if(!dir.exists("man/figures"))
-#   dir.create("man/figures")
-# 2. Create "fns", "gnrcs" and "mthds" sub-directories.
+library(ready4class)
 ready4fun::write_fn_type_dirs()
-#
-# 3. MANUAL STEP. Write all your functions to R files in the new "fns" directory.
-#
-# 4. Set-up package structure
-ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For Retrieving and Managing Data In Projects Developed With The Ready4 Suite" %>% tools::toTitleCase(),
-                            pkg_desc_1L_chr = "ready4use provides a set of classes and methods for general data management tasks throughout the ready4 suite of tools for mental health data synthesis and modelling projects.
+pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Standardised Developer Tools For Retrieving and Managing Data In Projects Developed With The Ready4 Suite" %>% tools::toTitleCase(),
+                                           pkg_desc_1L_chr = "ready4use provides a set of classes and methods for general data management tasks throughout the ready4 suite of tools for mental health data synthesis and modelling projects.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package. The tools contained in this development release automate a number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.
   Therefore you should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
-                            authors_prsn = c(utils::person(
-                              given = "Matthew",family = "Hamilton", email =
-                                "matthew.hamilton@orygen.org.au",role = c("aut",
-                                                                          "cre"),comment = c(ORCID = "0000-0001-7407-9194")
-                            ),
-                            utils::person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au",
-                                          role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
-                            #person("Alexandra", "Parker", email =  "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID ="0000-0002-2398-6306")),
-                            #person("Cathrine", "Mihalopoulos",email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
-                            #person("Jonathan", "Karnon", email ="Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment =c(ORCID = "0000-0003-3220-2099")),
-                            #person("Petra","Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role =c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
-                            utils::person("Orygen", role = c("cph", "fnd")),
-                            utils::person("VicHealth",role = c("fnd")),
-                            utils::person("Victoria University", role =c("fnd"))
-                            ),
-                            urls_chr = c("https://ready4-dev.github.io/ready4use/",
-                                         "https://github.com/ready4-dev/ready4use",
-                                         "https://ready4-dev.github.io/ready4/")) %>%
-  ready4fun::write_pkg_setup_fls(incr_ver_1L_lgl = F,
-                                 delete_r_dir_cnts_1L_lgl = T,
-                                 copyright_holders_chr = "Orygen",
-                                 check_type_1L_chr = "gh",
-                                 path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
-                                 github_repo = "ready4-dev/ready4use",
-                                 lifecycle_stage_1L_chr = "experimental",
-                                 badges_lup = ready4fun::badges_lup,
-                                 addl_badges_ls = list(ready4 = "authoring"))
-# PAUSE FOR INTERACTIVE
-#
-# 5. MANUAL STEP - ADD Function scripts to "fns","gnrcs" and" mthds" directories.
-#
-# 6. MAKE CONSTRUCTOR TABLE objects with the metadata about the classes we will be creating.
-source("data-raw/MAKE_CLASSES.R")
-#
-# 7. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
-object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
-pkg_dss_tb <- ready4fun::get_rds_from_dv("abbreviations_lup") %>%
-  ready4fun::write_abbr_lup(object_type_lup = object_type_lup)
-utils::data("abbreviations_lup")
-#
-# 8. Create function types look-up table and save it as a package dataset
-pkg_dss_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb") %>%
-  ready4fun::write_dmtd_fn_type_lup(abbreviations_lup = abbreviations_lup,
-                                    object_type_lup = object_type_lup,
-                                    pkg_dss_tb = pkg_dss_tb)
-utils::data("fn_type_lup_tb")
-##
-## 9. WRITE and document new classes with the metadata contained in the merged object.
-pkg_dss_tb <- classes_to_make_tb %>%
-  ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
-                                          name_pfx_1L_chr = "ready4_",
-                                          output_dir_1L_chr = "R",
-                                          file_exists_cdn_1L_chr = "overwrite",
-                                          abbreviations_lup = abbreviations_lup,
-                                          init_class_pt_lup = ready4fun::get_rds_from_dv("prototype_lup"),
-                                          object_type_lup = object_type_lup) %>%
-ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
-                            title_1L_chr = "Class prototype lookup table",
-                            desc_1L_chr = "Metadata on classes used in ready4 suite",
-                            abbreviations_lup = abbreviations_lup,
-                            object_type_lup = object_type_lup,
-                            pkg_dss_tb = pkg_dss_tb)
-#
-# 10. Create a table of all functions to document
-fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = ready4fun::make_fn_nms(),
-                                              undocumented_fns_dir_chr = ready4fun::make_undmtd_fns_dir_chr(),
-                                              custom_dmt_ls = list(details_ls = NULL,
-                                                                   inc_for_main_user_lgl_ls = list(force_true_chr = c("add_labels_from_dictionary",
-                                                                                                                      "assert_matches_chr",
-                                                                                                                      "assert_single_row_tb",
-                                                                                                                      "get_fl_id_from_dv_ls",
-                                                                                                                      #"get_import_type_ls",
-                                                                                                                      "get_local_path_to_dv_data",
-                                                                                                                      "get_r3_from_dv_csv",
-                                                                                                                      "write_fls_to_dv_ds",
-                                                                                                                      "write_paired_ds_fls_to_dv",
-                                                                                                                      "write_pkg_dss_to_dv_ds_csvs"),
-                                                                                                   force_false_chr = NA_character_),
-                                                                      args_ls_ls = NULL),
-                                              fn_type_lup_tb = fn_type_lup_tb,
-                                              abbreviations_lup = abbreviations_lup,
-                                              object_type_lup = object_type_lup)
-
-pkg_dss_tb <- fns_dmt_tb %>%
-  ready4fun::write_and_doc_ds(overwrite_1L_lgl = T,
-                   db_1L_chr = "fns_dmt_tb",
-                   title_1L_chr = "ready4use function documentation table",
-                   desc_1L_chr = "A table with the summary information on functions included in the ready4use package.",
-                   format_1L_chr = "A tibble",
-                   url_1L_chr = "https://ready4-dev.github.io/ready4/",
-                   abbreviations_lup = abbreviations_lup,
-                   object_type_lup = object_type_lup,
-                   pkg_dss_tb = pkg_dss_tb)
-## 11. Write and document.
-# NOTE: There seems to be a choice: either create the dataverse dataset from script and then manage updates from
-# the web or vice versa. No satisfactory resolution that I can identify.
-#
-## Note files to be rewritten cannot be open in RStudio.
-usethis::use_package("rmarkdown", type = "Suggests")
-usethis::use_build_ignore("initial_setup.R")
-readLines(".github/workflows/R-CMD-check.yaml")[-28] %>%
-  writeLines(".github/workflows/R-CMD-check.yaml")
-ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
-                                r_dir_1L_chr = "R",
-                                dev_pkgs_chr = c("ready4fun","ready4class","dataverse"),
-                                update_pkgdown_1L_lgl = T)
-## PAUSE FOR INTERACTIVE
-data("prototype_lup")
-if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
-  prototype_lup %>%
-    write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
-                              desc_1L_chr = "Prototypes lookup table")
-}
-##
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9122/ready4use_user_0.0.0.9122.pdf",
-developer_manual_url_1L_chr = "https://github.com/ready4-dev/ready4use/releases/download/v0.0.0.9122/ready4use_developer_0.0.0.9122.pdf",
-project_website_url_1L_chr = "https://www.ready4-dev.com/")
-#
-# 12. Add vignette
-
+                                           authors_prsn = c(utils::person(
+                                             given = "Matthew",family = "Hamilton", email =
+                                               "matthew.hamilton@orygen.org.au",role = c("aut",
+                                                                                         "cre"),comment = c(ORCID = "0000-0001-7407-9194")
+                                           ),
+                                           utils::person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au",
+                                                         role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
+                                           #person("Alexandra", "Parker", email =  "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID ="0000-0002-2398-6306")),
+                                           #person("Cathrine", "Mihalopoulos",email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
+                                           #person("Jonathan", "Karnon", email ="Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment =c(ORCID = "0000-0003-3220-2099")),
+                                           #person("Petra","Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role =c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
+                                           utils::person("Orygen", role = c("cph", "fnd")),
+                                           utils::person("VicHealth",role = c("fnd")),
+                                           utils::person("Victoria University", role =c("fnd"))
+                                           ),
+                                           urls_chr = c("https://ready4-dev.github.io/ready4use/",
+                                                        "https://github.com/ready4-dev/ready4use",
+                                                        "https://ready4-dev.github.io/ready4/"))
+classes_to_make_tb <- dplyr::bind_rows(
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = TRUE,
+                                              name_stub_chr = "dist",
+                                              pt_ls = list(list("list")),
+                                              pt_chkr_pfx_ls = list(list("is.")),
+                                              pt_ns_ls = list(list("base")),
+                                              vals_ls = list(list(distribution_chr = "character(0)",
+                                                                  dstr_param_1_dbl = "numeric(0)",
+                                                                  dstr_param_2_dbl = "numeric(0)",
+                                                                  dstr_param_3_dbl = "numeric(0)",
+                                                                  dstr_param_4_dbl = "numeric(0)",
+                                                                  transformation_chr = "character(0)")),
+                                              class_desc_chr = "ready4 S3 class for list object that summarises the parameters of each distribution"),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = TRUE,
+                                              name_stub_chr = "dv_import_lup",
+                                              pt_ls = list(list("tibble")),
+                                              pt_chkr_pfx_ls = list(list("is_")),
+                                              pt_ns_ls = list(list("tibble")),
+                                              vals_ls = list(list(file_type_chr = "character(0)",
+                                                                  file_name_chr = "character(0)",
+                                                                  data_repo_chr = "character(0)",
+                                                                  data_repo_ui_chr = "character(0)",
+                                                                  data_repo_db_ui_chr = "character(0)",
+                                                                  data_repo_file_ext_chr = "character(0)",
+                                                                  data_repo_save_type_chr = "character(0)")),
+                                              class_desc_chr = "ready4 S3 class for tibble object lookup table of files to be imported from a dataverse."),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = TRUE,
+                                              name_stub_chr = "all_import_lup",
+                                              pt_ls = list(list("tibble")),
+                                              pt_chkr_pfx_ls = list(list("is_")),
+                                              pt_ns_ls = list(list("tibble")),
+                                              vals_ls = list(list(local_file_src_chr = "character(0)",
+                                                                  path_to_make_script_chr = "character(0)",
+                                                                  download_url_chr = "character(0)",
+                                                                  inc_file_main_chr = "character(0)",
+                                                                  inc_fls_to_rename_ls = "list()",
+                                                                  new_nms_for_inc_fls_ls = "list()")),
+                                              class_desc_chr = "ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.",
+                                              parent_class_chr = "ready4use_dv_import_lup"),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = TRUE,
+                                              name_stub_chr = "param_struc_mape",
+                                              pt_ls = list(list("tibble")),
+                                              pt_chkr_pfx_ls = list(list("is_")),
+                                              pt_ns_ls = list(list("tibble")),
+                                              vals_ls = list(list(param_name_chr = "character(0)",
+                                                                  sex_age_band_chr = "character(0)",
+                                                                  mape_05_yr_mde_dbl = "numeric(0)",
+                                                                  mape_10_yr_mde_dbl = "numeric(0)",
+                                                                  mape_15_yr_mde_dbl = "numeric(0)",
+                                                                  mape_05_yr_min_dbl = "numeric(0)",
+                                                                  mape_10_yr_min_dbl = "numeric(0)",
+                                                                  mape_15_yr_min_dbl = "numeric(0)",
+                                                                  mape_05_yr_max_dbl = "numeric(0)",
+                                                                  mape_10_yr_max_dbl = "numeric(0)",
+                                                                  mape_15_yr_max_dbl = "numeric(0)",
+                                                                  mape_05_yr_shp_dbl = "numeric(0)",
+                                                                  mape_10_yr_shp_dbl = "numeric(0)",
+                                                                  mape_15_yr_shp_dbl = "numeric(0)")),
+                                              class_desc_chr = "ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors."),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = T,
+                                              name_stub_chr = "dictionary",
+                                              pt_ls = list(list("tibble")),
+                                              pt_chkr_pfx_ls = list(list("is_")),
+                                              pt_ns_ls = list(list("tibble")),
+                                              vals_ls = list(list(var_nm_chr = "character(0)",
+                                                                  var_ctg_chr = "character(0)",
+                                                                  var_desc_chr = "character(0)",
+                                                                  var_type_chr = "character(0)")),
+                                              class_desc_chr= "ready4 s3 class defining a data dictionary tibble."),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = FALSE,
+                                              name_stub_chr = "local",
+                                              slots_ls = c("merge_with_chr_vec","raw_data_dir_chr","pckg_chr","overwrite_lgl", "save_lgl") %>% list(), # Cut: "lup_tbs_r4",
+                                              pt_ls = c("character","character","character","logical", "logical") %>% list(), # Cut: "ready4class_lookup",
+                                              class_desc_chr= "ready4 S4 class defining data to be saved in local directory.",
+                                              parent_class_chr = NA_character_), # Cut: ,include_classes = list("ready4class_lookup")
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = FALSE,
+                                              name_stub_chr = "local_raw",
+                                              slots_ls = c("save_type") %>% list(),
+                                              pt_ls = c("character") %>% list(),
+                                              vals_ls = list(save_type ="raw"),
+                                              allowed_vals_ls = list(save_type = "raw"),
+                                              class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.",
+                                              parent_class_chr = "ready4use_local",
+                                              inc_clss_ls = list("ready4use_local")),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = FALSE,
+                                              name_stub_chr = "local_proc",
+                                              slots_ls = c("save_type","proc_data_dir_chr","import_chr_vec","path_to_starter_sf_chr","import_this_ls") %>% list(),
+                                              pt_ls = c("character","character","character","character","list") %>% list(),
+                                              vals_ls = list(save_type = "proc"),
+                                              allowed_vals_ls = list(save_type = "proc"),
+                                              class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a processed (R) format.",
+                                              parent_class_chr = "ready4use_local",
+                                              inc_clss_ls = list("ready4use_local")),
+  ready4class::make_pt_ready4class_constructor_tbl(make_s3_lgl = FALSE,
+                                              name_stub_chr = "script_data",
+                                              slots_ls = c("crs_nbr_dbl") %>% list(), # Change
+                                              pt_ls = c("numeric") %>% list(),
+                                              class_desc_chr= "ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.",
+                                              parent_class_chr = "ready4use_local_proc",
+                                              inc_clss_ls = list("ready4use_local_proc"))
+) %>%
+  ready4class::ready4class_constructor_tbl()
+pkg_setup_ls <- pkg_desc_ls %>%
+  ready4fun::make_pkg_setup_ls(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(suggests_chr = "rmarkdown"),
+                               build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")), #
+                               badges_lup = ready4fun::badges_lup, # Change ready4fun fn to make this default.
+                               check_type_1L_chr = "ready4",
+                               cls_fn_ls = ready4fun::make_pt_ready4fun_fn_ls(args_ls = list(x = classes_to_make_tb),
+                                                                              fn =  ready4class::write_classes_and_make_lup.ready4class_constructor_tbl) %>%
+                                 ready4fun::ready4fun_fn_ls(),
+                               copyright_holders_chr = "Orygen",
+                               dev_pkgs_chr = c("ready4fun","ready4class"),
+                               lifecycle_stage_1L_chr = "experimental",
+                               path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
+                               pkg_dmt_dv_dss_chr = c("https://doi.org/10.7910/DVN/HLLXZN",
+                                                      "https://doi.org/10.7910/DVN/2Y9VF9"),
+                               ready4_type_1L_chr = "authoring",
+                               user_manual_fns_chr = NA_character_)
+#pkg_ds_ls_ls <- NULL
+pkg_setup_ls <- ready4fun::write_package(pkg_setup_ls,
+                                         self_serve_1L_lgl = F,
+                                         self_serve_fn_ls = NULL)
+# pkg_setup_ls$subsequent_ls$abbreviations_lup <- pkg_setup_ls$subsequent_ls$abbreviations_lup %>%
+#   dplyr::filter(!short_name_chr %in% c("par","pars"))
+# pkg_setup_ls <- ready4fun::update_msng_abbrs(pkg_setup_ls,
+#                                   are_words_chr = c("download", "recode"))
+# pkg_setup_ls <- ready4fun::write_new_abbrs(pkg_setup_ls,
+#                                            long_name_chr = c("extension","format","mean absolute prediction error","mode",
+#                                                              "parameter", "shape", "user interface", "year"))
+# pkg_setup_ls$subsequent_ls$fn_types_lup <- pkg_setup_ls$subsequent_ls$fn_types_lup %>%
+#   dplyr::filter(fn_type_nm_chr != "Bind Lups")
+# ready4fun::write_new_fn_types(pkg_setup_ls, fn_type_desc_chr = "Rowbinds lookup tables of the same class, removing duplicates based on priority.")

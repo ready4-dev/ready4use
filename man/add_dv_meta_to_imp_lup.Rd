@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_dv_meta_to_imp_lup}
 \alias{add_dv_meta_to_imp_lup}
-\title{Add dataverse meta to import}
+\title{Add dataverse meta to import lookup table}
 \usage{
 add_dv_meta_to_imp_lup(
   imp_lup,
@@ -14,7 +14,7 @@ add_dv_meta_to_imp_lup(
 \arguments{
 \item{imp_lup}{Import (a lookup table)}
 
-\item{ds_ui_1L_chr}{Dataset ui (a character vector of length one)}
+\item{ds_ui_1L_chr}{Dataset user interface (a character vector of length one)}
 
 \item{file_type_1L_chr}{File type (a character vector of length one)}
 
