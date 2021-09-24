@@ -1,7 +1,7 @@
 Package: ready4use
-Title: Standardised Developer Tools for Retrieving and Managing Data in
-    Projects Developed with the Ready4 Suite
-Version: 0.0.0.9138
+Title: Retrieve and Manage Data in Open and Modular Mental Health
+    Simulations
+Version: 0.0.0.9139
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -19,17 +19,17 @@ Authors@R:
              role = "fnd"),
       person(given = "Victoria University",
              role = "fnd"))
-Description: ready4use provides a set of classes and methods for general
-    data management tasks throughout the ready4 suite of tools for mental
-    health data synthesis and modelling projects.  This development
-    version of the ready4use package has been made available as part of
-    the process of testing and documenting the package. The tools
-    contained in this development release automate a number of tasks which
-    MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.  Therefore you
-    should only trial this software if you feel confident that you
-    understand what it does and have created a sandpit area in which you
-    can safely undertake testing. If you have any questions, please
-    contact the authors (matthew.hamilton@orygen.org.au).
+Description: ready4use provides a set of tools for general data management
+    tasks when developping open source, modular mental health simulation
+    models.  This development version of the ready4use package has been
+    made available as part of the process of testing and documenting the
+    package. The tools contained in this development release automate a
+    number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL
+    MACHINE.  Therefore you should only trial this software if you feel
+    confident that you understand what it does and have created a sandpit
+    area in which you can safely undertake testing. If you have any
+    questions, please contact the authors
+    (matthew.hamilton@orygen.org.au).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/ready4use/,
     https://github.com/ready4-dev/ready4use,
@@ -58,8 +58,38 @@ Imports:
     testit,
     testthat,
     tibble,
+    tidyr,
     utils
 VignetteBuilder: knitr
+Collate: 
+    'C3_ready4use_dv_import_lup.R'
+    'C3_ready4use_all_import_lup.R'
+    'C3_ready4use_dictionary.R'
+    'C3_ready4use_dist.R'
+    'C3_ready4use_param_struc_mape.R'
+    'C4_ready4use_local.R'
+    'C4_ready4use_local_proc.R'
+    'C4_ready4use_local_raw.R'
+    'C4_ready4use_script_data.R'
+    'fn_add.R'
+    'fn_assert.R'
+    'fn_get.R'
+    'fn_make.R'
+    'fn_read.R'
+    'fn_remove.R'
+    'fn_transform.R'
+    'fn_update.R'
+    'fn_write.R'
+    'gnrc_crs_nbr_dbl.R'
+    'gnrc_merge_with_chr_vec.R'
+    'gnrc_save_type.R'
+    'grp_generics.R'
+    'imp_fns.R'
+    'imp_mthds.R'
+    'mthd_get_read_fn.R'
+    'mthd_procure.R'
+    'mthd_update_src_loc_to_url.R'
+    'pkg_ready4use.R'
 Suggests: 
     rmarkdown
 Remotes: 
