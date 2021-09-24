@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve and Manage Data in Open and Modular Mental Health
     Simulations
-Version: 0.0.0.9139
+Version: 0.0.0.9140
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
