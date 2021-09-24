@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dist.R
 \name{make_pt_ready4use_dist}
 \alias{make_pt_ready4use_dist}
-\title{Make prototype ready4use dist ready4 S3 class for list object that summarises the parameters of each distribution}
+\title{Make prototype ready4use package dist ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 make_pt_ready4use_dist(
   distribution_chr = character(0),

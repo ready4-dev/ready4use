@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dictionary.R
 \name{make_new_ready4use_dictionary}
 \alias{make_new_ready4use_dictionary}
-\title{Make new ready4use dictionary ready4 s3 class defining a data dictionary tibble.}
+\title{Make new ready4use package dictionary ready4 s3 class defining a data dictionary tibble.}
 \usage{
 make_new_ready4use_dictionary(x)
 }

@@ -54,20 +54,19 @@ get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_
 #' @param file_name_chr File name (a character vector)
 #' @param data_repo_db_ui_chr Data repository database user interface (a character vector)
 #' @param data_repo_ui_chr Data repository user interface (a character vector), Default: 'NA'
-#' @param r3_fn Ready4 S3 (a function), Default: ready4_all_import_lup
+#' @param r3_fn Ready4 S3 (a function), Default: ready4use_all_import_lup
 #' @return Tibble ready4 S3 (a ready4 S3 extension of tibble)
 #' @rdname get_r3_from_dv_csv
 #' @export 
 #' @importFrom tibble tibble
-#' @keywords internal
 get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui_chr = NA_character_, 
-    r3_fn = ready4_all_import_lup) 
+    r3_fn = ready4use_all_import_lup) 
 {
     tb_r3 <- tibble::tibble(file_type_chr = ".csv", file_name_chr = file_name_chr, 
         data_repo_chr = NA_character_, data_repo_ui_chr = data_repo_ui_chr, 
         data_repo_db_ui_chr = data_repo_db_ui_chr, data_repo_file_ext_chr = ".tab", 
-        data_repo_save_type_chr = "original") %>% ready4_dv_import_lup() %>% 
-        get_data() %>% make_r3_from_csv_tb(r3_fn)
+        data_repo_save_type_chr = "original") %>% ready4use_dv_import_lup() %>% 
+        procure() %>% make_r3_from_csv_tb(r3_fn)
     return(tb_r3)
 }
 #' Get valid path character vector

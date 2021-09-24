@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_all_import_lup.R
 \name{make_pt_ready4use_all_import_lup}
 \alias{make_pt_ready4use_all_import_lup}
-\title{Make prototype ready4use all import lookup table ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{Make prototype ready4use package all import lookup table ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 make_pt_ready4use_all_import_lup(
   file_type_chr = character(0),

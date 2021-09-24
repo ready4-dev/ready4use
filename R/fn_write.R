@@ -108,7 +108,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
 #' @importFrom dataverse get_dataset
-#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     paths_are_rltv_1L_lgl = T, inc_fl_types_chr = NA_character_, 

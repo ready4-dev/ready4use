@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_param_struc_mape.R
 \name{validate_ready4use_param_struc_mape}
 \alias{validate_ready4use_param_struc_mape}
-\title{Validate ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\title{Validate ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 validate_ready4use_param_struc_mape(x)
 }

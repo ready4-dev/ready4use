@@ -46,7 +46,7 @@ get_r3_from_dv_csv <- function(file_name_chr,
                  data_repo_file_ext_chr = ".tab",
                  data_repo_save_type_chr = "original") %>%
     ready4use_dv_import_lup() %>%
-    get_data() %>%
+    procure() %>%
     make_r3_from_csv_tb(r3_fn)
   return(tb_r3)
 }

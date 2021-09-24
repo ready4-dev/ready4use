@@ -11,7 +11,7 @@ setOldClass(c("ready4use_param_struc_mape","tbl_df", "tbl", "data.frame"))
 ready4use_param_struc_mape <- function(x = make_pt_ready4use_param_struc_mape()){ 
 validate_ready4use_param_struc_mape(make_new_ready4use_param_struc_mape(x))
 }
-#' Make new ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' Make new ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Create a new unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x A prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @return An unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
@@ -25,7 +25,7 @@ class(x) <- append(c("ready4use_param_struc_mape",setdiff(make_pt_ready4use_para
 class(x))
 x
 }
-#' Make prototype ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' Make prototype ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Create a new prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param param_name_chr Parameter name (a character vector), Default: character(0)
 #' @param sex_age_band_chr Sex age band (a character vector), Default: character(0)
@@ -78,7 +78,7 @@ mape_10_yr_shp_dbl = mape_10_yr_shp_dbl,
 mape_15_yr_shp_dbl = mape_15_yr_shp_dbl) %>% ready4fun::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' Validate ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' Validate ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Validate an instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x An unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @return A prototpe for ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
@@ -86,9 +86,9 @@ rlang::exec(tibble::tibble,!!!args_ls)
 #' @rdname validate_ready4use_param_struc_mape
 #' @export 
 #' @importFrom stringr str_detect str_c
-#' @importFrom dplyr summarise_all arrange filter pull
+#' @importFrom dplyr summarise_all filter arrange pull
 #' @importFrom tidyr gather
-#' @importFrom purrr map2_chr
+#' @importFrom purrr map_chr map2_chr
 validate_ready4use_param_struc_mape <- function(x){
 if(sum(stringr::str_detect(names(x)[names(x) %in% names(make_pt_ready4use_param_struc_mape())],
 names(make_pt_ready4use_param_struc_mape())))!=length(names(make_pt_ready4use_param_struc_mape()))){
@@ -100,27 +100,33 @@ call. = FALSE)
  if(!identical(make_pt_ready4use_param_struc_mape() %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
+ dplyr::filter(!is.na(class)) %>% 
 dplyr::arrange(variable),
 x %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
+ dplyr::filter(!is.na(class)) %>% 
 dplyr::filter(variable %in% names(make_pt_ready4use_param_struc_mape())) %>% dplyr::arrange(variable))){
 stop(paste0("TIBBLE columns should be of the following classes: ",
-purrr::map2_chr(make_pt_ready4use_param_struc_mape() %>% 
+"",
+{
+class_lup <- make_pt_ready4use_param_struc_mape() %>% 
 dplyr::summarise_all(class) %>% 
  tidyr::gather(variable,class) %>% 
-dplyr::pull(1),
- make_pt_ready4use_param_struc_mape() %>% 
-dplyr::summarise_all(class) %>% 
- tidyr::gather(variable,class) %>% 
-dplyr::pull(2),
- ~ paste0(.x,": ",.y)) %>% 
-stringr::str_c(sep="", collapse = ", ")),
+ dplyr::filter(!is.na(class))
+  vars_chr <- class_lup %>% dplyr::pull(1) %>% unique()
+  classes_chr <- vars_chr %>%  purrr::map_chr(~dplyr::filter(class_lup, variable == .x) %>%  dplyr::pull(2) %>% paste0(collapse = ", "))
+purrr::map2_chr(vars_chr,
+classes_chr,
+~ paste0(.x,": ",.y)) %>% 
+stringr::str_c(sep="", collapse = ", 
+")
+}),
 call. = FALSE)
 }
 
 x}
-#' Is ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' Is ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

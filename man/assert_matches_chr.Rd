@@ -14,4 +14,3 @@ assert_matches_chr(x, match_chr)
 \description{
 assert_matches_chr() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert matches character vector. Function argument x specifies the object on which assert validation checks are to be performed. Argument match_chr provides the object containing values used for validation tests. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

@@ -10,7 +10,7 @@
 ready4use_dist <- function(x = make_pt_ready4use_dist()){ 
 validate_ready4use_dist(make_new_ready4use_dist(x))
 }
-#' Make new ready4use dist ready4 S3 class for list object that summarises the parameters of each distribution
+#' Make new ready4use package dist ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @return An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
@@ -24,7 +24,7 @@ class(x) <- append(c("ready4use_dist",setdiff(make_pt_ready4use_dist() %>% class
 class(x))
 x
 }
-#' Make prototype ready4use dist ready4 S3 class for list object that summarises the parameters of each distribution
+#' Make prototype ready4use package dist ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param distribution_chr Distribution (a character vector), Default: character(0)
 #' @param dstr_param_1_dbl Distribution parameter 1 (a double vector), Default: numeric(0)
@@ -52,7 +52,7 @@ dstr_param_4_dbl = dstr_param_4_dbl,
 transformation_chr = transformation_chr) %>% ready4fun::update_pt_fn_args_ls()
 rlang::exec(list,!!!args_ls)
 }
-#' Validate ready4use dist ready4 S3 class for list object that summarises the parameters of each distribution
+#' Validate ready4use package dist ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Validate an instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @return A prototpe for ready4 S3 class for list object that summarises the parameters of each distribution
@@ -60,10 +60,11 @@ rlang::exec(list,!!!args_ls)
 #' @rdname validate_ready4use_dist
 #' @export 
 #' @importFrom stringr str_detect str_c
+#' @importFrom ready4fun transform_cls_type_ls
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr gather
-#' @importFrom dplyr arrange filter pull
-#' @importFrom purrr map2_chr
+#' @importFrom dplyr filter arrange pull
+#' @importFrom purrr map_chr map2_chr
 validate_ready4use_dist <- function(x){
 if(sum(stringr::str_detect(names(x)[names(x) %in% names(make_pt_ready4use_dist())],
 names(make_pt_ready4use_dist())))!=length(names(make_pt_ready4use_dist()))){
@@ -73,29 +74,35 @@ call. = FALSE)
 }
 
  if(!identical(make_pt_ready4use_dist() %>% 
-lapply(class) %>% tibble::as_tibble() %>% 
+lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
+ dplyr::filter(!is.na(class)) %>% 
 dplyr::arrange(variable),
 x %>% 
-lapply(class) %>% tibble::as_tibble() %>% 
+lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
+ dplyr::filter(!is.na(class)) %>% 
 dplyr::filter(variable %in% names(make_pt_ready4use_dist())) %>% dplyr::arrange(variable))){
 stop(paste0("LIST elements should be of the following classes: ",
-purrr::map2_chr(make_pt_ready4use_dist() %>% 
-lapply(class) %>% tibble::as_tibble() %>% 
+"",
+{
+class_lup <- make_pt_ready4use_dist() %>% 
+lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
-dplyr::pull(1),
- make_pt_ready4use_dist() %>% 
-lapply(class) %>% tibble::as_tibble() %>% 
- tidyr::gather(variable,class) %>% 
-dplyr::pull(2),
- ~ paste0(.x,": ",.y)) %>% 
-stringr::str_c(sep="", collapse = ", ")),
+ dplyr::filter(!is.na(class))
+  vars_chr <- class_lup %>% dplyr::pull(1) %>% unique()
+  classes_chr <- vars_chr %>%  purrr::map_chr(~dplyr::filter(class_lup, variable == .x) %>%  dplyr::pull(2) %>% paste0(collapse = ", "))
+purrr::map2_chr(vars_chr,
+classes_chr,
+~ paste0(.x,": ",.y)) %>% 
+stringr::str_c(sep="", collapse = ", 
+")
+}),
 call. = FALSE)
 }
 
 x}
-#' Is ready4use dist ready4 S3 class for list object that summarises the parameters of each distribution
+#' Is ready4use package dist ready4 S3 class for list object that summarises the parameters of each distribution
 #' @description Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution

@@ -1,3 +1,15 @@
+#' Bind lookup tables
+#' @rdname bind_lups-methods
+#' @description bind_lups() is a Bind Lookup Tables generic that rowbinds lookup tables of the same class, removing duplicates based on priority.
+#' @param x An object
+#' @param ... Additional arguments (an additional arguments)
+#' @export 
+
+bind_lups <- function (x, ...) 
+{
+    UseMethod("bind_lups", x)
+}
+methods::setGeneric("bind_lups")
 #' Download data
 #' @rdname download_data-methods
 #' @description download_data() is a Download Data generic that downloads data files.
@@ -10,30 +22,6 @@ download_data <- function (x, ...)
     UseMethod("download_data", x)
 }
 methods::setGeneric("download_data")
-#' Get data
-#' @rdname get_data-methods
-#' @description get_data() is a Get Data generic that retrieves data from R objects loaded in memory.
-#' @param x An object
-#' @param ... Additional arguments (an additional arguments)
-#' @export 
-
-get_data <- function (x, ...) 
-{
-    UseMethod("get_data", x)
-}
-methods::setGeneric("get_data")
-#' Get import type list
-#' @rdname get_import_type_ls-methods
-#' @description get_import_type_ls() is a Get Import Type List generic that retrieves data about the type of import to be processed.
-#' @param x An object
-#' @param ... Additional arguments (an additional arguments)
-#' @export 
-
-get_import_type_ls <- function (x, ...) 
-{
-    UseMethod("get_import_type_ls", x)
-}
-methods::setGeneric("get_import_type_ls")
 #' Get read function
 #' @rdname get_read_fn-methods
 #' @description get_read_fn() is a Get Read Function generic that retrieves a read function.
@@ -58,30 +46,6 @@ import_data <- function (x, ...)
     UseMethod("import_data", x)
 }
 methods::setGeneric("import_data")
-#' Make dataverse import lookup table
-#' @rdname make_dv_import_lup-methods
-#' @description make_dv_import_lup() is a Make Dataverse Import Lookup Table generic that makes a Dataverse import lookup table
-#' @param x An object
-#' @param ... Additional arguments (an additional arguments)
-#' @export 
-
-make_dv_import_lup <- function (x, ...) 
-{
-    UseMethod("make_dv_import_lup", x)
-}
-methods::setGeneric("make_dv_import_lup")
-#' Make import output object of multiple potential types
-#' @rdname make_import_xx-methods
-#' @description make_import_xx() is a Make Import Output Object of Multiple Potential Types generic that makes an output object of multiple potential classes.
-#' @param x An object
-#' @param ... Additional arguments (an additional arguments)
-#' @export 
-
-make_import_xx <- function (x, ...) 
-{
-    UseMethod("make_import_xx", x)
-}
-methods::setGeneric("make_import_xx")
 #' Save raw
 #' @rdname save_raw-methods
 #' @description save_raw() is a Save Raw generic that saves the native version of a file format.

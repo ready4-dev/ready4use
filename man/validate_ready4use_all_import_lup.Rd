@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_all_import_lup.R
 \name{validate_ready4use_all_import_lup}
 \alias{validate_ready4use_all_import_lup}
-\title{Validate ready4use all import lookup table ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{Validate ready4use package all import lookup table ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 validate_ready4use_all_import_lup(x)
 }

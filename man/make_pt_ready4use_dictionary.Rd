@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dictionary.R
 \name{make_pt_ready4use_dictionary}
 \alias{make_pt_ready4use_dictionary}
-\title{Make prototype ready4use dictionary ready4 s3 class defining a data dictionary tibble.}
+\title{Make prototype ready4use package dictionary ready4 s3 class defining a data dictionary tibble.}
 \usage{
 make_pt_ready4use_dictionary(
   var_nm_chr = character(0),

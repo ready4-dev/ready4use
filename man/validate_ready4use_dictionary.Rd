@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dictionary.R
 \name{validate_ready4use_dictionary}
 \alias{validate_ready4use_dictionary}
-\title{Validate ready4use dictionary ready4 s3 class defining a data dictionary tibble.}
+\title{Validate ready4use package dictionary ready4 s3 class defining a data dictionary tibble.}
 \usage{
 validate_ready4use_dictionary(x)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_param_struc_mape.R
 \name{make_pt_ready4use_param_struc_mape}
 \alias{make_pt_ready4use_param_struc_mape}
-\title{Make prototype ready4use parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\title{Make prototype ready4use package parameter struc mean absolute prediction error ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 make_pt_ready4use_param_struc_mape(
   param_name_chr = character(0),

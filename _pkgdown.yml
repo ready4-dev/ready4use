@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5192240
+    href: https://dataverse.harvard.edu/api/access/datafile/5195373
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5192239
+    href: https://dataverse.harvard.edu/api/access/datafile/5195372
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -13,7 +13,25 @@ reference:
 - contents:
   - ready4use_dist
   - ready4use_dv_import_lup
+  - ready4use_all_import_lup
+  - ready4use_param_struc_mape
+  - ready4use_dictionary
+  - ready4use_local
+  - ready4use_local_raw
+  - ready4use_local_proc
+  - ready4use_script_data
+- title: "Functions"
+- contents:
+  - add_labels_from_dictionary
+  - assert_matches_chr
+  - assert_single_row_tb
+  - get_r3_from_dv_csv
+  - write_fls_to_dv_ds
 - title: "Methods"
 - contents:
-  - get_data.ready4_dv_import_lup
-  - update_src_loc_to_url.ready4_all_import_lup
+  - get_read_fn.ready4use_dv_import_lup
+  - make.ready4use_all_import_lup
+  - make.ready4use_sp_import_lup
+  - procure.ready4use_all_import_lup
+  - procure.ready4use_dv_import_lup
+  - update_src_loc_to_url.ready4use_all_import_lup

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dv_import_lup.R
 \name{make_new_ready4use_dv_import_lup}
 \alias{make_new_ready4use_dv_import_lup}
-\title{Make new ready4use dataverse import lookup table ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{Make new ready4use package dataverse import lookup table ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 make_new_ready4use_dv_import_lup(x)
 }
