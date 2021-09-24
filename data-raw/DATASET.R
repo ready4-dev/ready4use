@@ -150,7 +150,8 @@ manifest_r3 <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(pk
                                                                  constructor_tbl_r3 = constructor_tbl_r3))
 #pkg_ds_ls_ls <- NULL
 
-pkg_setup_r3 <- ready4class::author.ready4class_manifest(manifest_r3)
+pkg_setup_r3 <- ready4class::author.ready4class_manifest(manifest_r3,
+                                                         req_pkgs_chr = "ready4fun")
 # pkg_setup_r3 <-  ready4fun::write_package(pkg_setup_ls,
 #                                          self_serve_1L_lgl = F,
 #                                          self_serve_fn_ls = NULL)

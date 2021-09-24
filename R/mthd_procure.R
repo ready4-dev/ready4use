@@ -5,24 +5,26 @@
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
 #' @return NULL
 #' @rdname procure-methods
-#' @export 
+#' @export
+#' @importFrom ready4fun procure
 #' @importFrom purrr discard
-procure.ready4use_all_import_lup <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
+procure.ready4use_all_import_lup <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_)
 {
     assert_single_row_tb(x)
-    options_ls <- list(script_chr = x$path_to_make_script_chr, 
-        local_chr = x$local_file_src_chr, repo_chr = x$data_repo_db_ui_chr, 
+    options_ls <- list(script_chr = x$path_to_make_script_chr,
+        local_chr = x$local_file_src_chr, repo_chr = x$data_repo_db_ui_chr,
         source_url_chr = x$download_url_chr) %>% purrr::discard(is.na)
-    if ("script_chr" %in% names(options_ls) & !inc_script_lgl) 
+    if ("script_chr" %in% names(options_ls) & !inc_script_lgl)
         options_ls$script_chr <- NULL
     if (!is.na(forced_choice_chr)) {
-        if (!forced_choice_chr %in% names(options_ls)) 
+        if (!forced_choice_chr %in% names(options_ls))
             stop("Forced choice option is not available from input lookup table")
         options_ls <- options_ls[names(options_ls) == forced_choice_chr]
     }
     options_ls[1]
 }
 #' @rdname procure-methods
+#' @importMethodsFrom ready4fun procure
 #' @aliases procure,ready4use_all_import_lup-method
 methods::setMethod("procure", "ready4use_all_import_lup", procure.ready4use_all_import_lup)
 #' Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..
@@ -34,22 +36,24 @@ methods::setMethod("procure", "ready4use_all_import_lup", procure.ready4use_all_
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @return NULL
 #' @rdname procure-methods
-#' @export 
+#' @export
+#' @importFrom ready4fun procure
 #' @importFrom purrr map2
-procure.ready4use_dv_import_lup <- function (x, save_dir_path_1L_chr = "", unlink_1L_lgl = T, server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
-    key_1L_chr = Sys.getenv("DATAVERSE_KEY")) 
+procure.ready4use_dv_import_lup <- function (x, save_dir_path_1L_chr = "", unlink_1L_lgl = T, server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"))
 {
-    data_ls <- purrr::map2(1:nrow(x), get_read_fn(x), ~get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x], 
-        fl_nm_1L_chr = x$file_name_chr[.x], save_fmt_1L_chr = x$file_type_chr[.x], 
-        repo_fl_fmt_1L_chr = x$data_repo_file_ext_chr[.x], server_1L_chr = ifelse(is.na(x$data_repo_ui_chr[.x]), 
-            server_1L_chr, x$data_repo_ui_chr[.x]), key_1L_chr = key_1L_chr, 
-        save_type_1L_chr = ifelse(is.na(x$data_repo_save_type_chr[.x]), 
-            "original", x$data_repo_save_type_chr[.x]), save_dir_path_1L_chr = save_dir_path_1L_chr, 
+    data_ls <- purrr::map2(1:nrow(x), get_read_fn(x), ~get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x],
+        fl_nm_1L_chr = x$file_name_chr[.x], save_fmt_1L_chr = x$file_type_chr[.x],
+        repo_fl_fmt_1L_chr = x$data_repo_file_ext_chr[.x], server_1L_chr = ifelse(is.na(x$data_repo_ui_chr[.x]),
+            server_1L_chr, x$data_repo_ui_chr[.x]), key_1L_chr = key_1L_chr,
+        save_type_1L_chr = ifelse(is.na(x$data_repo_save_type_chr[.x]),
+            "original", x$data_repo_save_type_chr[.x]), save_dir_path_1L_chr = save_dir_path_1L_chr,
         read_fn = .y, unlink_1L_lgl = unlink_1L_lgl))
-    if (length(data_ls) > 1) 
+    if (length(data_ls) > 1)
         data_ls
     else data_ls[[1]]
 }
 #' @rdname procure-methods
+#' @importMethodsFrom ready4fun procure
 #' @aliases procure,ready4use_dv_import_lup-method
 methods::setMethod("procure", "ready4use_dv_import_lup", procure.ready4use_dv_import_lup)
