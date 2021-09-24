@@ -1,3 +1,4 @@
+library(ready4fun)
 library(ready4class)
 ready4fun::write_fn_type_dirs()
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve and Manage Data In Open and Modular Mental Health Simulations" %>% tools::toTitleCase(),
@@ -148,7 +149,7 @@ constructor_tbl_r3 <- dplyr::bind_rows(
 manifest_r3 <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(pkg_setup_r3 = pkg_setup_r3,
                                                                  constructor_tbl_r3 = constructor_tbl_r3))
 #pkg_ds_ls_ls <- NULL
-library(ready4fun)
+
 pkg_setup_r3 <- ready4class::author.ready4class_manifest(manifest_r3)
 # pkg_setup_r3 <-  ready4fun::write_package(pkg_setup_ls,
 #                                          self_serve_1L_lgl = F,
