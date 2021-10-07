@@ -50,3 +50,5 @@
 ^data-raw/mthds/manufacture\.R$
 ^data-raw/mthds/renew\.R$
 ^data-raw/NOTES\.R$
+^data-raw/mthds/author\.R$
+^data-raw/mthds/authorData\.R$

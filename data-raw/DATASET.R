@@ -39,9 +39,10 @@ manifest_r3 <- pkg_desc_ls %>%
                                                                                                  "write_fls_to_dv_ds")),
                            copyright_holders_chr = "Orygen",
                            dev_pkgs_chr = c("ready4fun","ready4class"),
-                           import_from_chr = c(#"author" = "ready4fun",
-                                               #"authorClasses" = "ready4fun",
+                           import_from_chr = c("author" = "ready4fun",
+                                               "authorData" = "ready4fun",
                                                "manufacture" = "ready4fun",
+                                               "metamorphose" = "ready4fun",
                                                "procure" = "ready4fun",
                                                "renew" = "ready4fun"
                                                ),
@@ -119,6 +120,16 @@ constructor_r3 <- dplyr::bind_rows(
                                                                    var_desc_chr = "character(0)",
                                                                    var_type_chr = "character(0)")),
                                                class_desc_chr= "ready4 s3 class defining a data dictionary tibble."),
+  ready4class::make_pt_ready4class_constructor(make_s3_lgl = T,
+                                               name_stub_chr = "manifest",
+                                               pt_ls = list(list("list")),
+                                               pt_chkr_pfx_ls = list(list("is.")),
+                                               pt_ns_ls = list(list("base")),
+                                               vals_ls = list(list(manifest_r3 = "ready4fun::ready4fun_manifest()",
+                                                                   constructor_r3 = "ready4class::ready4class_constructor()",
+                                                                   pkg_ds_ls_ls = "list()",
+                                                                   clss_to_apply_ls = "list()")),
+                                               class_desc_chr = "ready4 s3 class Manifest for packages containing datasets."),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Files",
                                                slots_ls = c("merge_itms_chr","raw_fls_dir_1L_chr","pkg_1L_chr","overwrite_1L_lgl", "write_1L_lgl") %>% list(), # Cut: "lup_tbs_r4",
@@ -154,5 +165,4 @@ constructor_r3 <- dplyr::bind_rows(
   ready4class::ready4class_constructor()
 manifest_r3 <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(manifest_r3 = manifest_r3,
                                                                               constructor_r3 = constructor_r3))
-#pkg_ds_ls_ls <- NULL
 manifest_r3 <- author(manifest_r3)

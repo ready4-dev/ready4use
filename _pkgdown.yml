@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: 5212921
+    href: 5212990
   - text: Manual - Developer (PDF)
-    href: 5212920
+    href: 5212989
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -15,11 +15,19 @@ reference:
   - ready4use_dv_import_lup
   - ready4use_all_import_lup
   - ready4use_param_struc_mape
-  - ready4use_dictionary
   - ready4use_local
   - ready4use_local_raw
   - ready4use_local_proc
   - ready4use_script_data
+  - ready4use_distributions
+  - ready4use_dataverses
+  - ready4use_imports
+  - ready4use_mapes
+  - ready4use_dictionary
+  - Ready4useFiles
+  - Ready4useRaw
+  - Ready4useProcessed
+  - Ready4useArguments
 - title: "Functions"
 - contents:
   - add_labels_from_dictionary
@@ -29,6 +37,8 @@ reference:
   - write_fls_to_dv_ds
 - title: "Methods"
 - contents:
+  - author.ready4use_manifest
+  - authorData.ready4use_manifest
   - get_read_fn.ready4use_dataverses
   - manufacture.ready4use_imports
   - procure.ready4use_dataverses
