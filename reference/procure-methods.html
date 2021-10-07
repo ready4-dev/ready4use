@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Procure method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. — procure.ready4use_all_import_lup • ready4use</title>
+<title>Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.. — procure.ready4use_dataverses • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Procure method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.. — procure.ready4use_all_import_lup" />
-<meta property="og:description" content="procure.ready4use_all_import_lup() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-procure.ready4use_dv_import_lup() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value." />
+<meta property="og:title" content="Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.. — procure.ready4use_dataverses" />
+<meta property="og:description" content="procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.
+procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -81,7 +81,7 @@ procure.ready4use_dv_import_lup() is a Procure method that searches and retrieve
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9141</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9142</span>
       </span>
     </div>
 
@@ -120,26 +120,17 @@ procure.ready4use_dv_import_lup() is a Procure method that searches and retrieve
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Procure method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..</h1>
+    <h1>Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..</h1>
     <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/mthd_procure.R'><code>R/mthd_procure.R</code></a></small>
     <div class="hidden name"><code>procure-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>procure.ready4use_all_import_lup() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.</p>
-<p>procure.ready4use_dv_import_lup() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.</p>
+    <p>procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.</p>
+<p>procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procure.ready4use_all_import_lup</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>,
-  forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>
-<span class='op'>)</span>
-
-<span class='co'># S4 method for ready4use_all_import_lup</span>
-<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span>
-
-<span class='fu'>procure.ready4use_dv_import_lup</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>procure.ready4use_dataverses</span><span class='op'>(</span>
   <span class='va'>x</span>,
   save_dir_path_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
   unlink_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
@@ -147,29 +138,30 @@ procure.ready4use_dv_import_lup() is a Procure method that searches and retrieve
   key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='co'># S4 method for ready4use_dv_import_lup</span>
+<span class='co'># S4 method for ready4use_dataverses</span>
 <span class='fu'>procure</span><span class='op'>(</span>
   <span class='va'>x</span>,
   save_dir_path_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
   unlink_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
   server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>,
   key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span>
+
+<span class='fu'>procure.ready4use_imports</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>,
+  forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>
+<span class='op'>)</span>
+
+<span class='co'># S4 method for ready4use_imports</span>
+<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.</p></td>
-    </tr>
-    <tr>
-      <th>inc_script_lgl</th>
-      <td><p>Include script (a logical vector), Default: T</p></td>
-    </tr>
-    <tr>
-      <th>forced_choice_chr</th>
-      <td><p>Forced choice (a character vector), Default: 'NA'</p></td>
+      <td><p>An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.</p></td>
     </tr>
     <tr>
       <th>save_dir_path_1L_chr</th>
@@ -186,6 +178,14 @@ procure.ready4use_dv_import_lup() is a Procure method that searches and retrieve
     <tr>
       <th>key_1L_chr</th>
       <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
+    </tr>
+    <tr>
+      <th>inc_script_lgl</th>
+      <td><p>Include script (a logical vector), Default: T</p></td>
+    </tr>
+    <tr>
+      <th>forced_choice_chr</th>
+      <td><p>Forced choice (a character vector), Default: 'NA'</p></td>
     </tr>
     </table>
 
