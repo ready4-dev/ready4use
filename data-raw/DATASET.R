@@ -42,7 +42,8 @@ manifest_r3 <- pkg_desc_ls %>%
                            import_from_chr = c(#"author" = "ready4fun",
                                                #"authorClasses" = "ready4fun",
                                                "manufacture" = "ready4fun",
-                                               "procure" = "ready4fun"#,"renew" = "ready4fun"
+                                               "procure" = "ready4fun",
+                                               "renew" = "ready4fun"
                                                ),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
