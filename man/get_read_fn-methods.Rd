@@ -2,15 +2,15 @@
 % Please edit documentation in R/grp_generics.R, R/mthd_get_read_fn.R
 \name{get_read_fn}
 \alias{get_read_fn}
-\alias{get_read_fn.ready4use_dv_import_lup}
-\alias{get_read_fn,ready4use_dv_import_lup-method}
+\alias{get_read_fn.ready4use_dataverses}
+\alias{get_read_fn,ready4use_dataverses-method}
 \title{Get read function}
 \usage{
 get_read_fn(x, ...)
 
-get_read_fn.ready4use_dv_import_lup(x)
+get_read_fn.ready4use_dataverses(x)
 
-\S4method{get_read_fn}{ready4use_dv_import_lup}(x)
+\S4method{get_read_fn}{ready4use_dataverses}(x)
 }
 \arguments{
 \item{x}{An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
@@ -18,7 +18,7 @@ get_read_fn.ready4use_dv_import_lup(x)
 \item{...}{Additional arguments (an additional arguments)}
 }
 \description{
-get_read_fn() is a Get Read Function generic that retrieves a read function.
+get_read_fn() is a Get Read Function function that retrieves a read function. Specifically, this function implements an algorithm to get read function. The function is called for its side effects and does not return a value.
 
-get_read_fn.ready4use_dv_import_lup() is a Get Read Function method that retrieves a read function. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.
+get_read_fn.ready4use_dataverses() is a Get Read Function method that retrieves a read function. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.
 }

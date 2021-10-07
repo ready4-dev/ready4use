@@ -8,7 +8,7 @@ get_r3_from_dv_csv(
   file_name_chr,
   data_repo_db_ui_chr,
   data_repo_ui_chr = NA_character_,
-  r3_fn = ready4use_all_import_lup
+  r3_fn = ready4use_imports
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ get_r3_from_dv_csv(
 
 \item{data_repo_ui_chr}{Data repository user interface (a character vector), Default: 'NA'}
 
-\item{r3_fn}{Ready4 S3 (a function), Default: ready4use_all_import_lup}
+\item{r3_fn}{Ready4 S3 (a function), Default: ready4use_imports}
 }
 \value{
 Tibble ready4 S3 (a ready4 S3 extension of tibble)

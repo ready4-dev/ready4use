@@ -37,7 +37,7 @@ get_local_path_to_dv_data <- function(save_dir_path_1L_chr,
 get_r3_from_dv_csv <- function(file_name_chr,
                                data_repo_db_ui_chr,
                                data_repo_ui_chr = NA_character_,
-                               r3_fn = ready4use_all_import_lup){
+                               r3_fn = ready4use_imports){
   tb_r3 <- tibble::tibble(file_type_chr = ".csv",
                  file_name_chr = file_name_chr,
                  data_repo_chr = NA_character_,
@@ -45,7 +45,7 @@ get_r3_from_dv_csv <- function(file_name_chr,
                  data_repo_db_ui_chr =  data_repo_db_ui_chr,
                  data_repo_file_ext_chr = ".tab",
                  data_repo_save_type_chr = "original") %>%
-    ready4use_dv_import_lup() %>%
+    ready4use_dataverses() %>%
     procure() %>%
     make_r3_from_csv_tb(r3_fn)
   return(tb_r3)

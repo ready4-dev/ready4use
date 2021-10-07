@@ -2,21 +2,21 @@
 % Please edit documentation in R/gnrc_crs_nbr_dbl.R
 \name{crs_nbr_dbl<-}
 \alias{crs_nbr_dbl<-}
-\alias{crs_nbr_dbl<--ready4use_script_data}
-\alias{crs_nbr_dbl<-,ready4use_script_data-method}
+\alias{crs_nbr_dbl<--Ready4useArguments}
+\alias{crs_nbr_dbl<-,Ready4useArguments-method}
 \title{crs_nbr_dbl<-}
 \usage{
 crs_nbr_dbl(x) <- value
 
-\S4method{crs_nbr_dbl}{ready4use_script_data}(x) <- value
+\S4method{crs_nbr_dbl}{Ready4useArguments}(x) <- value
 }
 \arguments{
-\item{x}{An object of class ready4use_script_data}
+\item{x}{An object of class Ready4useArguments}
 
 \item{value}{Value to be assigned to x}
 }
 \description{
 S4 Generic function to set the value of the slot crs_nbr_dbl
 
-Set the value of the slot crs_nbr_dbl for S4 objects of class ready4use_script_data
+Set the value of the slot crs_nbr_dbl for S4 objects of class Ready4useArguments
 }

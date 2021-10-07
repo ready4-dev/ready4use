@@ -1,6 +1,6 @@
-procure.ready4use_all_import_lup <- function(x,
-                                             inc_script_lgl = T,
-                                             forced_choice_chr = NA_character_){
+procure.ready4use_imports <- function(x,
+                                      inc_script_lgl = T,
+                                      forced_choice_chr = NA_character_){
   assert_single_row_tb(x)
   options_ls <- list(script_chr = x$path_to_make_script_chr,
                      local_chr = x$local_file_src_chr,
@@ -16,11 +16,11 @@ procure.ready4use_all_import_lup <- function(x,
   }
   options_ls[1]
 }
-procure.ready4use_dv_import_lup <- function(x,
-                                            save_dir_path_1L_chr = "",
-                                            unlink_1L_lgl = T,
-                                            server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
-                                            key_1L_chr = Sys.getenv("DATAVERSE_KEY")){
+procure.ready4use_dataverses <- function(x,
+                                         save_dir_path_1L_chr = "",
+                                         unlink_1L_lgl = T,
+                                         server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+                                         key_1L_chr = Sys.getenv("DATAVERSE_KEY")){
   data_ls <- purrr::map2(1:nrow(x),
                          get_read_fn(x),
                          ~ get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x],

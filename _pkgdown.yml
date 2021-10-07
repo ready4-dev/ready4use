@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5195441
+    href: 5212921
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5195440
+    href: 5212920
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -29,9 +29,9 @@ reference:
   - write_fls_to_dv_ds
 - title: "Methods"
 - contents:
-  - get_read_fn.ready4use_dv_import_lup
-  - make.ready4use_all_import_lup
-  - make.ready4use_sp_import_lup
-  - procure.ready4use_all_import_lup
-  - procure.ready4use_dv_import_lup
-  - update_src_loc_to_url.ready4use_all_import_lup
+  - get_read_fn.ready4use_dataverses
+  - manufacture.ready4use_imports
+  - procure.ready4use_dataverses
+  - procure.ready4use_imports
+  - renew.ready4_dictionary
+  - renew.ready4use_imports

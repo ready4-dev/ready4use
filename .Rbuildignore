@@ -47,3 +47,6 @@
 ^data-raw/fn_type_lup_tb\.csv$
 ^data-raw/mthds/make\.R$
 ^data-raw/mthds/procure\.R$
+^data-raw/mthds/manufacture\.R$
+^data-raw/mthds/renew\.R$
+^data-raw/NOTES\.R$

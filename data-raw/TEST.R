@@ -2,7 +2,7 @@ devtools::load_all()
 #crs_nbr_dbl <- c(4283,3577)
 library(magrittr)
 #data_dir_chr <- "../../../../Data"
-# raw_data_dir_chr <- paste0(data_dir_chr,"/Raw_Format")
+# raw_fls_dir_1L_chr <- paste0(data_dir_chr,"/Raw_Format")
 # r_data_dir_chr <- paste0(data_dir_chr,"/R_Format")
 #dv <- dataverse::create_dataverse("Code")
 #parent_dv_dir_1L_chr = paste0(data_dir_chr,"/Dataverse")

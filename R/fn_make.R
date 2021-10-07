@@ -74,32 +74,3 @@ make_r3_from_csv_tb <- function (csv_tb, r3_fn)
     tb_r3 <- rlang::exec(r3_fn, tb)
     return(tb_r3)
 }
-#' Make method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..
-#' @description make.ready4use_all_import_lup() is a Make method that creates a new R object. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-#' @param x An object
-#' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
-#' @param script_args_ls Script arguments (a list), Default: NULL
-#' @return NULL
-#' @rdname make.ready4use_all_import_lup
-#' @export 
-#' @importFrom rlang exec
-make.ready4use_all_import_lup <- function (x, forced_choice_chr = NA_character_, script_args_ls = NULL) 
-{
-    assert_single_row_tb(x)
-    import_type_ls <- procure(x, inc_script_lgl = !is.null(script_args_ls), 
-        forced_choice_chr = forced_choice_chr)
-    switch(names(import_type_ls), script_chr = rlang::exec(ready4use_script_data, 
-        x, !!!script_args_ls), local_chr = get_valid_path_chr(import_type_ls[[1]]), 
-        repo_chr = make(x), source_url_chr = url(import_type_ls[[1]]))
-}
-#' Make.ready4use sp import lookup table
-#' @description make.ready4use_sp_import_lup() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make.ready4use sp import lookup table. The function is called for its side effects and does not return a value.
-#' @param x An object
-#' @return NULL
-#' @rdname make.ready4use_sp_import_lup
-#' @export 
-#' @importFrom dplyr select
-make.ready4use_sp_import_lup <- function (x) 
-{
-    ready4use_dv_import_lup(x %>% dplyr::select(names(ready4use_dv_import_lup())))
-}

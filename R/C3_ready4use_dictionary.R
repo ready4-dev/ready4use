@@ -7,7 +7,6 @@ setOldClass(c("ready4use_dictionary","tbl_df", "tbl", "data.frame"))
 #' @details ready4 s3 class defining a data dictionary tibble.
 #' @rdname ready4use_dictionary
 #' @export 
-
 ready4use_dictionary <- function(x = make_pt_ready4use_dictionary()){ 
 validate_ready4use_dictionary(make_new_ready4use_dictionary(x))
 }
@@ -103,5 +102,4 @@ x}
 #' @details ready4 s3 class defining a data dictionary tibble.
 #' @rdname is_ready4use_dictionary
 #' @export 
-
 is_ready4use_dictionary <- function(x) inherits(validate_ready4use_dictionary(x), "ready4use_dictionary")
