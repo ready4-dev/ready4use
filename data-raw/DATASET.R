@@ -125,7 +125,7 @@ constructor_r3 <- dplyr::bind_rows(
                                                pt_ls = list(list("list")),
                                                pt_chkr_pfx_ls = list(list("is.")),
                                                pt_ns_ls = list(list("base")),
-                                               vals_ls = list(list(manifest_r3 = "ready4fun::ready4fun_manifest()",
+                                               vals_ls = list(list(fns_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
                                                                    constructor_r3 = "ready4class::ready4class_constructor()",
                                                                    pkg_ds_ls_ls = "list()",
                                                                    clss_to_apply_ls = "list()")),
@@ -163,6 +163,6 @@ constructor_r3 <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useProcessed"))
 ) %>%
   ready4class::ready4class_constructor()
-manifest_r3 <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(manifest_r3 = manifest_r3,
+x_ready4class_manifest <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(manifest_r3 = manifest_r3,
                                                                               constructor_r3 = constructor_r3))
-manifest_r3 <- author(manifest_r3)
+x_ready4fun_manifest <- author(x_ready4class_manifest)

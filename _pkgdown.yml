@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: 5212990
+    href: 5213858
   - text: Manual - Developer (PDF)
-    href: 5212989
+    href: 5213857
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -24,6 +24,7 @@ reference:
   - ready4use_imports
   - ready4use_mapes
   - ready4use_dictionary
+  - ready4use_manifest
   - Ready4useFiles
   - Ready4useRaw
   - Ready4useProcessed
@@ -41,6 +42,7 @@ reference:
   - authorData.ready4use_manifest
   - get_read_fn.ready4use_dataverses
   - manufacture.ready4use_imports
+  - metamorphose.ready4use_manifest
   - procure.ready4use_dataverses
   - procure.ready4use_imports
   - renew.ready4_dictionary

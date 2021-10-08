@@ -24,7 +24,7 @@ x
 }
 #' Make prototype ready4use package manifest ready4 s3 class defining a manifest of data required to create an R package.
 #' @description Create a new prototype for the ready4 s3 class defining a manifest of data required to create an R package.
-#' @param manifest_r3 Manifest (a ready4 S3), Default: ready4fun::ready4fun_manifest()
+#' @param fns_ready4fun_manifest PARAM_DESCRIPTION, Default: ready4fun::ready4fun_manifest()
 #' @param constructor_r3 Constructor (a ready4 S3), Default: ready4class::ready4class_constructor()
 #' @param pkg_ds_ls_ls Package dataset (a list of lists), Default: list()
 #' @param clss_to_apply_ls Classes to apply (a list), Default: list()
@@ -35,11 +35,11 @@ x
 #' @importFrom ready4fun ready4fun_manifest update_pt_fn_args_ls
 #' @importFrom ready4class ready4class_constructor
 #' @importFrom rlang exec
-make_pt_ready4use_manifest <- function(manifest_r3 = ready4fun::ready4fun_manifest(),
+make_pt_ready4use_manifest <- function(fns_ready4fun_manifest = ready4fun::ready4fun_manifest(),
 constructor_r3 = ready4class::ready4class_constructor(),
 pkg_ds_ls_ls = list(),
 clss_to_apply_ls = list()){ 
-args_ls <- list(manifest_r3 = manifest_r3,
+args_ls <- list(fns_ready4fun_manifest = fns_ready4fun_manifest,
 constructor_r3 = constructor_r3,
 pkg_ds_ls_ls = pkg_ds_ls_ls,
 clss_to_apply_ls = clss_to_apply_ls) %>% ready4fun::update_pt_fn_args_ls()

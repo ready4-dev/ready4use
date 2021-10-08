@@ -5,14 +5,14 @@
 \title{Make prototype ready4use package manifest ready4 s3 class defining a manifest of data required to create an R package.}
 \usage{
 make_pt_ready4use_manifest(
-  manifest_r3 = ready4fun::ready4fun_manifest(),
+  fns_ready4fun_manifest = ready4fun::ready4fun_manifest(),
   constructor_r3 = ready4class::ready4class_constructor(),
   pkg_ds_ls_ls = list(),
   clss_to_apply_ls = list()
 )
 }
 \arguments{
-\item{manifest_r3}{Manifest (a ready4 S3), Default: ready4fun::ready4fun_manifest()}
+\item{fns_ready4fun_manifest}{PARAM_DESCRIPTION, Default: ready4fun::ready4fun_manifest()}
 
 \item{constructor_r3}{Constructor (a ready4 S3), Default: ready4class::ready4class_constructor()}
 

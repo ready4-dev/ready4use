@@ -20,8 +20,8 @@ authorData.ready4use_manifest <- function (x)
                       title_1L_chr = pkg_ds_ls_ls[[idx_1L_int]]$title_1L_chr, 
                       desc_1L_chr = pkg_ds_ls_ls[[idx_1L_int]]$desc_1L_chr, 
                       url_1L_chr = pkg_ds_ls_ls[[idx_1L_int]]$url_1L_chr, 
-                      abbreviations_lup = x$manifest_r3$subsequent_ls$abbreviations_lup, 
-                      object_type_lup = x$manifest_r3$subsequent_ls$object_type_lup)
+                      abbreviations_lup = x$fns_ready4fun_manifest$subsequent_ls$abbreviations_lup, 
+                      object_type_lup = x$fns_ready4fun_manifest$subsequent_ls$object_type_lup)
                 })
             })
     }

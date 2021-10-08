@@ -52,3 +52,4 @@
 ^data-raw/NOTES\.R$
 ^data-raw/mthds/author\.R$
 ^data-raw/mthds/authorData\.R$
+^data-raw/mthds/metamorphose\.R$
