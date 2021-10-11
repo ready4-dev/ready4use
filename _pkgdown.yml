@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: 5213858
+    href: 5223929
   - text: Manual - Developer (PDF)
-    href: 5213857
+    href: 5223927
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -11,14 +11,6 @@ development:
 reference:
 - title: "Classes"
 - contents:
-  - ready4use_dist
-  - ready4use_dv_import_lup
-  - ready4use_all_import_lup
-  - ready4use_param_struc_mape
-  - ready4use_local
-  - ready4use_local_raw
-  - ready4use_local_proc
-  - ready4use_script_data
   - ready4use_distributions
   - ready4use_dataverses
   - ready4use_imports

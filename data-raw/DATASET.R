@@ -34,7 +34,7 @@ manifest_r3 <- pkg_desc_ls %>%
                            custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_labels_from_dictionary",
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
-                                                                                                 "get_fl_id_from_dv_ls",
+                                                                                                 #"get_fl_id_from_dv_ls",
                                                                                                  "get_r3_from_dv_csv",
                                                                                                  "write_fls_to_dv_ds")),
                            copyright_holders_chr = "Orygen",
@@ -166,3 +166,11 @@ constructor_r3 <- dplyr::bind_rows(
 x_ready4class_manifest <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(manifest_r3 = manifest_r3,
                                                                               constructor_r3 = constructor_r3))
 x_ready4fun_manifest <- author(x_ready4class_manifest)
+# pkg_clss_chr <- x_ready4fun_manifest$subsequent_ls$prototype_lup %>% dplyr::filter(pt_ns_chr == "ready4use") %>% dplyr::pull(type_chr)
+# prototype_lup <- x_ready4fun_manifest$subsequent_ls$prototype_lup %>%
+#   dplyr::filter(!type_chr %in% pkg_clss_chr[1:8])
+# write_env_objs_to_dv(list(prototype_lup = prototype_lup),
+#                      descriptions_chr = "Class prototype lookup table",
+#                      ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9",
+#                      publish_dv_1L_lgl = T)
+
