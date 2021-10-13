@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve and Manage Data in Open and Modular Mental Health
     Simulations
-Version: 0.0.0.9145
+Version: 0.0.0.9146
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -42,8 +42,9 @@ Imports:
     methods,
     purrr,
     readxl,
-    ready4class (>= 0.0.0.9231),
-    ready4fun (>= 0.0.0.9441),
+    ready4 (>= 0.0.0.9002),
+    ready4class (>= 0.0.0.9241),
+    ready4fun (>= 0.0.0.9445),
     rlang,
     stats,
     stringi,
@@ -74,9 +75,6 @@ Collate:
     'fn_transform.R'
     'fn_update.R'
     'fn_write.R'
-    'gnrc_crs_nbr_dbl.R'
-    'gnrc_merge_itms_chr.R'
-    'gnrc_write_type_1L_chr.R'
     'grp_generics.R'
     'imp_fns.R'
     'imp_mthds.R'
@@ -91,5 +89,6 @@ Collate:
 Suggests: 
     rmarkdown
 Remotes: 
+    ready4-dev/ready4,
     ready4-dev/ready4class,
     ready4-dev/ready4fun
