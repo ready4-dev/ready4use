@@ -7,7 +7,7 @@
 #' @importFrom ready4 metamorphose author authorData
 author.ready4use_manifest <- function (x) 
 {
-    x$fns_ready4fun_manifest <- ready4::metamorphose(x) %>% ready4::author()
+    x$x_ready4fun_manifest <- ready4::metamorphose(x) %>% ready4::author()
     ready4::authorData(x)
     return(x)
 }

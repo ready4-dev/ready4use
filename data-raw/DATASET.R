@@ -113,7 +113,7 @@ constructor_r3 <- dplyr::bind_rows(
                                                pt_ls = list(list("list")),
                                                pt_chkr_pfx_ls = list(list("is.")),
                                                pt_ns_ls = list(list("base")),
-                                               vals_ls = list(list(fns_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
+                                               vals_ls = list(list(x_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
                                                                    constructor_r3 = "ready4class::ready4class_constructor()",
                                                                    pkg_ds_ls_ls = "list()",
                                                                    clss_to_apply_ls = "list()")),
