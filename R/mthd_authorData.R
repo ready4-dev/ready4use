@@ -5,7 +5,8 @@
 #' @rdname authorData-methods
 #' @export 
 #' @importFrom purrr map_chr walk2 walk
-#' @importFrom ready4fun write_and_doc_ds authorData
+#' @importFrom ready4fun write_and_doc_ds
+#' @importFrom ready4 authorData
 authorData.ready4use_manifest <- function (x) 
 {
     if (!is.null(x$clss_to_apply_ls)) {
@@ -28,5 +29,5 @@ authorData.ready4use_manifest <- function (x)
 }
 #' @rdname authorData-methods
 #' @aliases authorData,ready4use_manifest-method
-#' @importFrom ready4fun authorData
+#' @importFrom ready4 authorData
 methods::setMethod("authorData", methods::className("ready4use_manifest", package = "ready4use"), authorData.ready4use_manifest)

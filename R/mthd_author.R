@@ -4,14 +4,14 @@
 #' @return NA ()
 #' @rdname author-methods
 #' @export 
-#' @importFrom ready4fun author
+#' @importFrom ready4 metamorphose author authorData
 author.ready4use_manifest <- function (x) 
 {
-    x$fns_ready4fun_manifest <- metamorphose(x) %>% ready4fun::author()
-    authorData(x)
+    x$fns_ready4fun_manifest <- ready4::metamorphose(x) %>% ready4::author()
+    ready4::authorData(x)
     return(x)
 }
 #' @rdname author-methods
 #' @aliases author,ready4use_manifest-method
-#' @importFrom ready4fun author
+#' @importFrom ready4 author
 methods::setMethod("author", methods::className("ready4use_manifest", package = "ready4use"), author.ready4use_manifest)

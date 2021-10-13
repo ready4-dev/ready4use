@@ -38,7 +38,8 @@ procure.ready4use_dataverses <- function(x,
                                             read_fn = .y,
                                             unlink_1L_lgl = unlink_1L_lgl))
   if(length(data_ls)>1)
-    data_ls
+   data_xx <- data_ls
   else
-    data_ls[[1]]
+    data_xx <- data_ls[[1]]
+  return(data_xx)
 }

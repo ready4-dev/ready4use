@@ -1,15 +1,15 @@
 #' Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..
-#' @description procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.
+#' @description procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 #' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
 #' @param unlink_1L_lgl Unlink (a logical vector of length one), Default: T
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
-#' @return NULL
+#' @return Data (an output object of multiple potential types)
 #' @rdname procure-methods
 #' @export 
 #' @importFrom purrr map2
-#' @importFrom ready4fun procure
+#' @importFrom ready4 procure
 procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1L_lgl = T, server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY")) 
 {
@@ -21,12 +21,13 @@ procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1
             "original", x$data_repo_save_type_chr[.x]), save_dir_path_1L_chr = save_dir_path_1L_chr, 
         read_fn = .y, unlink_1L_lgl = unlink_1L_lgl))
     if (length(data_ls) > 1) 
-        data_ls
-    else data_ls[[1]]
+        data_xx <- data_ls
+    else data_xx <- data_ls[[1]]
+    return(data_xx)
 }
 #' @rdname procure-methods
 #' @aliases procure,ready4use_dataverses-method
-#' @importFrom ready4fun procure
+#' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_dataverses", package = "ready4use"), procure.ready4use_dataverses)
 #' Procure method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..
 #' @description procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
@@ -37,7 +38,7 @@ methods::setMethod("procure", methods::className("ready4use_dataverses", package
 #' @rdname procure-methods
 #' @export 
 #' @importFrom purrr discard
-#' @importFrom ready4fun procure
+#' @importFrom ready4 procure
 procure.ready4use_imports <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
 {
     assert_single_row_tb(x)
@@ -55,5 +56,5 @@ procure.ready4use_imports <- function (x, inc_script_lgl = T, forced_choice_chr 
 }
 #' @rdname procure-methods
 #' @aliases procure,ready4use_imports-method
-#' @importFrom ready4fun procure
+#' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_imports", package = "ready4use"), procure.ready4use_imports)

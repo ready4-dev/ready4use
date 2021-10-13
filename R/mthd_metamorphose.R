@@ -5,7 +5,7 @@
 #' @rdname metamorphose-methods
 #' @export 
 #' @importFrom ready4class ready4class_constructor ready4class_manifest make_pt_ready4class_manifest
-#' @importFrom ready4fun metamorphose
+#' @importFrom ready4 metamorphose
 metamorphose.ready4use_manifest <- function (x) 
 {
     x$fns_ready4fun_manifest$subsequent_ls$pkg_ds_ls_ls <- x$pkg_ds_ls_ls
@@ -20,5 +20,5 @@ metamorphose.ready4use_manifest <- function (x)
 }
 #' @rdname metamorphose-methods
 #' @aliases metamorphose,ready4use_manifest-method
-#' @importFrom ready4fun metamorphose
+#' @importFrom ready4 metamorphose
 methods::setMethod("metamorphose", methods::className("ready4use_manifest", package = "ready4use"), metamorphose.ready4use_manifest)

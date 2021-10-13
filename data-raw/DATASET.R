@@ -1,4 +1,5 @@
-library(ready4fun)
+library(ready4)
+library(magrittr)
 library(ready4class)
 ready4fun::write_fn_type_dirs()
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve and Manage Data In Open and Modular Mental Health Simulations" %>% tools::toTitleCase(),
@@ -25,27 +26,15 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve and Mana
                                                         "https://ready4-dev.github.io/ready4/"))
 manifest_r3 <- pkg_desc_ls %>%
   ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(suggests_chr = "rmarkdown"),
-                           build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")), #
-                           # badges_lup = ready4fun::badges_lup, # Change ready4fun fn to make this default.
+                           build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
-                           # cls_fn_ls = ready4fun::make_pt_ready4fun_executor(args_ls = list(x = constructor_r3,
-                           #                                                               fn =  ready4class::author.ready4class_constructor)) %>%
-                           #   ready4fun::ready4fun_executor(),
                            custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_labels_from_dictionary",
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
-                                                                                                 #"get_fl_id_from_dv_ls",
                                                                                                  "get_r3_from_dv_csv",
                                                                                                  "write_fls_to_dv_ds")),
                            copyright_holders_chr = "Orygen",
-                           dev_pkgs_chr = c("ready4fun","ready4class"),
-                           import_from_chr = c("author" = "ready4fun",
-                                               "authorData" = "ready4fun",
-                                               "manufacture" = "ready4fun",
-                                               "metamorphose" = "ready4fun",
-                                               "procure" = "ready4fun",
-                                               "renew" = "ready4fun"
-                                               ),
+                           dev_pkgs_chr = c("ready4","ready4fun","ready4class"),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
                            pkg_dmt_dv_dss_chr = c("https://doi.org/10.7910/DVN/HLLXZN",
@@ -163,14 +152,8 @@ constructor_r3 <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useProcessed"))
 ) %>%
   ready4class::ready4class_constructor()
-x_ready4class_manifest <- ready4class::ready4class_manifest(make_pt_ready4class_manifest(manifest_r3 = manifest_r3,
-                                                                              constructor_r3 = constructor_r3))
-x_ready4fun_manifest <- author(x_ready4class_manifest)
-# pkg_clss_chr <- x_ready4fun_manifest$subsequent_ls$prototype_lup %>% dplyr::filter(pt_ns_chr == "ready4use") %>% dplyr::pull(type_chr)
-# prototype_lup <- x_ready4fun_manifest$subsequent_ls$prototype_lup %>%
-#   dplyr::filter(!type_chr %in% pkg_clss_chr[1:8])
-# write_env_objs_to_dv(list(prototype_lup = prototype_lup),
-#                      descriptions_chr = "Class prototype lookup table",
-#                      ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9",
-#                      publish_dv_1L_lgl = T)
+x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(manifest_r3,
+                                                                                                      constructor_r3 = constructor_r3))
+x_ready4fun_manifest <- ready4::author(x_ready4class_manifest)
+
 
