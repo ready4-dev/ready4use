@@ -1,6 +1,5 @@
 library(ready4)
 library(magrittr)
-library(ready4class)
 ready4fun::write_fn_type_dirs()
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve and Manage Data In Open and Modular Mental Health Simulations" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models.
@@ -152,8 +151,8 @@ constructor_r3 <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useProcessed"))
 ) %>%
   ready4class::ready4class_constructor()
-x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(manifest_r3,
-                                                                                                      constructor_r3 = constructor_r3))
+x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(manifest_r3, # Convert to metamorphose method on constructor class
+                                                                                                      constructor_r3 = constructor_r3)) # then add methods to ready4class_manifest class
 x_ready4fun_manifest <- ready4::author(x_ready4class_manifest)
 
 
