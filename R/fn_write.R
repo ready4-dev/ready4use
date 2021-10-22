@@ -13,6 +13,7 @@
 #' @rdname write_dv_ds
 #' @export 
 #' @importFrom ready4fun get_dev_pkg_nm
+#' @importFrom ready4 write_to_dv_with_wait
 #' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), 
     dss_tb, dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
@@ -21,7 +22,7 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 {
     ds_url_1L_chr <- add_ds_to_dv_repo(dv_1L_chr = dv_nm_1L_chr, 
         ds_meta_ls = ds_meta_ls)
-    ds_ls <- write_fls_to_dv_ds(dss_tb = dss_tb, dv_nm_1L_chr = dv_nm_1L_chr, 
+    ds_ls <- ready4::write_to_dv_with_wait(dss_tb = dss_tb, dv_nm_1L_chr = dv_nm_1L_chr, 
         ds_url_1L_chr = ds_url_1L_chr, parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, 
         paths_to_dirs_chr = paths_to_dirs_chr, inc_fl_types_chr = inc_fl_types_chr, 
         key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
@@ -38,19 +39,23 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_
 #' @return NULL
 #' @rdname write_dv_ds_fls
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr walk
+#' @importFrom ready4 write_dv_fl_to_loc make_local_path_to_dv_data
 #' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
+    lifecycle::deprecate_soft("0.0.0.9149", "write_dv_ds_fls()", 
+        "ready4::write_fls_from_dv()")
     purrr::walk(1:length(fl_ids_int), ~{
         if (!(ds_ls$versionState == "DRAFT" | files_tb$file_type_chr[.x] == 
             ".zip")) {
-            write_dv_fl_to_loc(ds_ui_1L_chr = ds_url_1L_chr, 
+            ready4::write_dv_fl_to_loc(ds_ui_1L_chr = ds_url_1L_chr, 
                 fl_nm_1L_chr = files_tb$file_chr[.x], fl_id_1L_int = fl_ids_int[.x], 
                 repo_fl_fmt_1L_chr = files_tb$ds_file_ext_chr[.x], 
                 key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr, 
-                save_type_1L_chr = "original", dest_path_1L_chr = get_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr, 
+                save_type_1L_chr = "original", dest_path_1L_chr = ready4::make_local_path_to_dv_data(save_dir_path_chr = local_dv_dir_1L_chr, 
                   filename_chr = files_tb$file_chr[.x], save_format_chr = files_tb$file_type_chr[.x]))
         }
     })
@@ -65,6 +70,7 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
 #' @param dest_path_1L_chr Destination path (a character vector of length one)
+#' @param consent_1L_chr Consent (a character vector of length one), Default: ''
 #' @return NULL
 #' @rdname write_dv_fl_to_loc
 #' @export 
@@ -73,17 +79,27 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
 write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_id_1L_int = NA_integer_, 
     repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_1L_chr = "original", 
-    dest_path_1L_chr) 
+    dest_path_1L_chr, consent_1L_chr = "") 
 {
     ds_ls <- dataverse::get_dataset(ds_ui_1L_chr)
     if (ds_ls$versionState != "DRAFT") {
         if (!is.na(fl_id_1L_int)) {
             ds_ui_1L_chr <- NULL
         }
-        writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int), 
-            paste0(fl_nm_1L_chr, repo_fl_fmt_1L_chr), fl_id_1L_int), 
-            dataset = ds_ui_1L_chr, format = save_type_1L_chr, 
-            key = key_1L_chr, server = server_1L_chr), dest_path_1L_chr)
+        if (!consent_1L_chr %in% c("Y", "N")) {
+            consent_1L_chr <- make_prompt(prompt_1L_chr = paste0("Do you confirm ('Y') that you want to write the file ", 
+                paste0(fl_nm_1L_chr, repo_fl_fmt_1L_chr), " to ", 
+                dest_path_1L_chr), options_chr = c("Y", "N"), 
+                force_from_opts_1L_chr = T)
+        }
+        if (consent_1L_chr %in% c("Y")) {
+            writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int), 
+                paste0(fl_nm_1L_chr, repo_fl_fmt_1L_chr), fl_id_1L_int), 
+                dataset = ds_ui_1L_chr, format = save_type_1L_chr, 
+                key = key_1L_chr, server = server_1L_chr), dest_path_1L_chr)
+            message(paste0("New file created in ", dest_path_1L_chr, 
+                " :\n", paste0(fl_nm_1L_chr, repo_fl_fmt_1L_chr)))
+        }
     }
     else {
         warning("Cannot write local copy of files from private Dataverse repo")
@@ -105,14 +121,19 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @return Dataset (a list)
 #' @rdname write_fls_to_dv_ds
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom stats setNames
 #' @importFrom purrr map_int
+#' @importFrom ready4 write_to_dv_from_tbl write_fls_from_dv
 #' @importFrom dataverse get_dataset
+#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     paths_are_rltv_1L_lgl = T, inc_fl_types_chr = NA_character_, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
+    lifecycle::deprecate_soft("0.0.0.9149", "write_fls_to_dv_ds()", 
+        "ready4::write_to_dv_with_wait()")
     ds_chr <- dss_tb$ds_obj_nm_chr
     files_tb <- make_files_tb(paths_to_dirs_chr = paths_to_dirs_chr, 
         recode_ls = dss_tb$title_chr %>% as.list() %>% stats::setNames(ds_chr), 
@@ -125,7 +146,7 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
     }
     fl_ids_int <- 1:nrow(files_tb) %>% purrr::map_int(~{
         Sys.sleep(wait_time_in_secs_int)
-        add_files_to_dv(files_tb[.x, ], data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
+        ready4::write_to_dv_from_tbl(files_tb[.x, ], data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
             ds_url_1L_chr = ds_url_1L_chr, key_1L_chr = key_1L_chr, 
             server_1L_chr = server_1L_chr)
     })
@@ -140,8 +161,8 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
         if (!dir.exists(local_dv_dir_1L_chr)) {
             dir.create(local_dv_dir_1L_chr)
         }
-        write_dv_ds_fls(files_tb, fl_ids_int = fl_ids_int, ds_url_1L_chr = ds_url_1L_chr, 
-            local_dv_dir_1L_chr = local_dv_dir_1L_chr)
+        ready4::write_fls_from_dv(files_tb, fl_ids_int = fl_ids_int, 
+            ds_url_1L_chr = ds_url_1L_chr, local_dv_dir_1L_chr = local_dv_dir_1L_chr)
     }
     return(ds_ls)
 }
@@ -159,7 +180,7 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @rdname write_paired_ds_fls_to_dv
 #' @export 
 #' @importFrom utils write.csv
-#' @importFrom ready4fun get_rds_from_dv
+#' @importFrom ready4 get_rds_from_dv make_files_tb write_to_dv_from_tbl
 #' @importFrom stats setNames
 #' @keywords internal
 write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9", 
@@ -177,12 +198,12 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
         utils::write.csv(file = paste0(pkg_dv_dir_1L_chr, "/", 
             fl_nm_1L_chr, ".csv"), row.names = F)
     if (identical(readRDS(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, 
-        ".RDS")), ready4fun::get_rds_from_dv(fl_nm_1L_chr))) {
+        ".RDS")), ready4::get_rds_from_dv(fl_nm_1L_chr))) {
         unlink(paste0(pkg_dv_dir_1L_chr, "/", fl_nm_1L_chr, ".RDS"))
     }
-    make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr, recode_ls = c(rep(desc_1L_chr, 
-        2)) %>% as.list() %>% stats::setNames(c(rep(fl_nm_1L_chr, 
-        2)))) %>% add_files_to_dv(data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
+    ready4::make_files_tb(paths_to_dirs_chr = pkg_dv_dir_1L_chr, 
+        recode_ls = c(rep(desc_1L_chr, 2)) %>% as.list() %>% 
+            stats::setNames(c(rep(fl_nm_1L_chr, 2)))) %>% ready4::write_to_dv_from_tbl(data_dir_rt_1L_chr = data_dir_rt_1L_chr, 
         ds_url_1L_chr = ds_url_1L_chr, key_1L_chr = key_1L_chr, 
         server_1L_chr = server_1L_chr)
 }
@@ -204,6 +225,7 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
 #' @importFrom utils data
 #' @importFrom dplyr mutate_if
 #' @importFrom stringr str_c
+#' @importFrom ready4 write_to_dv_with_wait
 #' @keywords internal
 write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(), parent_dv_dir_1L_chr = "../../../../Data/Dataverse", 
@@ -217,10 +239,11 @@ write_pkg_dss_to_dv_ds_csvs <- function (pkg_dss_tb, dv_nm_1L_chr, ds_url_1L_chr
                 stringr::str_c(.)))) %>% write.csv(file = paste0("data-raw/", 
             .x, ".csv"), row.names = F)
     })
-    ds_ls <- write_fls_to_dv_ds(dss_tb = pkg_dss_tb, dv_nm_1L_chr = dv_nm_1L_chr, 
-        ds_url_1L_chr = ds_url_1L_chr, wait_time_in_secs_int = wait_time_in_secs_int, 
-        parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, paths_to_dirs_chr = c("data-raw"), 
-        inc_fl_types_chr = ".csv", key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
+    ds_ls <- ready4::write_to_dv_with_wait(dss_tb = pkg_dss_tb, 
+        dv_nm_1L_chr = dv_nm_1L_chr, ds_url_1L_chr = ds_url_1L_chr, 
+        wait_time_in_secs_int = wait_time_in_secs_int, parent_dv_dir_1L_chr = parent_dv_dir_1L_chr, 
+        paths_to_dirs_chr = c("data-raw"), inc_fl_types_chr = ".csv", 
+        key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
     return(ds_ls)
 }
 #' Write to add urls to datasets

@@ -1,15 +1,15 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5246107
+    href: https://dataverse.harvard.edu/api/access/datafile/5258276
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5246106
+    href: https://dataverse.harvard.edu/api/access/datafile/5258275
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
   mode: auto
 reference:
-- title: "Classes"
+- title: "S3 Classes"
 - contents:
   - ready4use_distributions
   - ready4use_dataverses
@@ -17,6 +17,8 @@ reference:
   - ready4use_mapes
   - ready4use_dictionary
   - ready4use_manifest
+- title: "S4 Classes"
+- contents:
   - Ready4useFiles
   - Ready4useRaw
   - Ready4useProcessed
@@ -27,7 +29,9 @@ reference:
   - assert_matches_chr
   - assert_single_row_tb
   - get_r3_from_dv_csv
-  - write_fls_to_dv_ds
+- title: "Generics"
+- contents:
+  - get_read_fn
 - title: "Methods"
 - contents:
   - author.ready4use_manifest
@@ -39,3 +43,5 @@ reference:
   - procure.ready4use_imports
   - renew.ready4use_dictionary
   - renew.ready4use_imports
+  - manufacture
+  - procure

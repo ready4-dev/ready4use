@@ -25,7 +25,7 @@ renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
 \item{urls_vec_chr}{Urls vector (a character vector)}
 }
 \value{
-NA ()
+combined_ready4_dictionaries (An object)
 }
 \description{
 renew.ready4use_dictionary() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.

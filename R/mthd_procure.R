@@ -58,3 +58,17 @@ procure.ready4use_imports <- function (x, inc_script_lgl = T, forced_choice_chr 
 #' @aliases procure,ready4use_imports-method
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_imports", package = "ready4use"), procure.ready4use_imports)
+#' 
+#' procure
+#' @name procure-Ready4useArguments
+#' @description procure method applied to Ready4useArguments
+#' @param x An object of class Ready4useArguments
+#' @return NULL
+#' @rdname procure-methods
+#' @aliases procure,Ready4useArguments-method
+#' @export 
+#' @importFrom ready4 procure
+methods::setMethod("procure", "Ready4useArguments", function (x) 
+{
+    paste0("The crs is ", x@crs_nbr_dbl)
+})

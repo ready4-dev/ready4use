@@ -2,14 +2,13 @@
 #' @description renew.ready4use_dictionary() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a data dictionary tibble.
 #' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3)
-#' @return NA ()
+#' @return combined_ready4_dictionaries (An object)
 #' @rdname renew-methods
 #' @export 
-#' @importFrom ready4fun add_lups
-#' @importFrom ready4 renew
+#' @importFrom ready4 add_lups renew
 renew.ready4use_dictionary <- function (x, new_ready4_dict_r3) 
 {
-    combined_ready4_dictionaries <- ready4fun::add_lups(x, new_lup = new_ready4_dict_r3, 
+    combined_ready4_dictionaries <- ready4::add_lups(x, new_lup = new_ready4_dict_r3, 
         key_var_nm_1L_chr = "var_nm_chr")
     return(combined_ready4_dictionaries)
 }

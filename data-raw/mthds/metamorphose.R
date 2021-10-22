@@ -4,7 +4,7 @@ metamorphose.ready4use_manifest <- function(x){
     manifest_r3 <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(x$x_ready4fun_manifest,
                                                                                                constructor_r3 = x$constructor_r3))
   }else{
-    manifest_r3 <- x$manifest_r3
+    manifest_r3 <- x$x_ready4fun_manifest
   }
   return(manifest_r3)
 }

@@ -97,13 +97,16 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
 #' @return File identities (an integer vector)
 #' @rdname add_files_to_dv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dataverse get_dataset
 #' @importFrom purrr pmap_int
-#' @importFrom ready4fun write_fls_to_dv
+#' @importFrom ready4 write_fls_to_dv
 #' @keywords internal
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
+    lifecycle::deprecate_soft("0.0.0.9149", "add_files_to_dv()", 
+        "ready4::write_to_dv_from_tbl()")
     ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
     is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
     nms_chr <- ds_ls$files$filename
@@ -112,9 +115,9 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
             data_dir_rt_1L_chr), "", paste0(data_dir_rt_1L_chr, 
             "/")), ..1, "/", ..2, ..3)
         fl_nm_1L_chr <- paste0(..2, ..3)
-        ready4fun::write_fls_to_dv(path_1L_chr, descriptions_chr = ..4, 
-            ds_url_1L_chr = ds_url_1L_chr, ds_ls = ds_ls, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
-            server_1L_chr = Sys.getenv("DATAVERSE_SERVER"))
+        ready4::write_fls_to_dv(path_1L_chr, descriptions_chr = ..4, 
+            ds_url_1L_chr = ds_url_1L_chr, ds_ls = ds_ls, key_1L_chr = key_1L_chr, 
+            server_1L_chr = server_1L_chr)
     })
     return(fl_ids_int)
 }
@@ -126,17 +129,17 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
 #' @return Labelled dataset (a tibble)
 #' @rdname add_labels_from_dictionary
 #' @export 
-#' @importFrom ready4fun remove_lbls_from_df
+#' @importFrom ready4 remove_lbls_from_df
 #' @importFrom dplyr filter mutate case_when
 #' @importFrom purrr reduce
 #' @importFrom Hmisc label
 add_labels_from_dictionary <- function (ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F) 
 {
     if (remove_old_lbls_1L_lgl) 
-        ds_tb <- ds_tb %>% ready4fun::remove_lbls_from_df()
+        ds_tb <- ds_tb %>% ready4::remove_lbls_from_df()
     data_dictionary_tb <- dictionary_tb %>% dplyr::filter(var_nm_chr %in% 
         names(ds_tb)) %>% dplyr::mutate(var_desc_chr = dplyr::case_when(is.na(var_desc_chr) ~ 
-        var_nm_chr, TRUE ~ var_desc_chr)) %>% ready4fun::remove_lbls_from_df()
+        var_nm_chr, TRUE ~ var_desc_chr)) %>% ready4::remove_lbls_from_df()
     if (nrow(data_dictionary_tb) > 0) {
         labelled_ds_tb <- seq_len(nrow(data_dictionary_tb)) %>% 
             purrr::reduce(.init = ds_tb, ~{

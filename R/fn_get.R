@@ -10,9 +10,10 @@
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
 #' @param read_fn Read (a function)
 #' @param unlink_1L_lgl Unlink (a logical vector of length one), Default: T
-#' @return NA ()
+#' @return file_xxx (An object)
 #' @rdname get_file_from_dv
 #' @export 
+#' @importFrom ready4 make_local_path_to_dv_data write_dv_fl_to_loc
 #' @importFrom rlang exec
 #' @keywords internal
 get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
@@ -21,9 +22,9 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
     read_fn, unlink_1L_lgl = T) 
 {
     destination_path_chr <- ifelse(unlink_1L_lgl, tempfile(), 
-        get_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr, 
+        ready4::make_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr, 
             fl_nm_1L_chr = fl_nm_1L_chr, save_fmt_1L_chr = save_fmt_1L_chr))
-    write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr, fl_nm_1L_chr = fl_nm_1L_chr, 
+    ready4::write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr, fl_nm_1L_chr = fl_nm_1L_chr, 
         repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr, key_1L_chr = key_1L_chr, 
         server_1L_chr = server_1L_chr, save_type_1L_chr = save_type_1L_chr, 
         dest_path_1L_chr = destination_path_chr)
@@ -41,9 +42,12 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
 #' @return Path (a character vector)
 #' @rdname get_local_path_to_dv_data
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @keywords internal
 get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr) 
 {
+    lifecycle::deprecate_soft("0.0.0.9149", "get_local_path_to_dv_data()", 
+        "ready4::make_local_path_to_dv_data()")
     path_chr <- paste0(ifelse(save_dir_path_1L_chr != "", paste0(save_dir_path_1L_chr, 
         "/"), ""), fl_nm_1L_chr, save_fmt_1L_chr)
     return(path_chr)

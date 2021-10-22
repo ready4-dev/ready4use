@@ -3,6 +3,8 @@
 \name{manufacture.ready4use_imports}
 \alias{manufacture.ready4use_imports}
 \alias{manufacture,ready4use_imports-method}
+\alias{manufacture-Ready4useArguments}
+\alias{manufacture,Ready4useArguments-method}
 \title{Manufacture method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
 \usage{
 manufacture.ready4use_imports(
@@ -12,9 +14,11 @@ manufacture.ready4use_imports(
 )
 
 \S4method{manufacture}{ready4use_imports}(x, forced_choice_chr = NA_character_, script_args_ls = NULL)
+
+\S4method{manufacture}{Ready4useArguments}(x)
 }
 \arguments{
-\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An object of class Ready4useArguments}
 
 \item{forced_choice_chr}{Forced choice (a character vector), Default: 'NA'}
 
@@ -22,4 +26,6 @@ manufacture.ready4use_imports(
 }
 \description{
 manufacture.ready4use_imports() is a Manufacture method that creates a novel R object. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+
+manufacture method applied to Ready4useArguments
 }

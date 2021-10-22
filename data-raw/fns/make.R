@@ -17,6 +17,7 @@ make_r3_from_csv_tb <- function(csv_tb,
 make_files_tb <- function(paths_to_dirs_chr,
                           recode_ls,
                           inc_fl_types_chr = NA_character_){
+  lifecycle::deprecate_soft("0.0.0.9149", "make_files_tb()", "ready4::make_files_tb()")
   files_tb <- purrr::map_dfr(paths_to_dirs_chr,
                              ~{
                                files_chr_vec <- list.files(.x)

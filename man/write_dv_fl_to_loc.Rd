@@ -12,7 +12,8 @@ write_dv_fl_to_loc(
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
   server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
   save_type_1L_chr = "original",
-  dest_path_1L_chr
+  dest_path_1L_chr,
+  consent_1L_chr = ""
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ write_dv_fl_to_loc(
 \item{save_type_1L_chr}{Save type (a character vector of length one), Default: 'original'}
 
 \item{dest_path_1L_chr}{Destination path (a character vector of length one)}
+
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
 }
 \description{
 write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
