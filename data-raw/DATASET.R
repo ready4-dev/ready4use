@@ -153,5 +153,3 @@ constructor_r3 <- dplyr::bind_rows(
 x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(manifest_r3, # Convert to metamorphose method on constructor class
                                                                                                       constructor_r3 = constructor_r3)) # then add methods to ready4class_manifest class
 x_ready4fun_manifest <- author(x_ready4class_manifest)
-
-

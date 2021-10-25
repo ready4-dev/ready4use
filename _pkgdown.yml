@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5258276
+    href: https://dataverse.harvard.edu/api/access/datafile/5341978
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5258275
+    href: https://dataverse.harvard.edu/api/access/datafile/5341977
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -37,11 +37,11 @@ reference:
   - author.ready4use_manifest
   - authorData.ready4use_manifest
   - get_read_fn.ready4use_dataverses
+  - manufacture-Ready4useArguments
   - manufacture.ready4use_imports
   - metamorphose.ready4use_manifest
+  - procure-Ready4useArguments
   - procure.ready4use_dataverses
   - procure.ready4use_imports
   - renew.ready4use_dictionary
   - renew.ready4use_imports
-  - manufacture
-  - procure
