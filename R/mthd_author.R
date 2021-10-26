@@ -1,4 +1,4 @@
-#' Author method applied to ready4 S3 class defining a manifest of data required to create an package..
+#' Author - a method that writes files to local or remote locations.
 #' @description author.ready4use_manifest() is an Author method that writes files to local or remote locations. This method is implemented for the ready4 s3 class defining a manifest of data required to create an R package. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a manifest of data required to create an R package.
 #' @return x (An object)

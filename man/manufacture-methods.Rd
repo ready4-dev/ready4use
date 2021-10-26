@@ -5,7 +5,7 @@
 \alias{manufacture,ready4use_imports-method}
 \alias{manufacture-Ready4useArguments}
 \alias{manufacture,Ready4useArguments-method}
-\title{Manufacture method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..}
+\title{Manufacture - a method that creates a novel r object.}
 \usage{
 manufacture.ready4use_imports(
   x,

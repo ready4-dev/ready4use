@@ -3,7 +3,7 @@
 \name{metamorphose.ready4use_manifest}
 \alias{metamorphose.ready4use_manifest}
 \alias{metamorphose,ready4use_manifest-method}
-\title{Metamorphose method applied to ready4 S3 class defining a manifest of data required to create an package..}
+\title{Metamorphose - a method that transforms an instance of a class into an object with different structural properties.}
 \usage{
 metamorphose.ready4use_manifest(x)
 

@@ -7,7 +7,7 @@
 \alias{procure,ready4use_imports-method}
 \alias{procure-Ready4useArguments}
 \alias{procure,Ready4useArguments-method}
-\title{Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..}
+\title{Procure - a method that searches and retrieves requested data from a specified source.}
 \usage{
 procure.ready4use_dataverses(
   x,
