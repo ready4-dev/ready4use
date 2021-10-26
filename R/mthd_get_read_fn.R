@@ -1,4 +1,4 @@
-#' Get read function method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..
+#' Get read function - a method that
 #' @description get_read_fn.ready4use_dataverses() is a Get Read Function method that retrieves a read function. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @return NULL

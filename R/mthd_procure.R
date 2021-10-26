@@ -1,4 +1,4 @@
-#' Procure method applied to ready4 S3 class for tibble object lookup table of files to be imported from a dataverse..
+#' Procure - a method that searches and retrieves requested data from a specified source.
 #' @description procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 #' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
@@ -29,7 +29,7 @@ procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1
 #' @aliases procure,ready4use_dataverses-method
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_dataverses", package = "ready4use"), procure.ready4use_dataverses)
-#' Procure method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..
+#' Procure - a method that searches and retrieves requested data from a specified source.
 #' @description procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param inc_script_lgl Include script (a logical vector), Default: T

@@ -3,7 +3,7 @@
 \name{authorData.ready4use_manifest}
 \alias{authorData.ready4use_manifest}
 \alias{authorData,ready4use_manifest-method}
-\title{AuthorData method applied to ready4 S3 class defining a manifest of data required to create an package..}
+\title{AuthorData - a method that authors and saves files necessary for creating and documenting datasets.}
 \usage{
 authorData.ready4use_manifest(x)
 

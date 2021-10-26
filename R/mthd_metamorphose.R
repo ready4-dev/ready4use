@@ -1,4 +1,4 @@
-#' Metamorphose method applied to ready4 S3 class defining a manifest of data required to create an package..
+#' Metamorphose - a method that transforms an instance of a class into an object with different structural properties.
 #' @description metamorphose.ready4use_manifest() is a Metamorphose method that transforms an instance of a class into an object with different structural properties. This method is implemented for the ready4 s3 class defining a manifest of data required to create an R package. The function returns Manifest (a ready4 S3).
 #' @param x An instance of ready4 s3 class defining a manifest of data required to create an R package.
 #' @return Manifest (a ready4 S3)

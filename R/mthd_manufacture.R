@@ -1,4 +1,4 @@
-#' Manufacture method applied to ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import..
+#' Manufacture - a method that creates a novel r object.
 #' @description manufacture.ready4use_imports() is a Manufacture method that creates a novel R object. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'

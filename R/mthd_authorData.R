@@ -1,4 +1,4 @@
-#' AuthorData method applied to ready4 S3 class defining a manifest of data required to create an package..
+#' AuthorData - a method that authors and saves files necessary for creating and documenting datasets.
 #' @description authorData.ready4use_manifest() is an AuthorData method that authors and saves files necessary for creating and documenting datasets. This method is implemented for the ready4 s3 class defining a manifest of data required to create an R package. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a manifest of data required to create an R package.
 #' @return NULL

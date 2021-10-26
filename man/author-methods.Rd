@@ -3,7 +3,7 @@
 \name{author.ready4use_manifest}
 \alias{author.ready4use_manifest}
 \alias{author,ready4use_manifest-method}
-\title{Author method applied to ready4 S3 class defining a manifest of data required to create an package..}
+\title{Author - a method that writes files to local or remote locations.}
 \usage{
 author.ready4use_manifest(x)
 

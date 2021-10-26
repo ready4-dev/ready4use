@@ -5,7 +5,7 @@
 \alias{renew,ready4use_dictionary-method}
 \alias{renew.ready4use_imports}
 \alias{renew,ready4use_imports-method}
-\title{Renew method applied to ready4 S3 class defining a data dictionary tibble..}
+\title{Renew - a method that updates an instance of a class with new values.}
 \usage{
 renew.ready4use_dictionary(x, new_ready4_dict_r3)
 
