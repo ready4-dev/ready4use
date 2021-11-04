@@ -1,7 +1,7 @@
 Package: ready4use
-Title: Retrieve and Manage Data in Open and Modular Mental Health
-    Simulations
-Version: 0.0.0.9153
+Title: Retrieve, Manage and Share Datasets for Open and Modular Mental
+    Health Systems Models
+Version: 0.0.0.9154
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -15,13 +15,10 @@ Description: ready4use provides a set of tools for general data management
     tasks when developping open source, modular mental health simulation
     models.  This development version of the ready4use package has been
     made available as part of the process of testing and documenting the
-    package. The tools contained in this development release automate a
-    number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL
-    MACHINE.  Therefore you should only trial this software if you feel
-    confident that you understand what it does and have created a sandpit
-    area in which you can safely undertake testing. If you have any
-    questions, please contact the authors
-    (matthew.hamilton@orygen.org.au).
+    package.  You should only trial this software if you feel confident
+    that you understand what it does and have created a sandpit area in
+    which you can safely undertake testing. If you have any questions,
+    please contact the authors (matthew.hamilton@orygen.org.au).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/ready4use/,
     https://github.com/ready4-dev/ready4use,
@@ -41,7 +38,7 @@ Imports:
     methods,
     purrr,
     readxl,
-    ready4fun (>= 0.0.0.9466),
+    ready4fun (>= 0.0.0.9467),
     rlang,
     stats,
     stringi,
