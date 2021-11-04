@@ -4,6 +4,6 @@ get_read_fn.ready4use_dataverses <- function(x){
                       ".csv" = read.csv, ## Need to add fread
                       ".xls" = readxl::read_excel,
                       ".xlsx" = readxl::read_excel,
-                      ".rds" = readRDS()),
+                      ".RDS" = readRDS()),
   )
 }

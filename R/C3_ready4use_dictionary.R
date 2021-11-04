@@ -34,7 +34,7 @@ x
 #' @details ready4 s3 class defining a data dictionary tibble.
 #' @rdname make_pt_ready4use_dictionary
 #' @export 
-#' @importFrom ready4fun update_pt_fn_args_ls
+#' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4use_dictionary <- function(var_nm_chr = character(0),
@@ -44,7 +44,7 @@ var_type_chr = character(0)){
 args_ls <- list(var_nm_chr = var_nm_chr,
 var_ctg_chr = var_ctg_chr,
 var_desc_chr = var_desc_chr,
-var_type_chr = var_type_chr) %>% ready4fun::update_pt_fn_args_ls()
+var_type_chr = var_type_chr) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4use package dictionary ready4 s3 class defining a data dictionary tibble.

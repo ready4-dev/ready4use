@@ -6,18 +6,18 @@ library(magrittr)
 # r_data_dir_chr <- paste0(data_dir_chr,"/R_Format")
 #dv <- dataverse::create_dataverse("Code")
 #parent_dv_dir_1L_chr = paste0(data_dir_chr,"/Dataverse")
-ds_ls <- write_pkg_dss_to_dv_ds_csvs(pkg_dss_tb,
-                                     dv_nm_1L_chr = "ready4work")
-##
+# ds_ls <- write_pkg_dss_to_dv_ds_csvs(pkg_dss_tb,
+#                                      dv_nm_1L_chr = "ready4work")
+# ##
 #AFTER MAKE PUBLIC
-pkg_dss_tb <- prototype_lup %>%
-ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
-                            title_1L_chr = "Class prototype lookup table",
-                            desc_1L_chr = "Metadata on classes used in ready4 suite",
-                            url_1L_chr = "https://doi.org/10.7910/DVN/OZLSLR/YH1WVF",
-                            abbreviations_lup = abbreviations_lup,
-                            object_type_lup = object_type_lup,
-                            pkg_dss_tb = pkg_dss_tb)
+# pkg_dss_tb <- prototype_lup %>%
+# ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
+#                             title_1L_chr = "Class prototype lookup table",
+#                             desc_1L_chr = "Metadata on classes used in ready4 suite",
+#                             url_1L_chr = "https://doi.org/10.7910/DVN/OZLSLR/YH1WVF",
+#                             abbreviations_lup = abbreviations_lup,
+#                             object_type_lup = object_type_lup,
+#                             pkg_dss_tb = pkg_dss_tb)
 #dataverse::publish_dataset(ds_ls$datasetPersistentId)
 #dataverse::delete_dataset(ds_ls$datasetPersistentId)
 # purrr::pwalk(files_tb,

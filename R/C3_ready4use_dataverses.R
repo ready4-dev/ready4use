@@ -37,7 +37,7 @@ x
 #' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_pt_ready4use_dataverses
 #' @export 
-#' @importFrom ready4fun update_pt_fn_args_ls
+#' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4use_dataverses <- function(file_type_chr = character(0),
@@ -53,7 +53,7 @@ data_repo_chr = data_repo_chr,
 data_repo_ui_chr = data_repo_ui_chr,
 data_repo_db_ui_chr = data_repo_db_ui_chr,
 data_repo_file_ext_chr = data_repo_file_ext_chr,
-data_repo_save_type_chr = data_repo_save_type_chr) %>% ready4fun::update_pt_fn_args_ls()
+data_repo_save_type_chr = data_repo_save_type_chr) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

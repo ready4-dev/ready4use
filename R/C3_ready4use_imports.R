@@ -44,7 +44,7 @@ x
 #' @details ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @rdname make_pt_ready4use_imports
 #' @export 
-#' @importFrom ready4fun update_pt_fn_args_ls
+#' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4use_imports <- function(file_type_chr = character(0),
@@ -72,7 +72,7 @@ path_to_make_script_chr = path_to_make_script_chr,
 download_url_chr = download_url_chr,
 inc_file_main_chr = inc_file_main_chr,
 inc_fls_to_rename_ls = inc_fls_to_rename_ls,
-new_nms_for_inc_fls_ls = new_nms_for_inc_fls_ls) %>% ready4fun::update_pt_fn_args_ls()
+new_nms_for_inc_fls_ls = new_nms_for_inc_fls_ls) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.

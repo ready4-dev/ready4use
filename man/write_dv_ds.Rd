@@ -6,7 +6,7 @@
 \usage{
 write_dv_ds(
   ds_meta_ls,
-  dev_pkg_nm_1L_chr = ready4fun::get_dev_pkg_nm(),
+  dev_pkg_nm_1L_chr = deprecated(),
   dss_tb,
   dv_nm_1L_chr,
   parent_dv_dir_1L_chr,
@@ -19,7 +19,7 @@ write_dv_ds(
 \arguments{
 \item{ds_meta_ls}{Dataset meta (a list)}
 
-\item{dev_pkg_nm_1L_chr}{Development package name (a character vector of length one), Default: ready4fun::get_dev_pkg_nm()}
+\item{dev_pkg_nm_1L_chr}{Development package name (a character vector of length one), Default: deprecated()}
 
 \item{dss_tb}{Datasets (a tibble)}
 

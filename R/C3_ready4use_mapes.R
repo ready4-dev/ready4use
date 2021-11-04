@@ -44,7 +44,7 @@ x
 #' @details ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @rdname make_pt_ready4use_mapes
 #' @export 
-#' @importFrom ready4fun update_pt_fn_args_ls
+#' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
 #' @importFrom tibble tibble
 make_pt_ready4use_mapes <- function(param_name_chr = character(0),
@@ -74,7 +74,7 @@ mape_10_yr_max_dbl = mape_10_yr_max_dbl,
 mape_15_yr_max_dbl = mape_15_yr_max_dbl,
 mape_05_yr_shp_dbl = mape_05_yr_shp_dbl,
 mape_10_yr_shp_dbl = mape_10_yr_shp_dbl,
-mape_15_yr_shp_dbl = mape_15_yr_shp_dbl) %>% ready4fun::update_pt_fn_args_ls()
+mape_15_yr_shp_dbl = mape_15_yr_shp_dbl) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
 #' Validate ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

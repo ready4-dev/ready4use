@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5342689
+    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_User.pdf
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5342688
+    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_Developer.pdf
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -16,7 +16,6 @@ reference:
   - ready4use_imports
   - ready4use_mapes
   - ready4use_dictionary
-  - ready4use_manifest
 - title: "S4 Classes"
 - contents:
   - Ready4useFiles
@@ -34,12 +33,9 @@ reference:
   - get_read_fn
 - title: "Methods"
 - contents:
-  - author.ready4use_manifest
-  - authorData.ready4use_manifest
   - get_read_fn.ready4use_dataverses
   - manufacture-Ready4useArguments
   - manufacture.ready4use_imports
-  - metamorphose.ready4use_manifest
   - procure-Ready4useArguments
   - procure.ready4use_dataverses
   - procure.ready4use_imports

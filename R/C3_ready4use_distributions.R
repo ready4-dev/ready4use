@@ -34,7 +34,7 @@ x
 #' @details ready4 S3 class for list object that summarises the parameters of each distribution
 #' @rdname make_pt_ready4use_distributions
 #' @export 
-#' @importFrom ready4fun update_pt_fn_args_ls
+#' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
 make_pt_ready4use_distributions <- function(distribution_chr = character(0),
 dstr_param_1_dbl = numeric(0),
@@ -47,7 +47,7 @@ dstr_param_1_dbl = dstr_param_1_dbl,
 dstr_param_2_dbl = dstr_param_2_dbl,
 dstr_param_3_dbl = dstr_param_3_dbl,
 dstr_param_4_dbl = dstr_param_4_dbl,
-transformation_chr = transformation_chr) %>% ready4fun::update_pt_fn_args_ls()
+transformation_chr = transformation_chr) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(list,!!!args_ls)
 }
 #' Validate ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution
@@ -58,7 +58,7 @@ rlang::exec(list,!!!args_ls)
 #' @rdname validate_ready4use_distributions
 #' @export 
 #' @importFrom stringr str_detect str_c
-#' @importFrom ready4fun transform_cls_type_ls
+#' @importFrom ready4 transform_cls_type_ls
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr gather
 #' @importFrom dplyr filter arrange pull
@@ -72,12 +72,12 @@ call. = FALSE)
 }
 
  if(!identical(make_pt_ready4use_distributions() %>% 
-lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
+lapply(class) %>% ready4::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
  dplyr::filter(!is.na(class)) %>% 
 dplyr::arrange(variable),
 x %>% 
-lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
+lapply(class) %>% ready4::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
  dplyr::filter(!is.na(class)) %>% 
 dplyr::filter(variable %in% names(make_pt_ready4use_distributions())) %>% dplyr::arrange(variable))){
@@ -85,7 +85,7 @@ stop(paste0("LIST elements should be of the following classes: ",
 "",
 {
 class_lup <- make_pt_ready4use_distributions() %>% 
-lapply(class) %>% ready4fun::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
+lapply(class) %>% ready4::transform_cls_type_ls() %>% tibble::as_tibble() %>% 
  tidyr::gather(variable,class) %>% 
  dplyr::filter(!is.na(class))
   vars_chr <- class_lup %>% dplyr::pull(1) %>% unique()

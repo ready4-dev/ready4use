@@ -1,9 +1,9 @@
 library(ready4)
 ready4fun::write_fn_type_dirs()
-pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve and Manage Data In Open and Modular Mental Health Simulations" %>% tools::toTitleCase(),
+pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage And Share Datasets For Open and Modular Mental Health Systems Models" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models.
-  This development version of the ready4use package has been made available as part of the process of testing and documenting the package. The tools contained in this development release automate a number of tasks which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.
-  Therefore you should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
+  This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
+  You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                                            authors_prsn = c(utils::person(
                                              given = "Matthew",family = "Hamilton", email =
                                                "matthew.hamilton@orygen.org.au",role = c("aut",
@@ -35,9 +35,9 @@ manifest_r3 <- pkg_desc_ls %>%
                            dev_pkgs_chr = c("ready4","ready4fun","ready4class"),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
-                           pkg_dmt_dv_dss_chr = c("https://doi.org/10.7910/DVN/HLLXZN",
-                                                  "https://doi.org/10.7910/DVN/2Y9VF9"),
-                           ready4_type_1L_chr = "authoring")
+                           piggyback_to_1L_chr = "ready4-dev/ready4",
+                           ready4_type_1L_chr = "authoring",
+                           zenodo_badge_1L_chr = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5644336.svg)](https://doi.org/10.5281/zenodo.5644336)")
 constructor_r3 <- dplyr::bind_rows(
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = TRUE,
                                                name_stub_chr = "distributions",
@@ -107,16 +107,16 @@ constructor_r3 <- dplyr::bind_rows(
                                                                    var_desc_chr = "character(0)",
                                                                    var_type_chr = "character(0)")),
                                                class_desc_chr= "ready4 s3 class defining a data dictionary tibble."),
-  ready4class::make_pt_ready4class_constructor(make_s3_lgl = T,
-                                               name_stub_chr = "manifest",
-                                               pt_ls = list(list("list")),
-                                               pt_chkr_pfx_ls = list(list("is.")),
-                                               pt_ns_ls = list(list("base")),
-                                               vals_ls = list(list(x_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
-                                                                   constructor_r3 = "ready4class::ready4class_constructor()",
-                                                                   pkg_ds_ls_ls = "list()",
-                                                                   clss_to_apply_ls = "list()")),
-                                               class_desc_chr = "ready4 s3 class Manifest for packages containing datasets."),
+  # ready4class::make_pt_ready4class_constructor(make_s3_lgl = T,
+  #                                              name_stub_chr = "manifest",
+  #                                              pt_ls = list(list("list")),
+  #                                              pt_chkr_pfx_ls = list(list("is.")),
+  #                                              pt_ns_ls = list(list("base")),
+  #                                              vals_ls = list(list(x_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
+  #                                                                  constructor_r3 = "ready4class::ready4class_constructor()",
+  #                                                                  pkg_ds_ls_ls = "list()",
+  #                                                                  clss_to_apply_ls = "list()")),
+  #                                              class_desc_chr = "ready4 s3 class Manifest for packages containing datasets."),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Files",
                                                slots_ls = c("merge_itms_chr","raw_fls_dir_1L_chr","pkg_1L_chr","overwrite_1L_lgl", "write_1L_lgl") %>% list(), # Cut: "lup_tbs_r4",
