@@ -4,6 +4,8 @@
 #' @include C4_Ready4useFiles.R
 #' @slot write_type_1L_chr character
 #' @slot merge_itms_chr character
+#' @export Ready4useRaw
+#' @exportClass Ready4useRaw
 Ready4useRaw <- methods::setClass("Ready4useRaw",
 contains = "Ready4useFiles",
 slots = c(write_type_1L_chr = "character",merge_itms_chr = "character"),

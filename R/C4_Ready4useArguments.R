@@ -5,6 +5,8 @@
 #' @slot crs_nbr_dbl numeric
 #' @slot write_type_1L_chr character
 #' @slot merge_itms_chr character
+#' @export Ready4useArguments
+#' @exportClass Ready4useArguments
 Ready4useArguments <- methods::setClass("Ready4useArguments",
 contains = "Ready4useProcessed",
 slots = c(crs_nbr_dbl = "numeric",write_type_1L_chr = "character",merge_itms_chr = "character"),
