@@ -55,3 +55,5 @@
 ^data-raw/mthds/metamorphose\.R$
 ^data-raw/s4_fns/manufacture\.R$
 ^data-raw/s4_fns/procure\.R$
+^data-raw/prototype_lup\.RDS$
+^data-raw/TEMP\.R$

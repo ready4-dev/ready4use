@@ -13,5 +13,13 @@ An S4 class to represent ready4 S4 class defining data to be saved in local dire
 \item{\code{write_type_1L_chr}}{character}
 
 \item{\code{merge_itms_chr}}{character}
+
+\item{\code{raw_fls_dir_1L_chr}}{character}
+
+\item{\code{pkg_1L_chr}}{character}
+
+\item{\code{overwrite_1L_lgl}}{logical}
+
+\item{\code{write_1L_lgl}}{logical}
 }}
 

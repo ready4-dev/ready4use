@@ -14,6 +14,22 @@ An S4 class to represent ready4 S4 class containing data to be passed to a funct
 
 \item{\code{write_type_1L_chr}}{character}
 
+\item{\code{processed_fls_dir_1L_chr}}{character}
+
+\item{\code{imports_chr}}{character}
+
+\item{\code{path_to_seed_sf_1L_chr}}{character}
+
+\item{\code{imports_ls}}{list}
+
 \item{\code{merge_itms_chr}}{character}
+
+\item{\code{raw_fls_dir_1L_chr}}{character}
+
+\item{\code{pkg_1L_chr}}{character}
+
+\item{\code{overwrite_1L_lgl}}{logical}
+
+\item{\code{write_1L_lgl}}{logical}
 }}
 

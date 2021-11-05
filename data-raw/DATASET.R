@@ -22,7 +22,7 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage 
                                            urls_chr = c("https://ready4-dev.github.io/ready4use/",
                                                         "https://github.com/ready4-dev/ready4use",
                                                         "https://ready4-dev.github.io/ready4/"))
-manifest_r3 <- pkg_desc_ls %>%
+x_ready4fun_manifest <- pkg_desc_ls %>%
   ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",suggests_chr = "rmarkdown"),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
@@ -38,7 +38,7 @@ manifest_r3 <- pkg_desc_ls %>%
                            piggyback_to_1L_chr = "ready4-dev/ready4",
                            ready4_type_1L_chr = "authoring",
                            zenodo_badge_1L_chr = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5644336.svg)](https://doi.org/10.5281/zenodo.5644336)")
-constructor_r3 <- dplyr::bind_rows(
+x_ready4class_constructor <- dplyr::bind_rows(
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = TRUE,
                                                name_stub_chr = "distributions",
                                                pt_ls = list(list("list")),
@@ -107,26 +107,16 @@ constructor_r3 <- dplyr::bind_rows(
                                                                    var_desc_chr = "character(0)",
                                                                    var_type_chr = "character(0)")),
                                                class_desc_chr= "ready4 s3 class defining a data dictionary tibble."),
-  # ready4class::make_pt_ready4class_constructor(make_s3_lgl = T,
-  #                                              name_stub_chr = "manifest",
-  #                                              pt_ls = list(list("list")),
-  #                                              pt_chkr_pfx_ls = list(list("is.")),
-  #                                              pt_ns_ls = list(list("base")),
-  #                                              vals_ls = list(list(x_ready4fun_manifest = "ready4fun::ready4fun_manifest()",
-  #                                                                  constructor_r3 = "ready4class::ready4class_constructor()",
-  #                                                                  pkg_ds_ls_ls = "list()",
-  #                                                                  clss_to_apply_ls = "list()")),
-  #                                              class_desc_chr = "ready4 s3 class Manifest for packages containing datasets."),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Files",
-                                               slots_ls = c("merge_itms_chr","raw_fls_dir_1L_chr","pkg_1L_chr","overwrite_1L_lgl", "write_1L_lgl") %>% list(), # Cut: "lup_tbs_r4",
-                                               pt_ls = c("character","character","character","logical", "logical") %>% list(), # Cut: "ready4class_lookup",
+                                               slots_ls = list("merge_itms_chr","raw_fls_dir_1L_chr","pkg_1L_chr","overwrite_1L_lgl", "write_1L_lgl") %>% list(), # Cut: "lup_tbs_r4",
+                                               pt_ls = list("character","character","character","logical", "logical") %>% list(), # Cut: "ready4class_lookup",
                                                class_desc_chr= "ready4 S4 class defining data to be saved in local directory.",
                                                parent_class_chr = NA_character_), # Cut: ,include_classes = list("ready4class_lookup")
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Raw",
-                                               slots_ls = c("write_type_1L_chr") %>% list(),
-                                               pt_ls = c("character") %>% list(),
+                                               slots_ls = list("write_type_1L_chr") %>% list(),
+                                               pt_ls = list("character") %>% list(),
                                                vals_ls = list(write_type_1L_chr ="raw"),
                                                allowed_vals_ls = list(write_type_1L_chr = "raw"),
                                                class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.",
@@ -134,8 +124,8 @@ constructor_r3 <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useFiles")),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Processed",
-                                               slots_ls = c("write_type_1L_chr","processed_fls_dir_1L_chr","imports_chr","path_to_seed_sf_1L_chr","imports_ls") %>% list(),
-                                               pt_ls = c("character","character","character","character","list") %>% list(),
+                                               slots_ls = list("write_type_1L_chr","processed_fls_dir_1L_chr","imports_chr","path_to_seed_sf_1L_chr","imports_ls") %>% list(),
+                                               pt_ls = list("character","character","character","character","list") %>% list(),
                                                vals_ls = list(write_type_1L_chr = "proc"),
                                                allowed_vals_ls = list(write_type_1L_chr = "proc"),
                                                class_desc_chr= "ready4 S4 class defining data to be saved in local directory in a processed (R) format.",
@@ -143,13 +133,17 @@ constructor_r3 <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useFiles")),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Arguments",
-                                               slots_ls = c("crs_nbr_dbl") %>% list(), # Change
-                                               pt_ls = c("numeric") %>% list(),
+                                               slots_ls = list("crs_nbr_dbl") %>% list(), # Change
+                                               pt_ls = list("numeric") %>% list(),
                                                class_desc_chr= "ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.",
                                                parent_class_chr = "Ready4useProcessed",
                                                inc_clss_ls = list("Ready4useProcessed"))
 ) %>%
   ready4class::ready4class_constructor()
-x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(manifest_r3, # Convert to metamorphose method on constructor class
-                                                                                                      constructor_r3 = constructor_r3)) # then add methods to ready4class_manifest class
+# x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
+#                                                                  constructor_r3 = x_ready4class_constructor) %>%
+#   ready4pack::ready4pack_manifest()
+# x_ready4fun_manifest <- author(x_ready4pack_manifest)
+x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(x_ready4fun_manifest, # Convert to metamorphose method on constructor class
+                                                                                                      constructor_r3 = x_ready4class_constructor)) # then add methods to ready4class_manifest class
 x_ready4fun_manifest <- author(x_ready4class_manifest)
