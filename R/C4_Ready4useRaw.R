@@ -1,14 +1,14 @@
 #' Ready4useRaw
-#'
-#' An S4 class to represent ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
-#'
+#' 
+#' ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
+#' 
 #' @include C4_Ready4useFiles.R
-#' @slot write_type_1L_chr character
-#' @slot merge_itms_chr character
-#' @slot raw_fls_dir_1L_chr character
-#' @slot pkg_1L_chr character
-#' @slot overwrite_1L_lgl logical
-#' @slot write_1L_lgl logical
+#' @slot write_type_1L_chr Write type (a character vector of length one)
+#' @slot merge_itms_chr Merge items (a character vector)
+#' @slot raw_fls_dir_1L_chr Raw files directory (a character vector of length one)
+#' @slot pkg_1L_chr Package (a character vector of length one)
+#' @slot overwrite_1L_lgl Overwrite (a logical vector of length one)
+#' @slot write_1L_lgl Write (a logical vector of length one)
 #' @name Ready4useRaw-class
 #' @rdname Ready4useRaw-class
 #' @export Ready4useRaw

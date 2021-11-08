@@ -1,12 +1,12 @@
 #' Ready4useFiles
-#'
-#' An S4 class to represent ready4 S4 class defining data to be saved in local directory.
-#'
-#' @slot merge_itms_chr character
-#' @slot raw_fls_dir_1L_chr character
-#' @slot pkg_1L_chr character
-#' @slot overwrite_1L_lgl logical
-#' @slot write_1L_lgl logical
+#' 
+#' ready4 S4 class defining data to be saved in local directory.
+#' 
+#' @slot merge_itms_chr Merge items (a character vector)
+#' @slot raw_fls_dir_1L_chr Raw files directory (a character vector of length one)
+#' @slot pkg_1L_chr Package (a character vector of length one)
+#' @slot overwrite_1L_lgl Overwrite (a logical vector of length one)
+#' @slot write_1L_lgl Write (a logical vector of length one)
 #' @name Ready4useFiles-class
 #' @rdname Ready4useFiles-class
 #' @export Ready4useFiles

@@ -6,21 +6,21 @@
 \alias{Ready4useRaw}
 \title{Ready4useRaw}
 \description{
-An S4 class to represent ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
+ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{write_type_1L_chr}}{character}
+\item{\code{write_type_1L_chr}}{Write type (a character vector of length one)}
 
-\item{\code{merge_itms_chr}}{character}
+\item{\code{merge_itms_chr}}{Merge items (a character vector)}
 
-\item{\code{raw_fls_dir_1L_chr}}{character}
+\item{\code{raw_fls_dir_1L_chr}}{Raw files directory (a character vector of length one)}
 
-\item{\code{pkg_1L_chr}}{character}
+\item{\code{pkg_1L_chr}}{Package (a character vector of length one)}
 
-\item{\code{overwrite_1L_lgl}}{logical}
+\item{\code{overwrite_1L_lgl}}{Overwrite (a logical vector of length one)}
 
-\item{\code{write_1L_lgl}}{logical}
+\item{\code{write_1L_lgl}}{Write (a logical vector of length one)}
 }}
 
