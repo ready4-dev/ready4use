@@ -21,18 +21,3 @@ manufacture.ready4use_imports <- function (x, forced_choice_chr = NA_character_,
 #' @aliases manufacture,ready4use_imports-method
 #' @importFrom ready4 manufacture
 methods::setMethod("manufacture", methods::className("ready4use_imports", package = "ready4use"), manufacture.ready4use_imports)
-#' 
-#' manufacture
-#' @name manufacture-Ready4useArguments
-#' @description manufacture method applied to Ready4useArguments
-#' @param x An object of class Ready4useArguments
-#' @return NULL
-#' @rdname manufacture-methods
-#' @aliases manufacture,Ready4useArguments-method
-#' @export 
-#' @importFrom ready4 manufacture
-methods::setMethod("manufacture", "Ready4useArguments", function (x) 
-{
-    paste0("The crs is ", x@crs_nbr_dbl, " and the merge is ", 
-        x@merge_itms_chr)
-})

@@ -57,3 +57,5 @@
 ^data-raw/s4_fns/procure\.R$
 ^data-raw/prototype_lup\.RDS$
 ^data-raw/TEMP\.R$
+^data-raw/test_s4_fns/manufacture\.R$
+^data-raw/test_s4_fns/procure\.R$

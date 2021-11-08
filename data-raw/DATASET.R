@@ -1,4 +1,4 @@
-library(ready4)
+library(ready4pack)
 ready4fun::write_fn_type_dirs()
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage And Share Datasets For Open and Modular Mental Health Systems Models" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models.
@@ -140,10 +140,10 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4useProcessed"))
 ) %>%
   ready4class::ready4class_constructor()
-# x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
-#                                                                  constructor_r3 = x_ready4class_constructor) %>%
-#   ready4pack::ready4pack_manifest()
-# x_ready4fun_manifest <- author(x_ready4pack_manifest)
-x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(x_ready4fun_manifest, # Convert to metamorphose method on constructor class
-                                                                                                      constructor_r3 = x_ready4class_constructor)) # then add methods to ready4class_manifest class
-x_ready4fun_manifest <- author(x_ready4class_manifest)
+x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
+                                                                 constructor_r3 = x_ready4class_constructor) %>%
+  ready4pack::ready4pack_manifest()
+x_ready4fun_manifest <- author(x_ready4pack_manifest)
+# x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(x_ready4fun_manifest, # Convert to metamorphose method on constructor class
+#                                                                                                       constructor_r3 = x_ready4class_constructor)) # then add methods to ready4class_manifest class
+# x_ready4fun_manifest <- author(x_ready4class_manifest)

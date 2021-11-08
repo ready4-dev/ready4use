@@ -5,8 +5,6 @@
 \alias{procure,ready4use_dataverses-method}
 \alias{procure.ready4use_imports}
 \alias{procure,ready4use_imports-method}
-\alias{procure-Ready4useArguments}
-\alias{procure,Ready4useArguments-method}
 \title{Procure - a method that searches and retrieves requested data from a specified source.}
 \usage{
 procure.ready4use_dataverses(
@@ -32,11 +30,9 @@ procure.ready4use_imports(
 )
 
 \S4method{procure}{ready4use_imports}(x, inc_script_lgl = T, forced_choice_chr = NA_character_)
-
-\S4method{procure}{Ready4useArguments}(x)
 }
 \arguments{
-\item{x}{An object of class Ready4useArguments}
+\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 
 \item{save_dir_path_1L_chr}{Save directory path (a character vector of length one), Default: ''}
 
@@ -57,6 +53,4 @@ Data (an output object of multiple potential types)
 procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 
 procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-
-procure method applied to Ready4useArguments
 }

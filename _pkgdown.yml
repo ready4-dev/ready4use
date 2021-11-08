@@ -34,9 +34,7 @@ reference:
 - title: "Methods"
 - contents:
   - get_read_fn.ready4use_dataverses
-  - manufacture-Ready4useArguments
   - manufacture.ready4use_imports
-  - procure-Ready4useArguments
   - procure.ready4use_dataverses
   - procure.ready4use_imports
   - renew.ready4use_dictionary
