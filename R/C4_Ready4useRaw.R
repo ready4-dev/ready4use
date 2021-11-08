@@ -8,8 +8,8 @@
 #' @slot pkg_1L_chr character
 #' @slot overwrite_1L_lgl logical
 #' @slot write_1L_lgl logical
-#' @export Ready4useRaw
 #' @exportClass Ready4useRaw
+#' @export
 Ready4useRaw <- methods::setClass("Ready4useRaw",
 contains = "Ready4useFiles",
 slots = c(write_type_1L_chr = "character",merge_itms_chr = "character",raw_fls_dir_1L_chr = "character",pkg_1L_chr = "character",overwrite_1L_lgl = "logical",write_1L_lgl = "logical"),

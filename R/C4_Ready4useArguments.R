@@ -13,8 +13,8 @@
 #' @slot pkg_1L_chr character
 #' @slot overwrite_1L_lgl logical
 #' @slot write_1L_lgl logical
-#' @export Ready4useArguments
 #' @exportClass Ready4useArguments
+#' @export
 Ready4useArguments <- methods::setClass("Ready4useArguments",
 contains = "Ready4useProcessed",
 slots = c(crs_nbr_dbl = "numeric",write_type_1L_chr = "character",processed_fls_dir_1L_chr = "character",imports_chr = "character",path_to_seed_sf_1L_chr = "character",imports_ls = "list",merge_itms_chr = "character",raw_fls_dir_1L_chr = "character",pkg_1L_chr = "character",overwrite_1L_lgl = "logical",write_1L_lgl = "logical"),
