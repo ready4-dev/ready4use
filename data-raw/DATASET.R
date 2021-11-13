@@ -144,6 +144,65 @@ x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_man
                                                                  constructor_r3 = x_ready4class_constructor) %>%
   ready4pack::ready4pack_manifest()
 x_ready4fun_manifest <- author(x_ready4pack_manifest)
-# x_ready4class_manifest <- ready4class::ready4class_manifest(ready4class::make_pt_ready4class_manifest(x_ready4fun_manifest, # Convert to metamorphose method on constructor class
-#                                                                                                       constructor_r3 = x_ready4class_constructor)) # then add methods to ready4class_manifest class
-# x_ready4fun_manifest <- author(x_ready4class_manifest)
+#
+write_citation_fl <- function(pkg_manifest_ls){
+  template_chr <- system.file("CITATION",package = "ready4") %>% readLines()
+  authors_psn <- pkg_manifest_ls$initial_ls$pkg_desc_ls$`Authors@R`
+  authors_psn <- authors_psn[authors_psn %>% stringr::str_detect("\\[aut") %>% suppressWarnings()]
+  end_pts_df <- authors_psn %>% stringr::str_locate(" \\<| \\[") %>% suppressWarnings()
+  authors_chr <- authors_psn %>%
+    as.character() %>%
+    purrr::map2_chr((end_pts_df[,1]-1),
+                    ~ .x %>% stringr::str_sub(end = .y)
+    )
+  url_1L_chr <- pkg_manifest_ls$initial_ls$pkg_desc_ls$URL %>% strsplit(", ") %>% purrr::flatten_chr() %>% purrr::pluck(1)
+  authors_alg_1L_chr <- paste0("c(",
+                               authors_chr %>%
+                                 purrr::map_chr( ~{
+                                   split_chr <- .x %>%
+                                     strsplit(" ") %>%
+                                     purrr::flatten_chr()
+                                   paste0("person(\"",
+                                          paste(split_chr[1:(length(split_chr)-1)],
+                                                collapse = " "),
+                                          "\", \"",
+                                          split_chr[length(split_chr)],
+                                          "\")")
+                                 }) %>%
+                                 paste0(collapse = ", "),")")
+  doi_idx_1L_int <- template_chr %>% startsWith("  doi      = \"") %>% which()
+  doi_badge_1L_chr <- pkg_manifest_ls$initial_ls$badges_lup %>%
+    ready4::get_from_lup_obj(match_value_xx = "DOI",
+                             match_var_nm_1L_chr = "badge_names_chr",
+                             target_var_nm_1L_chr = "badges_chr")
+  new_doi_1L_chr <- ifelse(!identical(doi_badge_1L_chr, character(0)),
+                           paste0("  doi      = \"",
+                                  doi_badge_1L_chr %>%
+                                    stringr::str_sub(start = (doi_badge_1L_chr %>%
+                                                                stringr::str_locate("https://doi.org/") %>%
+                                                                `[`(1,2) %>%
+                                                                as.vector()+1), end = -2),
+                                  "\","
+                           ),
+                           template_chr[doi_idx_1L_int])
+  doi_two_idx_1L_int <- 1 + (template_chr %>% startsWith("  paste0(\"https://doi.org/\"") %>% which())
+  citation_chr[doi_two_idx_1L_int] <- new_doi_1L_chr %>% stringr::str_remove("  doi      = ") %>% stringi::stri_replace_last_regex(",",")")
+  citation_chr <- template_chr
+  citation_chr[doi_idx_1L_int] <- new_doi_1L_chr
+  author_idx_1L_int <- template_chr %>% startsWith("  author   = ") %>% which()
+  citation_chr[author_idx_1L_int] <- paste0("  author   = ",authors_alg_1L_chr,",")
+  year_idx_1L_int <- template_chr %>% startsWith("  year     = \"")  %>% which()
+  citation_chr[year_idx_1L_int] <- paste0("  year     = \"",format(Sys.Date(), "%Y"),"\",")
+  url_idx_1L_int <- template_chr %>% startsWith("  url      = \"") %>% which()
+  citation_chr[url_idx_1L_int] <- paste0("  url      = \"",
+                                         url_1L_chr,
+                                         "\",")
+  text_vrsn_idx_1L_int <- template_chr %>% startsWith("  textVersion = paste(\"") %>% which()
+  citation_chr[text_vrsn_idx_1L_int] <- paste0("  textVersion = paste(\"",
+                                               ready4::make_list_phrase(authors_chr),
+                                               ", \",")
+  if(!file.exists("inst/CITATION"))
+    usethis::use_citation()
+  ready4::write_new_files("inst/CITATION", fl_nm_1L_chr = "CITATION", text_ls = list(citation_chr))
+}
+write_citation_fl(x_ready4fun_manifest$x_ready4fun_manifest)
