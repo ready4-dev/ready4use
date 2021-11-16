@@ -27,27 +27,9 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
-    assertthat,
-    data.table,
-    dataverse,
-    dplyr,
-    Hmisc,
     knitr,
     lifecycle,
-    magrittr,
-    methods,
-    purrr,
-    readxl,
-    ready4show,
-    rlang,
-    stats,
-    stringi,
-    stringr,
-    testit,
-    testthat,
-    tibble,
-    tidyr,
-    utils
+    testthat
 VignetteBuilder: knitr
 Collate: 
     'C3_ready4use_dataverses.R'
@@ -81,5 +63,3 @@ Depends:
     ready4
 Suggests: 
     rmarkdown
-Remotes: 
-    ready4-dev/ready4

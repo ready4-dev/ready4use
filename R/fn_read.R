@@ -7,7 +7,6 @@
 #' @export 
 #' @importFrom data.table fread
 #' @importFrom utils read.csv
-#' @keywords internal
 read_import_from_csv <- function (file_ref_chr, is_url_1L_lgl = F) 
 {
     if (is_url_1L_lgl) 

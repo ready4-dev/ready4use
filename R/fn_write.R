@@ -14,7 +14,6 @@
 #' @export 
 #' @importFrom lifecycle is_present deprecate_warn
 #' @importFrom ready4 write_to_dv_with_wait
-#' @keywords internal
 write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = deprecated(), dss_tb, 
     dv_nm_1L_chr, parent_dv_dir_1L_chr, paths_to_dirs_chr, inc_fl_types_chr = NA_character_, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -44,7 +43,6 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = deprecated(), dss_tb,
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr walk
 #' @importFrom ready4 write_dv_fl_to_loc make_local_path_to_dv_data
-#' @keywords internal
 write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1L_chr, 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
 {
@@ -77,7 +75,6 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
 #' @rdname write_dv_fl_to_loc
 #' @export 
 #' @importFrom dataverse get_dataset get_file
-#' @keywords internal
 write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_id_1L_int = NA_integer_, 
     repo_fl_fmt_1L_chr, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
     server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), save_type_1L_chr = "original", 
@@ -128,7 +125,6 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
 #' @importFrom purrr map_int
 #' @importFrom ready4 write_to_dv_from_tbl write_fls_from_dv
 #' @importFrom dataverse get_dataset
-#' @keywords internal
 write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_in_secs_int = 5L, 
     make_local_copy_1L_lgl = F, parent_dv_dir_1L_chr, paths_to_dirs_chr, 
     paths_are_rltv_1L_lgl = T, inc_fl_types_chr = NA_character_, 
@@ -184,7 +180,6 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
 #' @importFrom utils write.csv
 #' @importFrom ready4 get_rds_from_dv make_files_tb write_to_dv_from_tbl
 #' @importFrom stats setNames
-#' @keywords internal
 write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_1L_chr = "https://doi.org/10.7910/DVN/2Y9VF9", 
     pkg_dv_dir_1L_chr = "data-raw/dataverse", data_dir_rt_1L_chr = ".", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER")) 
@@ -217,7 +212,6 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk
-#' @keywords internal
 write_to_copy_fls_to_dv_dir <- function (files_tb, local_dv_dir_1L_chr) 
 {
     purrr::pwalk(files_tb, ~file.copy(paste0(..1, "/", ..2, ..3), 

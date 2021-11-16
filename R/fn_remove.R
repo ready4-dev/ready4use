@@ -7,7 +7,6 @@
 #' @importFrom purrr reduce
 #' @importFrom dplyr mutate
 #' @importFrom rlang sym
-#' @keywords internal
 remove_labels_from_ds <- function (ds_tb) 
 {
     unlabelled_ds_tb <- seq_along(ds_tb) %>% purrr::reduce(.init = ds_tb, 

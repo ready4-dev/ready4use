@@ -32,7 +32,7 @@ x_ready4fun_manifest <- pkg_desc_ls %>%
                                                                                                  "get_r3_from_dv_csv"#, "write_fls_to_dv_ds"
                                                                                                  )),
                            copyright_holders_chr = "Orygen",
-                           dev_pkgs_chr = c("ready4","ready4fun","ready4class"),
+                           dev_pkgs_chr = c("ready4","ready4show"),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/ready4use-logo/default.png",
                            piggyback_to_1L_chr = "ready4-dev/ready4",
