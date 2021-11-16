@@ -16,5 +16,5 @@ A validated instance of the ready4 S3 class for tibble object that stores simula
 Create a new valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }
 \details{
-ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }

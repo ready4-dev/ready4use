@@ -16,5 +16,5 @@ A validated instance of the ready4 S3 class for tibble object lookup table of fi
 Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
-ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+Tibble object lookup table of files to be imported from a dataverse.
 }

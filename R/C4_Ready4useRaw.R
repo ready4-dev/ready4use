@@ -1,6 +1,6 @@
 #' Ready4useRaw
 #' 
-#' ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
+#' Metadata for dataset(s) to be saved in local directory in a raw (unprocessed) format.
 #' 
 #' @include C4_Ready4useFiles.R
 #' @slot write_type_1L_chr Write type (a character vector of length one)

@@ -16,5 +16,5 @@ A validated instance of the ready4 S3 class for list object that summarises the 
 Create a new valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-ready4 S3 class for list object that summarises the parameters of each distribution
+List object that summarises the parameters of each distribution
 }

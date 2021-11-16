@@ -6,7 +6,7 @@
 \alias{Ready4useFiles}
 \title{Ready4useFiles}
 \description{
-ready4 S4 class defining data to be saved in local directory.
+Metadata for dataset(s) to be saved in local directory.
 }
 \section{Slots}{
 

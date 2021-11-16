@@ -16,5 +16,5 @@ An unvalidated instance of the ready4 S3 class for list object that summarises t
 Create a new unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-ready4 S3 class for list object that summarises the parameters of each distribution
+List object that summarises the parameters of each distribution
 }

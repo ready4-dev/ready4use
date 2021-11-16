@@ -3,7 +3,7 @@
 #' @description Create a new valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution, Default: make_pt_ready4use_distributions()
 #' @return A validated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details ready4 S3 class for list object that summarises the parameters of each distribution
+#' @details List object that summarises the parameters of each distribution
 #' @rdname ready4use_distributions
 #' @export 
 ready4use_distributions <- function(x = make_pt_ready4use_distributions()){ 
@@ -13,7 +13,7 @@ validate_ready4use_distributions(make_new_ready4use_distributions(x))
 #' @description Create a new unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @return An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details ready4 S3 class for list object that summarises the parameters of each distribution
+#' @details List object that summarises the parameters of each distribution
 #' @rdname make_new_ready4use_distributions
 #' @export 
 make_new_ready4use_distributions <- function(x){ 
@@ -31,7 +31,7 @@ x
 #' @param dstr_param_4_dbl Distribution parameter 4 (a double vector), Default: numeric(0)
 #' @param transformation_chr Transformation (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details ready4 S3 class for list object that summarises the parameters of each distribution
+#' @details List object that summarises the parameters of each distribution
 #' @rdname make_pt_ready4use_distributions
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
@@ -54,7 +54,7 @@ rlang::exec(list,!!!args_ls)
 #' @description Validate an instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @return A prototpe for ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details ready4 S3 class for list object that summarises the parameters of each distribution
+#' @details List object that summarises the parameters of each distribution
 #' @rdname validate_ready4use_distributions
 #' @export 
 #' @importFrom stringr str_detect str_c
@@ -104,7 +104,7 @@ x}
 #' @description Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details ready4 S3 class for list object that summarises the parameters of each distribution
+#' @details List object that summarises the parameters of each distribution
 #' @rdname is_ready4use_distributions
 #' @export 
 is_ready4use_distributions <- function(x) inherits(validate_ready4use_distributions(x), "ready4use_distributions")

@@ -4,7 +4,7 @@ setOldClass(c("ready4use_dataverses","tbl_df", "tbl", "data.frame"))
 #' @description Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_pt_ready4use_dataverses()
 #' @return A validated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @details Tibble object lookup table of files to be imported from a dataverse.
 #' @rdname ready4use_dataverses
 #' @export 
 ready4use_dataverses <- function(x = make_pt_ready4use_dataverses()){ 
@@ -14,7 +14,7 @@ validate_ready4use_dataverses(make_new_ready4use_dataverses(x))
 #' @description Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @return An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @details Tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_new_ready4use_dataverses
 #' @export 
 #' @importFrom tibble is_tibble
@@ -34,7 +34,7 @@ x
 #' @param data_repo_file_ext_chr Data repository file extension (a character vector), Default: character(0)
 #' @param data_repo_save_type_chr Data repository save type (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @details Tibble object lookup table of files to be imported from a dataverse.
 #' @rdname make_pt_ready4use_dataverses
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
@@ -60,7 +60,7 @@ rlang::exec(tibble::tibble,!!!args_ls)
 #' @description Validate an instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @return A prototpe for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @details Tibble object lookup table of files to be imported from a dataverse.
 #' @rdname validate_ready4use_dataverses
 #' @export 
 #' @importFrom stringr str_detect str_c
@@ -108,7 +108,7 @@ x}
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
-#' @details ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @details Tibble object lookup table of files to be imported from a dataverse.
 #' @rdname is_ready4use_dataverses
 #' @export 
 is_ready4use_dataverses <- function(x) inherits(validate_ready4use_dataverses(x), "ready4use_dataverses")

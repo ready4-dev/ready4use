@@ -57,5 +57,5 @@ A prototype for ready4 S3 class for tibble object that stores simulation structu
 Create a new prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }
 \details{
-ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }

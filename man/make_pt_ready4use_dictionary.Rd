@@ -27,5 +27,5 @@ A prototype for ready4 s3 class defining a data dictionary tibble.
 Create a new prototype for the ready4 s3 class defining a data dictionary tibble.
 }
 \details{
-ready4 s3 class defining a data dictionary tibble.
+A data dictionary tibble.
 }

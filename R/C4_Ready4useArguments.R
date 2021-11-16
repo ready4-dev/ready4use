@@ -1,6 +1,6 @@
 #' Ready4useArguments
 #' 
-#' ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.
+#' Arguments for a function that constructs a spatial object.
 #' 
 #' @include C4_Ready4useProcessed.R
 #' @slot crs_nbr_dbl Crs number (a double vector)

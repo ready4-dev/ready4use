@@ -16,5 +16,5 @@ A validated instance of the ready4 S3 class for tibble object lookup table of so
 Create a new valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \details{
-ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+Tibble object lookup table of sources of raw (un-processed) data to import.
 }

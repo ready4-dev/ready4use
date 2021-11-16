@@ -6,7 +6,7 @@
 \alias{Ready4useRaw}
 \title{Ready4useRaw}
 \description{
-ready4 S4 class defining data to be saved in local directory in a raw (unprocessed) format.
+Metadata for dataset(s) to be saved in local directory in a raw (unprocessed) format.
 }
 \section{Slots}{
 

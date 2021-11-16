@@ -16,5 +16,5 @@ A prototpe for ready4 s3 class defining a data dictionary tibble.
 Validate an instance of the ready4 s3 class defining a data dictionary tibble.
 }
 \details{
-ready4 s3 class defining a data dictionary tibble.
+A data dictionary tibble.
 }

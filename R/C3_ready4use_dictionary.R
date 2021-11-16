@@ -4,7 +4,7 @@ setOldClass(c("ready4use_dictionary","tbl_df", "tbl", "data.frame"))
 #' @description Create a new valid instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x A prototype for the ready4 s3 class defining a data dictionary tibble., Default: make_pt_ready4use_dictionary()
 #' @return A validated instance of the ready4 s3 class defining a data dictionary tibble.
-#' @details ready4 s3 class defining a data dictionary tibble.
+#' @details A data dictionary tibble.
 #' @rdname ready4use_dictionary
 #' @export 
 ready4use_dictionary <- function(x = make_pt_ready4use_dictionary()){ 
@@ -14,7 +14,7 @@ validate_ready4use_dictionary(make_new_ready4use_dictionary(x))
 #' @description Create a new unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x A prototype for the ready4 s3 class defining a data dictionary tibble.
 #' @return An unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
-#' @details ready4 s3 class defining a data dictionary tibble.
+#' @details A data dictionary tibble.
 #' @rdname make_new_ready4use_dictionary
 #' @export 
 #' @importFrom tibble is_tibble
@@ -31,7 +31,7 @@ x
 #' @param var_desc_chr Variable description (a character vector), Default: character(0)
 #' @param var_type_chr Variable type (a character vector), Default: character(0)
 #' @return A prototype for ready4 s3 class defining a data dictionary tibble.
-#' @details ready4 s3 class defining a data dictionary tibble.
+#' @details A data dictionary tibble.
 #' @rdname make_pt_ready4use_dictionary
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
@@ -51,7 +51,7 @@ rlang::exec(tibble::tibble,!!!args_ls)
 #' @description Validate an instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x An unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
 #' @return A prototpe for ready4 s3 class defining a data dictionary tibble.
-#' @details ready4 s3 class defining a data dictionary tibble.
+#' @details A data dictionary tibble.
 #' @rdname validate_ready4use_dictionary
 #' @export 
 #' @importFrom stringr str_detect str_c
@@ -99,7 +99,7 @@ x}
 #' @description Check whether an object is a valid instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 s3 class defining a data dictionary tibble.
-#' @details ready4 s3 class defining a data dictionary tibble.
+#' @details A data dictionary tibble.
 #' @rdname is_ready4use_dictionary
 #' @export 
 is_ready4use_dictionary <- function(x) inherits(validate_ready4use_dictionary(x), "ready4use_dictionary")

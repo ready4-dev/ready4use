@@ -16,5 +16,5 @@ An unvalidated instance of the ready4 s3 class defining a data dictionary tibble
 Create a new unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
 }
 \details{
-ready4 s3 class defining a data dictionary tibble.
+A data dictionary tibble.
 }

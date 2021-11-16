@@ -6,7 +6,7 @@
 \alias{Ready4useArguments}
 \title{Ready4useArguments}
 \description{
-ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.
+Arguments for a function that constructs a spatial object.
 }
 \section{Slots}{
 

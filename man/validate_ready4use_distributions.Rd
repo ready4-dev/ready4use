@@ -16,5 +16,5 @@ A prototpe for ready4 S3 class for list object that summarises the parameters of
 Validate an instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-ready4 S3 class for list object that summarises the parameters of each distribution
+List object that summarises the parameters of each distribution
 }

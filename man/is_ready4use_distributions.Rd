@@ -16,5 +16,5 @@ A logical value, TRUE if a valid instance of the ready4 S3 class for list object
 Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \details{
-ready4 S3 class for list object that summarises the parameters of each distribution
+List object that summarises the parameters of each distribution
 }

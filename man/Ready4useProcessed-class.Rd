@@ -6,7 +6,7 @@
 \alias{Ready4useProcessed}
 \title{Ready4useProcessed}
 \description{
-ready4 S4 class defining data to be saved in local directory in a processed (R) format.
+Metadata for dataset(s) to be saved in local directory in a processed (R) format.
 }
 \section{Slots}{
 

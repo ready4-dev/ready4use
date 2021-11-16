@@ -1,6 +1,6 @@
 #' Ready4useProcessed
 #' 
-#' ready4 S4 class defining data to be saved in local directory in a processed (R) format.
+#' Metadata for dataset(s) to be saved in local directory in a processed (R) format.
 #' 
 #' @include C4_Ready4useFiles.R
 #' @slot write_type_1L_chr Write type (a character vector of length one)
