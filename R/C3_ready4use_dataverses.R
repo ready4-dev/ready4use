@@ -10,7 +10,7 @@ setOldClass(c("ready4use_dataverses","tbl_df", "tbl", "data.frame"))
 ready4use_dataverses <- function(x = make_pt_ready4use_dataverses()){ 
 validate_ready4use_dataverses(make_new_ready4use_dataverses(x))
 }
-#' Make new ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' make new ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @return An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
@@ -24,7 +24,7 @@ class(x) <- append(c("ready4use_dataverses",setdiff(make_pt_ready4use_dataverses
 class(x))
 x
 }
-#' Make prototype ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' make prototype ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Create a new prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param file_type_chr File type (a character vector), Default: character(0)
 #' @param file_name_chr File name (a character vector), Default: character(0)
@@ -56,7 +56,7 @@ data_repo_file_ext_chr = data_repo_file_ext_chr,
 data_repo_save_type_chr = data_repo_save_type_chr) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' Validate ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' validate ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Validate an instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @return A prototpe for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
@@ -104,7 +104,7 @@ call. = FALSE)
 }
 
 x}
-#' Is ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' is ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

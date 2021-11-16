@@ -28,12 +28,9 @@ reference:
   - assert_matches_chr
   - assert_single_row_tb
   - get_r3_from_dv_csv
-- title: "Generics"
-- contents:
-  - get_read_fn
 - title: "Methods"
 - contents:
-  - get_read_fn.ready4use_dataverses
+  - manufacture.ready4use_dataverses
   - manufacture.ready4use_imports
   - procure.ready4use_dataverses
   - procure.ready4use_imports

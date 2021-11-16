@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_assert.R
 \name{assert_single_row_tb}
 \alias{assert_single_row_tb}
-\title{Assert single row tibble}
+\title{assert single row tibble}
 \usage{
 assert_single_row_tb(x)
 }

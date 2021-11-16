@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_local_path_to_dv_data}
 \alias{get_local_path_to_dv_data}
-\title{Get local path to dataverse data}
+\title{get local path to dataverse data}
 \usage{
 get_local_path_to_dv_data(save_dir_path_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr)
 }

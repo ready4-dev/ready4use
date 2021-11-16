@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_mapes.R
 \name{make_new_ready4use_mapes}
 \alias{make_new_ready4use_mapes}
-\title{Make new ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\title{make new ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 make_new_ready4use_mapes(x)
 }

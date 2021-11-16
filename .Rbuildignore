@@ -59,3 +59,5 @@
 ^data-raw/TEMP\.R$
 ^data-raw/test_s4_fns/manufacture\.R$
 ^data-raw/test_s4_fns/procure\.R$
+^data-raw/TEST_s4_fns/manufacture\.R$
+^data-raw/TEST_s4_fns/procure\.R$

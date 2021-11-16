@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dataverses.R
 \name{is_ready4use_dataverses}
 \alias{is_ready4use_dataverses}
-\title{Is ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{is ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 is_ready4use_dataverses(x)
 }

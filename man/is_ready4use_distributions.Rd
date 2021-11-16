@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_distributions.R
 \name{is_ready4use_distributions}
 \alias{is_ready4use_distributions}
-\title{Is ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution}
+\title{is ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 is_ready4use_distributions(x)
 }

@@ -1,5 +1,5 @@
-#' Procure - a method that searches and retrieves requested data from a specified source.
-#' @description procure.ready4use_dataverses() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
+#' procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class
+#' @description procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 #' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
 #' @param unlink_1L_lgl Unlink (a logical vector of length one), Default: T
@@ -13,7 +13,7 @@
 procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1L_lgl = T, server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY")) 
 {
-    data_ls <- purrr::map2(1:nrow(x), get_read_fn(x), ~get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x], 
+    data_ls <- purrr::map2(1:nrow(x), manufacture(x), ~get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x], 
         fl_nm_1L_chr = x$file_name_chr[.x], save_fmt_1L_chr = x$file_type_chr[.x], 
         repo_fl_fmt_1L_chr = x$data_repo_file_ext_chr[.x], server_1L_chr = ifelse(is.na(x$data_repo_ui_chr[.x]), 
             server_1L_chr, x$data_repo_ui_chr[.x]), key_1L_chr = key_1L_chr, 
@@ -29,8 +29,8 @@ procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1
 #' @aliases procure,ready4use_dataverses-method
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_dataverses", package = "ready4use"), procure.ready4use_dataverses)
-#' Procure - a method that searches and retrieves requested data from a specified source.
-#' @description procure.ready4use_imports() is a Procure method that searches and retrieves requested data from a specified source. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+#' procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class
+#' @description procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param inc_script_lgl Include script (a logical vector), Default: T
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'

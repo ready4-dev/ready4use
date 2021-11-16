@@ -1,5 +1,5 @@
-#' Renew - a method that updates an instance of a class with new values.
-#' @description renew.ready4use_dictionary() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
+#' renew - a method that renews an instance of a class by updating it with new data
+#' @description renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a data dictionary tibble.
 #' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3)
 #' @return combined_ready4_dictionaries (An object)
@@ -16,8 +16,8 @@ renew.ready4use_dictionary <- function (x, new_ready4_dict_r3)
 #' @aliases renew,ready4use_dictionary-method
 #' @importFrom ready4 renew
 methods::setMethod("renew", methods::className("ready4use_dictionary", package = "ready4use"), renew.ready4use_dictionary)
-#' Renew - a method that updates an instance of a class with new values.
-#' @description renew.ready4use_imports() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+#' renew - a method that renews an instance of a class by updating it with new data
+#' @description renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param local_to_url_vec_chr Local to url vector (a character vector)
 #' @param urls_vec_chr Urls vector (a character vector)

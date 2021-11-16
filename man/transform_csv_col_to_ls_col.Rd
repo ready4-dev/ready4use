@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_transform.R
 \name{transform_csv_col_to_ls_col}
 \alias{transform_csv_col_to_ls_col}
-\title{Transform comma separated variables file column to list column}
+\title{transform comma separated variables file column to list column}
 \usage{
 transform_csv_col_to_ls_col(csv_col_xx)
 }

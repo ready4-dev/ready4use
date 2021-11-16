@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_imports.R
 \name{validate_ready4use_imports}
 \alias{validate_ready4use_imports}
-\title{Validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 validate_ready4use_imports(x)
 }

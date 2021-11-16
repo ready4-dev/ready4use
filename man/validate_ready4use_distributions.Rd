@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_distributions.R
 \name{validate_ready4use_distributions}
 \alias{validate_ready4use_distributions}
-\title{Validate ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution}
+\title{validate ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 validate_ready4use_distributions(x)
 }

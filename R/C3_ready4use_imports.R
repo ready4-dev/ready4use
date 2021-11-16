@@ -11,7 +11,7 @@ setOldClass(c("ready4use_imports","tbl_df", "tbl", "data.frame"))
 ready4use_imports <- function(x = make_pt_ready4use_imports()){ 
 validate_ready4use_imports(make_new_ready4use_imports(x))
 }
-#' Make new ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' make new ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param x A prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @return An unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
@@ -25,7 +25,7 @@ class(x) <- append(c("ready4use_imports",setdiff(make_pt_ready4use_imports() %>%
 class(x))
 x
 }
-#' Make prototype ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' make prototype ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Create a new prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param file_type_chr File type (a character vector), Default: character(0)
 #' @param file_name_chr File name (a character vector), Default: character(0)
@@ -75,7 +75,7 @@ inc_fls_to_rename_ls = inc_fls_to_rename_ls,
 new_nms_for_inc_fls_ls = new_nms_for_inc_fls_ls) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' Validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Validate an instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param x An unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @return A prototpe for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
@@ -123,7 +123,7 @@ call. = FALSE)
 }
 
 x}
-#' Is ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' is ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.

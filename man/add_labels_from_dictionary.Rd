@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_labels_from_dictionary}
 \alias{add_labels_from_dictionary}
-\title{Add labels from dictionary}
+\title{add labels from dictionary}
 \usage{
 add_labels_from_dictionary(ds_tb, dictionary_tb, remove_old_lbls_1L_lgl = F)
 }

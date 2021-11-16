@@ -1,4 +1,4 @@
-#' Add dataset to dataverse repository
+#' add dataset to dataverse repository
 #' @description add_ds_to_dv_repo() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataset to dataverse repository. Function argument dv_1L_chr specifies the object to be updated. The function returns Dataset url (a character vector of length one).
 #' @param dv_1L_chr Dataverse (a character vector of length one)
 #' @param ds_meta_ls Dataset meta (a list)
@@ -69,7 +69,7 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
     ds_url_1L_chr <- dv_ls[[1]]$persistentUrl
     return(ds_url_1L_chr)
 }
-#' Add dataverse meta to import lookup table
+#' add dataverse meta to import lookup table
 #' @description add_dv_meta_to_imp_lup() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. Function argument imp_lup specifies the object to be updated. The function returns Import (a lookup table).
 #' @param imp_lup Import (a lookup table)
 #' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
@@ -87,7 +87,7 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
         data_repo_file_ext_chr = file_type_1L_chr, data_repo_save_type_chr = save_type_1L_chr)
     return(imp_lup)
 }
-#' Add files to dataverse
+#' add files to dataverse
 #' @description add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File identities (an integer vector).
 #' @param files_tb Files (a tibble)
 #' @param data_dir_rt_1L_chr Data directory root (a character vector of length one), Default: '.'
@@ -121,7 +121,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
     })
     return(fl_ids_int)
 }
-#' Add labels from dictionary
+#' add labels from dictionary
 #' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param dictionary_tb Dictionary (a tibble)

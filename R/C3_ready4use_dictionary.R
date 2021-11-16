@@ -10,7 +10,7 @@ setOldClass(c("ready4use_dictionary","tbl_df", "tbl", "data.frame"))
 ready4use_dictionary <- function(x = make_pt_ready4use_dictionary()){ 
 validate_ready4use_dictionary(make_new_ready4use_dictionary(x))
 }
-#' Make new ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
+#' make new ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
 #' @description Create a new unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x A prototype for the ready4 s3 class defining a data dictionary tibble.
 #' @return An unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
@@ -24,7 +24,7 @@ class(x) <- append(c("ready4use_dictionary",setdiff(make_pt_ready4use_dictionary
 class(x))
 x
 }
-#' Make prototype ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
+#' make prototype ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
 #' @description Create a new prototype for the ready4 s3 class defining a data dictionary tibble.
 #' @param var_nm_chr Variable name (a character vector), Default: character(0)
 #' @param var_ctg_chr Variable category categories (a character vector), Default: character(0)
@@ -47,7 +47,7 @@ var_desc_chr = var_desc_chr,
 var_type_chr = var_type_chr) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' Validate ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
+#' validate ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
 #' @description Validate an instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x An unvalidated instance of the ready4 s3 class defining a data dictionary tibble.
 #' @return A prototpe for ready4 s3 class defining a data dictionary tibble.
@@ -95,7 +95,7 @@ call. = FALSE)
 }
 
 x}
-#' Is ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
+#' is ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
 #' @description Check whether an object is a valid instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 s3 class defining a data dictionary tibble.

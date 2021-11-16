@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_write.R
 \name{write_to_copy_fls_to_dv_dir}
 \alias{write_to_copy_fls_to_dv_dir}
-\title{Write to copy files to dataverse directory}
+\title{write to copy files to dataverse directory}
 \usage{
 write_to_copy_fls_to_dv_dir(files_tb, local_dv_dir_1L_chr)
 }

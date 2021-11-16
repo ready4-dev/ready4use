@@ -1,4 +1,4 @@
-#' Write dataverse dataset
+#' write dataverse dataset
 #' @description write_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse dataset. The function returns Dataset (a list).
 #' @param ds_meta_ls Dataset meta (a list)
 #' @param dev_pkg_nm_1L_chr Development package name (a character vector of length one), Default: deprecated()
@@ -30,7 +30,7 @@ write_dv_ds <- function (ds_meta_ls, dev_pkg_nm_1L_chr = deprecated(), dss_tb,
         key_1L_chr = key_1L_chr, server_1L_chr = server_1L_chr)
     return(ds_ls)
 }
-#' Write dataverse dataset files
+#' write dataverse dataset files
 #' @description write_dv_ds_fls() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse dataset files. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param files_tb Files (a tibble)
 #' @param fl_ids_int File identities (an integer vector)
@@ -62,7 +62,7 @@ write_dv_ds_fls <- function (files_tb, fl_ids_int, ds_url_1L_chr, local_dv_dir_1
         }
     })
 }
-#' Write dataverse file to local
+#' write dataverse file to local
 #' @description write_dv_fl_to_loc() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write dataverse file to local. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one), Default: 'NA'
@@ -107,7 +107,7 @@ write_dv_fl_to_loc <- function (ds_ui_1L_chr, fl_nm_1L_chr = NA_character_, fl_i
         warning("Cannot write local copy of files from private Dataverse repo")
     }
 }
-#' Write files to dataverse dataset
+#' write files to dataverse dataset
 #' @description write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list).
 #' @param dss_tb Datasets (a tibble)
 #' @param dv_nm_1L_chr Dataverse name (a character vector of length one)
@@ -168,7 +168,7 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
     }
     return(ds_ls)
 }
-#' Write paired dataset files to dataverse
+#' write paired dataset files to dataverse
 #' @description write_paired_ds_fls_to_dv() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write paired dataset files to dataverse. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param ds_tb Dataset (a tibble)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
@@ -209,7 +209,7 @@ write_paired_ds_fls_to_dv <- function (ds_tb, fl_nm_1L_chr, desc_1L_chr, ds_url_
         ds_url_1L_chr = ds_url_1L_chr, key_1L_chr = key_1L_chr, 
         server_1L_chr = server_1L_chr)
 }
-#' Write to copy files to dataverse directory
+#' write to copy files to dataverse directory
 #' @description write_to_copy_fls_to_dv_dir() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to copy files to dataverse directory. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
 #' @param files_tb Files (a tibble)
 #' @param local_dv_dir_1L_chr Local dataverse directory (a character vector of length one)

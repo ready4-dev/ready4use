@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_mapes.R
 \name{is_ready4use_mapes}
 \alias{is_ready4use_mapes}
-\title{Is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\title{is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 is_ready4use_mapes(x)
 }

@@ -5,7 +5,7 @@
 \alias{renew,ready4use_dictionary-method}
 \alias{renew.ready4use_imports}
 \alias{renew,ready4use_imports-method}
-\title{Renew - a method that updates an instance of a class with new values.}
+\title{renew - a method that renews an instance of a class by updating it with new data}
 \usage{
 renew.ready4use_dictionary(x, new_ready4_dict_r3)
 
@@ -28,7 +28,7 @@ renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
 combined_ready4_dictionaries (An object)
 }
 \description{
-renew.ready4use_dictionary() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
+renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 
-renew.ready4use_imports() is a Renew method that updates an instance of a class with new values. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 }

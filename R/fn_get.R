@@ -1,4 +1,4 @@
-#' Get file from dataverse
+#' get file from dataverse
 #' @description get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
 #' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
@@ -34,7 +34,7 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
     file_xxx
     return(file_xxx)
 }
-#' Get local path to dataverse data
+#' get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one)
 #' @param fl_nm_1L_chr File name (a character vector of length one)
@@ -52,7 +52,7 @@ get_local_path_to_dv_data <- function (save_dir_path_1L_chr, fl_nm_1L_chr, save_
         "/"), ""), fl_nm_1L_chr, save_fmt_1L_chr)
     return(path_chr)
 }
-#' Get ready4 S3 from dataverse comma separated variables file
+#' get ready4 S3 from dataverse comma separated variables file
 #' @description get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get ready4 s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
 #' @param file_name_chr File name (a character vector)
 #' @param data_repo_db_ui_chr Data repository database user interface (a character vector)
@@ -72,7 +72,7 @@ get_r3_from_dv_csv <- function (file_name_chr, data_repo_db_ui_chr, data_repo_ui
         procure() %>% make_r3_from_csv_tb(r3_fn)
     return(tb_r3)
 }
-#' Get valid path character vector
+#' get valid path character vector
 #' @description get_valid_path_chr() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get valid path character vector. Function argument x specifies the where to look for the required object. The function returns Valid path (a character vector).
 #' @param x An object
 #' @return Valid path (a character vector)

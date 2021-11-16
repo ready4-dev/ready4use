@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_dataverses.R
 \name{make_pt_ready4use_dataverses}
 \alias{make_pt_ready4use_dataverses}
-\title{Make prototype ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{make prototype ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 make_pt_ready4use_dataverses(
   file_type_chr = character(0),

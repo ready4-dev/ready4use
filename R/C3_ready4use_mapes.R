@@ -10,7 +10,7 @@ setOldClass(c("ready4use_mapes","tbl_df", "tbl", "data.frame"))
 ready4use_mapes <- function(x = make_pt_ready4use_mapes()){ 
 validate_ready4use_mapes(make_new_ready4use_mapes(x))
 }
-#' Make new ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' make new ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Create a new unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x A prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @return An unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
@@ -24,7 +24,7 @@ class(x) <- append(c("ready4use_mapes",setdiff(make_pt_ready4use_mapes() %>% cla
 class(x))
 x
 }
-#' Make prototype ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' make prototype ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Create a new prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param param_name_chr Parameter name (a character vector), Default: character(0)
 #' @param sex_age_band_chr Sex age band (a character vector), Default: character(0)
@@ -77,7 +77,7 @@ mape_10_yr_shp_dbl = mape_10_yr_shp_dbl,
 mape_15_yr_shp_dbl = mape_15_yr_shp_dbl) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' Validate ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' validate ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Validate an instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x An unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @return A prototpe for ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
@@ -125,7 +125,7 @@ call. = FALSE)
 }
 
 x}
-#' Is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+#' is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

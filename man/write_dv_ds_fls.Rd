@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_write.R
 \name{write_dv_ds_fls}
 \alias{write_dv_ds_fls}
-\title{Write dataverse dataset files}
+\title{write dataverse dataset files}
 \usage{
 write_dv_ds_fls(
   files_tb,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_remove.R
 \name{remove_labels_from_ds}
 \alias{remove_labels_from_ds}
-\title{Remove labels from dataset}
+\title{remove labels from dataset}
 \usage{
 remove_labels_from_ds(ds_tb)
 }

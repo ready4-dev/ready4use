@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_ready4use_imports.R
 \name{make_pt_ready4use_imports}
 \alias{make_pt_ready4use_imports}
-\title{Make prototype ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{make prototype ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 make_pt_ready4use_imports(
   file_type_chr = character(0),

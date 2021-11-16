@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_assert.R
 \name{assert_dir_exists}
 \alias{assert_dir_exists}
-\title{Assert directory exists}
+\title{assert directory exists}
 \usage{
 assert_dir_exists(x)
 }

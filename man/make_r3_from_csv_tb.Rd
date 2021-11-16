@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_r3_from_csv_tb}
 \alias{make_r3_from_csv_tb}
-\title{Make ready4 S3 from comma separated variables file tibble}
+\title{make ready4 S3 from comma separated variables file tibble}
 \usage{
 make_r3_from_csv_tb(csv_tb, r3_fn)
 }

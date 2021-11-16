@@ -13,6 +13,19 @@ manufacture.ready4use_imports <- function(x,
   )
 
 }
+manufacture.ready4use_dataverses <- function(x,
+                                             type_1L_chr = "read_fn"){
+  read_fn_ls <- NULL
+  if(type_1L_chr == "read_fn")
+    read_fn_ls <- purrr::map(x$file_type_chr,
+             ~ switch(.x,
+                      ".csv" = read.csv, ## Need to add fread
+                      ".xls" = readxl::read_excel,
+                      ".xlsx" = readxl::read_excel,
+                      ".RDS" = readRDS()),
+  )
+  return(read_fn_ls)
+}
 # manufacture.ready4use_sp_import_lup <- function(x){
 #   ready4use_dataverses(x %>%
 #                             dplyr::select(names(ready4use_dataverses())))

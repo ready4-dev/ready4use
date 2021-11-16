@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_assert.R
 \name{assert_matches_chr}
 \alias{assert_matches_chr}
-\title{Assert matches character vector}
+\title{assert matches character vector}
 \usage{
 assert_matches_chr(x, match_chr)
 }

@@ -22,7 +22,7 @@ procure.ready4use_dataverses <- function(x,
                                          server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
                                          key_1L_chr = Sys.getenv("DATAVERSE_KEY")){
   data_ls <- purrr::map2(1:nrow(x),
-                         get_read_fn(x),
+                         manufacture(x),
                          ~ get_file_from_dv(ds_ui_1L_chr = x$data_repo_db_ui_chr[.x],
                                             fl_nm_1L_chr = x$file_name_chr[.x],
                                             save_fmt_1L_chr = x$file_type_chr[.x],
