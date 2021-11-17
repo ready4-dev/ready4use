@@ -31,7 +31,7 @@ reference:
   - get_r3_from_dv_csv
 - title: "Methods"
 - contents:
-  - depict-Ready4useDyad
+  - exhibit-Ready4useDyad
   - manufacture.ready4use_dataverses
   - manufacture.ready4use_imports
   - procure.ready4use_dataverses

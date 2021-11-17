@@ -1,12 +1,12 @@
-depict_Ready4useDyad <- function(x,
-                                caption_1L_chr = NA_character_,
-                                display_1L_chr = "all",
-                                mkdn_tbl_ref_1L_chr = "",
-                                output_type_1L_chr = "HTML",
-                                type_1L_chr = "ds",
-                                use_lbls_as_col_nms_1L_lgl = T,
-                                use_rdocx_1L_lgl = F,
-                                ...){
+exhibit_Ready4useDyad <- function(x,
+                                  caption_1L_chr = NA_character_,
+                                  display_1L_chr = "all",
+                                  mkdn_tbl_ref_1L_chr = "",
+                                  output_type_1L_chr = "HTML",
+                                  type_1L_chr = "ds",
+                                  use_lbls_as_col_nms_1L_lgl = T,
+                                  use_rdocx_1L_lgl = F,
+                                  ...){
   if(type_1L_chr == "ds"){
     df <- x@ds_tb
     caption_1L_chr <- ifelse(is.na(caption_1L_chr),

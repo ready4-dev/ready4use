@@ -65,3 +65,4 @@
 ^data-raw/s4_fns/depict\.R$
 ^data-raw/XX_s4_fns/depict\.R$
 ^data-raw/mthd_depict\.R$
+^data-raw/s4_fns/exhibit\.R$
