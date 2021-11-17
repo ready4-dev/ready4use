@@ -1,2 +1,40 @@
-url: ~
-
+home:
+  links:
+  - text: Manual - User (PDF)
+    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_User.pdf
+  - text: Manual - Developer (PDF)
+    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_Developer.pdf
+  - text: Project website
+    href:  https://ready4-dev.github.io/ready4/
+development:
+  mode: auto
+reference:
+- title: "S3 Classes"
+- contents:
+  - ready4use_distributions
+  - ready4use_dataverses
+  - ready4use_imports
+  - ready4use_mapes
+  - ready4use_dictionary
+- title: "S4 Classes"
+- contents:
+  - Ready4useFiles
+  - Ready4useRaw
+  - Ready4useProcessed
+  - Ready4useArguments
+  - Ready4useDyad
+- title: "Functions"
+- contents:
+  - add_labels_from_dictionary
+  - assert_matches_chr
+  - assert_single_row_tb
+  - get_r3_from_dv_csv
+- title: "Methods"
+- contents:
+  - depict-Ready4useDyad
+  - manufacture.ready4use_dataverses
+  - manufacture.ready4use_imports
+  - procure.ready4use_dataverses
+  - procure.ready4use_imports
+  - renew.ready4use_dictionary
+  - renew.ready4use_imports

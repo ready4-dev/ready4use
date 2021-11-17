@@ -26,3 +26,4 @@ Dataset url (a character vector of length one)
 \description{
 add_ds_to_dv_repo() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataset to dataverse repository. Function argument dv_1L_chr specifies the object to be updated. The function returns Dataset url (a character vector of length one).
 }
+\keyword{internal}

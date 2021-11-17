@@ -21,3 +21,4 @@ Updated (a tibble)
 \description{
 update_tb_src_loc_to_url_sngl_tb() is an Update function that edits an object, while preserving core object attributes. Specifically, this function implements an algorithm to update tibble source local to url single tibble. Function argument x specifies the object to be updated. Argument y provides the object to be updated. The function returns Updated (a tibble).
 }
+\keyword{internal}

@@ -9,6 +9,7 @@
 #' @export 
 #' @importFrom dplyr mutate
 #' @importFrom purrr map2_chr map_chr
+#' @keywords internal
 update_tb_src_loc_to_url_sngl_tb <- function (x, y, local_to_url_vec_chr, urls_vec_chr) 
 {
     updated_tb <- x %>% dplyr::mutate(download_url_chr = purrr::map2_chr(local_file_src_chr, 
