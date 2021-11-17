@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>write files to dataverse dataset — write_fls_to_dv_ds • ready4use</title>
+<title>exhibit — exhibit-Ready4useDyad • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="write files to dataverse dataset — write_fls_to_dv_ds" />
-<meta property="og:description" content="write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list)." />
+<meta property="og:title" content="exhibit — exhibit-Ready4useDyad" />
+<meta property="og:description" content="exhibit method applied to Ready4useDyad
+exhibit method applied to Ready4useDyad" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,81 +120,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>write files to dataverse dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_write.R'><code>R/fn_write.R</code></a></small>
-    <div class="hidden name"><code>write_fls_to_dv_ds.Rd</code></div>
+    <h1>exhibit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/mthd_exhibit.R'><code>R/mthd_exhibit.R</code></a></small>
+    <div class="hidden name"><code>exhibit-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>write_fls_to_dv_ds() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write files to dataverse dataset. The function returns Dataset (a list).</p>
+    <p>exhibit method applied to Ready4useDyad</p>
+<p>exhibit method applied to Ready4useDyad</p>
     </div>
 
-    <pre class="usage"><span class='fu'>write_fls_to_dv_ds</span><span class='op'>(</span>
-  <span class='va'>dss_tb</span>,
-  <span class='va'>dv_nm_1L_chr</span>,
-  <span class='va'>ds_url_1L_chr</span>,
-  wait_time_in_secs_int <span class='op'>=</span> <span class='fl'>5L</span>,
-  make_local_copy_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
-  <span class='va'>parent_dv_dir_1L_chr</span>,
-  <span class='va'>paths_to_dirs_chr</span>,
-  paths_are_rltv_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
-  inc_fl_types_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
-  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>,
-  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>
+    <pre class="usage"><span class='co'># S4 method for Ready4useDyad</span>
+<span class='fu'>exhibit</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  caption_1L_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
+  display_1L_chr <span class='op'>=</span> <span class='st'>"all"</span>,
+  mkdn_tbl_ref_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
+  output_type_1L_chr <span class='op'>=</span> <span class='st'>"HTML"</span>,
+  type_1L_chr <span class='op'>=</span> <span class='st'>"ds"</span>,
+  use_lbls_as_col_nms_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
+  use_rdocx_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
+
+<span class='co'># S4 method for Ready4useDyad</span>
+<span class='fu'>exhibit</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  caption_1L_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
+  display_1L_chr <span class='op'>=</span> <span class='st'>"all"</span>,
+  mkdn_tbl_ref_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
+  output_type_1L_chr <span class='op'>=</span> <span class='st'>"HTML"</span>,
+  type_1L_chr <span class='op'>=</span> <span class='st'>"ds"</span>,
+  use_lbls_as_col_nms_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
+  use_rdocx_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dss_tb</th>
-      <td><p>Datasets (a tibble)</p></td>
+      <th>x</th>
+      <td><p>An object of class Ready4useDyad</p></td>
     </tr>
     <tr>
-      <th>dv_nm_1L_chr</th>
-      <td><p>Dataverse name (a character vector of length one)</p></td>
+      <th>caption_1L_chr</th>
+      <td><p>Caption (a character vector of length one), Default: 'NA'</p></td>
     </tr>
     <tr>
-      <th>ds_url_1L_chr</th>
-      <td><p>Dataset url (a character vector of length one)</p></td>
+      <th>display_1L_chr</th>
+      <td><p>Display (a character vector of length one), Default: 'all'</p></td>
     </tr>
     <tr>
-      <th>wait_time_in_secs_int</th>
-      <td><p>Wait time in secs (an integer vector), Default: 5</p></td>
+      <th>mkdn_tbl_ref_1L_chr</th>
+      <td><p>Markdown table reference (a character vector of length one), Default: ''</p></td>
     </tr>
     <tr>
-      <th>make_local_copy_1L_lgl</th>
-      <td><p>Make local copy (a logical vector of length one), Default: F</p></td>
+      <th>output_type_1L_chr</th>
+      <td><p>Output type (a character vector of length one), Default: 'HTML'</p></td>
     </tr>
     <tr>
-      <th>parent_dv_dir_1L_chr</th>
-      <td><p>Parent dataverse directory (a character vector of length one)</p></td>
+      <th>type_1L_chr</th>
+      <td><p>Type (a character vector of length one), Default: 'ds'</p></td>
     </tr>
     <tr>
-      <th>paths_to_dirs_chr</th>
-      <td><p>Paths to directories (a character vector)</p></td>
+      <th>use_lbls_as_col_nms_1L_lgl</th>
+      <td><p>Use labels as column names (a logical vector of length one), Default: T</p></td>
     </tr>
     <tr>
-      <th>paths_are_rltv_1L_lgl</th>
-      <td><p>Paths are relative (a logical vector of length one), Default: T</p></td>
+      <th>use_rdocx_1L_lgl</th>
+      <td><p>Use rdocx (a logical vector of length one), Default: F</p></td>
     </tr>
     <tr>
-      <th>inc_fl_types_chr</th>
-      <td><p>Include file types (a character vector), Default: 'NA'</p></td>
-    </tr>
-    <tr>
-      <th>key_1L_chr</th>
-      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
-    </tr>
-    <tr>
-      <th>server_1L_chr</th>
-      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
+      <th>...</th>
+      <td><p>Additional arguments</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Dataset (a list)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
