@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class — procure.ready4use_dataverses • ready4use</title>
+<title>depict — depict-Ready4useDyad • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class — procure.ready4use_dataverses" />
-<meta property="og:description" content="procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
-procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value." />
+<meta property="og:title" content="depict — depict-Ready4useDyad" />
+<meta property="og:description" content="depict method applied to Ready4useDyad" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -120,78 +119,69 @@ procure.ready4use_imports() is a procure method that procures data by executing 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/mthd_procure.R'><code>R/mthd_procure.R</code></a></small>
-    <div class="hidden name"><code>procure-methods.Rd</code></div>
+    <h1>depict</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/mthd_depict.R'><code>R/mthd_depict.R</code></a></small>
+    <div class="hidden name"><code>depict-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).</p>
-<p>procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.</p>
+    <p>depict method applied to Ready4useDyad</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procure.ready4use_dataverses</span><span class='op'>(</span>
+    <pre class="usage"><span class='co'># S4 method for Ready4useDyad</span>
+<span class='fu'>depict</span><span class='op'>(</span>
   <span class='va'>x</span>,
-  save_dir_path_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
-  unlink_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
-  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>,
-  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># S4 method for ready4use_dataverses</span>
-<span class='fu'>procure</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  save_dir_path_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
-  unlink_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
-  server_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_SERVER"</span><span class='op'>)</span>,
-  key_1L_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"DATAVERSE_KEY"</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'>procure.ready4use_imports</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>,
-  forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>
-<span class='op'>)</span>
-
-<span class='co'># S4 method for ready4use_imports</span>
-<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span></pre>
+  caption_1L_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
+  display_1L_chr <span class='op'>=</span> <span class='st'>"all"</span>,
+  mkdn_tbl_ref_1L_chr <span class='op'>=</span> <span class='st'>""</span>,
+  output_type_1L_chr <span class='op'>=</span> <span class='st'>"HTML"</span>,
+  type_1L_chr <span class='op'>=</span> <span class='st'>"ds"</span>,
+  use_lbls_as_col_nms_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
+  use_rdocx_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.</p></td>
+      <td><p>An object of class Ready4useDyad</p></td>
     </tr>
     <tr>
-      <th>save_dir_path_1L_chr</th>
-      <td><p>Save directory path (a character vector of length one), Default: ''</p></td>
+      <th>caption_1L_chr</th>
+      <td><p>Caption (a character vector of length one), Default: 'NA'</p></td>
     </tr>
     <tr>
-      <th>unlink_1L_lgl</th>
-      <td><p>Unlink (a logical vector of length one), Default: T</p></td>
+      <th>display_1L_chr</th>
+      <td><p>Display (a character vector of length one), Default: 'all'</p></td>
     </tr>
     <tr>
-      <th>server_1L_chr</th>
-      <td><p>Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")</p></td>
+      <th>mkdn_tbl_ref_1L_chr</th>
+      <td><p>Markdown table reference (a character vector of length one), Default: ''</p></td>
     </tr>
     <tr>
-      <th>key_1L_chr</th>
-      <td><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></td>
+      <th>output_type_1L_chr</th>
+      <td><p>Output type (a character vector of length one), Default: 'HTML'</p></td>
     </tr>
     <tr>
-      <th>inc_script_lgl</th>
-      <td><p>Include script (a logical vector), Default: T</p></td>
+      <th>type_1L_chr</th>
+      <td><p>Type (a character vector of length one), Default: 'ds'</p></td>
     </tr>
     <tr>
-      <th>forced_choice_chr</th>
-      <td><p>Forced choice (a character vector), Default: 'NA'</p></td>
+      <th>use_lbls_as_col_nms_1L_lgl</th>
+      <td><p>Use labels as column names (a logical vector of length one), Default: T</p></td>
+    </tr>
+    <tr>
+      <th>use_rdocx_1L_lgl</th>
+      <td><p>Use rdocx (a logical vector of length one), Default: F</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Data (an output object of multiple potential types)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
