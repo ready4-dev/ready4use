@@ -32,5 +32,7 @@ Arguments for a function that constructs a spatial object.
 \item{\code{overwrite_1L_lgl}}{Overwrite (a logical vector of length one)}
 
 \item{\code{write_1L_lgl}}{Write (a logical vector of length one)}
+
+\item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}
 }}
 
