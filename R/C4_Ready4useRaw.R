@@ -9,13 +9,14 @@
 #' @slot pkg_1L_chr Package (a character vector of length one)
 #' @slot overwrite_1L_lgl Overwrite (a logical vector of length one)
 #' @slot write_1L_lgl Write (a logical vector of length one)
+#' @slot dissemination_1L_chr Dissemination (a character vector of length one)
 #' @name Ready4useRaw-class
 #' @rdname Ready4useRaw-class
 #' @export Ready4useRaw
 #' @exportClass Ready4useRaw
 Ready4useRaw <- methods::setClass("Ready4useRaw",
 contains = "Ready4useFiles",
-slots = c(write_type_1L_chr = "character",merge_itms_chr = "character",raw_fls_dir_1L_chr = "character",pkg_1L_chr = "character",overwrite_1L_lgl = "logical",write_1L_lgl = "logical"),
+slots = c(write_type_1L_chr = "character",merge_itms_chr = "character",raw_fls_dir_1L_chr = "character",pkg_1L_chr = "character",overwrite_1L_lgl = "logical",write_1L_lgl = "logical",dissemination_1L_chr = "character"),
 prototype =  list(write_type_1L_chr = "raw"))
 
 

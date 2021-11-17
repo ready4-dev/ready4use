@@ -11,10 +11,6 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage 
                                            ),
                                            utils::person("Glen", "Wiesner", email = "Glen.Wiesner@vu.edu.au",
                                                          role = c("aut"), comment = c(ORCID = "0000-0002-0071-130X")),
-                                           #person("Alexandra", "Parker", email =  "Alex.Parker@vu.edu.au", role = c("rev"), comment = c(ORCID ="0000-0002-2398-6306")),
-                                           #person("Cathrine", "Mihalopoulos",email = "cathy.mihalopoulos@deakin.edu.au", role = c("rev"), comment = c(ORCID = "0000-0002-7127-9462")),
-                                           #person("Jonathan", "Karnon", email ="Jonathan.Karnon@flinders.edu.au", role = c("rev"), comment =c(ORCID = "0000-0003-3220-2099")),
-                                           #person("Petra","Plencnerova", email = "Petra.Plencnerova@vu.edu.au", role =c("rev"), comment = c(ORCID = "0000-0001-9698-9084")),
                                            utils::person("Orygen", role = c("cph", "fnd")),
                                            utils::person("VicHealth",role = c("fnd")),
                                            utils::person("Victoria University", role =c("fnd"))
@@ -112,7 +108,7 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                slots_ls = list("merge_itms_chr","raw_fls_dir_1L_chr","pkg_1L_chr","overwrite_1L_lgl", "write_1L_lgl") %>% list(), # Cut: "lup_tbs_r4",
                                                pt_ls = list("character","character","character","logical", "logical") %>% list(), # Cut: "ready4class_lookup",
                                                class_desc_chr= "Metadata for dataset(s) to be saved in local directory.",
-                                               parent_class_chr = "Ready4Launch"), # NA_character_ # Cut: ,include_classes = list("ready4class_lookup")
+                                               parent_class_chr = "Ready4Module"), # NA_character_ # Cut: ,include_classes = list("ready4class_lookup")
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Raw",
                                                slots_ls = list("write_type_1L_chr") %>% list(),
@@ -143,12 +139,10 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                slots_ls = list("ds_tb","dictionary_r3") %>% list(), # Change
                                                pt_ls = list("tbl_df","ready4use_dictionary") %>% list(),
                                                class_desc_chr= "A dataset and data dictionary pair.",
-                                               parent_class_chr = "Ready4Launch")
+                                               parent_class_chr = "Ready4Module")
 ) %>%
   ready4class::ready4class_constructor()
 x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
                                                                  constructor_r3 = x_ready4class_constructor) %>%
   ready4pack::ready4pack_manifest()
 x_ready4pack_manifest <- author(x_ready4pack_manifest)
-#ready4fun::write_citation_fl(x_ready4fun_manifest$x_ready4fun_manifest)
-

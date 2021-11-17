@@ -63,3 +63,5 @@
 ^data-raw/TEST_s4_fns/procure\.R$
 ^data-raw/s4_fns/print\.R$
 ^data-raw/s4_fns/depict\.R$
+^data-raw/XX_s4_fns/depict\.R$
+^data-raw/mthd_depict\.R$
