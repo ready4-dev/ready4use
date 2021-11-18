@@ -139,7 +139,36 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                slots_ls = list("ds_tb","dictionary_r3") %>% list(), # Change
                                                pt_ls = list("tbl_df","ready4use_dictionary") %>% list(),
                                                class_desc_chr= "A dataset and data dictionary pair.",
-                                               parent_class_chr = "Ready4Module")
+                                               parent_class_chr = "Ready4Module"),
+  ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                               name_stub_chr = "Ingest",
+                                               slots_ls = list("objects_ls","names_chr","descriptions_chr") %>% list(), # Change
+                                               pt_ls = list("list","character","character") %>% list(),
+                                               class_desc_chr = "Ingested data and descriptive metadata.",
+                                               parent_class_chr = "Ready4Module"),
+  ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                               name_stub_chr = "Repos",
+                                               slots_ls = list("dataverse_nm_1L_chr","dv_ds_metadata_ls",
+                                                               "dv_ds_nm_1L_chr",
+                                                               "dv_url_pfx_1L_chr","rds_objs_nms_chr",
+                                                               "server_1L_chr") %>% list(), # Change
+                                               pt_ls = list("character","list",
+                                                            "character","character","character","character") %>% list(),
+                                               class_desc_chr= "Metadata about online data repositories.",
+                                               parent_class_chr = "Ready4Module"),
+  ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                               name_stub_chr = "Pointer",
+                                               slots_ls = list("a_Ready4usePaths","b_Ready4useRepos") %>% list(), # Change
+                                               pt_ls = list("Ready4Module","Ready4useRepos") %>% list(),
+                                               class_desc_chr = "Metadata on local and remote data storage locations.",
+                                               parent_class_chr = "Ready4Module",
+                                               inc_clss_ls = list("Ready4useRepos"))#,
+  # ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+  #                                              name_stub_chr = "Record",
+  #                                              slots_ls = list("a_Ready4usePointer","b_Ready4useIngest") %>% list(), # Change
+  #                                              pt_ls = list("Ready4usePointer","Ready4useIngest") %>% list(),
+  #                                              class_desc_chr= "Ingested data, descriptive metadata and provenance details.",
+  #                                              parent_class_chr = "Ready4Module")
 ) %>%
   ready4class::ready4class_constructor()
 x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,

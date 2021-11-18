@@ -23,6 +23,8 @@ reference:
   - Ready4useProcessed
   - Ready4useArguments
   - Ready4useDyad
+  - Ready4useIngest
+  - Ready4useRepos
 - title: "Functions"
 - contents:
   - add_labels_from_dictionary
@@ -32,6 +34,7 @@ reference:
 - title: "Methods"
 - contents:
   - exhibit-Ready4useDyad
+  - ingest-Ready4useRepos
   - manufacture.ready4use_dataverses
   - manufacture.ready4use_imports
   - procure.ready4use_dataverses

@@ -34,6 +34,35 @@ get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_
     file_xxx
     return(file_xxx)
 }
+#' get file meta from dataverse list
+#' @description get_fl_meta_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file meta from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Metadata (an output object of multiple potential types).
+#' @param ds_ls Dataset (a list)
+#' @param fl_nm_1L_chr File name (a character vector of length one)
+#' @param nms_chr Names (a character vector), Default: 'NA'
+#' @param type_1L_chr Type (a character vector of length one), Default: 'description'
+#' @return Metadata (an output object of multiple potential types)
+#' @rdname get_fl_meta_from_dv_ls
+#' @export 
+#' @importFrom purrr map_chr
+#' @importFrom tibble as_tibble
+#' @keywords internal
+get_fl_meta_from_dv_ls <- function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_, type_1L_chr = "description") 
+{
+    if (is.na(nms_chr[1])) {
+        nms_chr <- purrr::map_chr(ds_ls$files$filename, ~ifelse(is.na(.x), 
+            .y, .x))
+    }
+    if (fl_nm_1L_chr %in% nms_chr) {
+        metadata_xx <- get_from_lup_obj(ds_ls$files[, names(ds_ls$files) %>% 
+            unique()] %>% tibble::as_tibble(), match_var_nm_1L_chr = "filename", 
+            match_value_xx = fl_nm_1L_chr, target_var_nm_1L_chr = type_1L_chr, 
+            evaluate_1L_lgl = F)
+    }
+    else {
+        metadata_xx <- NA_character_
+    }
+    return(metadata_xx)
+}
 #' get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one)

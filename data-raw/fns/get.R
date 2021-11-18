@@ -26,6 +26,26 @@ get_file_from_dv <- function(ds_ui_1L_chr,
   file_xxx
   return(file_xxx)
 }
+get_fl_meta_from_dv_ls <- function (ds_ls,
+                                    fl_nm_1L_chr,
+                                    nms_chr = NA_character_,
+                                    type_1L_chr = "description")
+{
+  if (is.na(nms_chr[1])) {
+    nms_chr <- purrr::map_chr(ds_ls$files$filename, ~ifelse(is.na(.x), .y, .x))
+  }
+  if (fl_nm_1L_chr %in% nms_chr) {
+    metadata_xx <- get_from_lup_obj(ds_ls$files[, names(ds_ls$files) %>%
+                                                  unique()] %>% tibble::as_tibble(),
+                                    match_var_nm_1L_chr = "filename",
+                                    match_value_xx = fl_nm_1L_chr,
+                                    target_var_nm_1L_chr = type_1L_chr, evaluate_1L_lgl = F)
+  }
+  else {
+    metadata_xx <- NA_character_
+  }
+  return(metadata_xx)
+}
 get_local_path_to_dv_data <- function(save_dir_path_1L_chr,
                                       fl_nm_1L_chr,
                                       save_fmt_1L_chr){

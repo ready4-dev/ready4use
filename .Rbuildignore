@@ -66,3 +66,7 @@
 ^data-raw/XX_s4_fns/depict\.R$
 ^data-raw/mthd_depict\.R$
 ^data-raw/s4_fns/exhibit\.R$
+^data-raw/s4_fns/ingest\.R$
+^data-raw/share\.R$
+^data-raw/ToDo\.R$
+^data-raw/exhibit\.R$

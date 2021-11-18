@@ -19,7 +19,7 @@ Description: ready4use provides a set of tools for general data management
     that you understand what it does and have created a sandpit area in
     which you can safely undertake testing. If you have any questions,
     please contact the authors (matthew.hamilton@orygen.org.au).
-License: GPL-3 + file LICENSE
+License: GPL (>= 3)
 URL: https://ready4-dev.github.io/ready4use/,
     https://github.com/ready4-dev/ready4use,
     https://ready4-dev.github.io/ready4/
