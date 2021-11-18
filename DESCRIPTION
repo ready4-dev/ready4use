@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve, Manage and Share Datasets for Open and Modular Mental
     Health Systems Models
-Version: 0.0.0.9171
+Version: 0.0.0.9172
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -59,7 +59,9 @@ Collate:
     'C4_Ready4useProcessed.R'
     'C4_Ready4useArguments.R'
     'C4_Ready4useDyad.R'
+    'C4_Ready4useIngest.R'
     'C4_Ready4useRaw.R'
+    'C4_Ready4useRepos.R'
     'fn_add.R'
     'fn_assert.R'
     'fn_get.R'
@@ -72,6 +74,7 @@ Collate:
     'imp_fns.R'
     'imp_mthds.R'
     'mthd_exhibit.R'
+    'mthd_ingest.R'
     'mthd_manufacture.R'
     'mthd_procure.R'
     'mthd_renew.R'
