@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors. — is_ready4use_mapes • ready4use</title>
+<title>get file meta from dataverse list — get_fl_meta_from_dv_ls • ready4use</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors. — is_ready4use_mapes" />
-<meta property="og:description" content="Check whether an object is a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors." />
+<meta property="og:title" content="get file meta from dataverse list — get_fl_meta_from_dv_ls" />
+<meta property="og:description" content="get_fl_meta_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file meta from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Metadata (an output object of multiple potential types)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,32 +119,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/C3_ready4use_mapes.R'><code>R/C3_ready4use_mapes.R</code></a></small>
-    <div class="hidden name"><code>is_ready4use_mapes.Rd</code></div>
+    <h1>get file meta from dataverse list</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/ready4use/blob/master/R/fn_get.R'><code>R/fn_get.R</code></a></small>
+    <div class="hidden name"><code>get_fl_meta_from_dv_ls.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check whether an object is a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.</p>
+    <p>get_fl_meta_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file meta from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Metadata (an output object of multiple potential types).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_ready4use_mapes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_fl_meta_from_dv_ls</span><span class='op'>(</span>
+  <span class='va'>ds_ls</span>,
+  <span class='va'>fl_nm_1L_chr</span>,
+  nms_chr <span class='op'>=</span> <span class='cn'>NA_character_</span>,
+  type_1L_chr <span class='op'>=</span> <span class='st'>"description"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object of any type</p></td>
+      <th>ds_ls</th>
+      <td><p>Dataset (a list)</p></td>
+    </tr>
+    <tr>
+      <th>fl_nm_1L_chr</th>
+      <td><p>File name (a character vector of length one)</p></td>
+    </tr>
+    <tr>
+      <th>nms_chr</th>
+      <td><p>Names (a character vector), Default: 'NA'</p></td>
+    </tr>
+    <tr>
+      <th>type_1L_chr</th>
+      <td><p>Type (a character vector of length one), Default: 'description'</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.</p>
+    <p>Metadata (an output object of multiple potential types)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
