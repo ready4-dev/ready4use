@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve, Manage and Share Datasets for Open and Modular Mental
     Health Systems Models
-Version: 0.0.0.9172
+Version: 0.0.0.9173
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -19,7 +19,7 @@ Description: ready4use provides a set of tools for general data management
     that you understand what it does and have created a sandpit area in
     which you can safely undertake testing. If you have any questions,
     please contact the authors (matthew.hamilton@orygen.org.au).
-License: GPL (>= 3)
+License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/ready4use/,
     https://github.com/ready4-dev/ready4use,
     https://ready4-dev.github.io/ready4/
@@ -60,8 +60,10 @@ Collate:
     'C4_Ready4useArguments.R'
     'C4_Ready4useDyad.R'
     'C4_Ready4useIngest.R'
-    'C4_Ready4useRaw.R'
     'C4_Ready4useRepos.R'
+    'C4_Ready4usePointer.R'
+    'C4_Ready4useRaw.R'
+    'C4_Ready4useRecord.R'
     'fn_add.R'
     'fn_assert.R'
     'fn_get.R'
@@ -78,6 +80,7 @@ Collate:
     'mthd_manufacture.R'
     'mthd_procure.R'
     'mthd_renew.R'
+    'mthd_share.R'
     'pkg_ready4use.R'
     'ready4use-package.R'
 Depends: 
