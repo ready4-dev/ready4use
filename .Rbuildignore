@@ -70,3 +70,4 @@
 ^data-raw/share\.R$
 ^data-raw/ToDo\.R$
 ^data-raw/exhibit\.R$
+^data-raw/s4_fns/share\.R$

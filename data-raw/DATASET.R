@@ -162,13 +162,14 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                pt_ls = list("Ready4Module","Ready4useRepos") %>% list(),
                                                class_desc_chr = "Metadata on local and remote data storage locations.",
                                                parent_class_chr = "Ready4Module",
-                                               inc_clss_ls = list("Ready4useRepos"))#,
-  # ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
-  #                                              name_stub_chr = "Record",
-  #                                              slots_ls = list("a_Ready4usePointer","b_Ready4useIngest") %>% list(), # Change
-  #                                              pt_ls = list("Ready4usePointer","Ready4useIngest") %>% list(),
-  #                                              class_desc_chr= "Ingested data, descriptive metadata and provenance details.",
-  #                                              parent_class_chr = "Ready4Module")
+                                               inc_clss_ls = list("Ready4useRepos")),
+  ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                               name_stub_chr = "Record",
+                                               slots_ls = list("a_Ready4usePointer","b_Ready4useIngest") %>% list(), # Change
+                                               pt_ls = list("Ready4usePointer","Ready4useIngest") %>% list(),
+                                               class_desc_chr= "Ingested data, descriptive metadata and provenance details.",
+                                               parent_class_chr = "Ready4Module",
+                                               inc_clss_ls = list("Ready4usePointer","Ready4useIngest"))
 ) %>%
   ready4class::ready4class_constructor()
 x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,

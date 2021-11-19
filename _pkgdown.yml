@@ -25,6 +25,8 @@ reference:
   - Ready4useDyad
   - Ready4useIngest
   - Ready4useRepos
+  - Ready4usePointer
+  - Ready4useRecord
 - title: "Functions"
 - contents:
   - add_labels_from_dictionary
@@ -41,3 +43,4 @@ reference:
   - procure.ready4use_imports
   - renew.ready4use_dictionary
   - renew.ready4use_imports
+  - share-Ready4useRecord
