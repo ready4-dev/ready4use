@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve, Manage and Share Datasets for Open and Modular Mental
     Health Systems Models
-Version: 0.0.0.9176
+Version: 0.0.0.9177
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -27,7 +27,6 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
-    assertthat,
     data.table,
     dataverse,
     dplyr,
@@ -40,7 +39,6 @@ Imports:
     readxl,
     rlang,
     stats,
-    stringi,
     stringr,
     testit,
     testthat,
@@ -85,6 +83,7 @@ Collate:
 Depends: 
     ready4
 Suggests: 
+    ready4show,
     rmarkdown
 Remotes: 
     ready4-dev/ready4
