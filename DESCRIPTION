@@ -1,7 +1,7 @@
 Package: ready4use
 Title: Retrieve, Manage and Share Datasets for Open and Modular Mental
     Health Systems Models
-Version: 0.0.0.9173
+Version: 0.0.0.9174
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -38,7 +38,6 @@ Imports:
     methods,
     purrr,
     readxl,
-    ready4show (>= 0.0.0.9052),
     rlang,
     stats,
     stringi,
@@ -88,5 +87,4 @@ Depends:
 Suggests: 
     rmarkdown
 Remotes: 
-    ready4-dev/ready4,
-    ready4-dev/ready4show
+    ready4-dev/ready4
