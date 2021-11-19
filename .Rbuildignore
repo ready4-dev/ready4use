@@ -71,3 +71,7 @@
 ^data-raw/ToDo\.R$
 ^data-raw/exhibit\.R$
 ^data-raw/s4_fns/share\.R$
+^data-raw/data_management\.Rmd$
+^data-raw/ingest\.R$
+^doc$
+^Meta$

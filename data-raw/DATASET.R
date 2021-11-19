@@ -176,3 +176,4 @@ x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_man
                                                                  constructor_r3 = x_ready4class_constructor) %>%
   ready4pack::ready4pack_manifest()
 x_ready4pack_manifest <- author(x_ready4pack_manifest)
+devtools::build_vignettes()

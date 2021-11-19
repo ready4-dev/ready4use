@@ -1,0 +1,86 @@
+---
+title: "Data Management Tools"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    number_sections: yes
+vignette: >
+  %\VignetteIndexEntry{Data Management Tools}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+```{r echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r }
+library(ready4use)
+```
+Ready4use includes a number of tools for locating, ingesting, inspecting and sharing data for use in open and modular mental health systems models. 
+
+## Specify remote repositories
+The `Ready4useRepos` class can be used to specify details of the dataverse datasets used in your data management workflows.
+
+```{r}
+x <- Ready4useRepos(dataverse_nm_1L_chr = "fakes",
+                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+                    server_1L_chr = "dataverse.harvard.edu")
+```
+
+## Ingest data
+To ingest all the RDS objects in a specified dataverse dataset, use the ingest method. The ingest method returns an object of class `Ready4useRecord` that includes a copy of the above `Ready4useRepos` instance.
+
+```{r}
+x <- ingest(x)
+class(x)
+```
+
+
+## Create a data dyad
+The `Ready4useDyad` class can be used to pair a dataset with its data dictionary. In the below example, we create a `Ready4useDyad` instance `y` using the data we have just ingested (`x`).
+
+```{r}
+y <- Ready4useDyad(ds_tb = x@b_Ready4useIngest@objects_ls$ymh_clinical_tb,
+                   dictionary_r3 = x@b_Ready4useIngest@objects_ls$ymh_clinical_dict_r3)
+```
+
+## Inspecting data
+We can inspect `y` by printing selected information about it to console using the `exhibit` method. If we only wish to see a handful of records, we can pass "head" or "tail" to the `display_1L_chr` argument.
+
+```{r}
+ exhibit(y,
+         display_1L_chr = "head")
+```
+
+By default, exhibit will print the dataset part of the `Ready4useDyad` instance. To see the dictionary, pass "dict" to the `type_1L_chr` argument.
+
+```{r}
+exhibit(y,
+        type_1L_chr = "dict")
+```
+
+## Share data
+To share our new object `y`, we first need to specify a target repository that have write persmissions to, using the `Ready4usePointer` class.
+```{r}
+z <- Ready4usePointer(b_Ready4useRepos = Ready4useRepos(dataverse_nm_1L_chr = "fakes",
+                                                        dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
+                                                        server_1L_chr = "dataverse.harvard.edu"))
+```
+We now add details of the targer repository to `y`, transforming it to an instance of the `Ready4useRecord` class.
+```{r}
+y <- Ready4useRecord(a_Ready4usePointer = z,
+                     b_Ready4useIngest = Ready4useIngest(objects_ls = list(y),
+                                                         names_chr = c("ymh_clinical_dyad_r4"),
+                                                         descriptions_chr = c("An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data")))
+```
+
+We can now post our new Ready4useDyad object to our dataset (https://doi.org/10.7910/DVN/W95KED). If we wish we can publish the updated dataset in the same step, by using the `publish_dv_1L_lgl` argument.
+
+```{r eval = F}
+share(y,
+      key_1L_chr = "ENTER THE API KEY FOR YOUR REPO HERE",
+      publish_dv_1L_lgl = T)
+```
+
+
