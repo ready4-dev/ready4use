@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_fl_meta_from_dv_ls}
 \alias{get_fl_meta_from_dv_ls}
-\title{get file meta from dataverse list}
+\title{Get file meta from dataverse list}
 \usage{
 get_fl_meta_from_dv_ls(
   ds_ls,

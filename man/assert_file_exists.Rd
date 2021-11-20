@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_assert.R
 \name{assert_file_exists}
 \alias{assert_file_exists}
-\title{assert file exists}
+\title{Assert file exists}
 \usage{
 assert_file_exists(x)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_ds_to_dv_repo}
 \alias{add_ds_to_dv_repo}
-\title{add dataset to dataverse repository}
+\title{Add dataset to dataverse repository}
 \usage{
 add_ds_to_dv_repo(
   dv_1L_chr,

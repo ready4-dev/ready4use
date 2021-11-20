@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_r3_from_dv_csv}
 \alias{get_r3_from_dv_csv}
-\title{get ready4 S3 from dataverse comma separated variables file}
+\title{Get ready4 S3 from dataverse comma separated variables file}
 \usage{
 get_r3_from_dv_csv(
   file_name_chr,

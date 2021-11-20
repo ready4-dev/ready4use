@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_files_to_dv}
 \alias{add_files_to_dv}
-\title{add files to dataverse}
+\title{Add files to dataverse}
 \usage{
 add_files_to_dv(
   files_tb,

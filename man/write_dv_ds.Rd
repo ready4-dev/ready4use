@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_write.R
 \name{write_dv_ds}
 \alias{write_dv_ds}
-\title{write dataverse dataset}
+\title{Write dataverse dataset}
 \usage{
 write_dv_ds(
   ds_meta_ls,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_read.R
 \name{read_import_from_csv}
 \alias{read_import_from_csv}
-\title{read import from comma separated variables file}
+\title{Read import from comma separated variables file}
 \usage{
 read_import_from_csv(file_ref_chr, is_url_1L_lgl = F)
 }

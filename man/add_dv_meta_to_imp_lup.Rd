@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_dv_meta_to_imp_lup}
 \alias{add_dv_meta_to_imp_lup}
-\title{add dataverse meta to import lookup table}
+\title{Add dataverse meta to import lookup table}
 \usage{
 add_dv_meta_to_imp_lup(
   imp_lup,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_write.R
 \name{write_paired_ds_fls_to_dv}
 \alias{write_paired_ds_fls_to_dv}
-\title{write paired dataset files to dataverse}
+\title{Write paired dataset files to dataverse}
 \usage{
 write_paired_ds_fls_to_dv(
   ds_tb,

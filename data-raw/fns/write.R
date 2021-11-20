@@ -47,32 +47,32 @@ write_dv_ds <- function(ds_meta_ls,
                               server_1L_chr = server_1L_chr)
   return(ds_ls)
 }
-write_dv_fl_to_loc <- function(ds_ui_1L_chr,
-                               fl_nm_1L_chr = NA_character_,
-                               fl_id_1L_int = NA_integer_,
-                               repo_fl_fmt_1L_chr,
-                               key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
-                               server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
-                               save_type_1L_chr = "original",
-                               dest_path_1L_chr){
-  lifecycle::deprecate_soft("0.0.0.9149", "write_dv_fl_to_loc()", "ready4::write_dv_fl_to_loc()")
-  ds_ls <- dataverse::get_dataset(ds_ui_1L_chr)
-  if(ds_ls$versionState != "DRAFT"){
-    if(!is.na(fl_id_1L_int)){
-      ds_ui_1L_chr <- NULL
-    }
-    writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int),
-                                        paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
-                                        fl_id_1L_int),
-                                 dataset = ds_ui_1L_chr,
-                                 format = save_type_1L_chr,
-                                 key = key_1L_chr,
-                                 server = server_1L_chr),
-             dest_path_1L_chr)
-  }else{
-    warning("Cannot write local copy of files from private Dataverse repo")
-  }
-}
+# write_dv_fl_to_loc <- function(ds_ui_1L_chr,
+#                                fl_nm_1L_chr = NA_character_,
+#                                fl_id_1L_int = NA_integer_,
+#                                repo_fl_fmt_1L_chr,
+#                                key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+#                                server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
+#                                save_type_1L_chr = "original",
+#                                dest_path_1L_chr){
+#   lifecycle::deprecate_soft("0.0.0.9149", "write_dv_fl_to_loc()", "ready4::write_dv_fl_to_loc()")
+#   ds_ls <- dataverse::get_dataset(ds_ui_1L_chr)
+#   if(ds_ls$versionState != "DRAFT"){
+#     if(!is.na(fl_id_1L_int)){
+#       ds_ui_1L_chr <- NULL
+#     }
+#     writeBin(dataverse::get_file(ifelse(is.na(fl_id_1L_int),
+#                                         paste0(fl_nm_1L_chr,repo_fl_fmt_1L_chr),
+#                                         fl_id_1L_int),
+#                                  dataset = ds_ui_1L_chr,
+#                                  format = save_type_1L_chr,
+#                                  key = key_1L_chr,
+#                                  server = server_1L_chr),
+#              dest_path_1L_chr)
+#   }else{
+#     warning("Cannot write local copy of files from private Dataverse repo")
+#   }
+# }
 write_fls_to_dv_ds <- function(dss_tb,
                                dv_nm_1L_chr,
                                ds_url_1L_chr,

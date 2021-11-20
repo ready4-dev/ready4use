@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_update.R
 \name{update_tb_src_loc_to_url_sngl_tb}
 \alias{update_tb_src_loc_to_url_sngl_tb}
-\title{update tibble source local to url single tibble}
+\title{Update tibble source local to url single tibble}
 \usage{
 update_tb_src_loc_to_url_sngl_tb(x, y, local_to_url_vec_chr, urls_vec_chr)
 }

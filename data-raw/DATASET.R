@@ -19,7 +19,8 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage 
                                                         "https://github.com/ready4-dev/ready4use",
                                                         "https://ready4-dev.github.io/ready4/"))
 x_ready4fun_manifest <- pkg_desc_ls %>%
-  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",suggests_chr = "rmarkdown"),
+  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
+                                                                       suggests_chr = c("rmarkdown","ready4show")),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
                            custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_labels_from_dictionary",
@@ -176,4 +177,4 @@ x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_man
                                                                  constructor_r3 = x_ready4class_constructor) %>%
   ready4pack::ready4pack_manifest()
 x_ready4pack_manifest <- author(x_ready4pack_manifest)
-devtools::build_vignettes()
+# devtools::build_vignettes()

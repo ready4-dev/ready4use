@@ -5,7 +5,7 @@
 \alias{procure,ready4use_dataverses-method}
 \alias{procure.ready4use_imports}
 \alias{procure,ready4use_imports-method}
-\title{procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class}
+\title{Procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class}
 \usage{
 procure.ready4use_dataverses(
   x,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_file_from_dv}
 \alias{get_file_from_dv}
-\title{get file from dataverse}
+\title{Get file from dataverse}
 \usage{
 get_file_from_dv(
   ds_ui_1L_chr,

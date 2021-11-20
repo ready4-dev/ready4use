@@ -1,4 +1,4 @@
-#' assert directory exists
+#' Assert directory exists
 #' @description assert_dir_exists() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert directory exists. Function argument x specifies the object on which assert validation checks are to be performed. The function is called for its side effects and does not return a value.
 #' @param x An object
 #' @return NULL
@@ -11,7 +11,7 @@ assert_dir_exists <- function (x)
     testit::assert("Not a valid path to an existing directory.", 
         dir.exists(x))
 }
-#' assert file exists
+#' Assert file exists
 #' @description assert_file_exists() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert file exists. Function argument x specifies the object on which assert validation checks are to be performed. The function is called for its side effects and does not return a value.
 #' @param x An object
 #' @return NULL
@@ -23,7 +23,7 @@ assert_file_exists <- function (x)
 {
     testit::assert("Not a valid path to an existing file.", file.exists(x))
 }
-#' assert matches character vector
+#' Assert matches character vector
 #' @description assert_matches_chr() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert matches character vector. Function argument x specifies the object on which assert validation checks are to be performed. Argument match_chr provides the object containing values used for validation tests. The function is called for its side effects and does not return a value.
 #' @param x An object
 #' @param match_chr Match (a character vector)
@@ -38,7 +38,7 @@ assert_matches_chr <- function (x, match_chr)
     testit::assert(paste0("Value of character vector does not match '", 
         match_chr, "'"), x == match_chr)
 }
-#' assert single row tibble
+#' Assert single row tibble
 #' @description assert_single_row_tb() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert single row tibble. Function argument x specifies the object on which assert validation checks are to be performed. The function is called for its side effects and does not return a value.
 #' @param x An object
 #' @return NULL
