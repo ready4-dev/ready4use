@@ -2,12 +2,18 @@
 #' ingest
 #' @name ingest-Ready4useRepos
 #' @description ingest method applied to Ready4useRepos
-
-#' @return NULL
+#' @param x An object of class Ready4useRepos
+#' @param idcs_int Idcs (an integer vector), Default: NA
+#' @param key_1L_chr Key (a character vector of length one), Default: NULL
+#' @return X (Ingested data, descriptive metadata and provenance details.)
 #' @rdname ingest-methods
 #' @aliases ingest,Ready4useRepos-method
 #' @export 
-#' @importFrom ready4 ingest
+#' @importFrom dataverse get_dataset
+#' @importFrom purrr map_chr keep map_lgl map
+#' @importFrom stringi stri_replace_all_regex
+#' @importFrom ready4 get_rds_from_dv ingest
+#' @importFrom stats setNames
 methods::setMethod("ingest", "Ready4useRepos", function (x, idcs_int = NA_integer_, key_1L_chr = NULL) 
 {
     if (identical(x@dv_ds_metadata_ls[[1]], list())) {

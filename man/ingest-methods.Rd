@@ -7,6 +7,16 @@
 \usage{
 \S4method{ingest}{Ready4useRepos}(x, idcs_int = NA_integer_, key_1L_chr = NULL)
 }
+\arguments{
+\item{x}{An object of class Ready4useRepos}
+
+\item{idcs_int}{Idcs (an integer vector), Default: NA}
+
+\item{key_1L_chr}{Key (a character vector of length one), Default: NULL}
+}
+\value{
+X (Ingested data, descriptive metadata and provenance details.)
+}
 \description{
 ingest method applied to Ready4useRepos
 }

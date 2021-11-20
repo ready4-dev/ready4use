@@ -12,6 +12,18 @@
   publish_dv_1L_lgl = F
 )
 }
+\arguments{
+\item{x}{An object of class Ready4useRecord}
+
+\item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'dataverse'}
+
+\item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: F}
+}
+\value{
+x (An object of class Ready4useRecord)
+}
 \description{
 share method applied to Ready4useRecord
 }

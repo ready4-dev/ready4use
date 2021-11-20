@@ -17,6 +17,25 @@
   ...
 )
 }
+\arguments{
+\item{x}{An object of class Ready4useDyad}
+
+\item{caption_1L_chr}{Caption (a character vector of length one), Default: 'NA'}
+
+\item{display_1L_chr}{Display (a character vector of length one), Default: 'all'}
+
+\item{mkdn_tbl_ref_1L_chr}{Markdown table reference (a character vector of length one), Default: ''}
+
+\item{output_type_1L_chr}{Output type (a character vector of length one), Default: 'HTML'}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'ds'}
+
+\item{use_lbls_as_col_nms_1L_lgl}{Use labels as column names (a logical vector of length one), Default: T}
+
+\item{use_rdocx_1L_lgl}{Use rdocx (a logical vector of length one), Default: F}
+
+\item{...}{Additional arguments}
+}
 \description{
 exhibit method applied to Ready4useDyad
 }
