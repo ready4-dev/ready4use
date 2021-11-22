@@ -143,8 +143,10 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                parent_class_chr = "Ready4Module"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Ingest",
-                                               slots_ls = list("objects_ls","names_chr","descriptions_chr") %>% list(), # Change
-                                               pt_ls = list("list","character","character") %>% list(),
+                                               slots_ls = list("objects_ls",#"names_chr",
+                                                               "descriptions_chr") %>% list(), # Change
+                                               pt_ls = list("list",#"character",
+                                                            "character") %>% list(),
                                                class_desc_chr = "Ingested data and descriptive metadata.",
                                                parent_class_chr = "Ready4Module"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,

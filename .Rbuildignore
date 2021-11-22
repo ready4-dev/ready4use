@@ -75,3 +75,4 @@
 ^data-raw/ingest\.R$
 ^doc$
 ^Meta$
+^data-raw/s4_fns/renew\.R$

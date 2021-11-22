@@ -8,8 +8,7 @@ share_Ready4useRecord <- function(x,
     server_1L_chr <- ifelse("server_1L_chr" %in% slotNames(x@a_Ready4usePointer@b_Ready4useRepos),
                             x@a_Ready4usePointer@b_Ready4useRepos@dv_server_1L_chr,
                             Sys.getenv("DATAVERSE_SERVER"))
-    ds_ls <- ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>%
-                                            stats::setNames(x@b_Ready4useIngest@names_chr),
+    ds_ls <- ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls, #%>% stats::setNames(x@b_Ready4useIngest@names_chr),
                                           descriptions_chr = x@b_Ready4useIngest@descriptions_chr,
                                           ds_url_1L_chr = x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr,
                                           key_1L_chr = key_1L_chr,
@@ -19,8 +18,7 @@ share_Ready4useRecord <- function(x,
   }
   if(type_1L_chr == "gh"){
     if(!identical(x@gh_repo_1L_chr,NA_character_)){
-      ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>%
-                                     stats::setNames(x@b_Ready4useIngest@names_chr),
+      ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls, #%>% stats::setNames(x@b_Ready4useIngest@names_chr),
                                    descriptions_chr = NULL,
                                    ds_url_1L_chr = character(0),
                                    piggyback_desc_1L_chr = gh_repo_desc_1L_chr,

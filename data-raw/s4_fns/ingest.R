@@ -65,7 +65,7 @@ ingest_Ready4useRepos <- function(x,
     }
     }
     x_Ready4useIngest <- Ready4useIngest(objects_ls = ingest_ls,
-                                         names_chr = names(ingest_ls),
+                                         #names_chr = names(ingest_ls),
                                          descriptions_chr = descriptions_chr)
     x_Ready4useRecord <- Ready4useRecord(Ready4usePointer(b_Ready4useRepos = x),
                                          b_Ready4useIngest = x_Ready4useIngest)

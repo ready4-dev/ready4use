@@ -13,8 +13,6 @@ Ingested data and descriptive metadata.
 \describe{
 \item{\code{objects_ls}}{Objects (a list)}
 
-\item{\code{names_chr}}{Names (a character vector)}
-
 \item{\code{descriptions_chr}}{Descriptions (a character vector)}
 
 \item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}

@@ -41,6 +41,7 @@ reference:
   - manufacture.ready4use_imports
   - procure.ready4use_dataverses
   - procure.ready4use_imports
+  - renew-Ready4useDyad
   - renew.ready4use_dictionary
   - renew.ready4use_imports
   - share-Ready4useRecord

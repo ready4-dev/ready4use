@@ -13,7 +13,6 @@
 #' @aliases share,Ready4useRecord-method
 #' @export 
 #' @importFrom ready4 write_env_objs_to_dv share
-#' @importFrom stats setNames
 methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl = T, gh_repo_desc_1L_chr = "Supplementary Files", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), publish_dv_1L_lgl = F, 
     type_1L_chr = "dataverse") 
@@ -22,8 +21,8 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
         server_1L_chr <- ifelse("server_1L_chr" %in% slotNames(x@a_Ready4usePointer@b_Ready4useRepos), 
             x@a_Ready4usePointer@b_Ready4useRepos@dv_server_1L_chr, 
             Sys.getenv("DATAVERSE_SERVER"))
-        ds_ls <- ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>% 
-            stats::setNames(x@b_Ready4useIngest@names_chr), descriptions_chr = x@b_Ready4useIngest@descriptions_chr, 
+        ds_ls <- ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls, 
+            descriptions_chr = x@b_Ready4useIngest@descriptions_chr, 
             ds_url_1L_chr = x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr, 
             key_1L_chr = key_1L_chr, publish_dv_1L_lgl = publish_dv_1L_lgl, 
             server_1L_chr = server_1L_chr)
@@ -31,8 +30,7 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
     }
     if (type_1L_chr == "gh") {
         if (!identical(x@gh_repo_1L_chr, NA_character_)) {
-            ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>% 
-                stats::setNames(x@b_Ready4useIngest@names_chr), 
+            ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls, 
                 descriptions_chr = NULL, ds_url_1L_chr = character(0), 
                 piggyback_desc_1L_chr = gh_repo_desc_1L_chr, 
                 piggyback_tag_1L_chr = x@gh_tag_1L_chr, piggyback_to_1L_chr = character(0), 
