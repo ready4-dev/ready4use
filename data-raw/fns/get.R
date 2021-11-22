@@ -26,6 +26,18 @@ get_file_from_dv <- function(ds_ui_1L_chr,
   file_xxx
   return(file_xxx)
 }
+get_fl_nms_of_types <- function(fl_nms_chr,
+                                types_chr){
+  subset_of_fl_nms_chr <- purrr::keep(fl_nms_chr,
+                                      ~{
+                                        fl_nm_1L_chr <- .x
+                                        types_chr %>%
+                                          purrr::map_lgl(~endsWith(fl_nm_1L_chr,
+                                                                   .x)) %>%
+                                          any()
+                                      })
+  return(subset_of_fl_nms_chr)
+}
 get_fl_meta_from_dv_ls <- function (ds_ls,
                                     fl_nm_1L_chr,
                                     nms_chr = NA_character_,

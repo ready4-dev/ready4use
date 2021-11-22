@@ -63,6 +63,24 @@ get_fl_meta_from_dv_ls <- function (ds_ls, fl_nm_1L_chr, nms_chr = NA_character_
     }
     return(metadata_xx)
 }
+#' Get file names of types
+#' @description get_fl_nms_of_types() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file names of types. Function argument fl_nms_chr specifies the where to look for the required object. The function returns Subset of file names (a character vector).
+#' @param fl_nms_chr File names (a character vector)
+#' @param types_chr Types (a character vector)
+#' @return Subset of file names (a character vector)
+#' @rdname get_fl_nms_of_types
+#' @export 
+#' @importFrom purrr keep map_lgl
+#' @keywords internal
+get_fl_nms_of_types <- function (fl_nms_chr, types_chr) 
+{
+    subset_of_fl_nms_chr <- purrr::keep(fl_nms_chr, ~{
+        fl_nm_1L_chr <- .x
+        types_chr %>% purrr::map_lgl(~endsWith(fl_nm_1L_chr, 
+            .x)) %>% any()
+    })
+    return(subset_of_fl_nms_chr)
+}
 #' Get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get local path to dataverse data. Function argument save_dir_path_1L_chr specifies the where to look for the required object. The function returns Path (a character vector).
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one)

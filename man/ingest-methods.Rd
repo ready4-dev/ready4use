@@ -5,7 +5,7 @@
 \alias{ingest,Ready4useRepos-method}
 \title{ingest}
 \usage{
-\S4method{ingest}{Ready4useRepos}(x, idcs_int = NA_integer_, key_1L_chr = NULL)
+\S4method{ingest}{Ready4useRepos}(x, idcs_int = NA_integer_, key_1L_chr = NULL, type_1L_chr = "R")
 }
 \arguments{
 \item{x}{An object of class Ready4useRepos}
@@ -13,6 +13,8 @@
 \item{idcs_int}{Idcs (an integer vector), Default: NA}
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: NULL}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'R'}
 }
 \value{
 X (Ingested data, descriptive metadata and provenance details.)

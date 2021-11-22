@@ -20,7 +20,7 @@ library(ready4use)
 Ready4use includes a number of tools for locating, ingesting, inspecting and sharing data for use in open and modular mental health systems models. 
 
 ## Specify remote repositories
-The `Ready4useRepos` class can be used to specify details of the dataverse datasets used in your data management workflows.
+The `Ready4useRepos` class can be used to specify details of the data repositories used in your data management workflows. 
 
 ```{r}
 x <- Ready4useRepos(dataverse_nm_1L_chr = "fakes",
@@ -29,7 +29,7 @@ x <- Ready4useRepos(dataverse_nm_1L_chr = "fakes",
 ```
 
 ## Ingest data
-To ingest all the RDS objects in a specified dataverse dataset, use the ingest method. The ingest method returns an object of class `Ready4useRecord` that includes a copy of the above `Ready4useRepos` instance.
+To ingest all the RDS objects in a specified dataverse dataset, use the `ingest` method. The `ingest` method transforms `x` into an object of class `Ready4useRecord`.
 
 ```{r}
 x <- ingest(x)

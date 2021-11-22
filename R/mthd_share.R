@@ -3,21 +3,24 @@
 #' @name share-Ready4useRecord
 #' @description share method applied to Ready4useRecord
 #' @param x An object of class Ready4useRecord
+#' @param gh_prerelease_1L_lgl Github prerelease (a logical vector of length one), Default: T
+#' @param gh_repo_desc_1L_chr Github repository description (a character vector of length one), Default: 'Supplementary Files'
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
-#' @param type_1L_chr Type (a character vector of length one), Default: 'dataverse'
 #' @param publish_dv_1L_lgl Publish dataverse (a logical vector of length one), Default: F
+#' @param type_1L_chr Type (a character vector of length one), Default: 'dataverse'
 #' @return x (An object of class Ready4useRecord)
 #' @rdname share-methods
 #' @aliases share,Ready4useRecord-method
 #' @export 
 #' @importFrom ready4 write_env_objs_to_dv share
 #' @importFrom stats setNames
-methods::setMethod("share", "Ready4useRecord", function (x, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), type_1L_chr = "dataverse", 
-    publish_dv_1L_lgl = F) 
+methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl = T, gh_repo_desc_1L_chr = "Supplementary Files", 
+    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), publish_dv_1L_lgl = F, 
+    type_1L_chr = "dataverse") 
 {
     if (type_1L_chr == "dataverse") {
         server_1L_chr <- ifelse("server_1L_chr" %in% slotNames(x@a_Ready4usePointer@b_Ready4useRepos), 
-            x@a_Ready4usePointer@b_Ready4useRepos@server_1L_chr, 
+            x@a_Ready4usePointer@b_Ready4useRepos@dv_server_1L_chr, 
             Sys.getenv("DATAVERSE_SERVER"))
         ds_ls <- ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>% 
             stats::setNames(x@b_Ready4useIngest@names_chr), descriptions_chr = x@b_Ready4useIngest@descriptions_chr, 
@@ -25,6 +28,16 @@ methods::setMethod("share", "Ready4useRecord", function (x, key_1L_chr = Sys.get
             key_1L_chr = key_1L_chr, publish_dv_1L_lgl = publish_dv_1L_lgl, 
             server_1L_chr = server_1L_chr)
         x@dv_ds_metadata_ls <- list(ds_ls = ds_ls)
+    }
+    if (type_1L_chr == "gh") {
+        if (!identical(x@gh_repo_1L_chr, NA_character_)) {
+            ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls %>% 
+                stats::setNames(x@b_Ready4useIngest@names_chr), 
+                descriptions_chr = NULL, ds_url_1L_chr = character(0), 
+                piggyback_desc_1L_chr = gh_repo_desc_1L_chr, 
+                piggyback_tag_1L_chr = x@gh_tag_1L_chr, piggyback_to_1L_chr = character(0), 
+                prerelease_1L_lgl = x@gh_repo_1L_chr)
+        }
     }
     return(x)
 })

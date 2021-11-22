@@ -11,17 +11,21 @@ Metadata about online data repositories.
 \section{Slots}{
 
 \describe{
-\item{\code{dataverse_nm_1L_chr}}{Dataverse name (a character vector of length one)}
+\item{\code{dv_nm_1L_chr}}{Dataverse name (a character vector of length one)}
 
 \item{\code{dv_ds_metadata_ls}}{Dataverse dataset metadata (a list)}
 
 \item{\code{dv_ds_nm_1L_chr}}{Dataverse dataset name (a character vector of length one)}
 
+\item{\code{dv_server_1L_chr}}{Dataverse server (a character vector of length one)}
+
 \item{\code{dv_url_pfx_1L_chr}}{Dataverse url prefix (a character vector of length one)}
 
-\item{\code{rds_objs_nms_chr}}{Rds objects names (a character vector)}
+\item{\code{fl_nms_chr}}{File names (a character vector)}
 
-\item{\code{server_1L_chr}}{Server (a character vector of length one)}
+\item{\code{gh_repo_1L_chr}}{Github repository (a character vector of length one)}
+
+\item{\code{gh_tag_1L_chr}}{Github tag (a character vector of length one)}
 
 \item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}
 }}

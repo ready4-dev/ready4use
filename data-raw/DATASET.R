@@ -19,8 +19,8 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage 
                                                         "https://github.com/ready4-dev/ready4use",
                                                         "https://ready4-dev.github.io/ready4/"))
 x_ready4fun_manifest <- pkg_desc_ls %>%
-  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4show",
-                                                                       suggests_chr = c("rmarkdown","ready4show")),
+  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
+                                                                       suggests_chr = c("rmarkdown")),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
                            custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_labels_from_dictionary",
@@ -149,12 +149,13 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                parent_class_chr = "Ready4Module"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Repos",
-                                               slots_ls = list("dataverse_nm_1L_chr","dv_ds_metadata_ls",
-                                                               "dv_ds_nm_1L_chr",
-                                                               "dv_url_pfx_1L_chr","rds_objs_nms_chr",
-                                                               "server_1L_chr") %>% list(), # Change
+                                               slots_ls = list("dv_nm_1L_chr","dv_ds_metadata_ls",
+                                                               "dv_ds_nm_1L_chr","dv_server_1L_chr",
+                                                               "dv_url_pfx_1L_chr","fl_nms_chr",
+                                                               "gh_repo_1L_chr","gh_tag_1L_chr"
+                                                               ) %>% list(), # Change
                                                pt_ls = list("character","list",
-                                                            "character","character","character","character") %>% list(),
+                                                            "character","character","character","character","character","character") %>% list(),
                                                class_desc_chr= "Metadata about online data repositories.",
                                                parent_class_chr = "Ready4Module"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,

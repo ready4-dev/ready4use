@@ -7,19 +7,25 @@
 \usage{
 \S4method{share}{Ready4useRecord}(
   x,
+  gh_prerelease_1L_lgl = T,
+  gh_repo_desc_1L_chr = "Supplementary Files",
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
-  type_1L_chr = "dataverse",
-  publish_dv_1L_lgl = F
+  publish_dv_1L_lgl = F,
+  type_1L_chr = "dataverse"
 )
 }
 \arguments{
 \item{x}{An object of class Ready4useRecord}
 
+\item{gh_prerelease_1L_lgl}{Github prerelease (a logical vector of length one), Default: T}
+
+\item{gh_repo_desc_1L_chr}{Github repository description (a character vector of length one), Default: 'Supplementary Files'}
+
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'dataverse'}
-
 \item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: F}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'dataverse'}
 }
 \value{
 x (An object of class Ready4useRecord)
