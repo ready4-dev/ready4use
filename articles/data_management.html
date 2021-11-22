@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9184</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9189</span>
       </span>
     </div>
 
@@ -106,18 +106,18 @@
 <div id="specify-remote-repositories" class="section level2">
 <h2 class="hasAnchor">
 <a href="#specify-remote-repositories" class="anchor"></a>Specify remote repositories</h2>
-<p>The <code>Ready4useRepos</code> class can be used to specify details of the dataverse datasets used in your data management workflows.</p>
+<p>The <code>Ready4useRepos</code> class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a <code>Ready4useRepos</code> class are Dataverse datasets and GitHub releases. <code>Ready4useRepos</code> methods for download / upload extend tools from the <code>dataverse</code> and <code>piggyback</code> packages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dataverse_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                     dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/HJXYKQ"</span>,
-                    server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span></code></pre></div>
+                    dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="ingest-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ingest-data" class="anchor"></a>Ingest data</h2>
-<p>To ingest all the RDS objects in a specified dataverse dataset, use the ingest method. The ingest method returns an object of class <code>Ready4useRecord</code> that includes a copy of the above <code>Ready4useRepos</code> instance.</p>
+<p>To ingest all the RDS objects in a specified dataverse dataset, use the <code>ingest</code> method. The <code>ingest</code> method transforms <code>x</code> into an object of class <code>Ready4useRecord</code>, which contains both the ingested data and a <code>Ready4useRepos</code> instance describing the source repositor(y|ies).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ingest</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html">ingest</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Ready4useRecord"
 ## attr(,"package")
@@ -126,17 +126,22 @@
 <div id="create-a-data-dyad" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-data-dyad" class="anchor"></a>Create a data dyad</h2>
-<p>The <code>Ready4useDyad</code> class can be used to pair a dataset with its data dictionary. In the below example, we create a <code>Ready4useDyad</code> instance <code>y</code> using the data we have just ingested (<code>x</code>).</p>
+<p>The <code>Ready4useDyad</code> class can be used to pair a dataset with its data dictionary. In the below example, we create a <code>Ready4useDyad</code> instance <code>y</code> using some of the data we have just ingested (<code>x</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">x</span><span class="op">@</span><span class="va">b_Ready4useIngest</span><span class="op">@</span><span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_tb</span>,
                    dictionary_r3 <span class="op">=</span> <span class="va">x</span><span class="op">@</span><span class="va">b_Ready4useIngest</span><span class="op">@</span><span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_dict_r3</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="inspecting-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inspecting-data" class="anchor"></a>Inspecting data</h2>
-<p>We can inspect <code>y</code> by printing selected information about it to console using the <code>exhibit</code> method. If we only wish to see a handful of records, we can pass “head” or “tail” to the <code>display_1L_chr</code> argument.</p>
+<p>The dictionary slot of <code>y</code> is an instance of the <code>ready4use_dictionary</code> class.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu">exhibit</span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">@</span><span class="va">dictionary_r3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "ready4use_dictionary" "tbl_df"               "tbl"                 
+## [4] "data.frame"</code></pre>
+</div>
+<div id="inspect-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inspect-data" class="anchor"></a>Inspect data</h2>
+<p>We can inspect <code>y</code> by printing selected information about it to console using the <code>exhibit</code> method. If we only wish to see the first or last few records, we can pass “head” or “tail” to the <code>display_1L_chr</code> argument.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
          display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover">
 <caption>
@@ -1067,9 +1072,949 @@ Anxiety
 </td>
 </tr></tfoot>
 </table>
-<p>By default, exhibit will print the dataset part of the <code>Ready4useDyad</code> instance. To see the dictionary, pass “dict” to the <code>type_1L_chr</code> argument.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">exhibit</span><span class="op">(</span><span class="va">y</span>,
+<p>The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the <code>renew</code> method.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">y</span>,
+           type_1L_chr <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
+         display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
+<table class="table  lightable-paper lightable-hover">
+<caption>
+Dataset
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Unique client identifier
+</th>
+<th style="text-align:right;">
+Round of data collection
+</th>
+<th style="text-align:right;">
+Date of data collection
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+Gender
+</th>
+<th style="text-align:right;">
+Sex at birth
+</th>
+<th style="text-align:left;">
+Sexual orientation
+</th>
+<th style="text-align:right;">
+Aboriginal or Torres Strait Islander
+</th>
+<th style="text-align:right;">
+Country Of birth
+</th>
+<th style="text-align:right;">
+Speaks English at home
+</th>
+<th style="text-align:right;">
+Native English speaker
+</th>
+<th style="text-align:right;">
+Education and employment status
+</th>
+<th style="text-align:left;">
+Relationship status
+</th>
+<th style="text-align:right;">
+Service centre name
+</th>
+<th style="text-align:right;">
+Primary diagnosis
+</th>
+<th style="text-align:right;">
+Clinical stage
+</th>
+<th style="text-align:right;">
+Kessler Psychological Distress Scale (6 Dimension)
+</th>
+<th style="text-align:right;">
+Patient Health Questionnaire
+</th>
+<th style="text-align:left;">
+Behavioural Activation for Depression Scale
+</th>
+<th style="text-align:right;">
+Generalised Anxiety Disorder Scale
+</th>
+<th style="text-align:right;">
+Overall Anxiety Severity and Impairment Scale
+</th>
+<th style="text-align:right;">
+Screen for Child Anxiety Related Disorders
+</th>
+<th style="text-align:right;">
+Social and Occupational Functioning Assessment Scale
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 1
+</th>
+<th style="text-align:left;">
+Assessment of Quality of Life (6 Dimension) question 2
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 3
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 4
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 5
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 6
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 7
+</th>
+<th style="text-align:left;">
+Assessment of Quality of Life (6 Dimension) question 8
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 9
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 10
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 11
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 12
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 13
+</th>
+<th style="text-align:left;">
+Assessment of Quality of Life (6 Dimension) question 14
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 15
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 16
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 17
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 18
+</th>
+<th style="text-align:right;">
+Assessment of Quality of Life (6 Dimension) question 19
+</th>
+<th style="text-align:left;">
+Assessment of Quality of Life (6 Dimension) question 20
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Participant_1
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-03-22
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:left;">
+Heterosexual
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+Australia
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Not studying or working
+</td>
+<td style="text-align:left;">
+In a relationship
+</td>
+<td style="text-align:right;">
+Southport
+</td>
+<td style="text-align:right;">
+Other
+</td>
+<td style="text-align:right;">
+0-1a
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participant_2
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-06-15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:left;">
+Heterosexual
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Other
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+Studying only
+</td>
+<td style="text-align:left;">
+In a relationship
+</td>
+<td style="text-align:right;">
+Regional Centre
+</td>
+<td style="text-align:right;">
+Anxiety
+</td>
+<td style="text-align:right;">
+0-1a
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participant_3
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-08-20
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+Studying only
+</td>
+<td style="text-align:left;">
+Not in a relationship
+</td>
+<td style="text-align:right;">
+Canberra
+</td>
+<td style="text-align:right;">
+Anxiety
+</td>
+<td style="text-align:right;">
+1b
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participant_4
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-05-23
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:right;">
+Female
+</td>
+<td style="text-align:left;">
+Heterosexual
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Other
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+Not studying or working
+</td>
+<td style="text-align:left;">
+In a relationship
+</td>
+<td style="text-align:right;">
+Southport
+</td>
+<td style="text-align:right;">
+Depression and Anxiety
+</td>
+<td style="text-align:right;">
+2-4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participant_5
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-04-05
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:left;">
+Heterosexual
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Other
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+Not studying or working
+</td>
+<td style="text-align:left;">
+Not in a relationship
+</td>
+<td style="text-align:right;">
+Southport
+</td>
+<td style="text-align:right;">
+Depression and Anxiety
+</td>
+<td style="text-align:right;">
+0-1a
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participant_6
+</td>
+<td style="text-align:right;">
+Baseline
+</td>
+<td style="text-align:right;">
+2020-06-09
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:right;">
+Male
+</td>
+<td style="text-align:left;">
+Heterosexual
+</td>
+<td style="text-align:right;">
+Yes
+</td>
+<td style="text-align:right;">
+Other
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+No
+</td>
+<td style="text-align:right;">
+Studying only
+</td>
+<td style="text-align:left;">
+In a relationship
+</td>
+<td style="text-align:right;">
+Regional Centre
+</td>
+<td style="text-align:right;">
+Anxiety
+</td>
+<td style="text-align:right;">
+1b
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup>
+</td>
+</tr></tfoot>
+</table>
+<p>To remove dataset labels, use the <code>renew</code> method with “unlabel” passed to the <code>type_1L_chr</code> argument.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">y</span>,
+           type_1L_chr <span class="op">=</span> <span class="st">"unlabel"</span><span class="op">)</span></code></pre></div>
+<p>By default, the <code>exhibit</code> method will print the dataset part of the <code>Ready4useDyad</code> instance. To inspect the data dictionary, pass “dict” to the <code>type_1L_chr</code> argument.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
         type_1L_chr <span class="op">=</span> <span class="st">"dict"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover">
 <caption>
@@ -1759,20 +2704,19 @@ factor
 <div id="share-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#share-data" class="anchor"></a>Share data</h2>
-<p>To share our new object <code>y</code>, we first need to specify a target repository that have write persmissions to, using the <code>Ready4usePointer</code> class.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4usePointer-class.html">Ready4usePointer</a></span><span class="op">(</span>b_Ready4useRepos <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dataverse_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
+<p>To share our new object <code>y</code>, we first need to specify a target repository that have write permissions to, using the <code>Ready4usePointer</code> class.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4usePointer-class.html">Ready4usePointer</a></span><span class="op">(</span>b_Ready4useRepos <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                                                         dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>,
-                                                        server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>We now add details of the targer repository to <code>y</code>, transforming it to an instance of the <code>Ready4useRecord</code> class.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+                                                        dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>We now add details of the target repository to <code>y</code>, transforming it to an instance of the <code>Ready4useRecord</code> class.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRecord-class.html">Ready4useRecord</a></span><span class="op">(</span>a_Ready4usePointer <span class="op">=</span> <span class="va">z</span>,
-                     b_Ready4useIngest <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useIngest-class.html">Ready4useIngest</a></span><span class="op">(</span>objects_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,
-                                                         names_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span>,
+                     b_Ready4useIngest <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useIngest-class.html">Ready4useIngest</a></span><span class="op">(</span>objects_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ymh_clinical_dyad_r4 <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,
                                                          descriptions_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>We can now post our new Ready4useDyad object to our dataset (<a href="https://doi.org/10.7910/DVN/W95KED" class="uri">https://doi.org/10.7910/DVN/W95KED</a>). If we wish we can publish the updated dataset in the same step, by using the <code>publish_dv_1L_lgl</code> argument.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">share</span><span class="op">(</span><span class="va">y</span>,
+<p>We can now post our new <code>Ready4useDyad</code> object to our Dataverse dataset (<a href="https://doi.org/10.7910/DVN/W95KED" class="uri">https://doi.org/10.7910/DVN/W95KED</a>). If we wish we can publish the updated dataset in the same step, by using the <code>publish_dv_1L_lgl</code> argument.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html">share</a></span><span class="op">(</span><span class="va">y</span>,
       key_1L_chr <span class="op">=</span> <span class="st">"ENTER THE API KEY FOR YOUR REPO HERE"</span>,
       publish_dv_1L_lgl <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
 </div>
