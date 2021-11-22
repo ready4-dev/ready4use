@@ -36,3 +36,38 @@ renew.ready4use_imports <- function (x, local_to_url_vec_chr, urls_vec_chr)
 #' @aliases renew,ready4use_imports-method
 #' @importFrom ready4 renew
 methods::setMethod("renew", methods::className("ready4use_imports", package = "ready4use"), renew.ready4use_imports)
+#' 
+#' renew
+#' @name renew-Ready4useDyad
+#' @description renew method applied to Ready4useDyad
+#' @param x An object of class Ready4useDyad
+#' @param remove_old_lbls_1L_lgl Remove old labels (a logical vector of length one), Default: T
+#' @param tfmn_1L_chr Transformation (a character vector of length one), Default: 'capitalise'
+#' @param type_1L_chr Type (a character vector of length one), Default: 'label'
+#' @return x (An object of class Ready4useDyad)
+#' @rdname renew-methods
+#' @aliases renew,Ready4useDyad-method
+#' @export 
+#' @importFrom Hmisc capitalize
+#' @importFrom stringr str_to_title
+#' @importFrom ready4 renew
+methods::setMethod("renew", "Ready4useDyad", function (x, remove_old_lbls_1L_lgl = T, tfmn_1L_chr = "capitalise", 
+    type_1L_chr = "label") 
+{
+    if (type_1L_chr == "label") {
+        dictionary_tb <- x@dictionary_r3
+        if (tfmn_1L_chr == "capitalise") 
+            dictionary_tb$var_desc_chr <- dictionary_tb$var_desc_chr %>% 
+                Hmisc::capitalize()
+        if (tfmn_1L_chr == "title") 
+            dictionary_tb$var_desc_chr <- dictionary_tb$var_desc_chr %>% 
+                stringr::str_to_title()
+        tfd_ds_tb <- add_labels_from_dictionary(x@ds_tb, dictionary_tb = dictionary_tb, 
+            remove_old_lbls_1L_lgl = remove_old_lbls_1L_lgl)
+        x@ds_tb <- tfd_ds_tb
+    }
+    if (type_1L_chr == "unlabel") {
+        x@ds_tb <- remove_labels_from_ds(x@ds_tb)
+    }
+    return(x)
+})

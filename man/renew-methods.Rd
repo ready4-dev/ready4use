@@ -5,6 +5,8 @@
 \alias{renew,ready4use_dictionary-method}
 \alias{renew.ready4use_imports}
 \alias{renew,ready4use_imports-method}
+\alias{renew-Ready4useDyad}
+\alias{renew,Ready4useDyad-method}
 \title{Renew - a method that renews an instance of a class by updating it with new data}
 \usage{
 renew.ready4use_dictionary(x, new_ready4_dict_r3)
@@ -14,21 +16,38 @@ renew.ready4use_dictionary(x, new_ready4_dict_r3)
 renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
 
 \S4method{renew}{ready4use_imports}(x, local_to_url_vec_chr, urls_vec_chr)
+
+\S4method{renew}{Ready4useDyad}(
+  x,
+  remove_old_lbls_1L_lgl = T,
+  tfmn_1L_chr = "capitalise",
+  type_1L_chr = "label"
+)
 }
 \arguments{
-\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An object of class Ready4useDyad}
 
 \item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3)}
 
 \item{local_to_url_vec_chr}{Local to url vector (a character vector)}
 
 \item{urls_vec_chr}{Urls vector (a character vector)}
+
+\item{remove_old_lbls_1L_lgl}{Remove old labels (a logical vector of length one), Default: T}
+
+\item{tfmn_1L_chr}{Transformation (a character vector of length one), Default: 'capitalise'}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'label'}
 }
 \value{
 combined_ready4_dictionaries (An object)
+
+x (An object of class Ready4useDyad)
 }
 \description{
 renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 
 renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+
+renew method applied to Ready4useDyad
 }

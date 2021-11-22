@@ -6,6 +6,8 @@
 \title{ingest}
 \usage{
 \S4method{ingest}{Ready4useRepos}(x, idcs_int = NA_integer_, key_1L_chr = NULL, type_1L_chr = "R")
+
+\S4method{ingest}{Ready4useRepos}(x, idcs_int = NA_integer_, key_1L_chr = NULL, type_1L_chr = "R")
 }
 \arguments{
 \item{x}{An object of class Ready4useRepos}
@@ -18,7 +20,11 @@
 }
 \value{
 X (Ingested data, descriptive metadata and provenance details.)
+
+X (Ingested data, descriptive metadata and provenance details.)
 }
 \description{
+ingest method applied to Ready4useRepos
+
 ingest method applied to Ready4useRepos
 }

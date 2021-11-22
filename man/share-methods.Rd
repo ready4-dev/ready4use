@@ -13,6 +13,15 @@
   publish_dv_1L_lgl = F,
   type_1L_chr = "dataverse"
 )
+
+\S4method{share}{Ready4useRecord}(
+  x,
+  gh_prerelease_1L_lgl = T,
+  gh_repo_desc_1L_chr = "Supplementary Files",
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  publish_dv_1L_lgl = F,
+  type_1L_chr = "dataverse"
+)
 }
 \arguments{
 \item{x}{An object of class Ready4useRecord}
@@ -29,7 +38,11 @@
 }
 \value{
 x (An object of class Ready4useRecord)
+
+x (An object of class Ready4useRecord)
 }
 \description{
+share method applied to Ready4useRecord
+
 share method applied to Ready4useRecord
 }

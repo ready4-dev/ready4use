@@ -44,15 +44,22 @@ y <- Ready4useDyad(ds_tb = x@b_Ready4useIngest@objects_ls$ymh_clinical_tb,
                    dictionary_r3 = x@b_Ready4useIngest@objects_ls$ymh_clinical_dict_r3)
 ```
 
+The dictionary slot of `y` is an instance of the `ready4use_dictionary` class.
+
+```{r}
+class(y@dictionary_r3)
+```
+
+
 ## Inspect data
-We can inspect `y` by printing selected information about it to console using the `exhibit` method. If we only wish to see a handful of records, we can pass "head" or "tail" to the `display_1L_chr` argument.
+We can inspect `y` by printing selected information about it to console using the `exhibit` method. If we only wish to see the first or last few records, we can pass "head" or "tail" to the `display_1L_chr` argument.
 
 ```{r}
  exhibit(y,
          display_1L_chr = "head")
 ```
 
-The dataset may be more meaningful if variables are labelled using descriptions from the data dictionary. This can be accomplished using the `renew` method.
+The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the `renew` method.
 
 ```{r}
 y <- renew(y,
@@ -64,7 +71,7 @@ y <- renew(y,
          display_1L_chr = "head")
 ```
 
-To remove dataset labels, use the `renew` method with `unlabel` passed to the `type_1L_chr` argument.
+To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
 
 ```{r}
 y <- renew(y,
@@ -95,7 +102,7 @@ y <- Ready4useRecord(a_Ready4usePointer = z,
                                                          descriptions_chr = c("An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data")))
 ```
 
-We can now post our new `Ready4useDyad` object to our dataset (https://doi.org/10.7910/DVN/W95KED). If we wish we can publish the updated dataset in the same step, by using the `publish_dv_1L_lgl` argument.
+We can now post our new `Ready4useDyad` object to our Dataverse dataset (https://doi.org/10.7910/DVN/W95KED). If we wish we can publish the updated dataset in the same step, by using the `publish_dv_1L_lgl` argument.
 
 ```{r eval = F}
 share(y,
