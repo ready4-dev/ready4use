@@ -43,7 +43,8 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = 
                 "") %>% stringi::stri_replace_all_regex("\\.Rds", 
                 "") %>% stringi::stri_replace_all_regex("\\.rds", 
                 "")
-            fl_nms_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
+            if (!is.na(fls_to_ingest_chr)) 
+                fl_nms_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
             if (is.na(x@dv_url_pfx_1L_chr)) {
                 dv_url_pfx_1L_chr <- character(0)
             }
@@ -70,8 +71,13 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = 
                 "") %>% stringi::stri_replace_all_regex("\\.Rds", 
                 "") %>% stringi::stri_replace_all_regex("\\.rds", 
                 "")
-            selected_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
-            idcs_int <- which(fl_nms_chr %in% selected_chr)
+            if (!is.na(fls_to_ingest_chr)) {
+                selected_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
+                idcs_int <- which(fl_nms_chr %in% selected_chr)
+            }
+            else {
+                idcs_int <- 1:length(fl_nms_chr)
+            }
             fl_nms_chr <- fl_nms_chr[idcs_int]
             if (!identical(fl_nms_chr, character(0))) 
                 ingest_ls <- purrr::map(dmt_urls_chr[idcs_int], 
