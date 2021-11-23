@@ -16,18 +16,6 @@
   use_rdocx_1L_lgl = F,
   ...
 )
-
-\S4method{exhibit}{Ready4useDyad}(
-  x,
-  caption_1L_chr = NA_character_,
-  display_1L_chr = "all",
-  mkdn_tbl_ref_1L_chr = "",
-  output_type_1L_chr = "HTML",
-  type_1L_chr = "ds",
-  use_lbls_as_col_nms_1L_lgl = T,
-  use_rdocx_1L_lgl = F,
-  ...
-)
 }
 \arguments{
 \item{x}{An object of class Ready4useDyad}
@@ -49,7 +37,5 @@
 \item{...}{Additional arguments}
 }
 \description{
-exhibit method applied to Ready4useDyad
-
 exhibit method applied to Ready4useDyad
 }
