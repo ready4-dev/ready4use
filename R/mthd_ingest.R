@@ -3,7 +3,7 @@
 #' @name ingest-Ready4useRepos
 #' @description ingest method applied to Ready4useRepos
 #' @param x An object of class Ready4useRepos
-#' @param idcs_int Idcs (an integer vector), Default: NA
+#' @param fls_to_ingest_chr Files to ingest (a character vector), Default: 'NA'
 #' @param key_1L_chr Key (a character vector of length one), Default: NULL
 #' @param type_1L_chr Type (a character vector of length one), Default: 'R'
 #' @return X (Ingested data, descriptive metadata and provenance details.)
@@ -17,7 +17,8 @@
 #' @importFrom stats setNames
 #' @importFrom piggyback pb_download_url
 #' @importFrom fs path_file
-methods::setMethod("ingest", "Ready4useRepos", function (x, idcs_int = NA_integer_, key_1L_chr = NULL, type_1L_chr = "R") 
+methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = NA_character_, key_1L_chr = NULL, 
+    type_1L_chr = "R") 
 {
     ingest_ls <- NULL
     descriptions_chr <- character(0)
@@ -38,23 +39,22 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, idcs_int = NA_intege
             else {
                 fl_nms_chr <- x@fl_nms_chr
             }
-            if (!is.na(idcs_int)) {
-                fl_nms_chr <- fl_nms_chr[idcs_int]
-            }
             fl_nms_chr <- fl_nms_chr %>% stringi::stri_replace_all_regex("\\.RDS", 
                 "") %>% stringi::stri_replace_all_regex("\\.Rds", 
                 "") %>% stringi::stri_replace_all_regex("\\.rds", 
                 "")
+            fl_nms_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
             if (is.na(x@dv_url_pfx_1L_chr)) {
                 dv_url_pfx_1L_chr <- character(0)
             }
             else {
                 dv_url_pfx_1L_chr <- x@dv_url_pfx_1L_chr
             }
-            ingest_ls <- purrr::map(fl_nms_chr, ~ready4::get_rds_from_dv(file_nm_1L_chr = .x, 
-                dv_ds_nm_1L_chr = x@dv_ds_nm_1L_chr, dv_url_pfx_1L_chr = dv_url_pfx_1L_chr, 
-                key_1L_chr = key_1L_chr, server_1L_chr = x@dv_server_1L_chr)) %>% 
-                stats::setNames(fl_nms_chr) %>% append(ingest_ls)
+            if (!identical(fl_nms_chr, character(0))) 
+                ingest_ls <- purrr::map(fl_nms_chr, ~ready4::get_rds_from_dv(file_nm_1L_chr = .x, 
+                  dv_ds_nm_1L_chr = x@dv_ds_nm_1L_chr, dv_url_pfx_1L_chr = dv_url_pfx_1L_chr, 
+                  key_1L_chr = key_1L_chr, server_1L_chr = x@dv_server_1L_chr)) %>% 
+                  stats::setNames(fl_nms_chr) %>% append(ingest_ls)
         }
         descriptions_chr <- fl_nms_chr %>% purrr::map_chr(~get_fl_meta_from_dv_ls(ds_ls, 
             fl_nm_1L_chr = .x))
@@ -65,19 +65,25 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, idcs_int = NA_intege
         if (type_1L_chr == "R") {
             dmt_urls_chr <- dmt_urls_chr %>% get_fl_nms_of_types(types_chr = c(".RDS", 
                 ".Rds", ".rds"))
-            fl_nms_chr <- dmt_urls_chr %>% fs::path_file() %>% 
-                stringi::stri_replace_all_regex("\\.RDS", "") %>% 
-                stringi::stri_replace_all_regex("\\.Rds", "") %>% 
-                stringi::stri_replace_all_regex("\\.rds", "")
-            ingest_ls <- purrr::map(dmt_urls_chr, ~readRDS(url(.x))) %>% 
-                stats::setNames(fl_nms_chr) %>% append(ingest_ls)
+            fl_nms_chr <- dmt_urls_chr %>% fs::path_file()
+            fl_nms_chr <- fl_nms_chr %>% stringi::stri_replace_all_regex("\\.RDS", 
+                "") %>% stringi::stri_replace_all_regex("\\.Rds", 
+                "") %>% stringi::stri_replace_all_regex("\\.rds", 
+                "")
+            selected_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
+            idcs_int <- which(fl_nms_chr %in% selected_chr)
+            fl_nms_chr <- fl_nms_chr[idcs_int]
+            if (!identical(fl_nms_chr, character(0))) 
+                ingest_ls <- purrr::map(dmt_urls_chr[idcs_int], 
+                  ~readRDS(url(.x))) %>% stats::setNames(fl_nms_chr) %>% 
+                  append(ingest_ls)
             descriptions_chr <- c(descriptions_chr, rep(NA_character_, 
                 length(fl_nms_chr)))
         }
     }
     x_Ready4useIngest <- Ready4useIngest(objects_ls = ingest_ls, 
         descriptions_chr = descriptions_chr)
-    x_Ready4useRecord <- Ready4useRecord(Ready4usePointer(b_Ready4useRepos = x), 
+    x_Ready4useRecord <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x), 
         b_Ready4useIngest = x_Ready4useIngest)
     return(x_Ready4useRecord)
 })

@@ -29,12 +29,14 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
         x@dv_ds_metadata_ls <- list(ds_ls = ds_ls)
     }
     if (type_1L_chr == "gh") {
-        if (!identical(x@gh_repo_1L_chr, NA_character_)) {
+        if (!identical(x@a_Ready4usePointer@b_Ready4useRepos@gh_repo_1L_chr, 
+            NA_character_)) {
             ready4::write_env_objs_to_dv(env_objects_ls = x@b_Ready4useIngest@objects_ls, 
                 descriptions_chr = NULL, ds_url_1L_chr = character(0), 
                 piggyback_desc_1L_chr = gh_repo_desc_1L_chr, 
-                piggyback_tag_1L_chr = x@gh_tag_1L_chr, piggyback_to_1L_chr = character(0), 
-                prerelease_1L_lgl = x@gh_repo_1L_chr)
+                piggyback_tag_1L_chr = x@a_Ready4usePointer@b_Ready4useRepos@gh_tag_1L_chr, 
+                piggyback_to_1L_chr = x@a_Ready4usePointer@b_Ready4useRepos@gh_repo_1L_chr, 
+                prerelease_1L_lgl = gh_prerelease_1L_lgl)
         }
     }
     return(x)
