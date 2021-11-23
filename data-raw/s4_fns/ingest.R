@@ -25,7 +25,7 @@ ingest_Ready4useRepos <- function(x,
         stringi::stri_replace_all_regex("\\.RDS","") %>%
         stringi::stri_replace_all_regex("\\.Rds","") %>%
         stringi::stri_replace_all_regex("\\.rds","")
-      if(!is.na(fls_to_ingest_chr))
+      if(!is.na(fls_to_ingest_chr[1]))
         fl_nms_chr <- intersect(fl_nms_chr,fls_to_ingest_chr)
       # if(!is.na(idcs_int)){
       #   fl_nms_chr <- fl_nms_chr[idcs_int]
@@ -61,7 +61,7 @@ ingest_Ready4useRepos <- function(x,
       stringi::stri_replace_all_regex("\\.RDS","") %>%
       stringi::stri_replace_all_regex("\\.Rds","") %>%
       stringi::stri_replace_all_regex("\\.rds","")
-    if(!is.na(fls_to_ingest_chr)){
+    if(!is.na(fls_to_ingest_chr[1])){
       selected_chr <- intersect(fl_nms_chr,fls_to_ingest_chr)
       idcs_int <- which(fl_nms_chr %in% selected_chr)
     }else{

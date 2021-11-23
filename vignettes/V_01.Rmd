@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r results='hide', message=FALSE}
 library(ready4use)
 ```
-Ready4use includes a number of tools for locating, ingesting, inspecting and sharing data for use in open and modular mental health systems models. 
+Ready4use includes a number of tools for locating, ingesting, inspecting and sharing data for open and modular mental health systems models. 
 
 ## Specify remote repositories
 The `Ready4useRepos` class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a `Ready4useRepos` class are Dataverse datasets and GitHub releases. `Ready4useRepos` methods for download / upload extend tools from the `dataverse` and `piggyback` packages.
@@ -47,7 +47,7 @@ y <- Ready4useDyad(ds_tb = x@b_Ready4useIngest@objects_ls$ymh_clinical_tb,
                    dictionary_r3 = x@b_Ready4useIngest@objects_ls$ymh_clinical_dict_r3)
 ```
 
-The dictionary slot of `y` is an instance of the `ready4use_dictionary` class.
+The dictionary_r3 slot of `y` is an instance of the `ready4use_dictionary` class.
 
 ```{r}
 class(y@dictionary_r3)
@@ -89,12 +89,14 @@ exhibit(y,
 ```
 
 ## Share data
-To share our new object `y`, we first need to specify a target repository that have write permissions to, using the `Ready4usePointer` class.
+To share our new object `y`, we first need to specify repositories that have write permissions to, using the `Ready4usePointer` class.
 
 ```{r}
 z <- Ready4usePointer(b_Ready4useRepos = Ready4useRepos(dv_nm_1L_chr = "fakes",
                                                         dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
-                                                        dv_server_1L_chr = "dataverse.harvard.edu"))
+                                                        dv_server_1L_chr = "dataverse.harvard.edu",
+                                                        gh_repo_1L_chr = "ready4-dev/ready4use",
+                                                        gh_tag_1L_chr = "Documentation_0.0"))
 ```
 
 We now add details of the target repository to `y`, transforming it to an instance of the `Ready4useRecord` class.
@@ -105,10 +107,11 @@ y <- Ready4useRecord(a_Ready4usePointer = z,
                                                          descriptions_chr = c("An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data")))
 ```
 
-We can now post our new `Ready4useDyad` object to our Dataverse dataset (https://doi.org/10.7910/DVN/W95KED). If we wish we can publish the updated dataset in the same step, by using the `publish_dv_1L_lgl` argument. To upload the files to a GitHub Release repository instead, add `type_1L_chr ="gh"` to the function call.
+We can now post our new `Ready4useDyad` object to our preferred data repository using the `share` method. By default, if more than one data repository was specified in the `a_Ready4usePointer` slot of `y`, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either "prefer_gh" or "all" values to the `type_1L_chr` argument. If we wish we can publish the updated Dataverse dataset in the same step, by using the `publish_dv_1L_lgl` argument. The Ready4useDyad object is now available for download in at https://doi.org/10.7910/DVN/W95KED.
 
 ```{r eval = F}
 share(y,
-      key_1L_chr = "ENTER THE API KEY FOR YOUR REPO HERE",
-      publish_dv_1L_lgl = T)
+      key_1L_chr = "ENTER THE API KEY FOR YOUR DATAVERSE REPO HERE",
+      publish_dv_1L_lgl = T,
+      type_1L_chr = "prefer_gh")
 ```

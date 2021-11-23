@@ -11,7 +11,7 @@
   gh_repo_desc_1L_chr = "Supplementary Files",
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
   publish_dv_1L_lgl = F,
-  type_1L_chr = "dataverse"
+  type_1L_chr = "prefer_dv"
 )
 }
 \arguments{
@@ -25,7 +25,7 @@
 
 \item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: F}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'dataverse'}
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'prefer_dv'}
 }
 \value{
 x (An object of class Ready4useRecord)
