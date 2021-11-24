@@ -36,21 +36,20 @@ To ingest RDS file format objects contained in the repos specified in an `Ready4
 ```{r}
 x <- ingest(x,
             fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"))
-class(x)
 ```
 
 ## Create a data dyad
 The `Ready4useDyad` class can be used to pair a dataset with its data dictionary. In the below example, we create a `Ready4useDyad` instance `y` using some of the data we have just ingested (`x`).
 
 ```{r}
-y <- Ready4useDyad(ds_tb = x@b_Ready4useIngest@objects_ls$ymh_clinical_tb,
-                   dictionary_r3 = x@b_Ready4useIngest@objects_ls$ymh_clinical_dict_r3)
+y <- Ready4useDyad(ds_tb = procure(procureSlot(x,"b_Ready4useIngest"), fl_nm_1L_chr = "ymh_clinical_tb"),
+                   dictionary_r3 = procure(procureSlot(x,"b_Ready4useIngest"), fl_nm_1L_chr = "ymh_clinical_dict_r3"))
 ```
 
 The dictionary_r3 slot of `y` is an instance of the `ready4use_dictionary` class.
 
 ```{r}
-class(y@dictionary_r3)
+class(procureSlot(y,"dictionary_r3"))
 ```
 
 

@@ -1,5 +1,4 @@
-library(ready4pack)
-#ready4fun::write_fn_type_dirs()
+library(ready4show)
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage And Share Datasets For Open and Modular Mental Health Systems Models" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
@@ -18,7 +17,7 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage 
                                            urls_chr = c("https://ready4-dev.github.io/ready4use/",
                                                         "https://github.com/ready4-dev/ready4use",
                                                         "https://ready4-dev.github.io/ready4/"))
-x_ready4fun_manifest <- pkg_desc_ls %>%
+x <- pkg_desc_ls %>%
   ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
                                                                        suggests_chr = c("rmarkdown")),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
@@ -27,7 +26,7 @@ x_ready4fun_manifest <- pkg_desc_ls %>%
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
                                                                                                  "get_r3_from_dv_csv"#, "write_fls_to_dv_ds"
-                                                                                                 )),
+                           )),
                            copyright_holders_chr = "Orygen",
                            dev_pkgs_chr = c("ready4","ready4show"),
                            lifecycle_stage_1L_chr = "experimental",
@@ -35,7 +34,7 @@ x_ready4fun_manifest <- pkg_desc_ls %>%
                            piggyback_to_1L_chr = "ready4-dev/ready4",
                            ready4_type_1L_chr = "authoring",
                            zenodo_badge_1L_chr = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5644336.svg)](https://doi.org/10.5281/zenodo.5644336)")
-x_ready4class_constructor <- dplyr::bind_rows(
+y <- dplyr::bind_rows(
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = TRUE,
                                                name_stub_chr = "distributions",
                                                pt_ls = list(list("list")),
@@ -155,7 +154,7 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                                "dv_ds_nm_1L_chr","dv_server_1L_chr",
                                                                "dv_url_pfx_1L_chr","fl_nms_chr",
                                                                "gh_repo_1L_chr","gh_tag_1L_chr"
-                                                               ) %>% list(), # Change
+                                               ) %>% list(), # Change
                                                pt_ls = list("character","list",
                                                             "character","character","character","character","character","character") %>% list(),
                                                class_desc_chr= "Metadata about online data repositories.",
@@ -176,8 +175,8 @@ x_ready4class_constructor <- dplyr::bind_rows(
                                                inc_clss_ls = list("Ready4usePointer","Ready4useIngest"))
 ) %>%
   ready4class::ready4class_constructor()
-x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
-                                                                 constructor_r3 = x_ready4class_constructor) %>%
+z <- ready4pack::make_pt_ready4pack_manifest(x,
+                                             constructor_r3 = y) %>%
   ready4pack::ready4pack_manifest()
-x_ready4pack_manifest <- author(x_ready4pack_manifest)
+z <- author(z)
 # devtools::build_vignettes()

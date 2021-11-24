@@ -5,6 +5,8 @@
 \alias{procure,ready4use_dataverses-method}
 \alias{procure.ready4use_imports}
 \alias{procure,ready4use_imports-method}
+\alias{procure-Ready4useIngest}
+\alias{procure,Ready4useIngest-method}
 \title{Procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class}
 \usage{
 procure.ready4use_dataverses(
@@ -30,9 +32,11 @@ procure.ready4use_imports(
 )
 
 \S4method{procure}{ready4use_imports}(x, inc_script_lgl = T, forced_choice_chr = NA_character_)
+
+\S4method{procure}{Ready4useIngest}(x, fl_nm_1L_chr = NA_character_)
 }
 \arguments{
-\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An object of class Ready4useIngest}
 
 \item{save_dir_path_1L_chr}{Save directory path (a character vector of length one), Default: ''}
 
@@ -45,12 +49,18 @@ procure.ready4use_imports(
 \item{inc_script_lgl}{Include script (a logical vector), Default: T}
 
 \item{forced_choice_chr}{Forced choice (a character vector), Default: 'NA'}
+
+\item{fl_nm_1L_chr}{File name (a character vector of length one), Default: 'NA'}
 }
 \value{
 Data (an output object of multiple potential types)
+
+Object (an output object of multiple potential types)
 }
 \description{
 procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 
 procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+
+procure method applied to Ready4useIngest
 }

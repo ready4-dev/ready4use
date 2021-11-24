@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_User.pdf
-  - text: Manual - Developer (PDF)
     href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/ready4use_Developer.pdf
+  - text: Manual - Developer (PDF)
+    href: https://github.com/ready4-dev/ready4use/releases/download/Documentation_0.0/aqol6d_scrng_dss_ls.RDS
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -39,6 +39,7 @@ reference:
   - ingest-Ready4useRepos
   - manufacture.ready4use_dataverses
   - manufacture.ready4use_imports
+  - procure-Ready4useIngest
   - procure.ready4use_dataverses
   - procure.ready4use_imports
   - renew-Ready4useDyad

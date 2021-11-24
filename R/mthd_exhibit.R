@@ -1,5 +1,5 @@
 #' 
-#' exhibit
+#' Exhibit features of a class instance by printing to console
 #' @name exhibit-Ready4useDyad
 #' @description exhibit method applied to Ready4useDyad
 #' @param x An object of class Ready4useDyad

@@ -58,3 +58,25 @@ procure.ready4use_imports <- function (x, inc_script_lgl = T, forced_choice_chr 
 #' @aliases procure,ready4use_imports-method
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_imports", package = "ready4use"), procure.ready4use_imports)
+#' 
+#' Procure data by executing a search and retrieval algorithm using data contained in an instance of a class
+#' @name procure-Ready4useIngest
+#' @description procure method applied to Ready4useIngest
+#' @param x An object of class Ready4useIngest
+#' @param fl_nm_1L_chr File name (a character vector of length one), Default: 'NA'
+#' @return Object (an output object of multiple potential types)
+#' @rdname procure-methods
+#' @aliases procure,Ready4useIngest-method
+#' @export 
+#' @importFrom purrr pluck
+#' @importFrom ready4 procure
+methods::setMethod("procure", "Ready4useIngest", function (x, fl_nm_1L_chr = NA_character_) 
+{
+    if (!is.na(fl_nm_1L_chr[1])) {
+        object_xx <- x@objects_ls %>% purrr::pluck(fl_nm_1L_chr)
+    }
+    else {
+        object_xx <- x@objects_ls
+    }
+    return(object_xx)
+})

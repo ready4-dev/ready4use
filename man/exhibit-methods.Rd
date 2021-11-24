@@ -3,7 +3,7 @@
 \name{exhibit-Ready4useDyad}
 \alias{exhibit-Ready4useDyad}
 \alias{exhibit,Ready4useDyad-method}
-\title{exhibit}
+\title{Exhibit features of a class instance by printing to console}
 \usage{
 \S4method{exhibit}{Ready4useDyad}(
   x,

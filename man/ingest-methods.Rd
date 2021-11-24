@@ -3,7 +3,7 @@
 \name{ingest-Ready4useRepos}
 \alias{ingest-Ready4useRepos}
 \alias{ingest,Ready4useRepos-method}
-\title{ingest}
+\title{Ingest data saved in external files into R objects stored in working memory}
 \usage{
 \S4method{ingest}{Ready4useRepos}(
   x,

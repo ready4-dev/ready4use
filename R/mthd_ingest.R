@@ -1,5 +1,5 @@
 #' 
-#' ingest
+#' Ingest data saved in external files into R objects stored in working memory
 #' @name ingest-Ready4useRepos
 #' @description ingest method applied to Ready4useRepos
 #' @param x An object of class Ready4useRepos

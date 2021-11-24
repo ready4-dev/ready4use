@@ -37,7 +37,7 @@ renew.ready4use_imports <- function (x, local_to_url_vec_chr, urls_vec_chr)
 #' @importFrom ready4 renew
 methods::setMethod("renew", methods::className("ready4use_imports", package = "ready4use"), renew.ready4use_imports)
 #' 
-#' renew
+#' Renew an instance of a class by updating it with new data
 #' @name renew-Ready4useDyad
 #' @description renew method applied to Ready4useDyad
 #' @param x An object of class Ready4useDyad

@@ -1,5 +1,5 @@
 #' 
-#' share
+#' Share data contained in an instance of a class via an online repository
 #' @name share-Ready4useRecord
 #' @description share method applied to Ready4useRecord
 #' @param x An object of class Ready4useRecord
