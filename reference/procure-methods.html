@@ -48,7 +48,8 @@
 
 <meta property="og:title" content="Procure - a method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class — procure.ready4use_dataverses" />
 <meta property="og:description" content="procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
-procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value." />
+procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+procure method applied to Ready4useIngest" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -81,7 +82,7 @@ procure.ready4use_imports() is a procure method that procures data by executing 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9193</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9195</span>
       </span>
     </div>
 
@@ -140,6 +141,7 @@ procure.ready4use_imports() is a procure method that procures data by executing 
     <div class="ref-description">
     <p>procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).</p>
 <p>procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.</p>
+<p>procure method applied to Ready4useIngest</p>
     </div>
 
     <pre class="usage"><span class='fu'>procure.ready4use_dataverses</span><span class='op'>(</span>
@@ -166,14 +168,17 @@ procure.ready4use_imports() is a procure method that procures data by executing 
 <span class='op'>)</span>
 
 <span class='co'># S4 method for ready4use_imports</span>
-<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span></pre>
+<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, inc_script_lgl <span class='op'>=</span> <span class='cn'>T</span>, forced_choice_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Ready4useIngest</span>
+<span class='fu'>procure</span><span class='op'>(</span><span class='va'>x</span>, fl_nm_1L_chr <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.</p></td>
+      <td><p>An object of class Ready4useIngest</p></td>
     </tr>
     <tr>
       <th>save_dir_path_1L_chr</th>
@@ -199,11 +204,16 @@ procure.ready4use_imports() is a procure method that procures data by executing 
       <th>forced_choice_chr</th>
       <td><p>Forced choice (a character vector), Default: 'NA'</p></td>
     </tr>
+    <tr>
+      <th>fl_nm_1L_chr</th>
+      <td><p>File name (a character vector of length one), Default: 'NA'</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Data (an output object of multiple potential types)</p>
+<p>Object (an output object of multiple potential types)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
