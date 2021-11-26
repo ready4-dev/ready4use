@@ -1,4 +1,4 @@
-#' Manufacture - a method that manufactures a novel r object using data contained in an instance of a class
+#' Manufacture a novel R object using data contained in an instance of a class
 #' @description manufacture.ready4use_dataverses() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Read (a list of functions).
 #' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 #' @param type_1L_chr Type (a character vector of length one), Default: 'read_fn'
@@ -21,7 +21,7 @@ manufacture.ready4use_dataverses <- function (x, type_1L_chr = "read_fn")
 #' @aliases manufacture,ready4use_dataverses-method
 #' @importFrom ready4 manufacture
 methods::setMethod("manufacture", methods::className("ready4use_dataverses", package = "ready4use"), manufacture.ready4use_dataverses)
-#' Manufacture - a method that manufactures a novel r object using data contained in an instance of a class
+#' Manufacture a novel R object using data contained in an instance of a class
 #' @description manufacture.ready4use_imports() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
