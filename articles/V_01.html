@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,12 +46,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/ready4use.html">Get started</a>
 </li>
@@ -71,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ready4-dev/ready4use/">
+  <a href="https://github.com/ready4-dev/ready4use/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -93,7 +89,7 @@
       <h1 data-toc-skip>Data Management Tools</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/ready4use/blob/master/vignettes/V_01.Rmd"><code>vignettes/V_01.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/ready4use/blob/HEAD/vignettes/V_01.Rmd" class="external-link"><code>vignettes/V_01.Rmd</code></a></small>
       <div class="hidden name"><code>V_01.Rmd</code></div>
 
     </div>
@@ -101,11 +97,11 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/ready4use/">ready4use</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/ready4use/" class="external-link">ready4use</a></span><span class="op">)</span></code></pre></div>
 <p>Ready4use includes a number of tools for locating, ingesting, inspecting and sharing data for open and modular mental health systems models.</p>
-<div id="specify-remote-repositories" class="section level2">
-<h2 class="hasAnchor">
-<a href="#specify-remote-repositories" class="anchor"></a>Specify remote repositories</h2>
+<div class="section level2">
+<h2 id="specify-remote-repositories">Specify remote repositories<a class="anchor" aria-label="anchor" href="#specify-remote-repositories"></a>
+</h2>
 <p>The <code>Ready4useRepos</code> class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a <code>Ready4useRepos</code> class are Dataverse datasets and GitHub releases. <code>Ready4useRepos</code> methods for download / upload extend tools from the <code>dataverse</code> and <code>piggyback</code> packages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
@@ -114,35 +110,35 @@
                     gh_repo_1L_chr <span class="op">=</span> <span class="st">"ready4-dev/ready4"</span>,
                     gh_tag_1L_chr <span class="op">=</span> <span class="st">"Documentation_0.0"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="ingest-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ingest-data" class="anchor"></a>Ingest data</h2>
+<div class="section level2">
+<h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
+</h2>
 <p>To ingest RDS file format objects contained in the repos specified in an <code>Ready4useRepos</code> instance, use the <code>ingest</code> method. By default, the <code>ingest</code> method imports all RDS files in the specified repositories, but you adopt a more targeted approach by supplying the names of desired files to the <code>fls_to_ingest_chr</code> argument. The <code>ingest</code> method transforms <code>x</code> into an object of class <code>Ready4useRecord</code>, which contains both the ingested data and a <code>Ready4useRepos</code> instance describing the source repositor(y|ies).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html">ingest</a></span><span class="op">(</span><span class="va">x</span>,
-            fls_to_ingest_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_tb"</span>,<span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span><span class="va">x</span>,
+            fls_to_ingest_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_tb"</span>,<span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="create-a-data-dyad" class="section level2">
-<h2 class="hasAnchor">
-<a href="#create-a-data-dyad" class="anchor"></a>Create a data dyad</h2>
+<div class="section level2">
+<h2 id="create-a-data-dyad">Create a data dyad<a class="anchor" aria-label="anchor" href="#create-a-data-dyad"></a>
+</h2>
 <p>The <code>Ready4useDyad</code> class can be used to pair a dataset with its data dictionary. In the below example, we create a <code>Ready4useDyad</code> instance <code>y</code> using some of the data we have just ingested (<code>x</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html">procureSlot</a></span><span class="op">(</span><span class="va">x</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span>, fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_tb"</span><span class="op">)</span>,
-                   dictionary_r3 <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html">procureSlot</a></span><span class="op">(</span><span class="va">x</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span>, fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html" class="external-link">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">x</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span>, fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_tb"</span><span class="op">)</span>,
+                   dictionary_r3 <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html" class="external-link">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">x</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span>, fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The dictionary_r3 slot of <code>y</code> is an instance of the <code>ready4use_dictionary</code> class.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html">procureSlot</a></span><span class="op">(</span><span class="va">y</span>,<span class="st">"dictionary_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "ready4use_dictionary" "tbl_df"               "tbl"                 
-## [4] "data.frame"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">y</span>,<span class="st">"dictionary_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "ready4use_dictionary" "tbl_df"               "tbl"                 </span>
+<span class="co">## [4] "data.frame"</span></code></pre>
 </div>
-<div id="inspect-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inspect-data" class="anchor"></a>Inspect data</h2>
+<div class="section level2">
+<h2 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
+</h2>
 <p>We can inspect <code>y</code> by printing selected information about it to console using the <code>exhibit</code> method. If we only wish to see the first or last few records, we can pass “head” or “tail” to the <code>display_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
          display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
-<table class="table  lightable-paper lightable-hover">
+<table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
 <caption>
 Dataset
 </caption>
@@ -1073,12 +1069,12 @@ Anxiety
 </table>
 <p>The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the <code>renew</code> method.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">y</span>,
            type_1L_chr <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
          display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
-<table class="table  lightable-paper lightable-hover">
+<table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
 <caption>
 Dataset
 </caption>
@@ -2009,13 +2005,13 @@ Anxiety
 </table>
 <p>To remove dataset labels, use the <code>renew</code> method with “unlabel” passed to the <code>type_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">y</span>,
            type_1L_chr <span class="op">=</span> <span class="st">"unlabel"</span><span class="op">)</span></code></pre></div>
 <p>By default, the <code>exhibit</code> method will print the dataset part of the <code>Ready4useDyad</code> instance. To inspect the data dictionary, pass “dict” to the <code>type_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">y</span>,
         type_1L_chr <span class="op">=</span> <span class="st">"dict"</span><span class="op">)</span></code></pre></div>
-<table class="table  lightable-paper lightable-hover">
+<table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
 <caption>
 Data Dictionary
 </caption>
@@ -2700,9 +2696,9 @@ factor
 </tr></tfoot>
 </table>
 </div>
-<div id="share-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#share-data" class="anchor"></a>Share data</h2>
+<div class="section level2">
+<h2 id="share-data">Share data<a class="anchor" aria-label="anchor" href="#share-data"></a>
+</h2>
 <p>To share our new object <code>y</code>, we first need to specify repositories that have write permissions to, using the <code>Ready4usePointer</code> class.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4usePointer-class.html">Ready4usePointer</a></span><span class="op">(</span>b_Ready4useRepos <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
@@ -2713,11 +2709,11 @@ factor
 <p>We now add details of the target repository to <code>y</code>, transforming it to an instance of the <code>Ready4useRecord</code> class.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRecord-class.html">Ready4useRecord</a></span><span class="op">(</span>a_Ready4usePointer <span class="op">=</span> <span class="va">z</span>,
-                     b_Ready4useIngest <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useIngest-class.html">Ready4useIngest</a></span><span class="op">(</span>objects_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ymh_clinical_dyad_r4 <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,
-                                                         descriptions_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>We can now post our new <code>Ready4useDyad</code> object to our preferred data repository using the <code>share</code> method. By default, if more than one data repository was specified in the <code>a_Ready4usePointer</code> slot of <code>y</code>, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either “prefer_gh” or “all” values to the <code>type_1L_chr</code> argument. If we wish we can publish the updated Dataverse dataset in the same step, by using the <code>publish_dv_1L_lgl</code> argument. The Ready4useDyad object is now available for download in at <a href="https://doi.org/10.7910/DVN/W95KED" class="uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
+                     b_Ready4useIngest <span class="op">=</span> <span class="fu"><a href="../reference/Ready4useIngest-class.html">Ready4useIngest</a></span><span class="op">(</span>objects_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ymh_clinical_dyad_r4 <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,
+                                                         descriptions_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"An example of a Ready4useDyad - a dataset and data dictionary pair. Note this example uses fake data"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>We can now post our new <code>Ready4useDyad</code> object to our preferred data repository using the <code>share</code> method. By default, if more than one data repository was specified in the <code>a_Ready4usePointer</code> slot of <code>y</code>, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either “prefer_gh” or “all” values to the <code>type_1L_chr</code> argument. If we wish we can publish the updated Dataverse dataset in the same step, by using the <code>publish_dv_1L_lgl</code> argument. The Ready4useDyad object is now available for download in at <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html">share</a></span><span class="op">(</span><span class="va">y</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html" class="external-link">share</a></span><span class="op">(</span><span class="va">y</span>,
       key_1L_chr <span class="op">=</span> <span class="st">"ENTER THE API KEY FOR YOUR DATAVERSE REPO HERE"</span>,
       publish_dv_1L_lgl <span class="op">=</span> <span class="cn">T</span>,
       type_1L_chr <span class="op">=</span> <span class="st">"prefer_gh"</span><span class="op">)</span></code></pre></div>
@@ -2735,11 +2731,13 @@ factor
 
 
       <footer><div class="copyright">
-  <p>Developed by Matthew Hamilton, Glen Wiesner, Orygen, VicHealth, Victoria University.</p>
+  <p></p>
+<p>Developed by Matthew Hamilton, Glen Wiesner, Orygen, VicHealth, Victoria University.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -2747,6 +2745,8 @@ factor
 
   
 
+
+  
 
   </body>
 </html>
