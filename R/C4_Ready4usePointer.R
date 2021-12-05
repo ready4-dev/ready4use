@@ -3,8 +3,8 @@
 #' Metadata on local and remote data storage locations.
 #' 
 #' @include C4_Ready4useRepos.R
-#' @slot a_Ready4usePaths NO MATCH
-#' @slot b_Ready4useRepos NO MATCH
+#' @slot a_Ready4usePaths  (an instance of the Ready4Module class)
+#' @slot b_Ready4useRepos  (an instance of the Ready4useRepos class)
 #' @slot dissemination_1L_chr Dissemination (a character vector of length one)
 #' @import ready4
 #' @name Ready4usePointer-class

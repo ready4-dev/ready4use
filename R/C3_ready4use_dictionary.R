@@ -18,6 +18,7 @@ validate_ready4use_dictionary(make_new_ready4use_dictionary(x))
 #' @rdname make_new_ready4use_dictionary
 #' @export 
 #' @importFrom tibble is_tibble
+#' @keywords internal
 make_new_ready4use_dictionary <- function(x){ 
 stopifnot(tibble::is_tibble(x))
 class(x) <- append(c("ready4use_dictionary",setdiff(make_pt_ready4use_dictionary() %>% class(),class(x))),
@@ -25,14 +26,13 @@ class(x))
 x
 }
 #' make prototype ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
-#' @description Create a new prototype for the ready4 s3 class defining a data dictionary tibble.
 #' @param var_nm_chr Variable name (a character vector), Default: character(0)
 #' @param var_ctg_chr Variable category categories (a character vector), Default: character(0)
 #' @param var_desc_chr Variable description (a character vector), Default: character(0)
 #' @param var_type_chr Variable type (a character vector), Default: character(0)
 #' @return A prototype for ready4 s3 class defining a data dictionary tibble.
-#' @details A data dictionary tibble.
-#' @rdname make_pt_ready4use_dictionary
+#' 
+#' @rdname ready4use_dictionary
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
@@ -58,6 +58,7 @@ rlang::exec(tibble::tibble,!!!args_ls)
 #' @importFrom dplyr summarise_all filter arrange pull
 #' @importFrom tidyr gather
 #' @importFrom purrr map_chr map2_chr
+#' @keywords internal
 validate_ready4use_dictionary <- function(x){
 if(sum(stringr::str_detect(names(x)[names(x) %in% names(make_pt_ready4use_dictionary())],
 names(make_pt_ready4use_dictionary())))!=length(names(make_pt_ready4use_dictionary()))){
@@ -96,10 +97,9 @@ call. = FALSE)
 
 x}
 #' is ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
-#' @description Check whether an object is a valid instance of the ready4 s3 class defining a data dictionary tibble.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 s3 class defining a data dictionary tibble.
-#' @details A data dictionary tibble.
-#' @rdname is_ready4use_dictionary
+#' 
+#' @rdname ready4use_dictionary
 #' @export 
 is_ready4use_dictionary <- function(x) inherits(validate_ready4use_dictionary(x), "ready4use_dictionary")

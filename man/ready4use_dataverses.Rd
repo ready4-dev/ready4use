@@ -2,15 +2,47 @@
 % Please edit documentation in R/C3_ready4use_dataverses.R
 \name{ready4use_dataverses}
 \alias{ready4use_dataverses}
+\alias{make_pt_ready4use_dataverses}
+\alias{is_ready4use_dataverses}
 \title{ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 ready4use_dataverses(x = make_pt_ready4use_dataverses())
+
+make_pt_ready4use_dataverses(
+  file_type_chr = character(0),
+  file_name_chr = character(0),
+  data_repo_chr = character(0),
+  data_repo_ui_chr = character(0),
+  data_repo_db_ui_chr = character(0),
+  data_repo_file_ext_chr = character(0),
+  data_repo_save_type_chr = character(0)
+)
+
+is_ready4use_dataverses(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse., Default: make_pt_ready4use_dataverses()}
+\item{x}{An object of any type}
+
+\item{file_type_chr}{File type (a character vector), Default: character(0)}
+
+\item{file_name_chr}{File name (a character vector), Default: character(0)}
+
+\item{data_repo_chr}{Data repository (a character vector), Default: character(0)}
+
+\item{data_repo_ui_chr}{Data repository user interface (a character vector), Default: character(0)}
+
+\item{data_repo_db_ui_chr}{Data repository database user interface (a character vector), Default: character(0)}
+
+\item{data_repo_file_ext_chr}{Data repository file extension (a character vector), Default: character(0)}
+
+\item{data_repo_save_type_chr}{Data repository save type (a character vector), Default: character(0)}
 }
 \value{
 A validated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+
+A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+
+A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
 Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.

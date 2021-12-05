@@ -16,6 +16,7 @@ validate_ready4use_distributions(make_new_ready4use_distributions(x))
 #' @details List object that summarises the parameters of each distribution
 #' @rdname make_new_ready4use_distributions
 #' @export 
+#' @keywords internal
 make_new_ready4use_distributions <- function(x){ 
 stopifnot(is.list(x))
 class(x) <- append(c("ready4use_distributions",setdiff(make_pt_ready4use_distributions() %>% class(),class(x))),
@@ -23,7 +24,6 @@ class(x))
 x
 }
 #' make prototype ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution
-#' @description Create a new prototype for the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param distribution_chr Distribution (a character vector), Default: character(0)
 #' @param dstr_param_1_dbl Distribution parameter 1 (a double vector), Default: numeric(0)
 #' @param dstr_param_2_dbl Distribution parameter 2 (a double vector), Default: numeric(0)
@@ -31,8 +31,8 @@ x
 #' @param dstr_param_4_dbl Distribution parameter 4 (a double vector), Default: numeric(0)
 #' @param transformation_chr Transformation (a character vector), Default: character(0)
 #' @return A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details List object that summarises the parameters of each distribution
-#' @rdname make_pt_ready4use_distributions
+#' 
+#' @rdname ready4use_distributions
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
@@ -63,6 +63,7 @@ rlang::exec(list,!!!args_ls)
 #' @importFrom tidyr gather
 #' @importFrom dplyr filter arrange pull
 #' @importFrom purrr map_chr map2_chr
+#' @keywords internal
 validate_ready4use_distributions <- function(x){
 if(sum(stringr::str_detect(names(x)[names(x) %in% names(make_pt_ready4use_distributions())],
 names(make_pt_ready4use_distributions())))!=length(names(make_pt_ready4use_distributions()))){
@@ -101,10 +102,9 @@ call. = FALSE)
 
 x}
 #' is ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution
-#' @description Check whether an object is a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
-#' @details List object that summarises the parameters of each distribution
-#' @rdname is_ready4use_distributions
+#' 
+#' @rdname ready4use_distributions
 #' @export 
 is_ready4use_distributions <- function(x) inherits(validate_ready4use_distributions(x), "ready4use_distributions")

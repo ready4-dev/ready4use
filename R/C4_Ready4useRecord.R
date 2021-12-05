@@ -3,8 +3,8 @@
 #' Ingested data, descriptive metadata and provenance details.
 #' 
 #' @include C4_Ready4usePointer.R
-#' @slot a_Ready4usePointer NO MATCH
-#' @slot b_Ready4useIngest NO MATCH
+#' @slot a_Ready4usePointer  (an instance of the Ready4usePointer class)
+#' @slot b_Ready4useIngest  (an instance of the Ready4useIngest class)
 #' @slot dissemination_1L_chr Dissemination (a character vector of length one)
 #' @import ready4
 #' @name Ready4useRecord-class

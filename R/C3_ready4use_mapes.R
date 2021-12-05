@@ -18,6 +18,7 @@ validate_ready4use_mapes(make_new_ready4use_mapes(x))
 #' @rdname make_new_ready4use_mapes
 #' @export 
 #' @importFrom tibble is_tibble
+#' @keywords internal
 make_new_ready4use_mapes <- function(x){ 
 stopifnot(tibble::is_tibble(x))
 class(x) <- append(c("ready4use_mapes",setdiff(make_pt_ready4use_mapes() %>% class(),class(x))),
@@ -25,7 +26,6 @@ class(x))
 x
 }
 #' make prototype ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @description Create a new prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param param_name_chr Parameter name (a character vector), Default: character(0)
 #' @param sex_age_band_chr Sex age band (a character vector), Default: character(0)
 #' @param mape_05_yr_mde_dbl Mean absolute prediction error 05 year mode (a double vector), Default: numeric(0)
@@ -41,8 +41,8 @@ x
 #' @param mape_10_yr_shp_dbl Mean absolute prediction error 10 year shape (a double vector), Default: numeric(0)
 #' @param mape_15_yr_shp_dbl Mean absolute prediction error 15 year shape (a double vector), Default: numeric(0)
 #' @return A prototype for ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @details Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @rdname make_pt_ready4use_mapes
+#' 
+#' @rdname ready4use_mapes
 #' @export 
 #' @importFrom ready4 update_pt_fn_args_ls
 #' @importFrom rlang exec
@@ -88,6 +88,7 @@ rlang::exec(tibble::tibble,!!!args_ls)
 #' @importFrom dplyr summarise_all filter arrange pull
 #' @importFrom tidyr gather
 #' @importFrom purrr map_chr map2_chr
+#' @keywords internal
 validate_ready4use_mapes <- function(x){
 if(sum(stringr::str_detect(names(x)[names(x) %in% names(make_pt_ready4use_mapes())],
 names(make_pt_ready4use_mapes())))!=length(names(make_pt_ready4use_mapes()))){
@@ -126,10 +127,9 @@ call. = FALSE)
 
 x}
 #' is ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @description Check whether an object is a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @details Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
-#' @rdname is_ready4use_mapes
+#' 
+#' @rdname ready4use_mapes
 #' @export 
 is_ready4use_mapes <- function(x) inherits(validate_ready4use_mapes(x), "ready4use_mapes")

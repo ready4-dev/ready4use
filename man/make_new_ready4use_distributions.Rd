@@ -18,3 +18,4 @@ Create a new unvalidated instance of the ready4 S3 class for list object that su
 \details{
 List object that summarises the parameters of each distribution
 }
+\keyword{internal}

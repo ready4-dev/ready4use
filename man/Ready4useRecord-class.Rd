@@ -11,9 +11,9 @@ Ingested data, descriptive metadata and provenance details.
 \section{Slots}{
 
 \describe{
-\item{\code{a_Ready4usePointer}}{NO MATCH}
+\item{\code{a_Ready4usePointer}}{(an instance of the Ready4usePointer class)}
 
-\item{\code{b_Ready4useIngest}}{NO MATCH}
+\item{\code{b_Ready4useIngest}}{(an instance of the Ready4useIngest class)}
 
 \item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}
 }}

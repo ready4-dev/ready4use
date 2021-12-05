@@ -21,7 +21,7 @@
 Ready4useProcessed <- methods::setClass("Ready4useProcessed",
 contains = "Ready4useFiles",
 slots = c(write_type_1L_chr = "character",processed_fls_dir_1L_chr = "character",imports_chr = "character",path_to_seed_sf_1L_chr = "character",imports_ls = "list",merge_itms_chr = "character",raw_fls_dir_1L_chr = "character",pkg_1L_chr = "character",overwrite_1L_lgl = "logical",write_1L_lgl = "logical",dissemination_1L_chr = "character"),
-prototype =  list(write_type_1L_chr = "proc",processed_fls_dir_1L_chr = NA_character_,imports_chr = NA_character_,path_to_seed_sf_1L_chr = NA_character_,imports_ls = list(list())))
+prototype =  list(write_type_1L_chr = NA_character_,processed_fls_dir_1L_chr = NA_character_,imports_chr = NA_character_,path_to_seed_sf_1L_chr = NA_character_,imports_ls = list(list())))
 
 
 methods::setValidity(methods::className("Ready4useProcessed"),

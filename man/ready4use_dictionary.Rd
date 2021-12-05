@@ -2,15 +2,38 @@
 % Please edit documentation in R/C3_ready4use_dictionary.R
 \name{ready4use_dictionary}
 \alias{ready4use_dictionary}
+\alias{make_pt_ready4use_dictionary}
+\alias{is_ready4use_dictionary}
 \title{ready4 s3 class defining a data dictionary tibble.}
 \usage{
 ready4use_dictionary(x = make_pt_ready4use_dictionary())
+
+make_pt_ready4use_dictionary(
+  var_nm_chr = character(0),
+  var_ctg_chr = character(0),
+  var_desc_chr = character(0),
+  var_type_chr = character(0)
+)
+
+is_ready4use_dictionary(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 s3 class defining a data dictionary tibble., Default: make_pt_ready4use_dictionary()}
+\item{x}{An object of any type}
+
+\item{var_nm_chr}{Variable name (a character vector), Default: character(0)}
+
+\item{var_ctg_chr}{Variable category categories (a character vector), Default: character(0)}
+
+\item{var_desc_chr}{Variable description (a character vector), Default: character(0)}
+
+\item{var_type_chr}{Variable type (a character vector), Default: character(0)}
 }
 \value{
 A validated instance of the ready4 s3 class defining a data dictionary tibble.
+
+A prototype for ready4 s3 class defining a data dictionary tibble.
+
+A logical value, TRUE if a valid instance of the ready4 s3 class defining a data dictionary tibble.
 }
 \description{
 Create a new valid instance of the ready4 s3 class defining a data dictionary tibble.

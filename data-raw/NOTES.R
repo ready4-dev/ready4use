@@ -1,7 +1,5 @@
 # pkg_setup_ls <- x_ready4fun_manifest
 # library(ready4fun)
-prototype_lup <- ready4fun::get_rds_from_pkg_dmt(fl_nm_1L_chr = "prototype_lup",
-                                                piggyback_to_1L_chr = "ready4-dev/ready4")
 make_addl_cls_pts_tb <- function(prototype_lup,
                                  # pkg_setup_ls,
                                  cls_nms_chr,
@@ -46,11 +44,9 @@ prototype_lup <- ready4::add_lups(prototype_lup,
 #                                                  val_chr = dplyr::case_when(pt_ns_chr == "ready4use" ~ val_chr %>%
 #                                                                               stringr::str_replace_all("ready4use::",""),
 #                                                                             T ~ val_chr))
-ready4::write_env_objs_to_dv(list(prototype_lup = prototype_lup),
-                     descriptions_chr = "Class prototype lookup table",
-                     ds_url_1L_chr = character(0),
-                     piggyback_to_1L_chr = "ready4-dev/ready4",
-                     publish_dv_1L_lgl = F)
+
+# See NOTES in youthvars
+
 # manifest_r3 <-  ready4fun::write_package(pkg_setup_ls,
 #                                          self_serve_1L_lgl = F,
 #                                          self_serve_fn_ls = NULL)

@@ -9,7 +9,7 @@ update_tb_src_loc_to_url_sngl_tb(x, y, local_to_url_vec_chr, urls_vec_chr)
 \arguments{
 \item{x}{An object}
 
-\item{y}{PARAM_DESCRIPTION}
+\item{y}{An object}
 
 \item{local_to_url_vec_chr}{Local to url vector (a character vector)}
 
