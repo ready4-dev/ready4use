@@ -2,15 +2,65 @@
 % Please edit documentation in R/C3_ready4use_imports.R
 \name{ready4use_imports}
 \alias{ready4use_imports}
+\alias{make_pt_ready4use_imports}
+\alias{is_ready4use_imports}
 \title{ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 ready4use_imports(x = make_pt_ready4use_imports())
+
+make_pt_ready4use_imports(
+  file_type_chr = character(0),
+  file_name_chr = character(0),
+  data_repo_chr = character(0),
+  data_repo_ui_chr = character(0),
+  data_repo_db_ui_chr = character(0),
+  data_repo_file_ext_chr = character(0),
+  data_repo_save_type_chr = character(0),
+  local_file_src_chr = character(0),
+  path_to_make_script_chr = character(0),
+  download_url_chr = character(0),
+  inc_file_main_chr = character(0),
+  inc_fls_to_rename_ls = list(),
+  new_nms_for_inc_fls_ls = list()
+)
+
+is_ready4use_imports(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import., Default: make_pt_ready4use_imports()}
+\item{x}{An object of any type}
+
+\item{file_type_chr}{File type (a character vector), Default: character(0)}
+
+\item{file_name_chr}{File name (a character vector), Default: character(0)}
+
+\item{data_repo_chr}{Data repository (a character vector), Default: character(0)}
+
+\item{data_repo_ui_chr}{Data repository user interface (a character vector), Default: character(0)}
+
+\item{data_repo_db_ui_chr}{Data repository database user interface (a character vector), Default: character(0)}
+
+\item{data_repo_file_ext_chr}{Data repository file extension (a character vector), Default: character(0)}
+
+\item{data_repo_save_type_chr}{Data repository save type (a character vector), Default: character(0)}
+
+\item{local_file_src_chr}{Local file source (a character vector), Default: character(0)}
+
+\item{path_to_make_script_chr}{Path to make script (a character vector), Default: character(0)}
+
+\item{download_url_chr}{Download url (a character vector), Default: character(0)}
+
+\item{inc_file_main_chr}{Include file main (a character vector), Default: character(0)}
+
+\item{inc_fls_to_rename_ls}{Include files to rename (a list), Default: list()}
+
+\item{new_nms_for_inc_fls_ls}{New names for include files (a list), Default: list()}
 }
 \value{
 A validated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+
+A prototype for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+
+A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \description{
 Create a new valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.

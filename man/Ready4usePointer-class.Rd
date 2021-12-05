@@ -11,9 +11,9 @@ Metadata on local and remote data storage locations.
 \section{Slots}{
 
 \describe{
-\item{\code{a_Ready4usePaths}}{NO MATCH}
+\item{\code{a_Ready4usePaths}}{(an instance of the Ready4Module class)}
 
-\item{\code{b_Ready4useRepos}}{NO MATCH}
+\item{\code{b_Ready4useRepos}}{(an instance of the Ready4useRepos class)}
 
 \item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}
 }}

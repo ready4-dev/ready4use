@@ -18,3 +18,4 @@ Validate an instance of the ready4 S3 class for tibble object lookup table of so
 \details{
 Tibble object lookup table of sources of raw (un-processed) data to import.
 }
+\keyword{internal}

@@ -2,15 +2,44 @@
 % Please edit documentation in R/C3_ready4use_distributions.R
 \name{ready4use_distributions}
 \alias{ready4use_distributions}
+\alias{make_pt_ready4use_distributions}
+\alias{is_ready4use_distributions}
 \title{ready4 S3 class for list object that summarises the parameters of each distribution}
 \usage{
 ready4use_distributions(x = make_pt_ready4use_distributions())
+
+make_pt_ready4use_distributions(
+  distribution_chr = character(0),
+  dstr_param_1_dbl = numeric(0),
+  dstr_param_2_dbl = numeric(0),
+  dstr_param_3_dbl = numeric(0),
+  dstr_param_4_dbl = numeric(0),
+  transformation_chr = character(0)
+)
+
+is_ready4use_distributions(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution, Default: make_pt_ready4use_distributions()}
+\item{x}{An object of any type}
+
+\item{distribution_chr}{Distribution (a character vector), Default: character(0)}
+
+\item{dstr_param_1_dbl}{Distribution parameter 1 (a double vector), Default: numeric(0)}
+
+\item{dstr_param_2_dbl}{Distribution parameter 2 (a double vector), Default: numeric(0)}
+
+\item{dstr_param_3_dbl}{Distribution parameter 3 (a double vector), Default: numeric(0)}
+
+\item{dstr_param_4_dbl}{Distribution parameter 4 (a double vector), Default: numeric(0)}
+
+\item{transformation_chr}{Transformation (a character vector), Default: character(0)}
 }
 \value{
 A validated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+
+A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
+
+A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
 }
 \description{
 Create a new valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution

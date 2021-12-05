@@ -18,3 +18,4 @@ Validate an instance of the ready4 s3 class defining a data dictionary tibble.
 \details{
 A data dictionary tibble.
 }
+\keyword{internal}

@@ -18,3 +18,4 @@ Create a new unvalidated instance of the ready4 S3 class for tibble object that 
 \details{
 Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }
+\keyword{internal}

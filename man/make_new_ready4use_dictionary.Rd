@@ -18,3 +18,4 @@ Create a new unvalidated instance of the ready4 s3 class defining a data diction
 \details{
 A data dictionary tibble.
 }
+\keyword{internal}

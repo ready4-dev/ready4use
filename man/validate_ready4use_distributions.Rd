@@ -18,3 +18,4 @@ Validate an instance of the ready4 S3 class for list object that summarises the 
 \details{
 List object that summarises the parameters of each distribution
 }
+\keyword{internal}
