@@ -5,8 +5,9 @@
 #' @param x An object of class Ready4useRepos
 #' @param fls_to_ingest_chr Files to ingest (a character vector), Default: 'NA'
 #' @param key_1L_chr Key (a character vector of length one), Default: NULL
+#' @param metadata_1L_lgl Metadata (a logical vector of length one), Default: T
 #' @param type_1L_chr Type (a character vector of length one), Default: 'R'
-#' @return X (Ingested data, descriptive metadata and provenance details.)
+#' @return Ingest (an output object of multiple potential types)
 #' @rdname ingest-methods
 #' @aliases ingest,Ready4useRepos-method
 #' @export 
@@ -18,7 +19,7 @@
 #' @importFrom piggyback pb_download_url
 #' @importFrom fs path_file
 methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = NA_character_, key_1L_chr = NULL, 
-    type_1L_chr = "R") 
+    metadata_1L_lgl = T, type_1L_chr = "R") 
 {
     ingest_ls <- NULL
     descriptions_chr <- character(0)
@@ -87,9 +88,17 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = 
                 length(fl_nms_chr)))
         }
     }
-    x_Ready4useIngest <- Ready4useIngest(objects_ls = ingest_ls, 
-        descriptions_chr = descriptions_chr)
-    x_Ready4useRecord <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x), 
-        b_Ready4useIngest = x_Ready4useIngest)
-    return(x_Ready4useRecord)
+    y <- Ready4useIngest(objects_ls = ingest_ls, descriptions_chr = descriptions_chr)
+    z <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x), 
+        b_Ready4useIngest = y)
+    if (!metadata_1L_lgl) {
+        ingest_xx <- y
+        if (!is.na(fls_to_ingest_chr[1]) & length(fls_to_ingest_chr) == 
+            1) 
+            ingest_xx <- y %>% procure(fl_nm_1L_chr = fl_nm_1L_chr)
+    }
+    else {
+        ingest_xx <- z
+    }
+    return(ingest_xx)
 })
