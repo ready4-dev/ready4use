@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9197</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9198</span>
       </span>
     </div>
 
@@ -68,6 +68,7 @@
   <span class="va">x</span>,
   fls_to_ingest_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
   key_1L_chr <span class="op">=</span> <span class="cn">NULL</span>,
+  metadata_1L_lgl <span class="op">=</span> <span class="cn">T</span>,
   type_1L_chr <span class="op">=</span> <span class="st">"R"</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -80,12 +81,14 @@
 <dd><p>Files to ingest (a character vector), Default: 'NA'</p></dd>
 <dt>key_1L_chr</dt>
 <dd><p>Key (a character vector of length one), Default: NULL</p></dd>
+<dt>metadata_1L_lgl</dt>
+<dd><p>Metadata (a logical vector of length one), Default: T</p></dd>
 <dt>type_1L_chr</dt>
 <dd><p>Type (a character vector of length one), Default: 'R'</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>X (Ingested data, descriptive metadata and provenance details.)</p>
+    <p>Ingest (an output object of multiple potential types)</p>
     </div>
 
   </div>
