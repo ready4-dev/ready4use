@@ -31,19 +31,39 @@ x <- Ready4useRepos(dv_nm_1L_chr = "fakes",
 ```
 
 ## Ingest data
-To ingest RDS file format objects contained in the repos specified in an `Ready4useRepos` instance, use the `ingest` method. By default, the `ingest` method imports all RDS files in the specified repositories, but you adopt a more targeted approach by supplying the names of desired files to the `fls_to_ingest_chr` argument. The `ingest` method transforms `x` into an object of class `Ready4useRecord`, which contains both the ingested data and a `Ready4useRepos` instance describing the source repositor(y|ies). 
+To ingest RDS file format objects contained in the repos specified in an `Ready4useRepos` instance, use the `ingest` method. By default, the `ingest` method imports all RDS files in the specified repositories, but you adopt a more targeted approach by supplying the names of desired files to the `fls_to_ingest_chr` argument. 
+
+By default, the `ingest` method transforms `x` into an object of class `Ready4useRecord`, which contains both the ingested data and metadata describing the ingested data and their provenance. 
 
 ```{r}
-x <- ingest(x,
-            fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"))
+## Not run
+# x <- ingest(x,
+#             fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"))
+```
+
+However, if these metadata are required, we can simply import a list of the ingested files by supplying the `metadata_1L_lgl = F` argument.
+
+```{r}
+objects_ls <- ingest(x,
+                     fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),
+                     metadata_1L_lgl = F)
+```
+
+If we also specify just a single file name for ingest, then the `ingest` method returns just that object (instead of a list containing that object).
+
+```{r}
+## Not run
+# ymh_clinical_tb <- ingest(x,
+#                           fls_to_ingest_chr = c("ymh_clinical_tb"),
+#                           metadata_1L_lgl = F)
 ```
 
 ## Create a data dyad
-The `Ready4useDyad` class can be used to pair a dataset with its data dictionary. In the below example, we create a `Ready4useDyad` instance `y` using some of the data we have just ingested (`x`).
+The `Ready4useDyad` class can be used to pair a dataset with its data dictionary. In the below example, we create a `Ready4useDyad` instance `y` using some of the data we have just ingested.
 
 ```{r}
-y <- Ready4useDyad(ds_tb = procure(procureSlot(x,"b_Ready4useIngest"), fl_nm_1L_chr = "ymh_clinical_tb"),
-                   dictionary_r3 = procure(procureSlot(x,"b_Ready4useIngest"), fl_nm_1L_chr = "ymh_clinical_dict_r3"))
+y <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
+                   dictionary_r3 = objects_ls$ymh_clinical_dict_r3)
 ```
 
 The dictionary_r3 slot of `y` is an instance of the `ready4use_dictionary` class.
@@ -51,7 +71,6 @@ The dictionary_r3 slot of `y` is an instance of the `ready4use_dictionary` class
 ```{r}
 class(procureSlot(y,"dictionary_r3"))
 ```
-
 
 ## Inspect data
 We can inspect `y` by printing selected information about it to console using the `exhibit` method. If we only wish to see the first or last few records, we can pass "head" or "tail" to the `display_1L_chr` argument.

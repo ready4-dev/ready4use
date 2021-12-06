@@ -83,10 +83,10 @@ ingest_Ready4useRepos <- function(x,
   z <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x),
                        b_Ready4useIngest = y)
   if(!metadata_1L_lgl){
-    ingest_xx <- y
+    ingest_xx <- y@objects_ls
     if(!is.na(fls_to_ingest_chr[1]) & length(fls_to_ingest_chr) == 1)
       ingest_xx <- y %>%
-        procure(fl_nm_1L_chr = fl_nm_1L_chr)
+        procure(fl_nm_1L_chr = fls_to_ingest_chr)
   }else{
     ingest_xx <- z
   }
