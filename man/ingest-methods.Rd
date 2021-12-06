@@ -9,6 +9,7 @@
   x,
   fls_to_ingest_chr = NA_character_,
   key_1L_chr = NULL,
+  metadata_1L_lgl = T,
   type_1L_chr = "R"
 )
 }
@@ -19,10 +20,12 @@
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: NULL}
 
+\item{metadata_1L_lgl}{Metadata (a logical vector of length one), Default: T}
+
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'R'}
 }
 \value{
-X (Ingested data, descriptive metadata and provenance details.)
+Ingest (an output object of multiple potential types)
 }
 \description{
 ingest method applied to Ready4useRepos
