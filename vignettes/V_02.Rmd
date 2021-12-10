@@ -35,7 +35,7 @@ objects_ls <- Ready4useRepos(dv_nm_1L_chr = "fakes",
 Importantly (and a requirement for subsequent steps), the data dictionary we ingest is a `ready4use_dictionary` object.
 
 ```{r}
-ready4use_dictionary(objects_ls$eq5d_ds_dict)
+class(objects_ls$eq5d_ds_dict)
 ```
 
 We can now pair the data dictionary with its dataset in a new object `x`, a `Ready4useDyad`.
@@ -68,7 +68,7 @@ x <- renew(x,
 To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
 
 ```{r}
-y <- renew(y,
+y <- renew(x,
            type_1L_chr = "unlabel")
 ```
 

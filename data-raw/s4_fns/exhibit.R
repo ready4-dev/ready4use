@@ -15,6 +15,12 @@ exhibit_Ready4useDyad <- function(x,
   }
   if(type_1L_chr == "dict"){
     df <- x@dictionary_r3
+    df <- df %>%
+      add_labels_from_dictionary(dictionary_tb = make_pt_ready4use_dictionary(var_nm_chr = names(df),
+                                                                              var_desc_chr = c("Variable","Category",
+                                                                                                          "Description", "Class")),
+                                 remove_old_lbls_1L_lgl = T)
+
     caption_1L_chr <- ifelse(is.na(caption_1L_chr),
                              "Data Dictionary",
                              caption_1L_chr)

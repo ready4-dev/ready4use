@@ -33,7 +33,7 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
                 ds_url_1L_chr = x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr, 
                 key_1L_chr = key_1L_chr, publish_dv_1L_lgl = publish_dv_1L_lgl, 
                 server_1L_chr = server_1L_chr)
-            x@dv_ds_metadata_ls <- list(ds_ls = ds_ls)
+            x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_metadata_ls <- list(ds_ls = ds_ls)
         }
         if ("gh" %in% repos_chr) {
             piggyback_tag_1L_chr <- ifelse(!is.na(x@a_Ready4usePointer@b_Ready4useRepos@gh_tag_1L_chr), 
