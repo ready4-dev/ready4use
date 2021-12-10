@@ -1,5 +1,6 @@
 # pkg_setup_ls <- x_ready4fun_manifest
-# library(ready4fun)
+library(ready4fun)
+devtools::load_all()
 make_addl_cls_pts_tb <- function(prototype_lup,
                                  # pkg_setup_ls,
                                  cls_nms_chr,
@@ -26,25 +27,31 @@ make_addl_cls_pts_tb <- function(prototype_lup,
     dplyr::arrange(pt_ns_chr, type_chr)
   return(addl_cls_pts_tb)
 }
-
+# x <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
+#                     gh_tag_1L_chr = "Documentation_0.0") %>%
+#   ingest(metadata_1L_lgl = F)
 # prototype_lup <- get_rds_from_pkg_dmt(pkg_setup_ls,
 #                                       fl_nm_1L_chr = "prototype_lup")
-prototype_lup<- prototype_lup %>%
-  dplyr::filter(pt_ns_chr != "ready4" )
-prototype_lup <- ready4::add_lups(prototype_lup,
-                                  new_lup = make_addl_cls_pts_tb(prototype_lup,
-                                                                 cls_nms_chr = c("Ready4Module",
-                                                                                 "Ready4Private",
-                                                                                 "Ready4Public"),
-                                                                 clss_ns_1L_chr = "ready4"),
-                                  key_var_nm_1L_chr = "type_chr") %>%
-  dplyr::arrange(pt_ns_chr, type_chr)
+# prototype_lup<- prototype_lup %>%
+#   dplyr::filter(pt_ns_chr != "ready4" )
+# prototype_lup <- ready4::add_lups(prototype_lup,
+#                                   new_lup = make_addl_cls_pts_tb(prototype_lup,
+#                                                                  cls_nms_chr = c("Ready4Module",
+#                                                                                  "Ready4Private",
+#                                                                                  "Ready4Public"),
+#                                                                  clss_ns_1L_chr = "ready4"),
+#                                   key_var_nm_1L_chr = "type_chr") %>%
+#   dplyr::arrange(pt_ns_chr, type_chr)
 # prototype_lup <- prototype_lup %>% dplyr::mutate(default_val_chr = dplyr::case_when(pt_ns_chr == "ready4use" ~ "",
 #                                                                    T ~ default_val_chr),
 #                                                  val_chr = dplyr::case_when(pt_ns_chr == "ready4use" ~ val_chr %>%
 #                                                                               stringr::str_replace_all("ready4use::",""),
 #                                                                             T ~ val_chr))
-
+# write_env_objs_to_dv(list(prototype_lup = prototype_lup),
+#                      descriptions_chr = "Class prototype lookup table",
+#                      ds_url_1L_chr = "",
+#                      piggyback_to_1L_chr = "ready4-dev/ready4",
+#                      publish_dv_1L_lgl = T)
 # See NOTES in youthvars
 
 # manifest_r3 <-  ready4fun::write_package(pkg_setup_ls,

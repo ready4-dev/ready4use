@@ -1,0 +1,82 @@
+---
+title: Ready4useDyad"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    number_sections: yes
+vignette: >
+  %\VignetteIndexEntry{Ready4useDyad}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making.
+
+```{r results='hide', message=FALSE}
+library(ready4use)
+```
+
+## Create a dataset-dictionary pair
+A data dictionary containts useful metadata about a dataset. We can ingest examples of a fake dataset and its data-dictionary [using the method explained in another vignette](V_01.html).
+
+```{r}
+objects_ls <- Ready4useRepos(dv_nm_1L_chr = "fakes",
+                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+                    dv_server_1L_chr = "dataverse.harvard.edu") %>%
+  ingest(metadata_1L_lgl = F)
+```
+
+Importantly (and a requirement for subsequent steps), the data dictionary we ingest is a `ready4use_dictionary` object.
+
+```{r}
+ready4use_dictionary(objects_ls$eq5d_ds_dict)
+```
+
+We can now pair the data dictionary with its dataset in a new object `x`, a `Ready4useDyad`.
+
+```{r}
+x <- Ready4useDyad(ds_tb = objects_ls$eq5d_ds_tb,
+                   dictionary_r3 = objects_ls$eq5d_ds_dict)
+```
+
+## Inspect data
+We can inspect `x` by printing selected information about it to console using the `exhibit` method. If we only wish to see the first or last few records, we can pass "head" or "tail" to the `display_1L_chr` argument.
+
+```{r}
+ exhibit(x,
+         display_1L_chr = "head")
+```
+
+The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the `renew` method.
+
+```{r}
+x <- renew(x,
+           type_1L_chr = "label")
+```
+
+```{r}
+ exhibit(x,
+         display_1L_chr = "head")
+```
+
+To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
+
+```{r}
+y <- renew(y,
+           type_1L_chr = "unlabel")
+```
+
+By default, the `exhibit` method will print the dataset part of the `Ready4useDyad` instance. To inspect the data dictionary, pass "dict" to the `type_1L_chr` argument.
+
+```{r}
+exhibit(y,
+        display_1L_chr = "head",
+        type_1L_chr = "dict")
+```
+

@@ -12,7 +12,7 @@
 #' @aliases ingest,Ready4useRepos-method
 #' @export 
 #' @importFrom dataverse get_dataset
-#' @importFrom stringi stri_replace_all_regex
+#' @importFrom stringi stri_replace_last_regex stri_replace_all_regex
 #' @importFrom purrr map map_chr
 #' @importFrom ready4 get_rds_from_dv ingest
 #' @importFrom stats setNames
@@ -40,9 +40,9 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = 
             else {
                 fl_nms_chr <- x@fl_nms_chr
             }
-            fl_nms_chr <- fl_nms_chr %>% stringi::stri_replace_all_regex("\\.RDS", 
-                "") %>% stringi::stri_replace_all_regex("\\.Rds", 
-                "") %>% stringi::stri_replace_all_regex("\\.rds", 
+            fl_nms_chr <- fl_nms_chr %>% stringi::stri_replace_last_regex("\\.RDS", 
+                "") %>% stringi::stri_replace_last_regex("\\.Rds", 
+                "") %>% stringi::stri_replace_last_regex("\\.rds", 
                 "")
             if (!is.na(fls_to_ingest_chr[1])) 
                 fl_nms_chr <- intersect(fl_nms_chr, fls_to_ingest_chr)
