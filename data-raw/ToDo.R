@@ -1,16 +1,26 @@
-objects_ls$eq5d_ds_dict
-eq5d_ds_dict <- ready4use::ready4use_dictionary(objects_ls$eq5d_ds_dict %>% remove_labels_from_ds())
-x <- Ready4useRepos(dv_nm_1L_chr = "fakes",
-                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
-                    dv_server_1L_chr = "dataverse.harvard.edu")
-y <- Ready4usePointer(b_Ready4useRepos = x)
+y <- Ready4usePointer(b_Ready4useRepos = Ready4useRepos(dv_nm_1L_chr = "fakes",
+                                                        dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
+                                                        dv_server_1L_chr = "dataverse.harvard.edu",
+                                                        gh_repo_1L_chr = "ready4-dev/ready4use",
+                                                        gh_tag_1L_chr = "Documentation_0.0"))
 y <- Ready4useRecord(a_Ready4usePointer = y,
-                     b_Ready4useIngest = Ready4useIngest(objects_ls = list(eq5d_ds_dict = eq5d_ds_dict),
-                                                         descriptions_chr = c("Data dictionary for a synthetic (fake) dataset (clinical youth mental health, EQ-5D).")))
+                     b_Ready4useIngest = Ready4useIngest(objects_ls = list(ymh_eq5d_dyad_r4 = x),
+                                                         descriptions_chr = c("An example of a Ready4useDyad - a dataset (clinical youth mental health, EQ-5D) and data dictionary pair. Note this example uses fake data.")))
 share(y)
-eq5d_ds_dict <- eq5d_ds_dict %>% add_labels_from_dictionary(dictionary_tb = make_pt_ready4use_dictionary(var_nm_chr = names(eq5d_ds_dict),
-                                                                                         var_desc_chr = c("Variable","Category",
-                                                                                                          "Description", "Class")))
+# objects_ls$eq5d_ds_dict
+# eq5d_ds_dict <- ready4use::ready4use_dictionary(objects_ls$eq5d_ds_dict %>% remove_labels_from_ds())
+# x <- Ready4useRepos(dv_nm_1L_chr = "fakes",
+#                     dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+#                     dv_server_1L_chr = "dataverse.harvard.edu")
+# y <- Ready4usePointer(b_Ready4useRepos = x)
+# y <- Ready4useRecord(a_Ready4usePointer = y,
+#                      b_Ready4useIngest = Ready4useIngest(objects_ls = list(eq5d_ds_dict = eq5d_ds_dict),
+#                                                          descriptions_chr = c("Data dictionary for a synthetic (fake) dataset (clinical youth mental health, EQ-5D).")))
+# share(y)
+# eq5d_ds_dict <- eq5d_ds_dict %>% add_labels_from_dictionary(dictionary_tb = make_pt_ready4use_dictionary(var_nm_chr = names(eq5d_ds_dict),
+                                                                                         # var_desc_chr = c("Variable","Category",
+                                                                                         #                  "Description", "Class")))
+
 # procureSlot <- function (x, ...)
 # {
 #   UseMethod("procureSlot", x)

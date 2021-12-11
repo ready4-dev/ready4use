@@ -68,14 +68,14 @@ x <- renew(x,
 To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
 
 ```{r}
-y <- renew(x,
+x <- renew(x,
            type_1L_chr = "unlabel")
 ```
 
 By default, the `exhibit` method will print the dataset part of the `Ready4useDyad` instance. To inspect the data dictionary, pass "dict" to the `type_1L_chr` argument.
 
 ```{r}
-exhibit(y,
+exhibit(x,
         display_1L_chr = "head",
         type_1L_chr = "dict")
 ```
