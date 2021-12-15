@@ -5,10 +5,10 @@ share_Ready4useRecord <- function(x,
                                   publish_dv_1L_lgl = F,
                                   type_1L_chr = "prefer_dv"){
   repos_chr <- c(character(0),
-                 ifelse(!is.na(x@a_Ready4usePointer@b_Ready4useRepos@gh_tag_1L_chr) & (type_1L_chr %in% c("all","prefer_gh")),
+                 ifelse(!is.na(x@a_Ready4usePointer@b_Ready4useRepos@gh_tag_1L_chr) & (is.na(x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr) | (type_1L_chr %in% c("all","prefer_gh"))),
                         "gh",
                         NA_character_),
-                 ifelse(!is.na(x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr) & (type_1L_chr %in% c("all","prefer_dv")),
+                 ifelse(!is.na(x@a_Ready4usePointer@b_Ready4useRepos@dv_ds_nm_1L_chr) & (is.na(x@a_Ready4usePointer@b_Ready4useRepos@gh_tag_1L_chr) | (type_1L_chr %in% c("all","prefer_dv"))),
                         "dv",
                         NA_character_)) %>% purrr::discard(is.na)
   if(!identical(repos_chr,character(0))){
@@ -40,4 +40,24 @@ share_Ready4useRecord <- function(x,
     }
   }
   return(x)
+}
+share_Ready4useRepos <- function(x,
+                                 obj_to_share_xx,
+                                 fl_nm_1L_chr,
+                                 description_1L_chr = NA_character_,
+                                 gh_prerelease_1L_lgl = T,
+                                 gh_repo_desc_1L_chr = "Supplementary Files",
+                                 key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                                 publish_dv_1L_lgl = T,
+                                 type_1L_chr = "prefer_gh"){
+  y_Ready4useRecord <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x),
+                                       b_Ready4useIngest = Ready4useIngest(objects_ls = list(obj_to_share_xx) %>% stats::setNames((fl_nm_1L_chr)),
+                                                                           descriptions_chr = description_1L_chr))
+  y_Ready4useRecord <- share(y_Ready4useRecord,
+                             gh_prerelease_1L_lgl = gh_prerelease_1L_lgl,
+                             gh_repo_desc_1L_chr = gh_repo_desc_1L_chr,
+                             key_1L_chr = key_1L_chr,
+                             publish_dv_1L_lgl = publish_dv_1L_lgl,
+                             type_1L_chr = type_1L_chr)
+  return(y_Ready4useRecord)
 }

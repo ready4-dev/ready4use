@@ -1,5 +1,5 @@
 ---
-title: "Data Management With Ready4useRepos, Ready4usePointer and Ready4useRecord"
+title: "Data Management With Ready4useRepos and Ready4useRecord"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Data Management With Ready4useRepos, Ready4usePointer and Ready4useRecord}
+  %\VignetteIndexEntry{Data Management With Ready4useRepos and Ready4useRecord}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -63,17 +63,7 @@ If we specify just a single object name for ingest, then the `ingest` method ret
 ```
 
 ## Share data
-To share data, we first need to specify potential dissemination platforms (repositories that have write permissions to) using the `Ready4usePointer` class.
-
-```{r}
-y <- Ready4usePointer(b_Ready4useRepos = Ready4useRepos(dv_nm_1L_chr = "fakes",
-                                                        dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
-                                                        dv_server_1L_chr = "dataverse.harvard.edu",
-                                                        gh_repo_1L_chr = "ready4-dev/ready4use",
-                                                        gh_tag_1L_chr = "Documentation_0.0"))
-```
-
-We now need to identify the data we wish to share. For this example, we create a new object `z`, a `Ready4useDyad` [(a data structure explained in another vignette)](V_02.html), using the data we ingested in a previous step (extracted from the `Ready4useRecord` object `x` using calls to the `procureSlot` method.
+To illustrate how to share data using `ready4use` classes and methods, we will first need some data to publish. We therefore can create is `z`, a `Ready4useDyad` [(a data structure explained in another vignette)](V_02.html), using the data we ingested in a previous step (extracted from the `Ready4useRecord` object `x` using calls to the `procureSlot` method.
 
 ```{r}
 objects_ls <- procureSlot(x,"b_Ready4useIngest") %>% procureSlot("objects_ls")
@@ -82,19 +72,20 @@ z <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
   renew()
 ```
 
-We now add the dissemination platforms details (`Ready4usePointer` object `y`) to the data we wish to share (`z`), transforming `y` to a `Ready4useRecord`.
+We now specify where we plan to publish `z` using the `Ready4useRepos` class.
 
 ```{r}
-y <- Ready4useRecord(a_Ready4usePointer = y,
-                     b_Ready4useIngest = Ready4useIngest(objects_ls = list(ymh_clinical_dyad_r4 = z),
-                                                         descriptions_chr = c("An example of a Ready4useDyad - a dataset (clinical youth mental health, AQoL-6D) and data dictionary pair. Note this example uses fake data.")))
+y <- Ready4useRepos(dv_nm_1L_chr = "fakes",
+                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
+                    dv_server_1L_chr = "dataverse.harvard.edu")
 ```
 
-We can now upload `z` to our preferred data repository using the `share` method. By default, if more than one data repository was specified in the `a_Ready4usePointer` slot of `y`, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either "prefer_gh" or "all" values to the `type_1L_chr` argument. If we wish we can publish the updated Dataverse dataset in the same step, by using the `publish_dv_1L_lgl` argument. The Ready4useDyad object is now available for download at https://doi.org/10.7910/DVN/W95KED.
+We can now upload `z` to our preferred data repository using the `share` method. By default, if more than one data repository was specified in `y`, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either "prefer_gh" or "all" values to the `type_1L_chr` argument. The Ready4useDyad object is now available for download at https://doi.org/10.7910/DVN/W95KED.
 
 ```{r eval = F}
 y <- share(y,
-      key_1L_chr = "ENTER THE API KEY FOR YOUR DATAVERSE REPO HERE",
-      publish_dv_1L_lgl = T,
-      type_1L_chr = "prefer_gh")
+           obj_to_share_xx = z,
+           fl_nm_1L_chr = "ymh_clinical_dyad_r4",
+           description_1L_chr = "An example of a Ready4useDyad - a dataset (clinical youth mental health, AQoL-6D) and data dictionary pair. Note this example uses fake data.")
 ```
+

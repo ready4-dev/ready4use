@@ -3,6 +3,8 @@
 \name{share-Ready4useRecord}
 \alias{share-Ready4useRecord}
 \alias{share,Ready4useRecord-method}
+\alias{share-Ready4useRepos}
+\alias{share,Ready4useRepos-method}
 \title{Share data contained in an instance of a class via an online repository}
 \usage{
 \S4method{share}{Ready4useRecord}(
@@ -13,9 +15,21 @@
   publish_dv_1L_lgl = F,
   type_1L_chr = "prefer_dv"
 )
+
+\S4method{share}{Ready4useRepos}(
+  x,
+  obj_to_share_xx,
+  fl_nm_1L_chr,
+  description_1L_chr = NA_character_,
+  gh_prerelease_1L_lgl = T,
+  gh_repo_desc_1L_chr = "Supplementary Files",
+  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  publish_dv_1L_lgl = T,
+  type_1L_chr = "prefer_gh"
+)
 }
 \arguments{
-\item{x}{An object of class Ready4useRecord}
+\item{x}{An object of class Ready4useRepos}
 
 \item{gh_prerelease_1L_lgl}{Github prerelease (a logical vector of length one), Default: T}
 
@@ -23,13 +37,23 @@
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
-\item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: F}
+\item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: T}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'prefer_dv'}
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'prefer_gh'}
+
+\item{obj_to_share_xx}{Object to share (an output object of multiple potential types)}
+
+\item{fl_nm_1L_chr}{File name (a character vector of length one)}
+
+\item{description_1L_chr}{Description (a character vector of length one), Default: 'NA'}
 }
 \value{
 x (An object of class Ready4useRecord)
+
+Y (Ingested data, descriptive metadata and provenance details.)
 }
 \description{
 share method applied to Ready4useRecord
+
+share method applied to Ready4useRepos
 }
