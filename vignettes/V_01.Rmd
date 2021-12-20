@@ -72,11 +72,11 @@ z <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
   renew()
 ```
 
-We now specify where we plan to publish `z` using the `Ready4useRepos` class.
+We now specify where we plan to publish `z` in `y`, a `Ready4useRepos` object. Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the https://doi.org/10.7910/DVN/W95KED dataset from the [fakes](https://dataverse.harvard.edu/dataverse/fakes)  dataverse will not work for you).
 
 ```{r}
-y <- Ready4useRepos(dv_nm_1L_chr = "fakes",
-                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
+y <- Ready4useRepos(dv_nm_1L_chr = "fakes", # Replace with values for a dataverse & dataset for which
+                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED", #  you have write permissions.
                     dv_server_1L_chr = "dataverse.harvard.edu")
 ```
 

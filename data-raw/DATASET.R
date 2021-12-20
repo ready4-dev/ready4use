@@ -116,8 +116,7 @@ y <- dplyr::bind_rows(
                                                vals_ls = list(write_type_1L_chr ="raw"),
                                                allowed_vals_ls = list(write_type_1L_chr = "raw"),
                                                class_desc_chr= "Metadata for dataset(s) to be saved in local directory in a raw (unprocessed) format.",
-                                               parent_class_chr = "Ready4useFiles",
-                                               inc_clss_ls = list("Ready4useFiles")),
+                                               parent_class_chr = "Ready4useFiles"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Processed",
                                                slots_ls = list("write_type_1L_chr","processed_fls_dir_1L_chr","imports_chr","path_to_seed_sf_1L_chr","imports_ls") %>% list(),
@@ -125,15 +124,13 @@ y <- dplyr::bind_rows(
                                                vals_ls = list(write_type_1L_chr = "proc"),
                                                allowed_vals_ls = list(write_type_1L_chr = "proc"),
                                                class_desc_chr= "Metadata for dataset(s) to be saved in local directory in a processed (R) format.",
-                                               parent_class_chr = "Ready4useFiles",
-                                               inc_clss_ls = list("Ready4useFiles")),
+                                               parent_class_chr = "Ready4useFiles"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Arguments",
                                                slots_ls = list("crs_nbr_dbl") %>% list(), # Change
                                                pt_ls = list("numeric") %>% list(),
                                                class_desc_chr= "Arguments for a function that constructs a spatial object.",
-                                               parent_class_chr = "Ready4useProcessed",
-                                               inc_clss_ls = list("Ready4useProcessed")),
+                                               parent_class_chr = "Ready4useProcessed"),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Dyad",
                                                slots_ls = list("ds_tb","dictionary_r3") %>% list(), # Change
@@ -165,14 +162,14 @@ y <- dplyr::bind_rows(
                                                pt_ls = list("Ready4Module","Ready4useRepos") %>% list(),
                                                class_desc_chr = "Metadata on local and remote data storage locations.",
                                                parent_class_chr = "Ready4Module",
-                                               inc_clss_ls = list("Ready4useRepos")),
+                                               inc_clss_ls = list("Ready4useRepos") %>% list()),
   ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
                                                name_stub_chr = "Record",
                                                slots_ls = list("a_Ready4usePointer","b_Ready4useIngest") %>% list(), # Change
                                                pt_ls = list("Ready4usePointer","Ready4useIngest") %>% list(),
                                                class_desc_chr= "Ingested data, descriptive metadata and provenance details.",
                                                parent_class_chr = "Ready4Module",
-                                               inc_clss_ls = list("Ready4usePointer","Ready4useIngest"))
+                                               inc_clss_ls = list("Ready4usePointer","Ready4useIngest") %>% list())
 ) %>%
   ready4class::ready4class_constructor()
 z <- ready4pack::make_pt_ready4pack_manifest(x,
