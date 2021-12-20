@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ready4use</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9203</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9204</span>
       </span>
     </div>
 
@@ -143,10 +143,10 @@
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_tb</span>,
                    dictionary_r3 <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_dict_r3</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>We now specify where we plan to publish <code>z</code> using the <code>Ready4useRepos</code> class.</p>
+<p>We now specify where we plan to publish <code>z</code> in <code>y</code>, a <code>Ready4useRepos</code> object. Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a> dataset from the <a href="https://dataverse.harvard.edu/dataverse/fakes" class="external-link">fakes</a> dataverse will not work for you).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
-                    dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>,
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>, <span class="co"># Replace with values for a dataverse &amp; dataset for which</span>
+                    dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>, <span class="co">#  you have write permissions.</span>
                     dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span></code></pre></div>
 <p>We can now upload <code>z</code> to our preferred data repository using the <code>share</code> method. By default, if more than one data repository was specified in <code>y</code>, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either “prefer_gh” or “all” values to the <code>type_1L_chr</code> argument. The Ready4useDyad object is now available for download at <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
