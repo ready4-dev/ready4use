@@ -27,9 +27,17 @@ make_addl_cls_pts_tb <- function(prototype_lup,
     dplyr::arrange(pt_ns_chr, type_chr)
   return(addl_cls_pts_tb)
 }
-# x <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
-#                     gh_tag_1L_chr = "Documentation_0.0") %>%
-#   ingest(metadata_1L_lgl = F)
+y <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
+                               gh_tag_1L_chr = "Documentation_0.0")
+x <- y %>%
+  ingest(metadata_1L_lgl = F)
+prototype_lup <- x$prototype_lup
+prototype_lup <- prototype_lup %>% dplyr::mutate(default_val_chr = dplyr::case_when(pt_ns_chr == "ready4" ~ "",
+                                                                   T ~ default_val_chr)) %>%
+  dplyr::arrange(pt_ns_chr)
+y <- share(y,
+           obj_to_share_xx = prototype_lup,
+           fl_nm_1L_chr = "prototype_lup")
 # prototype_lup <- get_rds_from_pkg_dmt(pkg_setup_ls,
 #                                       fl_nm_1L_chr = "prototype_lup")
 # prototype_lup<- prototype_lup %>%

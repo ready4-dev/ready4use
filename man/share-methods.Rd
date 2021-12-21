@@ -5,7 +5,7 @@
 \alias{share,Ready4useRecord-method}
 \alias{share-Ready4useRepos}
 \alias{share,Ready4useRepos-method}
-\title{Share data contained in an instance of a class via an online repository}
+\title{Share (publish) open data}
 \usage{
 \S4method{share}{Ready4useRecord}(
   x,

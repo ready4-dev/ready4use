@@ -1,5 +1,5 @@
 #' 
-#' Share data contained in an instance of a class via an online repository
+#' Share (publish) open data
 #' @name share-Ready4useRecord
 #' @description share method applied to Ready4useRecord
 #' @param x An object of class Ready4useRecord
@@ -52,7 +52,7 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
     return(x)
 })
 #' 
-#' Share data contained in an instance of a class via an online repository
+#' Share (publish) open data
 #' @name share-Ready4useRepos
 #' @description share method applied to Ready4useRepos
 #' @param x An object of class Ready4useRepos

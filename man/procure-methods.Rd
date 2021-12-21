@@ -7,7 +7,7 @@
 \alias{procure,ready4use_imports-method}
 \alias{procure-Ready4useIngest}
 \alias{procure,Ready4useIngest-method}
-\title{Procure data by executing a search and retrieval algorithm using data contained in an instance of a class}
+\title{Procure (get) data}
 \usage{
 procure.ready4use_dataverses(
   x,
