@@ -1,204 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/V_01.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/articles/V_01.html</loc>
   </url>
   <url>
-    <loc>/articles/V_02.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/articles/V_02.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/ready4use.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/articles/ready4use.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/index.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useArguments-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useArguments-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useDyad-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useDyad-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useFiles-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useFiles-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useIngest-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useIngest-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4usePointer-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4usePointer-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useProcessed-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useProcessed-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useRaw-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useRaw-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useRecord-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useRecord-class.html</loc>
   </url>
   <url>
-    <loc>/reference/Ready4useRepos-class.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/Ready4useRepos-class.html</loc>
   </url>
   <url>
-    <loc>/reference/add_ds_to_dv_repo.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/add_ds_to_dv_repo.html</loc>
   </url>
   <url>
-    <loc>/reference/add_dv_meta_to_imp_lup.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/add_dv_meta_to_imp_lup.html</loc>
   </url>
   <url>
-    <loc>/reference/add_files_to_dv.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/add_files_to_dv.html</loc>
   </url>
   <url>
-    <loc>/reference/add_labels_from_dictionary.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/add_labels_from_dictionary.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_dir_exists.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/assert_dir_exists.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_file_exists.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/assert_file_exists.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_matches_chr.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/assert_matches_chr.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_single_row_tb.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/assert_single_row_tb.html</loc>
   </url>
   <url>
-    <loc>/reference/deprecated.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/deprecated.html</loc>
   </url>
   <url>
-    <loc>/reference/exhibit-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/exhibit-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/get_file_from_dv.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_file_from_dv.html</loc>
   </url>
   <url>
-    <loc>/reference/get_fl_meta_from_dv_ls.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_fl_meta_from_dv_ls.html</loc>
   </url>
   <url>
-    <loc>/reference/get_fl_nms_of_types.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_fl_nms_of_types.html</loc>
   </url>
   <url>
-    <loc>/reference/get_local_path_to_dv_data.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_local_path_to_dv_data.html</loc>
   </url>
   <url>
-    <loc>/reference/get_r3_from_dv_csv.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_r3_from_dv_csv.html</loc>
   </url>
   <url>
-    <loc>/reference/get_valid_path_chr.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_valid_path_chr.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/ingest-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ingest-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/make_new_ready4use_dataverses.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_dataverses.html</loc>
   </url>
   <url>
-    <loc>/reference/make_new_ready4use_dictionary.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_dictionary.html</loc>
   </url>
   <url>
-    <loc>/reference/make_new_ready4use_distributions.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_distributions.html</loc>
   </url>
   <url>
-    <loc>/reference/make_new_ready4use_imports.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_imports.html</loc>
   </url>
   <url>
-    <loc>/reference/make_new_ready4use_mapes.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_mapes.html</loc>
   </url>
   <url>
-    <loc>/reference/make_r3_from_csv_tb.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_r3_from_csv_tb.html</loc>
   </url>
   <url>
-    <loc>/reference/manufacture-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/manufacture-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/procure-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/procure-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/read_import_from_csv.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/read_import_from_csv.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use-package.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use-package.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use_dataverses.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use_dataverses.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use_dictionary.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use_dictionary.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use_distributions.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use_distributions.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use_imports.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use_imports.html</loc>
   </url>
   <url>
-    <loc>/reference/ready4use_mapes.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/ready4use_mapes.html</loc>
   </url>
   <url>
-    <loc>/reference/remove_labels_from_ds.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/remove_labels_from_ds.html</loc>
   </url>
   <url>
-    <loc>/reference/renew-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/renew-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/share-methods.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/share-methods.html</loc>
   </url>
   <url>
-    <loc>/reference/transform_csv_col_to_ls_col.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/transform_csv_col_to_ls_col.html</loc>
   </url>
   <url>
-    <loc>/reference/update_tb_src_loc_to_url_sngl_tb.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_tb_src_loc_to_url_sngl_tb.html</loc>
   </url>
   <url>
-    <loc>/reference/validate_ready4use_dataverses.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/validate_ready4use_dataverses.html</loc>
   </url>
   <url>
-    <loc>/reference/validate_ready4use_dictionary.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/validate_ready4use_dictionary.html</loc>
   </url>
   <url>
-    <loc>/reference/validate_ready4use_distributions.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/validate_ready4use_distributions.html</loc>
   </url>
   <url>
-    <loc>/reference/validate_ready4use_imports.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/validate_ready4use_imports.html</loc>
   </url>
   <url>
-    <loc>/reference/validate_ready4use_mapes.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/validate_ready4use_mapes.html</loc>
   </url>
   <url>
-    <loc>/reference/write_dv_ds.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/write_dv_ds.html</loc>
   </url>
   <url>
-    <loc>/reference/write_dv_ds_fls.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/write_dv_ds_fls.html</loc>
   </url>
   <url>
-    <loc>/reference/write_fls_to_dv_ds.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/write_fls_to_dv_ds.html</loc>
   </url>
   <url>
-    <loc>/reference/write_paired_ds_fls_to_dv.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/write_paired_ds_fls_to_dv.html</loc>
   </url>
   <url>
-    <loc>/reference/write_to_copy_fls_to_dv_dir.html</loc>
+    <loc>https://ready4-dev.github.io/ready4use/reference/write_to_copy_fls_to_dv_dir.html</loc>
   </url>
 </urlset>
