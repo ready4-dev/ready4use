@@ -4,15 +4,15 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Retrieve, Manage and Share Datasets for Open and Modular Mental Health Systems Models}
+\title{ready4use: Author, Retrieve and Share Ready4 Framework Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 }
 \seealso{
 Useful links:

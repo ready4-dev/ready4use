@@ -1,6 +1,6 @@
-# ready4use <img src="man/figures/fav120.png" align="right" />
+# ready4use
 
-## Retrieve, Manage and Share Datasets for Open and Modular Mental Health Systems Models
+## Author, Retrieve and Share Ready4 Framework Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -8,14 +8,15 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5644336.svg)](https://doi.org/10.5281/zenodo.5644336)
 <!-- badges: end -->
 
-ready4use provides a set of tools for general data management
-tasks when developping open source, modular mental health simulation
-models.  This development version of the ready4use package has been
-made available as part of the process of testing and documenting the
-package.  You should only trial this software if you feel confident
-that you understand what it does and have created a sandpit area in
-which you can safely undertake testing. If you have any questions,
-please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for authoring and working
+with datasets when developping open source, modular mental health
+systems models.  This development version of the ready4use package has
+been made available as part of the process of testing and documenting
+the package.  You should only trial this software if you feel
+confident that you understand what it does and have created a sandpit
+area in which you can safely undertake testing. If you have any
+questions, please contact the authors
+(matthew.hamilton@orygen.org.au).
 
 To install a development version of this software, run the following commands in your R console:
 

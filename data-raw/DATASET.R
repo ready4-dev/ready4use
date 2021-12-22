@@ -1,6 +1,6 @@
 library(ready4show)
-pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Manage And Share Datasets For Open and Modular Mental Health Systems Models" %>% tools::toTitleCase(),
-                                           pkg_desc_1L_chr = "ready4use provides a set of tools for general data management tasks when developping open source, modular mental health simulation models.
+pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Retrieve and Share Ready4 Framework Datasets" %>% tools::toTitleCase(),
+                                           pkg_desc_1L_chr = "ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
   You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                                            authors_prsn = c(utils::person(
@@ -176,4 +176,4 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              constructor_r3 = y) %>%
   ready4pack::ready4pack_manifest()
 z <- author(z)
-# devtools::build_vignettes()
+devtools::build_vignettes()
