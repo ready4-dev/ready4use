@@ -1,6 +1,7 @@
 ingest_Ready4useRepos <- function(x,
                                   #idcs_int = NA_integer_,
                                   fls_to_ingest_chr = NA_character_,
+                                  gh_token_1L_chr = "",
                                   key_1L_chr = NULL,
                                   metadata_1L_lgl = T,
                                   type_1L_chr = "R"){
@@ -52,7 +53,8 @@ ingest_Ready4useRepos <- function(x,
   }
   if(!is.na(x@gh_repo_1L_chr)){ # ASSUMES NO GH RELEASE FL NMS ARE SHARED WITH DATAVERSE DS FILES
     dmt_urls_chr <- piggyback::pb_download_url(repo = x@gh_repo_1L_chr,
-                                               tag = x@gh_tag_1L_chr)
+                                               tag = x@gh_tag_1L_chr,
+                                               .token = gh_token_1L_chr)
     if(type_1L_chr == "R"){
       dmt_urls_chr <- dmt_urls_chr %>%
         get_fl_nms_of_types(types_chr = c(".RDS",".Rds",".rds"))

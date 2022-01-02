@@ -8,6 +8,7 @@
 \S4method{ingest}{Ready4useRepos}(
   x,
   fls_to_ingest_chr = NA_character_,
+  gh_token_1L_chr = "",
   key_1L_chr = NULL,
   metadata_1L_lgl = T,
   type_1L_chr = "R"
@@ -17,6 +18,8 @@
 \item{x}{An object of class Ready4useRepos}
 
 \item{fls_to_ingest_chr}{Files to ingest (a character vector), Default: 'NA'}
+
+\item{gh_token_1L_chr}{Github token (a character vector of length one), Default: ''}
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: NULL}
 

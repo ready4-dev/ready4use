@@ -4,6 +4,7 @@
 #' @description ingest method applied to Ready4useRepos
 #' @param x An object of class Ready4useRepos
 #' @param fls_to_ingest_chr Files to ingest (a character vector), Default: 'NA'
+#' @param gh_token_1L_chr Github token (a character vector of length one), Default: ''
 #' @param key_1L_chr Key (a character vector of length one), Default: NULL
 #' @param metadata_1L_lgl Metadata (a logical vector of length one), Default: T
 #' @param type_1L_chr Type (a character vector of length one), Default: 'R'
@@ -18,8 +19,8 @@
 #' @importFrom stats setNames
 #' @importFrom piggyback pb_download_url
 #' @importFrom fs path_file
-methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = NA_character_, key_1L_chr = NULL, 
-    metadata_1L_lgl = T, type_1L_chr = "R") 
+methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = NA_character_, gh_token_1L_chr = "", 
+    key_1L_chr = NULL, metadata_1L_lgl = T, type_1L_chr = "R") 
 {
     ingest_ls <- NULL
     descriptions_chr <- character(0)
@@ -63,7 +64,7 @@ methods::setMethod("ingest", "Ready4useRepos", function (x, fls_to_ingest_chr = 
     }
     if (!is.na(x@gh_repo_1L_chr)) {
         dmt_urls_chr <- piggyback::pb_download_url(repo = x@gh_repo_1L_chr, 
-            tag = x@gh_tag_1L_chr)
+            tag = x@gh_tag_1L_chr, .token = gh_token_1L_chr)
         if (type_1L_chr == "R") {
             dmt_urls_chr <- dmt_urls_chr %>% get_fl_nms_of_types(types_chr = c(".RDS", 
                 ".Rds", ".rds"))
