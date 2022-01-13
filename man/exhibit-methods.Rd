@@ -3,7 +3,7 @@
 \name{exhibit-Ready4useDyad}
 \alias{exhibit-Ready4useDyad}
 \alias{exhibit,Ready4useDyad-method}
-\title{Exhibit (print to console) features of an object}
+\title{Exhibit (print to console) features of a ready4 framework module (or sub-module)}
 \usage{
 \S4method{exhibit}{Ready4useDyad}(
   x,

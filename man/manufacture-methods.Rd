@@ -5,7 +5,7 @@
 \alias{manufacture,ready4use_dataverses-method}
 \alias{manufacture.ready4use_imports}
 \alias{manufacture,ready4use_imports-method}
-\title{Manufacture a new object}
+\title{Manufacture a (non ready4 framework) object}
 \usage{
 manufacture.ready4use_dataverses(x, type_1L_chr = "read_fn")
 

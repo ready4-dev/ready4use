@@ -7,7 +7,7 @@
 \alias{renew,ready4use_imports-method}
 \alias{renew-Ready4useDyad}
 \alias{renew,Ready4useDyad-method}
-\title{Renew (update) an object}
+\title{Renew (update) a ready4 framework module (or sub-module)}
 \usage{
 renew.ready4use_dictionary(x, new_ready4_dict_r3)
 
