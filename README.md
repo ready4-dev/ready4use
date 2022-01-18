@@ -1,6 +1,6 @@
 # ready4use
 
-## Author, Retrieve and Share Ready4 Framework Datasets
+## Author, Label and Share Ready4 Framework Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

@@ -76,3 +76,4 @@
 ^doc$
 ^Meta$
 ^data-raw/s4_fns/renew\.R$
+^data-raw/mthds/exhibit\.R$

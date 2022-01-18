@@ -63,7 +63,7 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
 #' @param gh_repo_desc_1L_chr Github repository description (a character vector of length one), Default: 'Supplementary Files'
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
 #' @param publish_dv_1L_lgl Publish dataverse (a logical vector of length one), Default: T
-#' @param type_1L_chr Type (a character vector of length one), Default: 'prefer_gh'
+#' @param type_1L_chr Type (a character vector of length one), Default: 'prefer_dv'
 #' @return Y (Ingested data, descriptive metadata and provenance details.)
 #' @rdname share-methods
 #' @aliases share,Ready4useRepos-method
@@ -73,12 +73,12 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
 methods::setMethod("share", "Ready4useRepos", function (x, obj_to_share_xx, fl_nm_1L_chr, description_1L_chr = NA_character_, 
     gh_prerelease_1L_lgl = T, gh_repo_desc_1L_chr = "Supplementary Files", 
     key_1L_chr = Sys.getenv("DATAVERSE_KEY"), publish_dv_1L_lgl = T, 
-    type_1L_chr = "prefer_gh") 
+    type_1L_chr = "prefer_dv") 
 {
     y_Ready4useRecord <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x), 
         b_Ready4useIngest = Ready4useIngest(objects_ls = list(obj_to_share_xx) %>% 
             stats::setNames((fl_nm_1L_chr)), descriptions_chr = description_1L_chr))
-    y_Ready4useRecord <- share(y_Ready4useRecord, gh_prerelease_1L_lgl = gh_prerelease_1L_lgl, 
+    y_Ready4useRecord <- ready4::share(y_Ready4useRecord, gh_prerelease_1L_lgl = gh_prerelease_1L_lgl, 
         gh_repo_desc_1L_chr = gh_repo_desc_1L_chr, key_1L_chr = key_1L_chr, 
         publish_dv_1L_lgl = publish_dv_1L_lgl, type_1L_chr = type_1L_chr)
     return(y_Ready4useRecord)

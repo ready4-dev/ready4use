@@ -49,15 +49,15 @@ share_Ready4useRepos <- function(x,
                                  gh_repo_desc_1L_chr = "Supplementary Files",
                                  key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
                                  publish_dv_1L_lgl = T,
-                                 type_1L_chr = "prefer_gh"){
+                                 type_1L_chr = "prefer_dv"){
   y_Ready4useRecord <- Ready4useRecord(a_Ready4usePointer = Ready4usePointer(b_Ready4useRepos = x),
                                        b_Ready4useIngest = Ready4useIngest(objects_ls = list(obj_to_share_xx) %>% stats::setNames((fl_nm_1L_chr)),
                                                                            descriptions_chr = description_1L_chr))
-  y_Ready4useRecord <- share(y_Ready4useRecord,
-                             gh_prerelease_1L_lgl = gh_prerelease_1L_lgl,
-                             gh_repo_desc_1L_chr = gh_repo_desc_1L_chr,
-                             key_1L_chr = key_1L_chr,
-                             publish_dv_1L_lgl = publish_dv_1L_lgl,
-                             type_1L_chr = type_1L_chr)
+  y_Ready4useRecord <- ready4::share(y_Ready4useRecord,
+                                     gh_prerelease_1L_lgl = gh_prerelease_1L_lgl,
+                                     gh_repo_desc_1L_chr = gh_repo_desc_1L_chr,
+                                     key_1L_chr = key_1L_chr,
+                                     publish_dv_1L_lgl = publish_dv_1L_lgl,
+                                     type_1L_chr = type_1L_chr)
   return(y_Ready4useRecord)
 }

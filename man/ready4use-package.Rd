@@ -4,7 +4,7 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Author, Retrieve and Share Ready4 Framework Datasets}
+\title{ready4use: Author, Label and Share Ready4 Framework Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 

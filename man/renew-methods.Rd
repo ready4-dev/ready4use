@@ -9,13 +9,55 @@
 \alias{renew,Ready4useDyad-method}
 \title{Renew (update) a ready4 framework module (or sub-module)}
 \usage{
-renew.ready4use_dictionary(x, new_ready4_dict_r3)
+renew.ready4use_dictionary(
+  x,
+  var_nm_chr = NA_character_,
+  var_ctg_chr = NA_character_,
+  var_desc_chr = NA_character_,
+  var_type_chr = NA_character_,
+  filter_cdn_1L_chr = NA_character_,
+  new_ready4_dict_r3 = NULL,
+  slice_idxs_int = NA_integer_
+)
 
-\S4method{renew}{ready4use_dictionary}(x, new_ready4_dict_r3)
+\S4method{renew}{ready4use_dictionary}(
+  x,
+  var_nm_chr = NA_character_,
+  var_ctg_chr = NA_character_,
+  var_desc_chr = NA_character_,
+  var_type_chr = NA_character_,
+  filter_cdn_1L_chr = NA_character_,
+  new_ready4_dict_r3 = NULL,
+  slice_idxs_int = NA_integer_
+)
 
-renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
+renew.ready4use_imports(
+  x,
+  local_file_src_chr = NA_character_,
+  path_to_make_script_chr = NA_character_,
+  download_url_chr = NA_character_,
+  inc_file_main_chr = NA_character_,
+  inc_fls_to_rename_ls = list(),
+  new_nms_for_inc_fls_ls = list(),
+  filter_cdn_1L_chr = NA_character_,
+  local_to_url_vec_chr = NA_character_,
+  slice_idxs_int = NA_integer_,
+  urls_vec_chr = NA_character_
+)
 
-\S4method{renew}{ready4use_imports}(x, local_to_url_vec_chr, urls_vec_chr)
+\S4method{renew}{ready4use_imports}(
+  x,
+  local_file_src_chr = NA_character_,
+  path_to_make_script_chr = NA_character_,
+  download_url_chr = NA_character_,
+  inc_file_main_chr = NA_character_,
+  inc_fls_to_rename_ls = list(),
+  new_nms_for_inc_fls_ls = list(),
+  filter_cdn_1L_chr = NA_character_,
+  local_to_url_vec_chr = NA_character_,
+  slice_idxs_int = NA_integer_,
+  urls_vec_chr = NA_character_
+)
 
 \S4method{renew}{Ready4useDyad}(
   x,
@@ -27,11 +69,35 @@ renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
 \arguments{
 \item{x}{An object of class Ready4useDyad}
 
-\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3)}
+\item{var_nm_chr}{Variable name (a character vector), Default: 'NA'}
 
-\item{local_to_url_vec_chr}{Local to url vector (a character vector)}
+\item{var_ctg_chr}{Variable category categories (a character vector), Default: 'NA'}
 
-\item{urls_vec_chr}{Urls vector (a character vector)}
+\item{var_desc_chr}{Variable description (a character vector), Default: 'NA'}
+
+\item{var_type_chr}{Variable type (a character vector), Default: 'NA'}
+
+\item{filter_cdn_1L_chr}{Filter condition (a character vector of length one), Default: 'NA'}
+
+\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3), Default: NULL}
+
+\item{slice_idxs_int}{Slice indices (an integer vector), Default: NA}
+
+\item{local_file_src_chr}{Local file source (a character vector), Default: 'NA'}
+
+\item{path_to_make_script_chr}{Path to make script (a character vector), Default: 'NA'}
+
+\item{download_url_chr}{Download url (a character vector), Default: 'NA'}
+
+\item{inc_file_main_chr}{Include file main (a character vector), Default: 'NA'}
+
+\item{inc_fls_to_rename_ls}{Include files to rename (a list), Default: list()}
+
+\item{new_nms_for_inc_fls_ls}{New names for include files (a list), Default: list()}
+
+\item{local_to_url_vec_chr}{Local to url vector (a character vector), Default: 'NA'}
+
+\item{urls_vec_chr}{Urls vector (a character vector), Default: 'NA'}
 
 \item{remove_old_lbls_1L_lgl}{Remove old labels (a logical vector of length one), Default: T}
 
@@ -40,7 +106,9 @@ renew.ready4use_imports(x, local_to_url_vec_chr, urls_vec_chr)
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'label'}
 }
 \value{
-combined_ready4_dictionaries (An object)
+x (An object)
+
+x (An object)
 
 x (An object of class Ready4useDyad)
 }

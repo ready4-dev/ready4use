@@ -38,44 +38,44 @@ Importantly (and a requirement for subsequent steps), the data dictionary we ing
 class(objects_ls$eq5d_ds_dict)
 ```
 
-We can now pair the data dictionary with its dataset in a new object `x`, a `Ready4useDyad`.
+We can now pair the data dictionary with its dataset in a new object `X`, a `Ready4useDyad`.
 
 ```{r}
-x <- Ready4useDyad(ds_tb = objects_ls$eq5d_ds_tb,
+X <- Ready4useDyad(ds_tb = objects_ls$eq5d_ds_tb,
                    dictionary_r3 = objects_ls$eq5d_ds_dict)
 ```
 
 ## Inspect data
-We can inspect `x` by printing selected information about it to console using the `exhibit` method. If we only wish to see the first or last few records, we can pass "head" or "tail" to the `display_1L_chr` argument.
+We can inspect `X` by printing selected information about it to console using the `exhibit` method. If we only wish to see the first or last few records, we can pass "head" or "tail" to the `display_1L_chr` argument.
 
 ```{r}
- exhibit(x,
+ exhibit(X,
          display_1L_chr = "head")
 ```
 
 The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the `renew` method.
 
 ```{r}
-x <- renew(x,
+X <- renew(X,
            type_1L_chr = "label")
 ```
 
 ```{r}
- exhibit(x,
+ exhibit(X,
          display_1L_chr = "head")
 ```
 
 To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
 
 ```{r}
-x <- renew(x,
+X <- renew(X,
            type_1L_chr = "unlabel")
 ```
 
 By default, the `exhibit` method will print the dataset part of the `Ready4useDyad` instance. To inspect the data dictionary, pass "dict" to the `type_1L_chr` argument.
 
 ```{r}
-exhibit(x,
+exhibit(X,
         display_1L_chr = "head",
         type_1L_chr = "dict")
 ```

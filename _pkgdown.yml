@@ -42,6 +42,7 @@ reference:
 - title: "Methods"
 - contents:
   - exhibit-Ready4useDyad
+  - exhibit.ready4use_dictionary
   - ingest-Ready4useRepos
   - manufacture.ready4use_dataverses
   - manufacture.ready4use_imports
