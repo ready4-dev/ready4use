@@ -14,7 +14,7 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
     
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9211</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9212</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,8 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
   var_desc_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
   var_type_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
   filter_cdn_1L_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
-  new_ready4_dict_r3 <span class="op">=</span> <span class="cn">NULL</span>,
+  new_cases_r3 <span class="op">=</span> <span class="cn">NULL</span>,
+  new_ready4_dict_r3 <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,
   slice_idxs_int <span class="op">=</span> <span class="cn">NA_integer_</span>
 <span class="op">)</span>
 
@@ -83,7 +84,8 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
   var_desc_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
   var_type_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
   filter_cdn_1L_chr <span class="op">=</span> <span class="cn">NA_character_</span>,
-  new_ready4_dict_r3 <span class="op">=</span> <span class="cn">NULL</span>,
+  new_cases_r3 <span class="op">=</span> <span class="cn">NULL</span>,
+  new_ready4_dict_r3 <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,
   slice_idxs_int <span class="op">=</span> <span class="cn">NA_integer_</span>
 <span class="op">)</span>
 
@@ -139,8 +141,10 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 <dd><p>Variable type (a character vector), Default: 'NA'</p></dd>
 <dt>filter_cdn_1L_chr</dt>
 <dd><p>Filter condition (a character vector of length one), Default: 'NA'</p></dd>
+<dt>new_cases_r3</dt>
+<dd><p>New cases (a ready4 S3), Default: NULL</p></dd>
 <dt>new_ready4_dict_r3</dt>
-<dd><p>New ready4 dictionary (a ready4 S3), Default: NULL</p></dd>
+<dd><p>New ready4 dictionary (a ready4 S3), Default: deprecated()</p></dd>
 <dt>slice_idxs_int</dt>
 <dd><p>Slice indices (an integer vector), Default: NA</p></dd>
 <dt>local_file_src_chr</dt>
