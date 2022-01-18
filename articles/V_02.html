@@ -33,14 +33,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9210</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9211</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../articles/ready4use.html">Get started</a>
@@ -73,6 +73,9 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="V_02_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="V_02_files/kePrint-0.0.1/kePrint.js"></script><link href="V_02_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <main id="main"><div class="page-header">
@@ -102,17 +105,17 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">objects_ls</span><span class="op">$</span><span class="va">eq5d_ds_dict</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "ready4use_dictionary" "ready4_dictionary"    "tbl_df"              </span>
 <span class="co">## [4] "tbl"                  "data.frame"</span></code></pre>
-<p>We can now pair the data dictionary with its dataset in a new object <code>x</code>, a <code>Ready4useDyad</code>.</p>
+<p>We can now pair the data dictionary with its dataset in a new object <code>X</code>, a <code>Ready4useDyad</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">eq5d_ds_tb</span>,
+<code class="sourceCode R"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">eq5d_ds_tb</span>,
                    dictionary_r3 <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">eq5d_ds_dict</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
 </h2>
-<p>We can inspect <code>x</code> by printing selected information about it to console using the <code>exhibit</code> method. If we only wish to see the first or last few records, we can pass “head” or “tail” to the <code>display_1L_chr</code> argument.</p>
+<p>We can inspect <code>X</code> by printing selected information about it to console using the <code>exhibit</code> method. If we only wish to see the first or last few records, we can pass “head” or “tail” to the <code>display_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">X</span>,
          display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
 <caption>
@@ -541,10 +544,10 @@ Not studying or working
 </table>
 <p>The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the <code>renew</code> method.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">X</span>,
            type_1L_chr <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">X</span>,
          display_1L_chr <span class="op">=</span> <span class="st">"head"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
 <caption>
@@ -973,11 +976,11 @@ Not studying or working
 </table>
 <p>To remove dataset labels, use the <code>renew</code> method with “unlabel” passed to the <code>type_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">X</span>,
            type_1L_chr <span class="op">=</span> <span class="st">"unlabel"</span><span class="op">)</span></code></pre></div>
 <p>By default, the <code>exhibit</code> method will print the dataset part of the <code>Ready4useDyad</code> instance. To inspect the data dictionary, pass “dict” to the <code>type_1L_chr</code> argument.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span><span class="va">X</span>,
         display_1L_chr <span class="op">=</span> <span class="st">"head"</span>,
         type_1L_chr <span class="op">=</span> <span class="st">"dict"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
@@ -1104,7 +1107,7 @@ factor
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>

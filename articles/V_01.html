@@ -33,14 +33,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9210</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9211</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../articles/ready4use.html">Get started</a>
@@ -73,6 +73,9 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="V_01_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Data Management With Ready4useRepos and Ready4useRecord</h1>
@@ -93,7 +96,7 @@
 </h2>
 <p>The <code>Ready4useRepos</code> class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a <code>Ready4useRepos</code> class are Dataverse datasets and GitHub releases. <code>Ready4useRepos</code> methods for download / upload extend tools from the <code>dataverse</code> and <code>piggyback</code> packages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
+<code class="sourceCode R"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                     dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/HJXYKQ"</span>,
                     dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span>,
                     gh_repo_1L_chr <span class="op">=</span> <span class="st">"ready4-dev/ready4"</span>,
@@ -103,41 +106,41 @@
 <h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
 </h2>
 <p>To import objects that have been saved as RDS file format in data repositories specified in an <code>Ready4useRepos</code> instance, use the <code>ingest</code> method.</p>
-<p>The <code>ingest</code> method imports all RDS files in the specified repositories unless you request a more targeted approach by supplying the names of desired files to the <code>fls_to_ingest_chr</code> argument. By default, the <code>ingest</code> method transforms <code>x</code> into an object of class <code>Ready4useRecord</code>, which pairs the ingested data with metadata describing the ingested data and their provenance.</p>
+<p>The <code>ingest</code> method imports all RDS files in the specified repositories unless you request a more targeted approach by supplying the names of desired files to the <code>fls_to_ingest_chr</code> argument. By default, the <code>ingest</code> method transforms <code>X</code> into an object of class <code>Ready4useRecord</code>, which pairs the ingested data with metadata describing the ingested data and their provenance.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span><span class="va">X</span>,
             fls_to_ingest_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_tb"</span>,<span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>If metadata are not required, we can simply ingest a list containing the requested objects by supplying the <code>metadata_1L_lgl = F</code> argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Not run</span>
-<span class="co"># objects_ls &lt;- ingest(x,</span>
+<span class="co"># objects_ls &lt;- ingest(X,</span>
 <span class="co">#                      fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),</span>
 <span class="co">#                      metadata_1L_lgl = F)</span></code></pre></div>
 <p>If we specify just a single object name for ingest, then the <code>ingest</code> method returns just that object (instead of a list containing that object).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Not run</span>
-<span class="co"># ymh_clinical_tb &lt;- ingest(x,</span>
+<span class="co"># ymh_clinical_tb &lt;- ingest(X,</span>
 <span class="co">#                           fls_to_ingest_chr = c("ymh_clinical_tb"),</span>
 <span class="co">#                           metadata_1L_lgl = F)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="share-data">Share data<a class="anchor" aria-label="anchor" href="#share-data"></a>
 </h2>
-<p>To illustrate how to share data using <code>ready4use</code> classes and methods, we will first need some data to publish. We therefore can create is <code>z</code>, a <code>Ready4useDyad</code> <a href="V_02.html">(a data structure explained in another vignette)</a>, using the data we ingested in a previous step (extracted from the <code>Ready4useRecord</code> object <code>x</code> using calls to the <code>procureSlot</code> method.</p>
+<p>To illustrate how to share data using <code>ready4use</code> classes and methods, we will first need some data to publish. We therefore can create is <code>Y</code>, a <code>Ready4useDyad</code> <a href="V_02.html">(a data structure explained in another vignette)</a>, using the data we ingested in a previous step (extracted from the <code>Ready4useRecord</code> object <code>X</code> using calls to the <code>procureSlot</code> method.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">objects_ls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">x</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="st">"objects_ls"</span><span class="op">)</span>
-<span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_tb</span>,
+<code class="sourceCode R"><span class="va">objects_ls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">X</span>,<span class="st">"b_Ready4useIngest"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="st">"objects_ls"</span><span class="op">)</span>
+<span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_tb</span>,
                    dictionary_r3 <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_dict_r3</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>We now specify where we plan to publish <code>z</code> in <code>y</code>, a <code>Ready4useRepos</code> object. Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a> dataset from the <a href="https://dataverse.harvard.edu/dataverse/fakes" class="external-link">fakes</a> dataverse will not work for you).</p>
+<p>We now specify where we plan to publish <code>Y</code> in <code>Z</code>, a <code>Ready4useRepos</code> object. Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a> dataset from the <a href="https://dataverse.harvard.edu/dataverse/fakes" class="external-link">fakes</a> dataverse will not work for you).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>, <span class="co"># Replace with values for a dataverse &amp; dataset for which</span>
+<code class="sourceCode R"><span class="va">Z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>, <span class="co"># Replace with values for a dataverse &amp; dataset for which</span>
                     dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>, <span class="co">#  you have write permissions.</span>
                     dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span></code></pre></div>
-<p>We can now upload <code>z</code> to our preferred data repository using the <code>share</code> method. By default, if more than one data repository was specified in <code>y</code>, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either “prefer_gh” or “all” values to the <code>type_1L_chr</code> argument. The Ready4useDyad object is now available for download at <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
+<p>We can now upload <code>Y</code> to our preferred data repository using the <code>share</code> method. By default, if more than one data repository was specified in <code>Z</code>, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either “prefer_gh” or “all” values to the <code>type_1L_chr</code> argument. The Ready4useDyad object is now available for download at <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html" class="external-link">share</a></span><span class="op">(</span><span class="va">y</span>,
-           obj_to_share_xx <span class="op">=</span> <span class="va">z</span>,
+<code class="sourceCode R"><span class="va">Z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html" class="external-link">share</a></span><span class="op">(</span><span class="va">Z</span>,
+           obj_to_share_xx <span class="op">=</span> <span class="va">Y</span>,
            fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span>,
            description_1L_chr <span class="op">=</span> <span class="st">"An example of a Ready4useDyad - a dataset (clinical youth mental health, AQoL-6D) and data dictionary pair. Note this example uses fake data."</span><span class="op">)</span></code></pre></div>
 </div>
@@ -154,7 +157,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
