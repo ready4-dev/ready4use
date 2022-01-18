@@ -16,7 +16,8 @@ renew.ready4use_dictionary(
   var_desc_chr = NA_character_,
   var_type_chr = NA_character_,
   filter_cdn_1L_chr = NA_character_,
-  new_ready4_dict_r3 = NULL,
+  new_cases_r3 = NULL,
+  new_ready4_dict_r3 = deprecated(),
   slice_idxs_int = NA_integer_
 )
 
@@ -27,7 +28,8 @@ renew.ready4use_dictionary(
   var_desc_chr = NA_character_,
   var_type_chr = NA_character_,
   filter_cdn_1L_chr = NA_character_,
-  new_ready4_dict_r3 = NULL,
+  new_cases_r3 = NULL,
+  new_ready4_dict_r3 = deprecated(),
   slice_idxs_int = NA_integer_
 )
 
@@ -79,7 +81,9 @@ renew.ready4use_imports(
 
 \item{filter_cdn_1L_chr}{Filter condition (a character vector of length one), Default: 'NA'}
 
-\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3), Default: NULL}
+\item{new_cases_r3}{New cases (a ready4 S3), Default: NULL}
+
+\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3), Default: deprecated()}
 
 \item{slice_idxs_int}{Slice indices (an integer vector), Default: NA}
 

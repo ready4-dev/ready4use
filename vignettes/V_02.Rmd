@@ -61,8 +61,8 @@ X <- renew(X,
 ```
 
 ```{r}
- exhibit(X,
-         display_1L_chr = "head")
+exhibit(X,
+        display_1L_chr = "head")
 ```
 
 To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.

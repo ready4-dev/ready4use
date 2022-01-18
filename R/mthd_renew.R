@@ -6,27 +6,30 @@
 #' @param var_desc_chr Variable description (a character vector), Default: 'NA'
 #' @param var_type_chr Variable type (a character vector), Default: 'NA'
 #' @param filter_cdn_1L_chr Filter condition (a character vector of length one), Default: 'NA'
-#' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3), Default: NULL
+#' @param new_cases_r3 New cases (a ready4 S3), Default: NULL
+#' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3), Default: deprecated()
 #' @param slice_idxs_int Slice indices (an integer vector), Default: NA
 #' @return x (An object)
 #' @rdname renew-methods
 #' @export 
+#' @importFrom lifecycle deprecate_warn
 #' @importFrom ready4 update_tb_r3 add_lups renew
 #' @importFrom dplyr bind_rows
 #' @importFrom tibble tibble
 renew.ready4use_dictionary <- function (x, var_nm_chr = NA_character_, var_ctg_chr = NA_character_, 
     var_desc_chr = NA_character_, var_type_chr = NA_character_, 
-    filter_cdn_1L_chr = NA_character_, new_ready4_dict_r3 = NULL, 
+    filter_cdn_1L_chr = NA_character_, new_cases_r3 = NULL, new_ready4_dict_r3 = deprecated(), 
     slice_idxs_int = NA_integer_) 
 {
+    lifecycle::deprecate_warn("0.0.0.9211", "ready4use::renew.ready4use_dictionary(new_ready4_dict_r3)", 
+        details = "Please use `ready4use::renew.ready4use_dictionary(new_cases_r3)` instead.")
     x <- ready4::update_tb_r3(x, filter_cdn_1L_chr = filter_cdn_1L_chr, 
         slice_idxs_int = slice_idxs_int)
     x <- dplyr::bind_rows(x, tibble::tibble(var_nm_chr = var_nm_chr, 
         var_ctg_chr = var_ctg_chr, var_desc_chr = var_desc_chr, 
         var_type_chr = var_type_chr))
-    if (!is.null(new_ready4_dict_r3)) {
-        x <- ready4::add_lups(x, new_lup = new_ready4_dict_r3, 
-            key_var_nm_1L_chr = "var_nm_chr")
+    if (!is.null(new_cases_r3)) {
+        x <- ready4::add_lups(x, new_lup = new_cases_r3, key_var_nm_1L_chr = "var_nm_chr")
     }
     return(x)
 }
