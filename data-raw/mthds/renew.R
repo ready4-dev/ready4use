@@ -7,9 +7,11 @@ renew.ready4use_dictionary <- function(x,
                                        new_cases_r3 = NULL,
                                        new_ready4_dict_r3 = deprecated(),
                                        slice_idxs_int = NA_integer_){
-  lifecycle::deprecate_warn("0.0.0.9211",
-                            "ready4use::renew.ready4use_dictionary(new_ready4_dict_r3)",
-                            details = "Please use `ready4use::renew.ready4use_dictionary(new_cases_r3)` instead.")
+  if(lifecycle::is_present(new_ready4_dict_r3)) {
+    lifecycle::deprecate_warn("0.0.0.9211",
+                              "ready4use::renew.ready4use_dictionary(new_ready4_dict_r3)",
+                              details = "Please use `ready4use::renew.ready4use_dictionary(new_cases_r3)` instead.")
+  }
   x <- ready4::update_tb_r3(x,
                             filter_cdn_1L_chr = filter_cdn_1L_chr,
                             slice_idxs_int = slice_idxs_int)
