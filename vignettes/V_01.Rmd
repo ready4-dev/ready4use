@@ -1,5 +1,5 @@
 ---
-title: "Data Management With Ready4useRepos and Ready4useRecord"
+title: "Retrieve and Disseminate Ready4 Framework Datasets"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Data Management With Ready4useRepos and Ready4useRecord}
+  %\VignetteIndexEntry{Retrieve and Disseminate Ready4 Framework Datasets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---

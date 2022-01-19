@@ -1,5 +1,5 @@
 ---
-title: Pair a Dataset and Its Dictionary Using Ready4useDyad
+title: Pair a Ready4 Framework Dataset and Its Dictionary
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Pair a Dataset and Its Dictionary Using Ready4useDyad}
+  %\VignetteIndexEntry{Pair a Ready4 Framework Dataset and Its Dictionary}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
