@@ -1,3 +1,4 @@
+library(ready4)
 library(ready4show)
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Label and Share Ready4 Framework Datasets" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models.
@@ -18,7 +19,7 @@ pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Label and
                                                         "https://github.com/ready4-dev/ready4use",
                                                         "https://www.ready4-dev.com/"))
 x <- pkg_desc_ls %>%
-  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
+  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(#depends_chr = "ready4",
                                                                        suggests_chr = c("rmarkdown")),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",

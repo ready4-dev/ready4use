@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making.
 
 ```{r results='hide', message=FALSE}
+library(ready4)
 library(ready4use)
 ```
 
