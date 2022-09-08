@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "Matthew Hamilton and Glen Wiesner  (2022). ready4use: Author, Label and Share Ready4 Framework Datasets. Version 0.0.0.9220. Zenodo. https://doi.org/10.5281/zenodo.5644336"
+message: "Matthew Hamilton and Glen Wiesner  (2022). ready4use: Author, Label and Share Ready4 Framework Datasets. Version 0.0.0.9221. Zenodo. https://doi.org/10.5281/zenodo.5644336"
 authors:
   - family-names: "Hamilton"
     given-names: "Matthew"
   - family-names: "Wiesner"
     given-names: "Glen"
 title: "ready4use: Author, Label and Share Ready4 Framework Datasets"
-version: 0.0.0.9220
+version: 0.0.0.9221
 doi: 10.5281/zenodo.5644336
-date-released: 2022-02-15
+date-released: 2022-09-08
 url: "https://ready4-dev.github.io/ready4use/"

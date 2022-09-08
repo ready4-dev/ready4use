@@ -5,7 +5,7 @@
 \alias{exhibit,ready4use_dictionary-method}
 \alias{exhibit-Ready4useDyad}
 \alias{exhibit,Ready4useDyad-method}
-\title{Exhibit (print to console) features of a ready4 framework module (or sub-module)}
+\title{Exhibit features of a dataset by printing them to the R console}
 \usage{
 exhibit.ready4use_dictionary(
   x,

@@ -1,4 +1,4 @@
-library(ready4)
+library(ready4fun)
 library(ready4show)
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Label and Share Ready4 Framework Datasets" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models.

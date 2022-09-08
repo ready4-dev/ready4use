@@ -1,4 +1,4 @@
-#' Exhibit (print to console) features of a ready4 framework module (or sub-module)
+#' Exhibit features of a dataset by printing them to the R console
 #' @description exhibit.ready4use_dictionary() is an exhibit method that exhibits features of a class instance by printing to console. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a data dictionary tibble.
 #' @param caption_1L_chr Caption (a character vector of length one), Default: NULL
@@ -22,7 +22,7 @@ exhibit.ready4use_dictionary <- function (x, caption_1L_chr = NULL, mkdn_tbl_ref
 #' @importFrom ready4 exhibit
 methods::setMethod("exhibit", methods::className("ready4use_dictionary", package = "ready4use"), exhibit.ready4use_dictionary)
 #' 
-#' Exhibit (print to console) features of a ready4 framework module (or sub-module)
+#' Exhibit features of a dataset by printing them to the R console
 #' @name exhibit-Ready4useDyad
 #' @description exhibit method applied to Ready4useDyad
 #' @param x An object of class Ready4useDyad

@@ -1,5 +1,5 @@
 #' 
-#' Share (publish) open data
+#' Share data via an online repository
 #' @name share-Ready4useRecord
 #' @description share method applied to Ready4useRecord
 #' @param x An object of class Ready4useRecord
@@ -52,7 +52,7 @@ methods::setMethod("share", "Ready4useRecord", function (x, gh_prerelease_1L_lgl
     return(x)
 })
 #' 
-#' Share (publish) open data
+#' Share data via an online repository
 #' @name share-Ready4useRepos
 #' @description share method applied to Ready4useRepos
 #' @param x An object of class Ready4useRepos
