@@ -177,6 +177,5 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              constructor_r3 = y) %>%
   ready4pack::ready4pack_manifest()
 z <- author(z)
-ready4::write_citation_cff(packageDescription("ready4use"),
-                           citation_chr = readLines("inst/CITATION"))
+ready4fun::write_fns_dmt_tb(z$x_ready4fun_manifest) # fix in ready4fun
 devtools::build_vignettes()
