@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="ready4use">
-<title>Disseminate Ready4 Framework Datasets • ready4use</title>
+<title>Retrieve Ready4 Datasets • ready4use</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Disseminate Ready4 Framework Datasets">
+<meta property="og:title" content="Retrieve Ready4 Datasets">
 <meta property="og:description" content="ready4use">
 <meta property="og:image" content="https://ready4-dev.github.io/ready4use/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -81,11 +81,11 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Disseminate Ready4 Framework Datasets</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Retrieve Ready4 Datasets</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/ready4use/blob/HEAD/vignettes/V_01.Rmd" class="external-link"><code>vignettes/V_01.Rmd</code></a></small>
-      <div class="d-none name"><code>V_01.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/ready4use/blob/HEAD/vignettes/V_03.Rmd" class="external-link"><code>vignettes/V_03.Rmd</code></a></small>
+      <div class="d-none name"><code>V_03.Rmd</code></div>
     </div>
 
     
@@ -93,57 +93,61 @@
 <p>Note: <strong>This vignette is illustrated with fake data</strong>.
 The dataset explored in this example should not be used to inform
 decision-making.</p>
+<p>We recommend also reading the related tutorial available at: <a href="https://www.acumen-mh.org/blog/2022/08/28/access_open_data/" class="external-link uri">https://www.acumen-mh.org/blog/2022/08/28/access_open_data/</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/ready4/" class="external-link">ready4</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/ready4use/">ready4use</a></span><span class="op">)</span></span></code></pre></div>
-<p>ready4use includes a number of tools for sharing data used in
-conjunction with the ready4 open source model of youth mental health
-systems.</p>
+<p>Ready4use includes a number of tools for ingesting data for use in
+conjunction with the ready4 model.</p>
 <div class="section level2">
-<h2 id="identify-data-to-be-shared">Identify data to be shared<a class="anchor" aria-label="anchor" href="#identify-data-to-be-shared"></a>
+<h2 id="specify-remote-repositories">Specify remote repositories<a class="anchor" aria-label="anchor" href="#specify-remote-repositories"></a>
 </h2>
-<p>To illustrate how to share data using <code>ready4use</code> classes
-and methods, we will first need some data to publish. In this example,
-we are going to share <code>X</code>, a <code>Ready4useDyad</code> <a href="https://ready4-dev.github.io/ready4use/V_02.html">(a data
-structure explained in another vignette)</a> that we can create using <a href="https://ready4-dev.github.io/ready4use/V_03.html">data ingested
-from an online repository</a>.</p>
+<p>The <code>Ready4useRepos</code> class can be used to specify details
+of the data repositories used in your data management workflows.
+Currently, the two types of repository that can be specified in a
+<code>Ready4useRepos</code> class are Dataverse datasets and GitHub
+releases. <code>Ready4useRepos</code> methods for download / upload
+extend tools from the <code>dataverse</code> and <code>piggyback</code>
+packages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">objects_ls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span><span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,</span>
-<span>                                    dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/HJXYKQ"</span>,</span>
-<span>                                    dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span>,</span>
-<span>                                    gh_repo_1L_chr <span class="op">=</span> <span class="st">"ready4-dev/ready4"</span>,</span>
-<span>                                    gh_tag_1L_chr <span class="op">=</span> <span class="st">"Documentation_0.0"</span><span class="op">)</span>,</span>
-<span>                     fls_to_ingest_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_tb"</span>,<span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span>,</span>
-<span>                     metadata_1L_lgl <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useDyad-class.html">Ready4useDyad</a></span><span class="op">(</span>ds_tb <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_tb</span>,</span>
-<span>                   dictionary_r3 <span class="op">=</span> <span class="va">objects_ls</span><span class="op">$</span><span class="va">ymh_clinical_dict_r3</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,</span>
+<span>                    dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/HJXYKQ"</span>,</span>
+<span>                    dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span>,</span>
+<span>                    gh_repo_1L_chr <span class="op">=</span> <span class="st">"ready4-dev/ready4"</span>,</span>
+<span>                    gh_tag_1L_chr <span class="op">=</span> <span class="st">"Documentation_0.0"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="share-data">Share data<a class="anchor" aria-label="anchor" href="#share-data"></a>
+<h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
 </h2>
-<p>We now specify where we plan to publish <code>X</code> in
-<code>Y</code>, a <code>Ready4useRepos</code> object (<a href="https://ready4-dev.github.io/ready4use/V_03.html">described in
-another vignette</a>). Note, you must have write permissions to the
-repositories you specify in this step. The values entered in this
-example (the <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a> dataset from the <a href="https://dataverse.harvard.edu/dataverse/fakes" class="external-link">fakes</a> dataverse
-will not work for you).</p>
+<p>To import objects that have been saved as RDS file format in data
+repositories specified in an <code>Ready4useRepos</code> instance, use
+the <code>ingest</code> method.</p>
+<p>The <code>ingest</code> method imports all RDS files in the specified
+repositories unless you request a more targeted approach by supplying
+the names of desired files to the <code>fls_to_ingest_chr</code>
+argument. By default, the <code>ingest</code> method transforms
+<code>X</code> into an object of class <code>Ready4useRecord</code>,
+which pairs the ingested data with metadata describing the ingested data
+and their provenance.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>, <span class="co"># Replace with values for a dataverse &amp; dataset for which</span></span>
-<span>                    dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>, <span class="co">#  you have write permissions.</span></span>
-<span>                    dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span></span></code></pre></div>
-<p>We can now upload <code>X</code> to our preferred data repository
-using the <code>share</code> method. By default, if more than one data
-repository was specified in <code>Y</code>, then the dataverse
-repository will be preferred when sharing. We can overwrite this default
-by passing either “prefer_gh” or “all” values to the
-<code>type_1L_chr</code> argument. The Ready4useDyad object is now
-available for download at <a href="https://doi.org/10.7910/DVN/W95KED" class="external-link uri">https://doi.org/10.7910/DVN/W95KED</a>.</p>
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span><span class="va">X</span>,</span>
+<span>            fls_to_ingest_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymh_clinical_tb"</span>,<span class="st">"ymh_clinical_dict_r3"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>If metadata are not required, we can simply ingest a list containing
+the requested objects by supplying the <code>metadata_1L_lgl = F</code>
+argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/share-methods.html" class="external-link">share</a></span><span class="op">(</span><span class="va">Y</span>,</span>
-<span>           obj_to_share_xx <span class="op">=</span> <span class="va">X</span>,</span>
-<span>           fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span>,</span>
-<span>           description_1L_chr <span class="op">=</span> <span class="st">"An example of a Ready4useDyad - a dataset (clinical youth mental health, AQoL-6D) and data dictionary pair. Note this example uses fake data."</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## Not run</span></span>
+<span><span class="co"># objects_ls &lt;- ingest(X,</span></span>
+<span><span class="co">#                      fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),</span></span>
+<span><span class="co">#                      metadata_1L_lgl = F)</span></span></code></pre></div>
+<p>If we specify just a single object name for ingest, then the
+<code>ingest</code> method returns just that object (instead of a list
+containing that object).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Not run</span></span>
+<span><span class="co"># ymh_clinical_tb &lt;- ingest(X,</span></span>
+<span><span class="co">#                           fls_to_ingest_chr = c("ymh_clinical_tb"),</span></span>
+<span><span class="co">#                           metadata_1L_lgl = F)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
