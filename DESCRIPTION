@@ -1,6 +1,6 @@
 Package: ready4use
 Title: Author, Label and Share Ready4 Datasets
-Version: 0.0.0.9223
+Version: 0.0.0.9224
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -39,7 +39,7 @@ Imports:
     purrr,
     readxl,
     ready4 (>= 0.0.0.9105),
-    ready4show (>= 0.0.0.9099),
+    ready4show (>= 0.0.0.9100),
     rlang,
     stats,
     stringi,
