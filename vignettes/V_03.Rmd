@@ -25,7 +25,7 @@ library(ready4)
 library(ready4use)
 ```
 
-ready4use includes a number of tools for ingesting data from online repositories used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com].
+ready4use includes a number of tools for ingesting data from online repositories used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com).
 
 ## Specify remote repositories
 The `Ready4useRepos` class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a `Ready4useRepos` class are Dataverse datasets and GitHub releases. `Ready4useRepos` methods for download / upload extend tools from the `dataverse` and `piggyback` packages.

@@ -23,7 +23,7 @@ library(ready4)
 library(ready4use)
 ```
 
-ready4use includes a number of tools for labeling data used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com].
+ready4use includes a number of tools for labeling data used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com).
 
 ## Create a dataset-dictionary pair
 A data dictionary containts useful metadata about a dataset. We can ingest examples of a fake dataset and its data-dictionary [using the method explained in another vignette](V_01.html).
