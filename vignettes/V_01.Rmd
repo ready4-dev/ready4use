@@ -1,5 +1,5 @@
 ---
-title: "Disseminate Ready4 Framework Datasets"
+title: "Disseminate Ready4 Datasets"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Disseminate Ready4 Framework Datasets}
+  %\VignetteIndexEntry{Disseminate Ready4 Datasets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -23,7 +23,7 @@ library(ready4)
 library(ready4use)
 ```
 
-ready4use includes a number of tools for sharing data used in conjunction with the ready4 open source model of youth mental health systems. 
+ready4use includes a number of tools for sharing data used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com]. 
 
 ## Identify data to be shared
 To illustrate how to share data using `ready4use` classes and methods, we will first need some data to publish. In this example, we are going to share `X`, a `Ready4useDyad` [(a data structure explained in another vignette)](https://ready4-dev.github.io/ready4use/V_02.html) that we can create using [data ingested from an online repository](https://ready4-dev.github.io/ready4use/V_03.html).

@@ -19,9 +19,8 @@ library(ready4use)
 ```
 This development version of the ready4use package has been made available as part of the process of testing and documenting the package. 
 
-
 A brief overview of the intended use of ready4use classes and methods is available in the following articles:
 
-
-- [Retrieve and Disseminate Ready4 Framework Datasets](V_01.html)
+- [Retrieve Ready4 Datasets](V_03.html)
 - [Pair a Ready4 Framework Dataset and Its Dictionary](V_02.html)
+- [Share Ready4 Datasets](V_01.html)
