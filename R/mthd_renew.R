@@ -2,13 +2,13 @@
 #' @description renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 s3 class defining a data dictionary tibble.
 #' @param var_nm_chr Variable name (a character vector), Default: 'NA'
-#' @param var_ctg_chr Variable category categories (a character vector), Default: 'NA'
+#' @param var_ctg_chr Variable category (a character vector), Default: 'NA'
 #' @param var_desc_chr Variable description (a character vector), Default: 'NA'
 #' @param var_type_chr Variable type (a character vector), Default: 'NA'
 #' @param filter_cdn_1L_chr Filter condition (a character vector of length one), Default: 'NA'
 #' @param new_cases_r3 New cases (a ready4 S3), Default: NULL
 #' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3), Default: deprecated()
-#' @param slice_idxs_int Slice indices (an integer vector), Default: NA
+#' @param slice_indcs_int Slice indices (an integer vector), Default: NA
 #' @return x (An object)
 #' @rdname renew-methods
 #' @export 
@@ -18,7 +18,7 @@
 renew.ready4use_dictionary <- function (x, var_nm_chr = NA_character_, var_ctg_chr = NA_character_, 
     var_desc_chr = NA_character_, var_type_chr = NA_character_, 
     filter_cdn_1L_chr = NA_character_, new_cases_r3 = NULL, new_ready4_dict_r3 = deprecated(), 
-    slice_idxs_int = NA_integer_) 
+    slice_indcs_int = NA_integer_) 
 {
     if (lifecycle::is_present(new_ready4_dict_r3)) {
         lifecycle::deprecate_warn("0.0.0.9211", "ready4use::renew.ready4use_dictionary(new_ready4_dict_r3)", 
@@ -27,7 +27,7 @@ renew.ready4use_dictionary <- function (x, var_nm_chr = NA_character_, var_ctg_c
     fn_env_ls <- as.list(rlang::current_env())[-1]
     x <- ready4::update_tb_r3(x, filter_cdn_1L_chr = filter_cdn_1L_chr, 
         fn = renew.ready4use_dictionary, fn_env_ls = fn_env_ls, 
-        slice_idxs_int = slice_idxs_int)
+        slice_indcs_int = slice_indcs_int)
     if (!is.null(new_cases_r3)) {
         x <- ready4::add_lups(x, new_lup = new_cases_r3, key_var_nm_1L_chr = "var_nm_chr")
     }
@@ -48,7 +48,7 @@ methods::setMethod("renew", methods::className("ready4use_dictionary", package =
 #' @param new_nms_for_inc_fls_ls New names for include files (a list), Default: list()
 #' @param filter_cdn_1L_chr Filter condition (a character vector of length one), Default: 'NA'
 #' @param local_to_url_vec_chr Local to url vector (a character vector), Default: 'NA'
-#' @param slice_idxs_int Slice indices (an integer vector), Default: NA
+#' @param slice_indcs_int Slice indices (an integer vector), Default: NA
 #' @param urls_vec_chr Urls vector (a character vector), Default: 'NA'
 #' @return x (An object)
 #' @rdname renew-methods
@@ -60,12 +60,12 @@ renew.ready4use_imports <- function (x, local_file_src_chr = NA_character_, path
     download_url_chr = NA_character_, inc_file_main_chr = NA_character_, 
     inc_fls_to_rename_ls = list(), new_nms_for_inc_fls_ls = list(), 
     filter_cdn_1L_chr = NA_character_, local_to_url_vec_chr = NA_character_, 
-    slice_idxs_int = NA_integer_, urls_vec_chr = NA_character_) 
+    slice_indcs_int = NA_integer_, urls_vec_chr = NA_character_) 
 {
     fn_env_ls <- as.list(rlang::current_env())[-1]
     x <- ready4::update_tb_r3(x, filter_cdn_1L_chr = filter_cdn_1L_chr, 
         fn = renew.ready4use_imports, fn_env_ls = fn_env_ls, 
-        slice_idxs_int = slice_idxs_int)
+        slice_indcs_int = slice_indcs_int)
     if (!is.na(local_to_url_vec_chr) & !is.na(urls_vec_chr)) 
         x <- purrr::reduce(1:length(local_to_url_vec_chr), .init = x, 
             ~update_tb_src_loc_to_url_sngl_tb(x = .x, y = .y, 

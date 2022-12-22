@@ -27,7 +27,7 @@ x
 }
 #' make prototype ready4use package dictionary ready4 s3 class defining a data dictionary tibble.
 #' @param var_nm_chr Variable name (a character vector), Default: character(0)
-#' @param var_ctg_chr Variable category categories (a character vector), Default: character(0)
+#' @param var_ctg_chr Variable category (a character vector), Default: character(0)
 #' @param var_desc_chr Variable description (a character vector), Default: character(0)
 #' @param var_type_chr Variable type (a character vector), Default: character(0)
 #' @return A prototype for ready4 s3 class defining a data dictionary tibble.

@@ -1,7 +1,7 @@
 library(ready4fun)
 library(ready4show)
-pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Label and Share Ready4 Framework Datasets" %>% tools::toTitleCase(),
-                                           pkg_desc_1L_chr = "ready4use provides a set of tools for authoring and working with datasets when developping open source, modular mental health systems models.
+pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Label and Share Ready4 Datasets" %>% tools::toTitleCase(),
+                                           pkg_desc_1L_chr = "ready4use provides a set of tools for authoring and working with datasets for the ready4 open source, modular mental health systems model.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
   You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                                            authors_prsn = c(utils::person(
@@ -179,3 +179,7 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
 z <- author(z)
 ready4fun::write_fns_dmt_tb(z$x_ready4fun_manifest) # fix in ready4fun
 devtools::build_vignettes()
+readLines(".github/workflows/R-CMD-check.yaml") %>%
+  stringr::str_replace_all("r-lib/actions/setup-r@master","r-lib/actions/setup-r@v2") %>%
+  stringr::str_replace_all("r-lib/actions/setup-pandoc@master","r-lib/actions/setup-pandoc@v2") %>%
+  writeLines(con = ".github/workflows/R-CMD-check.yaml")

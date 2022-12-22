@@ -6,7 +6,7 @@ renew.ready4use_dictionary <- function(x,
                                        filter_cdn_1L_chr = NA_character_,
                                        new_cases_r3 = NULL,
                                        new_ready4_dict_r3 = deprecated(),
-                                       slice_idxs_int = NA_integer_){
+                                       slice_indcs_int = NA_integer_){
   if(lifecycle::is_present(new_ready4_dict_r3)) {
     lifecycle::deprecate_warn("0.0.0.9211",
                               "ready4use::renew.ready4use_dictionary(new_ready4_dict_r3)",
@@ -17,7 +17,7 @@ renew.ready4use_dictionary <- function(x,
                             filter_cdn_1L_chr = filter_cdn_1L_chr,
                             fn = renew.ready4use_dictionary, ## ## ##
                             fn_env_ls = fn_env_ls,
-                            slice_idxs_int = slice_idxs_int)
+                            slice_indcs_int = slice_indcs_int)
   if(!is.null(new_cases_r3)){
     x <- ready4::add_lups(x,
                           new_lup = new_cases_r3,
@@ -34,14 +34,14 @@ renew.ready4use_imports <- function(x,
                                     new_nms_for_inc_fls_ls = list(),
                                     filter_cdn_1L_chr = NA_character_,
                                     local_to_url_vec_chr = NA_character_,
-                                    slice_idxs_int = NA_integer_,
+                                    slice_indcs_int = NA_integer_,
                                     urls_vec_chr = NA_character_){
   fn_env_ls <- as.list(rlang::current_env())[-1]
   x <- ready4::update_tb_r3(x,
                             filter_cdn_1L_chr = filter_cdn_1L_chr,
                             fn = renew.ready4use_imports, ## ## ##
                             fn_env_ls = fn_env_ls,
-                            slice_idxs_int = slice_idxs_int)
+                            slice_indcs_int = slice_indcs_int)
   if(!is.na(local_to_url_vec_chr) & !is.na(urls_vec_chr))
     x <- purrr::reduce(1:length(local_to_url_vec_chr),
                 .init = x,

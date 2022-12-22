@@ -1,6 +1,6 @@
 # ready4use
 
-## Author, Label and Share Ready4 Framework Datasets
+## Author, Label and Share Ready4 Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -10,8 +10,8 @@
 <!-- badges: end -->
 
 ready4use provides a set of tools for authoring and working
-with datasets when developping open source, modular mental health
-systems models.  This development version of the ready4use package has
+with datasets for the ready4 open source, modular mental health
+systems model.  This development version of the ready4use package has
 been made available as part of the process of testing and documenting
 the package.  You should only trial this software if you feel
 confident that you understand what it does and have created a sandpit

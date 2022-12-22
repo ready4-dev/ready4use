@@ -18,7 +18,7 @@ renew.ready4use_dictionary(
   filter_cdn_1L_chr = NA_character_,
   new_cases_r3 = NULL,
   new_ready4_dict_r3 = deprecated(),
-  slice_idxs_int = NA_integer_
+  slice_indcs_int = NA_integer_
 )
 
 \S4method{renew}{ready4use_dictionary}(
@@ -30,7 +30,7 @@ renew.ready4use_dictionary(
   filter_cdn_1L_chr = NA_character_,
   new_cases_r3 = NULL,
   new_ready4_dict_r3 = deprecated(),
-  slice_idxs_int = NA_integer_
+  slice_indcs_int = NA_integer_
 )
 
 renew.ready4use_imports(
@@ -43,7 +43,7 @@ renew.ready4use_imports(
   new_nms_for_inc_fls_ls = list(),
   filter_cdn_1L_chr = NA_character_,
   local_to_url_vec_chr = NA_character_,
-  slice_idxs_int = NA_integer_,
+  slice_indcs_int = NA_integer_,
   urls_vec_chr = NA_character_
 )
 
@@ -57,7 +57,7 @@ renew.ready4use_imports(
   new_nms_for_inc_fls_ls = list(),
   filter_cdn_1L_chr = NA_character_,
   local_to_url_vec_chr = NA_character_,
-  slice_idxs_int = NA_integer_,
+  slice_indcs_int = NA_integer_,
   urls_vec_chr = NA_character_
 )
 
@@ -73,7 +73,7 @@ renew.ready4use_imports(
 
 \item{var_nm_chr}{Variable name (a character vector), Default: 'NA'}
 
-\item{var_ctg_chr}{Variable category categories (a character vector), Default: 'NA'}
+\item{var_ctg_chr}{Variable category (a character vector), Default: 'NA'}
 
 \item{var_desc_chr}{Variable description (a character vector), Default: 'NA'}
 
@@ -85,7 +85,7 @@ renew.ready4use_imports(
 
 \item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3), Default: deprecated()}
 
-\item{slice_idxs_int}{Slice indices (an integer vector), Default: NA}
+\item{slice_indcs_int}{Slice indices (an integer vector), Default: NA}
 
 \item{local_file_src_chr}{Local file source (a character vector), Default: 'NA'}
 
