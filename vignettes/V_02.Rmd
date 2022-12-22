@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making.
 
-```{r results='hide', message=FALSE}
+```{r results='hide', message=FALSE, warning=FALSE}
 library(ready4)
 library(ready4use)
 ```
@@ -51,7 +51,8 @@ We can inspect `X` by printing selected information about it to console using th
 
 ```{r}
  exhibit(X,
-         display_1L_chr = "head")
+         display_1L_chr = "head",
+         scroll_box_args_ls = list(width = "100%"))
 ```
 
 The dataset may be more meaningful if variables are labelled using the descriptive information from the data dictionary. This can be accomplished using the `renew` method.
@@ -63,7 +64,8 @@ X <- renew(X,
 
 ```{r}
 exhibit(X,
-        display_1L_chr = "head")
+        display_1L_chr = "head",
+         scroll_box_args_ls = list(width = "100%"))
 ```
 
 To remove dataset labels, use the `renew` method with "unlabel" passed to the `type_1L_chr` argument.
@@ -78,6 +80,7 @@ By default, the `exhibit` method will print the dataset part of the `Ready4useDy
 ```{r}
 exhibit(X,
         display_1L_chr = "head",
-        type_1L_chr = "dict")
+        type_1L_chr = "dict",
+        scroll_box_args_ls = list(width = "100%"))
 ```
 

@@ -1,0 +1,67 @@
+---
+title: "Retrieve Ready4 Datasets"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    number_sections: yes
+vignette: >
+  %\VignetteIndexEntry{Retrieve Ready4 Datasets}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making. 
+
+We recommend also reading the related tutorial available at: https://www.acumen-mh.org/blog/2022/08/28/access_open_data/ 
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ready4)
+library(ready4use)
+```
+Ready4use includes a number of tools for ingesting data for use in conjunction with the ready4 model. 
+
+## Specify remote repositories
+The `Ready4useRepos` class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a `Ready4useRepos` class are Dataverse datasets and GitHub releases. `Ready4useRepos` methods for download / upload extend tools from the `dataverse` and `piggyback` packages.
+
+```{r}
+X <- Ready4useRepos(dv_nm_1L_chr = "fakes",
+                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+                    dv_server_1L_chr = "dataverse.harvard.edu",
+                    gh_repo_1L_chr = "ready4-dev/ready4",
+                    gh_tag_1L_chr = "Documentation_0.0")
+```
+
+## Ingest data
+To import objects that have been saved as RDS file format in data repositories specified in an `Ready4useRepos` instance, use the `ingest` method. 
+
+The `ingest` method imports all RDS files in the specified repositories unless you request a more targeted approach by supplying the names of desired files to the `fls_to_ingest_chr` argument. By default, the `ingest` method transforms `X` into an object of class `Ready4useRecord`, which pairs the ingested data with metadata describing the ingested data and their provenance. 
+
+```{r}
+X <- ingest(X,
+            fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"))
+```
+
+If metadata are not required, we can simply ingest a list containing the requested objects by supplying the `metadata_1L_lgl = F` argument.
+
+```{r}
+## Not run
+# objects_ls <- ingest(X,
+#                      fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),
+#                      metadata_1L_lgl = F)
+```
+
+If we specify just a single object name for ingest, then the `ingest` method returns just that object (instead of a list containing that object).
+
+```{r}
+## Not run
+# ymh_clinical_tb <- ingest(X,
+#                           fls_to_ingest_chr = c("ymh_clinical_tb"),
+#                           metadata_1L_lgl = F)
+```
+

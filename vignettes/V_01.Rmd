@@ -1,5 +1,5 @@
 ---
-title: "Retrieve and Disseminate Ready4 Framework Datasets"
+title: "Disseminate Ready4 Framework Datasets"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Retrieve and Disseminate Ready4 Framework Datasets}
+  %\VignetteIndexEntry{Disseminate Ready4 Framework Datasets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -18,74 +18,43 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making.
 
-```{r results='hide', message=FALSE}
+```{r results='hide', message=FALSE, warning=FALSE}
 library(ready4)
 library(ready4use)
 ```
-Ready4use includes a number of tools for ingesting and sharing data for open and modular mental health systems models. 
 
-## Specify remote repositories
-The `Ready4useRepos` class can be used to specify details of the data repositories used in your data management workflows. Currently, the two types of repository that can be specified in a `Ready4useRepos` class are Dataverse datasets and GitHub releases. `Ready4useRepos` methods for download / upload extend tools from the `dataverse` and `piggyback` packages.
+ready4use includes a number of tools for sharing data used in conjunction with the ready4 open source model of youth mental health systems. 
 
-```{r}
-X <- Ready4useRepos(dv_nm_1L_chr = "fakes",
-                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
-                    dv_server_1L_chr = "dataverse.harvard.edu",
-                    gh_repo_1L_chr = "ready4-dev/ready4",
-                    gh_tag_1L_chr = "Documentation_0.0")
-```
-
-## Ingest data
-To import objects that have been saved as RDS file format in data repositories specified in an `Ready4useRepos` instance, use the `ingest` method. 
-
-The `ingest` method imports all RDS files in the specified repositories unless you request a more targeted approach by supplying the names of desired files to the `fls_to_ingest_chr` argument. By default, the `ingest` method transforms `X` into an object of class `Ready4useRecord`, which pairs the ingested data with metadata describing the ingested data and their provenance. 
+## Identify data to be shared
+To illustrate how to share data using `ready4use` classes and methods, we will first need some data to publish. In this example, we are going to share `X`, a `Ready4useDyad` [(a data structure explained in another vignette)](https://ready4-dev.github.io/ready4use/V_02.html) that we can create using [data ingested from an online repository](https://ready4-dev.github.io/ready4use/V_03.html).
 
 ```{r}
-X <- ingest(X,
-            fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"))
-```
-
-If metadata are not required, we can simply ingest a list containing the requested objects by supplying the `metadata_1L_lgl = F` argument.
-
-```{r}
-## Not run
-# objects_ls <- ingest(X,
-#                      fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),
-#                      metadata_1L_lgl = F)
-```
-
-If we specify just a single object name for ingest, then the `ingest` method returns just that object (instead of a list containing that object).
-
-```{r}
-## Not run
-# ymh_clinical_tb <- ingest(X,
-#                           fls_to_ingest_chr = c("ymh_clinical_tb"),
-#                           metadata_1L_lgl = F)
-```
-
-## Share data
-To illustrate how to share data using `ready4use` classes and methods, we will first need some data to publish. We therefore can create is `Y`, a `Ready4useDyad` [(a data structure explained in another vignette)](V_02.html), using the data we ingested in a previous step (extracted from the `Ready4useRecord` object `X` using calls to the `procureSlot` method.
-
-```{r}
-objects_ls <- procureSlot(X,"b_Ready4useIngest") %>% procureSlot("objects_ls")
-Y <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
+objects_ls <- ingest(Ready4useRepos(dv_nm_1L_chr = "fakes",
+                                    dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+                                    dv_server_1L_chr = "dataverse.harvard.edu",
+                                    gh_repo_1L_chr = "ready4-dev/ready4",
+                                    gh_tag_1L_chr = "Documentation_0.0"),
+                     fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),
+                     metadata_1L_lgl = F)
+X <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
                    dictionary_r3 = objects_ls$ymh_clinical_dict_r3) %>%
   renew()
 ```
 
-We now specify where we plan to publish `Y` in `Z`, a `Ready4useRepos` object. Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the https://doi.org/10.7910/DVN/W95KED dataset from the [fakes](https://dataverse.harvard.edu/dataverse/fakes)  dataverse will not work for you).
+## Share data
+We now specify where we plan to publish `X` in `Y`, a `Ready4useRepos` object ([described in another vignette](https://ready4-dev.github.io/ready4use/V_03.html)). Note, you must have write permissions to the repositories you specify in this step. The values entered in this example (the https://doi.org/10.7910/DVN/W95KED dataset from the [fakes](https://dataverse.harvard.edu/dataverse/fakes)  dataverse will not work for you).
 
 ```{r}
-Z <- Ready4useRepos(dv_nm_1L_chr = "fakes", # Replace with values for a dataverse & dataset for which
+Y <- Ready4useRepos(dv_nm_1L_chr = "fakes", # Replace with values for a dataverse & dataset for which
                     dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED", #  you have write permissions.
                     dv_server_1L_chr = "dataverse.harvard.edu")
 ```
 
-We can now upload `Y` to our preferred data repository using the `share` method. By default, if more than one data repository was specified in `Z`, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either "prefer_gh" or "all" values to the `type_1L_chr` argument. The Ready4useDyad object is now available for download at https://doi.org/10.7910/DVN/W95KED.
+We can now upload `X` to our preferred data repository using the `share` method. By default, if more than one data repository was specified in `Y`, then the dataverse repository will be preferred when sharing. We can overwrite this default by passing either "prefer_gh" or "all" values to the `type_1L_chr` argument. The Ready4useDyad object is now available for download at https://doi.org/10.7910/DVN/W95KED.
 
 ```{r eval = F}
-Z <- share(Z,
-           obj_to_share_xx = Y,
+Y <- share(Y,
+           obj_to_share_xx = X,
            fl_nm_1L_chr = "ymh_clinical_dyad_r4",
            description_1L_chr = "An example of a Ready4useDyad - a dataset (clinical youth mental health, AQoL-6D) and data dictionary pair. Note this example uses fake data.")
 ```
