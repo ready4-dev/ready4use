@@ -1,5 +1,5 @@
 ---
-title: Pair a Ready4 Dataset and Its Dictionary
+title: Label Ready4 Data
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Pair a Ready4 Dataset and Its Dictionary}
+  %\VignetteIndexEntry{Label Ready4 Data}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
