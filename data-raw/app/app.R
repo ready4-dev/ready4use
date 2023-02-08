@@ -18,7 +18,7 @@ ui <- fluidPage(
                         #modules_chr = "Ready4showSynopsis",
                         classes_lup = classes_lup),
       #h3(textOutput("modulename")),
-      textOutput("testX"),
+      #
       # p("The checkbox group controls the select input"),
       # checkboxGroupInput("inCheckboxGroup", "Input checkbox",
       #                    c("Item A", "Item B", "Item C")),
@@ -42,6 +42,9 @@ server <- function(input, output, session) {
                                )
   module_meta_ls <- import_modules_Server("modelmods",
                                           classes_lup = classes_lup)
+  output$testX <- renderText({
+    module_meta_ls$X_ls_fn()$tree_names_ls %>% length() %>% as.character()
+  })
    # output$modulename <- renderText({
   #   module_meta_ls$module_nm_fn()
   # })
@@ -51,6 +54,7 @@ server <- function(input, output, session) {
   # modules_ls$names_ls = make_module_contents_ls(modules_ls$X, classes_lup = classes_lup)
   # modules_ls$tree_names_ls = make_list_tree_nms(modules_ls$names_ls)
   })
+
   # observe({
   #   updateSelectInput(session, "inSelect",
   #                     label = paste("Select input label", length(x)),
@@ -59,14 +63,7 @@ server <- function(input, output, session) {
   #                     # selected = tail(x, 1)
   #   )
   # })
-  output$testX <- renderText({
-    #module_meta_ls$X_fn()@outp_formats_chr
-    module_meta_ls$X_ls_fn()$tree_names_ls %>% length() %>% as.character() #unlist() %>% unname() %>% tail(1)
-    #slotNames(module_meta_ls$X_fn())[1]
 
-    #"PDF"
-    # modules_ls$X@outp_formats_chr
-  })
   caption_fn <- plot_cars_Server("mpgplot", mpgData)
   output$caption <- renderText({
     caption_fn()

@@ -1,3 +1,10 @@
+x<- ready4show::Ready4showSynopsis(
+
+)
+# make_module_contents_ls(x, classes_lup = classes_lup) -> module_nms_ls
+# make_module_contents_ls(x, classes_lup = classes_lup, what_1L_chr = "contents") -> module_contents_ls
+# make_list_tree_nms(module_nms_ls)-> module_tree_ls
+#
 # regular fns
 manufacture_Ready4Module <- function(x,
                                      classes_lup = NULL,
@@ -17,7 +24,7 @@ manufacture_Ready4Module <- function(x,
     classes_ls <- slots_ls %>% purrr::map(~class(.x)) %>%
       stats::setNames(slots_chr)
 
-    }
+  }
 }
 make_module_contents_ls <- function(x, s = NULL, classes_lup = NULL, what_1L_chr = "names") {
   if(is.null(classes_lup))
@@ -35,8 +42,8 @@ make_module_contents_ls <- function(x, s = NULL, classes_lup = NULL, what_1L_chr
   summary_ls <- purrr::map2(slots_ls,
                             names(slots_ls),
                             ~ make_module_contents_ls(.x,
-                                s = .y,
-                                classes_lup = classes_lup))
+                                                      s = .y,
+                                                      classes_lup = classes_lup))
   modules_lgl <- classes_ls %>% purrr::map_lgl(~!identical(intersect(.x,modules_lup$type_chr),
                                                            character(0)))
   submodules_lgl <- classes_ls %>% purrr::map_lgl(~!identical(intersect(.x,submodules_lup$type_chr),
@@ -44,7 +51,8 @@ make_module_contents_ls <- function(x, s = NULL, classes_lup = NULL, what_1L_chr
   elements_lgl <- !(modules_lgl + submodules_lgl)
   summary_ls <- append(summary_ls[modules_lgl],
                        list(submodules_chr = summary_ls[submodules_lgl] %>% purrr::flatten_chr(),
-                            elements_chr = summary_ls[elements_lgl] %>% purrr::flatten_chr()))
+                            elements_chr = summary_ls[elements_lgl] %>% purrr::flatten_chr()#purrr::flatten_chr()
+                       ))
   slots_ls <- append(slots_ls[modules_lgl],
                      list(submodules_chr = summary_ls$submodules_chr,
                           elements_chr = summary_ls$elements_chr))
@@ -54,22 +62,22 @@ make_module_contents_ls <- function(x, s = NULL, classes_lup = NULL, what_1L_chr
                                    ifelse(inherits(.x,"Ready4Module"),
                                           any(make_slots_ls(.x) %>% purrr::map_lgl(~inherits(.x,"Ready4Module")))
                                           ,F)}),
-                                   slots_ls),
+                                 slots_ls),
                             ~if(..2){
                               if(!..3){
-                                sub_classes_ls <- sub_slots_ls %>% purrr::map(~class(.x) %>% unlist()  %>% as.character()) %>%
-                                  stats::setNames(names(sub_slots_ls))
+                                sub_classes_ls <- slots_ls %>% purrr::map(~class(.x) %>% unlist()  %>% as.character()) %>%
+                                  stats::setNames(names(slots_ls)) #sub_slots_ls?
                                 submodules_chr <- sub_classes_ls %>% purrr::map(~intersect(.x,submodules_lup$type_chr)) %>% purrr::discard(~identical(.x,character(0))) %>% purrr::flatten_chr()
                                 list(submodules_chr = submodules_chr,
                                      elements_chr = setdiff(purrr::flatten_chr(..1),submodules_chr))
                               }else{
                                 make_module_contents_ls(..4,
-                                  classes_lup = classes_lup)
+                                                        classes_lup = classes_lup)
                               }
 
-                              }else{
-                                ..1
-                                })
+                            }else{
+                              ..1
+                            })
   if(what_1L_chr == "names")
     return_ls <- summary_ls
   if(what_1L_chr == "contents")
@@ -103,9 +111,6 @@ make_list_tree_nms <- function(list_ls, module_pfx_1L_chr = "",other_pfx_1L_chr 
     return(names_ls)
   }
 }
-# make_module_contents_ls(x, classes_lup = classes_lup) -> test_ls
-# make_module_contents_ls(x, classes_lup = classes_lup, what_1L_chr = "contents") -> test_contents_ls
-# make_list_tree_nms(test_ls)-> test_chr
 make_classes_lup <- function(exclude_1L_chr = "",
                              gh_repo_1L_chr = "ready4-dev/ready4",
                              gh_tag_1L_chr = "Documentation_0.0",
@@ -138,11 +143,11 @@ make_classes_lup <- function(exclude_1L_chr = "",
     }
   }
   if(exclude_1L_chr == "S3")
-  classes_lup <- classes_lup %>%
-    dplyr::filter(!old_class_lgl)
+    classes_lup <- classes_lup %>%
+      dplyr::filter(!old_class_lgl)
   if(exclude_1L_chr == "S4")
     classes_lup <- classes_lup %>%
-    dplyr::filter(old_class_lgl)
+      dplyr::filter(old_class_lgl)
   return(classes_lup)
 }
 # shiny module fns
@@ -157,7 +162,7 @@ import_csv_UI <- function(id_1L_chr, label_1L_chr = "CSV file") {
                          "None" = "",
                          "Double quote" = "\"",
                          "Single quote" = "'"
-    ))
+                       ))
   )
 }
 import_csv_Server <- function(id_1L_chr, as_fctrs_1L_lgl) {
@@ -195,9 +200,12 @@ import_modules_UI <- function(id_1L_chr, #label_1L_chr = "CSV file"
 
   ns_fn <- shiny::NS(id_1L_chr)
   shiny::tagList(
-    shiny::selectInput(ns_fn("module"),
-                       "Module",
-                       classes_lup$type_chr)
+    shiny::selectInput(ns_fn("model"),
+                       "Model",
+                       classes_lup$type_chr),
+    shiny::uiOutput(ns_fn("controls"))
+    # shiny::textOutput(ns_fn("testX")
+    #                   )#module_meta_ls$X_ls_fn()$tree_names_ls %>% length() %>% as.character()
   )
 }
 import_modules_Server <- function(id_1L_chr,
@@ -205,30 +213,26 @@ import_modules_Server <- function(id_1L_chr,
   shiny::moduleServer(
     id_1L_chr,
     function(input, output, session) {
-      module_fn <- shiny::reactive({
-        shiny::validate(shiny::need(input$module,
+      model_fn <- shiny::reactive({
+        shiny::validate(shiny::need(input$model,
                                     message = FALSE))
-        input$module
+        input$model
       })
-      module_nm_fn <- shiny::reactive({
-        module_fn()
+      model_nm_fn <- shiny::reactive({
+        model_fn()
       })
       shiny::observe({
-        msg_1L_chr <- sprintf("Module %s was selected", module_fn())
+        msg_1L_chr <- sprintf("Module %s was selected", model_fn())
         cat(msg_1L_chr, "\n")
       })
       X_fn <- shiny::reactive({
         fn_txt_1L_chr <- ready4::get_from_lup_obj(classes_lup,
-                                 match_value_xx = module_fn(),
-                                 match_var_nm_1L_chr = "type_chr",
-                                 target_var_nm_1L_chr = "val_chr")
+                                                  match_value_xx = model_fn(),
+                                                  match_var_nm_1L_chr = "type_chr",
+                                                  target_var_nm_1L_chr = "val_chr")
         parse(text=fn_txt_1L_chr) %>% eval()
       })
       X_ls_fn <- shiny::reactive({
-        # fn_txt_1L_chr <- ready4::get_from_lup_obj(classes_lup,
-        #                                           match_value_xx = module_fn(),
-        #                                           match_var_nm_1L_chr = "type_chr",
-        #                                           target_var_nm_1L_chr = "val_chr")
         X_ls <- list()
         X_ls$contents_ls = make_module_contents_ls(X_fn(), classes_lup = classes_lup, what_1L_chr = "contents")
         X_ls$names_ls = make_module_contents_ls(X_fn(), classes_lup = classes_lup)
@@ -236,8 +240,15 @@ import_modules_Server <- function(id_1L_chr,
         X_ls
       })
 
-
-      module_ls <- list(module_nm_fn = module_nm_fn,
+      output$controls <- renderUI({
+        ns_fn <- session$ns
+        selectInput(ns_fn("modules"),
+                    "Modules",
+                    c(model_nm_fn(),
+                      names(X_ls_fn()$tree_names_ls) %>% head(-2)),
+                    multiple = TRUE)
+      })
+      module_ls <- list(model_nm_fn = model_nm_fn,
                         X_fn = X_fn,
                         X_ls_fn = X_ls_fn)
       return(module_ls)
@@ -276,11 +287,10 @@ plot_cars_Server <- function(id_1L_chr, mpgData,fml_1L_chr = "") {
           input$outliers
         })
         graphics::boxplot(as.formula(fml_1L_chr),
-                           data = mpgData,
-                           outline = outliers_fn(),
-                           col = "#007bc2", pch = 19)
+                          data = mpgData,
+                          outline = outliers_fn(),
+                          col = "#007bc2", pch = 19)
       }
     }
   )
 }
-
