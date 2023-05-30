@@ -1,6 +1,6 @@
 Package: ready4use
-Title: Retrieve, Label and Share Ready4 Datasets
-Version: 0.0.0.9225
+Title: Retrieve, Label and Share Model Datasets
+Version: 0.0.0.9226
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -12,14 +12,13 @@ Authors@R: c(
     person("Victoria University", role = "fnd")
   )
 Description: ready4use provides a set of tools for wmanaging data for use
-    with the ready4 youth mental health systems model
-    (https://www.ready4-dev.com/ ).  This development version of the
-    ready4use package has been made available as part of the process of
-    testing and documenting the package.  You should only trial this
-    software if you feel confident that you understand what it does and
-    have created a sandpit area in which you can safely undertake testing.
-    If you have any questions, please contact the authors
-    (matthew.hamilton@orygen.org.au).
+    with the ready4 framework (https://www.ready4-dev.com/ ).  This
+    development version of the ready4use package has been made available
+    as part of the process of testing and documenting the package.  You
+    should only trial this software if you feel confident that you
+    understand what it does and have created a sandpit area in which you
+    can safely undertake testing. If you have any questions, please
+    contact the authors (matthew.hamilton@orygen.org.au).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/ready4use/,
     https://github.com/ready4-dev/ready4use, https://www.ready4-dev.com/
@@ -39,8 +38,8 @@ Imports:
     piggyback,
     purrr,
     readxl,
-    ready4 (>= 0.0.0.9109),
-    ready4show (>= 0.0.0.9103),
+    ready4 (>= 0.0.0.9112),
+    ready4show (>= 0.0.0.9104),
     rlang,
     stats,
     stringi,
