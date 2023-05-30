@@ -5,6 +5,8 @@
 \alias{manufacture,ready4use_dataverses-method}
 \alias{manufacture.ready4use_imports}
 \alias{manufacture,ready4use_imports-method}
+\alias{manufacture-Ready4useDyad}
+\alias{manufacture,Ready4useDyad-method}
 \title{Manufacture a new object}
 \usage{
 manufacture.ready4use_dataverses(x, type_1L_chr = "read_fn")
@@ -18,21 +20,60 @@ manufacture.ready4use_imports(
 )
 
 \S4method{manufacture}{ready4use_imports}(x, forced_choice_chr = NA_character_, script_args_ls = NULL)
+
+\S4method{manufacture}{Ready4useDyad}(
+  x,
+  correspondences_r3 = ready4show::ready4show_correspondences(),
+  dummys_ls = list(),
+  indcs_int = 1L,
+  flatten_1L_lgl = F,
+  match_1L_chr = character(0),
+  restrict_to_chr = character(0),
+  remove_ctg_1L_lgl = F,
+  target_1L_chr = "var_ctg_chr",
+  type_1L_chr = "all",
+  what_1L_chr = "factors",
+  ...
+)
 }
 \arguments{
-\item{x}{An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{An object of class Ready4useDyad}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'read_fn'}
+\item{type_1L_chr}{Type (a character vector of length one), Default: 'all'}
 
 \item{forced_choice_chr}{Forced choice (a character vector), Default: 'NA'}
 
 \item{script_args_ls}{Script arguments (a list), Default: NULL}
+
+\item{correspondences_r3}{Correspondences (a ready4 S3), Default: ready4show::ready4show_correspondences()}
+
+\item{dummys_ls}{Dummys (a list), Default: list()}
+
+\item{indcs_int}{Indices (an integer vector), Default: 1}
+
+\item{flatten_1L_lgl}{Flatten (a logical vector of length one), Default: F}
+
+\item{match_1L_chr}{Match (a character vector of length one), Default: character(0)}
+
+\item{restrict_to_chr}{Restrict to (a character vector), Default: character(0)}
+
+\item{remove_ctg_1L_lgl}{Remove category (a logical vector of length one), Default: F}
+
+\item{target_1L_chr}{Target (a character vector of length one), Default: 'var_ctg_chr'}
+
+\item{what_1L_chr}{What (a character vector of length one), Default: 'factors'}
+
+\item{...}{Additional arguments}
 }
 \value{
 Read (a list of functions)
+
+Object (an output object of multiple potential types)
 }
 \description{
 manufacture.ready4use_dataverses() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Read (a list of functions).
 
 manufacture.ready4use_imports() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+
+manufacture method applied to Ready4useDyad
 }

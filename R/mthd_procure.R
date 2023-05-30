@@ -32,20 +32,20 @@ methods::setMethod("procure", methods::className("ready4use_dataverses", package
 #' Procure items from a dataset
 #' @description procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @param inc_script_lgl Include script (a logical vector), Default: T
+#' @param inc_script_1L_lgl Include script (a logical vector of length one), Default: T
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
 #' @return NULL
 #' @rdname procure-methods
 #' @export 
 #' @importFrom purrr discard
 #' @importFrom ready4 procure
-procure.ready4use_imports <- function (x, inc_script_lgl = T, forced_choice_chr = NA_character_) 
+procure.ready4use_imports <- function (x, inc_script_1L_lgl = T, forced_choice_chr = NA_character_) 
 {
     assert_single_row_tb(x)
     options_ls <- list(script_chr = x$path_to_make_script_chr, 
         local_chr = x$local_file_src_chr, repo_chr = x$data_repo_db_ui_chr, 
         source_url_chr = x$download_url_chr) %>% purrr::discard(is.na)
-    if ("script_chr" %in% names(options_ls) & !inc_script_lgl) 
+    if ("script_chr" %in% names(options_ls) & !inc_script_1L_lgl) 
         options_ls$script_chr <- NULL
     if (!is.na(forced_choice_chr)) {
         if (!forced_choice_chr %in% names(options_ls)) 

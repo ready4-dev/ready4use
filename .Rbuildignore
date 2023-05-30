@@ -77,3 +77,8 @@
 ^Meta$
 ^data-raw/s4_fns/renew\.R$
 ^data-raw/mthds/exhibit\.R$
+^data-raw/app/app\.R$
+^data-raw/app/app1\.R$
+^data-raw/app/app2\.R$
+^data-raw/app/app3\.R$
+^data-raw/app/functions\.R$

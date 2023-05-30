@@ -63,9 +63,11 @@ renew.ready4use_imports(
 
 \S4method{renew}{Ready4useDyad}(
   x,
+  new_val_xx = NULL,
   remove_old_lbls_1L_lgl = T,
   tfmn_1L_chr = "capitalise",
-  type_1L_chr = "label"
+  type_1L_chr = "label",
+  ...
 )
 }
 \arguments{
@@ -103,11 +105,15 @@ renew.ready4use_imports(
 
 \item{urls_vec_chr}{Urls vector (a character vector), Default: 'NA'}
 
+\item{new_val_xx}{New value (an output object of multiple potential types), Default: NULL}
+
 \item{remove_old_lbls_1L_lgl}{Remove old labels (a logical vector of length one), Default: T}
 
 \item{tfmn_1L_chr}{Transformation (a character vector of length one), Default: 'capitalise'}
 
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'label'}
+
+\item{...}{Additional arguments}
 }
 \value{
 x (An object)

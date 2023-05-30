@@ -4,15 +4,15 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Retrieve, Label and Share Ready4 Datasets}
+\title{ready4use: Retrieve, Label and Share Model Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for wmanaging data for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for wmanaging data for use with the ready4 framework (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for wmanaging data for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for wmanaging data for use with the ready4 framework (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 }
 \seealso{
 Useful links:

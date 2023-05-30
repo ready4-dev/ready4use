@@ -11,7 +11,7 @@ Arguments for a function that constructs a spatial object.
 \section{Slots}{
 
 \describe{
-\item{\code{crs_nbr_dbl}}{Crs number (a double vector)}
+\item{\code{crs_nbr_dbl}}{Coordinates reference system number (a double vector)}
 
 \item{\code{write_type_1L_chr}}{Write type (a character vector of length one)}
 

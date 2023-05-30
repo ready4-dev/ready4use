@@ -11,7 +11,7 @@ Authors@R: c(
     person("VicHealth", role = "fnd"),
     person("Victoria University", role = "fnd")
   )
-Description: ready4use provides a set of tools for wmanaging data for use
+Description: ready4use provides a set of tools for managing data for use
     with the ready4 framework (https://www.ready4-dev.com/ ).  This
     development version of the ready4use package has been made available
     as part of the process of testing and documenting the package.  You

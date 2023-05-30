@@ -3,12 +3,13 @@ manufacture.ready4use_imports <- function(x,
                                           script_args_ls = NULL){
   assert_single_row_tb(x)
   import_type_ls <- ready4::procure(x,
-                                    inc_script_lgl = !is.null(script_args_ls),
+                                    inc_script_1L_lgl = !is.null(script_args_ls),
                                     forced_choice_chr = forced_choice_chr)
   switch(names(import_type_ls),
          "script_chr" = rlang::exec(Ready4useArguments, x, !!!script_args_ls),
          "local_chr" = get_valid_path_chr(import_type_ls[[1]]),
-         "repo_chr"  = manufacture(x),
+         "repo_chr"  = manufacture(x #%>% dplyr::select(names(ready4use_dataverses())) %>% tibble::as_tibble() %>% ready4use_dataverses() ## ADD THIS????
+                                   ),
          "source_url_chr" = url(import_type_ls[[1]])
   )
 

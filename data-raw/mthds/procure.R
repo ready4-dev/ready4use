@@ -1,5 +1,5 @@
 procure.ready4use_imports <- function(x,
-                                      inc_script_lgl = T,
+                                      inc_script_1L_lgl = T,
                                       forced_choice_chr = NA_character_){
   assert_single_row_tb(x)
   options_ls <- list(script_chr = x$path_to_make_script_chr,
@@ -7,7 +7,7 @@ procure.ready4use_imports <- function(x,
                      repo_chr = x$data_repo_db_ui_chr,
                      source_url_chr = x$download_url_chr) %>%
     purrr::discard(is.na)
-  if("script_chr" %in% names(options_ls) & !inc_script_lgl)
+  if("script_chr" %in% names(options_ls) & !inc_script_1L_lgl)
     options_ls$script_chr <- NULL
   if(!is.na(forced_choice_chr)){
     if(!forced_choice_chr %in% names(options_ls))

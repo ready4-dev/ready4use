@@ -27,11 +27,11 @@ procure.ready4use_dataverses(
 
 procure.ready4use_imports(
   x,
-  inc_script_lgl = T,
+  inc_script_1L_lgl = T,
   forced_choice_chr = NA_character_
 )
 
-\S4method{procure}{ready4use_imports}(x, inc_script_lgl = T, forced_choice_chr = NA_character_)
+\S4method{procure}{ready4use_imports}(x, inc_script_1L_lgl = T, forced_choice_chr = NA_character_)
 
 \S4method{procure}{Ready4useIngest}(x, fl_nm_1L_chr = NA_character_)
 }
@@ -46,7 +46,7 @@ procure.ready4use_imports(
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
-\item{inc_script_lgl}{Include script (a logical vector), Default: T}
+\item{inc_script_1L_lgl}{Include script (a logical vector of length one), Default: T}
 
 \item{forced_choice_chr}{Forced choice (a character vector), Default: 'NA'}
 

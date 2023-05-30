@@ -3,7 +3,7 @@
 #' Arguments for a function that constructs a spatial object.
 #' 
 #' @include C4_Ready4useProcessed.R
-#' @slot crs_nbr_dbl Crs number (a double vector)
+#' @slot crs_nbr_dbl Coordinates reference system number (a double vector)
 #' @slot write_type_1L_chr Write type (a character vector of length one)
 #' @slot processed_fls_dir_1L_chr Processed files directory (a character vector of length one)
 #' @slot imports_chr Imports (a character vector)
