@@ -9,14 +9,15 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5644336.svg)](https://doi.org/10.5281/zenodo.5644336)
 <!-- badges: end -->
 
-ready4use provides a set of tools for managing data for use
-with the ready4 framework (https://www.ready4-dev.com/ ).  This
-development version of the ready4use package has been made available
-as part of the process of testing and documenting the package.  You
-should only trial this software if you feel confident that you
-understand what it does and have created a sandpit area in which you
-can safely undertake testing. If you have any questions, please
-contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for managing data for
+models developed with the ready4 framework
+(https://www.ready4-dev.com/ ).  This development version of the
+ready4use package has been made available as part of the process of
+testing and documenting the package.  You should only trial this
+software if you feel confident that you understand what it does and
+have created a sandpit area in which you can safely undertake testing.
+If you have any questions, please contact the authors
+(matthew.hamilton@orygen.org.au).
 
 To install a development version of this software, run the following commands in your R console:
 

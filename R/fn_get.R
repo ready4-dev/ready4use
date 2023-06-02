@@ -4,7 +4,10 @@
 #' @param fl_nm_1L_chr File name (a character vector of length one)
 #' @param save_fmt_1L_chr Save format (a character vector of length one)
 #' @param repo_fl_fmt_1L_chr Repository file format (a character vector of length one)
+#' @param consent_1L_chr Consent (a character vector of length one), Default: ''
+#' @param consent_indcs_int Consent indices (an integer vector), Default: 1
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
+#' @param options_chr Options (a character vector), Default: c("Y", "N")
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
 #' @param save_type_1L_chr Save type (a character vector of length one), Default: 'original'
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
@@ -17,17 +20,20 @@
 #' @importFrom rlang exec
 #' @keywords internal
 get_file_from_dv <- function (ds_ui_1L_chr, fl_nm_1L_chr, save_fmt_1L_chr, repo_fl_fmt_1L_chr, 
-    key_1L_chr = Sys.getenv("DATAVERSE_KEY"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
+    consent_1L_chr = "", consent_indcs_int = 1L, key_1L_chr = Sys.getenv("DATAVERSE_KEY"), 
+    options_chr = c("Y", "N"), server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), 
     save_type_1L_chr = "original", save_dir_path_1L_chr = "", 
     read_fn, unlink_1L_lgl = T) 
 {
     destination_path_chr <- ifelse(unlink_1L_lgl, tempfile(), 
         ready4::make_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr, 
             fl_nm_1L_chr = fl_nm_1L_chr, save_fmt_1L_chr = save_fmt_1L_chr))
-    ready4::write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr, fl_nm_1L_chr = fl_nm_1L_chr, 
+    ready4::write_dv_fl_to_loc(consent_1L_chr = ifelse(unlink_1L_lgl, 
+        options_chr[consent_indcs_int][1], consent_1L_chr), consent_indcs_int = consent_indcs_int, 
+        ds_ui_1L_chr = ds_ui_1L_chr, fl_nm_1L_chr = fl_nm_1L_chr, 
         repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr, key_1L_chr = key_1L_chr, 
-        server_1L_chr = server_1L_chr, save_type_1L_chr = save_type_1L_chr, 
-        dest_path_1L_chr = destination_path_chr)
+        options_chr = options_chr, server_1L_chr = server_1L_chr, 
+        save_type_1L_chr = save_type_1L_chr, dest_path_1L_chr = destination_path_chr)
     file_xxx <- rlang::exec(read_fn, destination_path_chr, stringsAsFactors = F)
     if (unlink_1L_lgl) 
         unlink(destination_path_chr)

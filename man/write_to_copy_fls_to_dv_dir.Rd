@@ -4,12 +4,24 @@
 \alias{write_to_copy_fls_to_dv_dir}
 \title{Write to copy files to dataverse directory}
 \usage{
-write_to_copy_fls_to_dv_dir(files_tb, local_dv_dir_1L_chr)
+write_to_copy_fls_to_dv_dir(
+  files_tb,
+  local_dv_dir_1L_chr,
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
+  options_chr = c("Y", "N")
+)
 }
 \arguments{
 \item{files_tb}{Files (a tibble)}
 
 \item{local_dv_dir_1L_chr}{Local dataverse directory (a character vector of length one)}
+
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
+
+\item{consent_indcs_int}{Consent indices (an integer vector), Default: 1}
+
+\item{options_chr}{Options (a character vector), Default: c("Y", "N")}
 }
 \description{
 write_to_copy_fls_to_dv_dir() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to copy files to dataverse directory. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour

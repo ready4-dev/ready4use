@@ -1,7 +1,7 @@
 library(ready4fun)
 library(ready4show)
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Retrieve, Label and Share Model Datasets" %>% tools::toTitleCase(),
-                                           pkg_desc_1L_chr = "ready4use provides a set of tools for managing data for use with the ready4 framework (https://www.ready4-dev.com/ ).
+                                           pkg_desc_1L_chr = "ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/ ).
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
   You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                                            authors_prsn = c(utils::person(

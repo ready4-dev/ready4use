@@ -9,27 +9,39 @@
 \usage{
 \S4method{share}{Ready4useRecord}(
   x,
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
   gh_prerelease_1L_lgl = T,
   gh_repo_desc_1L_chr = "Supplementary Files",
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  options_chr = c("Y", "N"),
   publish_dv_1L_lgl = F,
-  type_1L_chr = "prefer_dv"
+  type_1L_chr = "prefer_dv",
+  ...
 )
 
 \S4method{share}{Ready4useRepos}(
   x,
   obj_to_share_xx,
   fl_nm_1L_chr,
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
   description_1L_chr = NA_character_,
   gh_prerelease_1L_lgl = T,
   gh_repo_desc_1L_chr = "Supplementary Files",
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  options_chr = c("Y", "N"),
   publish_dv_1L_lgl = T,
-  type_1L_chr = "prefer_dv"
+  type_1L_chr = "prefer_dv",
+  ...
 )
 }
 \arguments{
 \item{x}{An object of class Ready4useRepos}
+
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
+
+\item{consent_indcs_int}{Consent indices (an integer vector), Default: 1}
 
 \item{gh_prerelease_1L_lgl}{Github prerelease (a logical vector of length one), Default: T}
 
@@ -37,9 +49,13 @@
 
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
 
+\item{options_chr}{Options (a character vector), Default: c("Y", "N")}
+
 \item{publish_dv_1L_lgl}{Publish dataverse (a logical vector of length one), Default: T}
 
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'prefer_dv'}
+
+\item{...}{Additional arguments}
 
 \item{obj_to_share_xx}{Object to share (an output object of multiple potential types)}
 

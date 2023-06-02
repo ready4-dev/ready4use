@@ -2,7 +2,10 @@ get_file_from_dv <- function(ds_ui_1L_chr,
                              fl_nm_1L_chr,
                              save_fmt_1L_chr,
                              repo_fl_fmt_1L_chr,
+                             consent_1L_chr = "",
+                             consent_indcs_int = 1L,
                              key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+                             options_chr = c("Y", "N"),
                              server_1L_chr = Sys.getenv("DATAVERSE_SERVER"), # was dataverse_chr
                              save_type_1L_chr = "original",
                              save_dir_path_1L_chr = "",
@@ -13,13 +16,16 @@ get_file_from_dv <- function(ds_ui_1L_chr,
                                  ready4::make_local_path_to_dv_data(save_dir_path_1L_chr = save_dir_path_1L_chr,
                                                                     fl_nm_1L_chr = fl_nm_1L_chr,
                                                                     save_fmt_1L_chr = save_fmt_1L_chr))
-  ready4::write_dv_fl_to_loc(ds_ui_1L_chr = ds_ui_1L_chr,
-                     fl_nm_1L_chr = fl_nm_1L_chr,
-                     repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr,
-                     key_1L_chr = key_1L_chr,
-                     server_1L_chr = server_1L_chr,
-                     save_type_1L_chr = save_type_1L_chr,
-                     dest_path_1L_chr = destination_path_chr)
+  ready4::write_dv_fl_to_loc(consent_1L_chr = ifelse(unlink_1L_lgl,options_chr[consent_indcs_int][1],consent_1L_chr),
+                             consent_indcs_int = consent_indcs_int,
+                             ds_ui_1L_chr = ds_ui_1L_chr,
+                             fl_nm_1L_chr = fl_nm_1L_chr,
+                             repo_fl_fmt_1L_chr = repo_fl_fmt_1L_chr,
+                             key_1L_chr = key_1L_chr,
+                             options_chr = options_chr,
+                             server_1L_chr = server_1L_chr,
+                             save_type_1L_chr = save_type_1L_chr,
+                             dest_path_1L_chr = destination_path_chr)
   file_xxx <- rlang::exec(read_fn,destination_path_chr,stringsAsFactors = F)
   if(unlink_1L_lgl)
     unlink(destination_path_chr)

@@ -9,7 +9,10 @@ get_file_from_dv(
   fl_nm_1L_chr,
   save_fmt_1L_chr,
   repo_fl_fmt_1L_chr,
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
   key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
+  options_chr = c("Y", "N"),
   server_1L_chr = Sys.getenv("DATAVERSE_SERVER"),
   save_type_1L_chr = "original",
   save_dir_path_1L_chr = "",
@@ -26,7 +29,13 @@ get_file_from_dv(
 
 \item{repo_fl_fmt_1L_chr}{Repository file format (a character vector of length one)}
 
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
+
+\item{consent_indcs_int}{Consent indices (an integer vector), Default: 1}
+
 \item{key_1L_chr}{Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")}
+
+\item{options_chr}{Options (a character vector), Default: c("Y", "N")}
 
 \item{server_1L_chr}{Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")}
 
