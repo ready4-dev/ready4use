@@ -17,12 +17,12 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(ready4use)
 ```
-The tools in ready4use are designed to make it easier to prepare, supply and share data for use with [ready4 - an open source health economic model of the systems shaping mental health and wellbeing in young people](https://www.ready4-dev.com).
+The tools in ready4use are designed to make it easier to prepare, supply and share data for models developed with [ready4 - an open source health economic modelling framework](https://www.ready4-dev.com).
 
 This development version of the ready4use package has been made available as part of the process of testing and documenting the package. 
 
 A brief overview of the intended use of ready4use classes and methods is available in the following articles:
 
-- [Retrieve Ready4 Datasets](V_03.html)
-- [Label Ready4 Data](V_02.html)
-- [Share Ready4 Datasets](V_01.html)
+- [Retrieve Model Datasets](V_03.html)
+- [Label Model Datasets](V_02.html)
+- [Share Model Datasets](V_01.html)
