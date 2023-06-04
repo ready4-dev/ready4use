@@ -14,7 +14,7 @@ procure method applied to Ready4useIngest"><meta property="og:image" content="ht
     
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9225</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9227</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,9 +31,9 @@ procure method applied to Ready4useIngest"><meta property="og:image" content="ht
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/V_01.html">Disseminate Ready4 Datasets</a>
-    <a class="dropdown-item" href="../articles/V_02.html">Label Ready4 Data</a>
-    <a class="dropdown-item" href="../articles/V_03.html">Retrieve Ready4 Datasets</a>
+    <a class="dropdown-item" href="../articles/V_01.html">Disseminate Model Datasets</a>
+    <a class="dropdown-item" href="../articles/V_02.html">Label Model Datasets</a>
+    <a class="dropdown-item" href="../articles/V_03.html">Retrieve Model Datasets</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -84,12 +84,12 @@ procure method applied to Ready4useIngest"><meta property="og:image" content="ht
 <span></span>
 <span><span class="fu">procure.ready4use_imports</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  inc_script_lgl <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>  inc_script_1L_lgl <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>  forced_choice_chr <span class="op">=</span> <span class="cn">NA_character_</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for ready4use_imports</span></span>
-<span><span class="fu">procure</span><span class="op">(</span><span class="va">x</span>, inc_script_lgl <span class="op">=</span> <span class="cn">T</span>, forced_choice_chr <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span></span>
+<span><span class="fu">procure</span><span class="op">(</span><span class="va">x</span>, inc_script_1L_lgl <span class="op">=</span> <span class="cn">T</span>, forced_choice_chr <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for Ready4useIngest</span></span>
 <span><span class="fu">procure</span><span class="op">(</span><span class="va">x</span>, fl_nm_1L_chr <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span></span></code></pre></div>
@@ -117,8 +117,8 @@ procure method applied to Ready4useIngest"><meta property="og:image" content="ht
 <dd><p>Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")</p></dd>
 
 
-<dt>inc_script_lgl</dt>
-<dd><p>Include script (a logical vector), Default: T</p></dd>
+<dt>inc_script_1L_lgl</dt>
+<dd><p>Include script (a logical vector of length one), Default: T</p></dd>
 
 
 <dt>forced_choice_chr</dt>
