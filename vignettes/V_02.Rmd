@@ -1,5 +1,5 @@
 ---
-title: Label Model Datasets
+title: Label Health Economic Model Datasets
 output: rmarkdown::html_vignette
 # output: 
 #   rmarkdown::html_vignette:
@@ -8,7 +8,7 @@ output: rmarkdown::html_vignette
 #     highlight: null
 #     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Label Model Data}
+  %\VignetteIndexEntry{Label Health Economic Model Datasets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -27,7 +27,7 @@ library(ready4use)
 ready4use includes a number of tools for labeling health economic model data and forms part of the [ready4 framework](https://www.ready4-dev.com).
 
 ## Create a dataset-dictionary pair
-A data dictionary containts useful metadata about a dataset. We can ingest examples of a fake dataset and its data-dictionary [using the method explained in another vignette](V_01.html).
+A data dictionary contains useful metadata about a dataset. To illustrate this point, we can [ingest](https://ready4-dev.github.io/ready4use/V_03.html) examples of a toy (fake) dataset and its data-dictionary.
 
 ```{r}
 objects_ls <- Ready4useRepos(dv_nm_1L_chr = "fakes",
