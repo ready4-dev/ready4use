@@ -4,15 +4,15 @@
 \name{ready4use-package}
 \alias{ready4use}
 \alias{ready4use-package}
-\title{ready4use: Retrieve, Label and Share Model Datasets}
+\title{ready4use: Author, Ingest, Label and Share Health Economic Model Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/ ). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 }
 \seealso{
 Useful links:
@@ -32,11 +32,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton@orygen.org.au} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
+\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton1@monash.edu} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
 
 Authors:
 \itemize{
-  \item Glen Wiesner \email{Glen.Wiesner@vu.edu.au} (\href{https://orcid.org/0000-0002-0071-130X}{ORCID})
+  \item Glen Wiesner (\href{https://orcid.org/0000-0002-0071-130X}{ORCID})
 }
 
 Other contributors:

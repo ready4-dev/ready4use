@@ -1,5 +1,5 @@
 ---
-title: "Disseminate Model Datasets"
+title: "Share Health Economic Model Datasets"
 output: rmarkdown::html_vignette
 # output: 
 #   rmarkdown::html_vignette:
@@ -8,7 +8,7 @@ output: rmarkdown::html_vignette
 #     highlight: null
 #     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Disseminate Model Datasets}
+  %\VignetteIndexEntry{Share Health Economic Model Datasets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -24,7 +24,7 @@ library(ready4)
 library(ready4use)
 ```
 
-ready4use includes a number of tools for sharing data used in conjunction with the [ready4 open source model of youth mental health systems](https://www.ready4-dev.com). 
+ready4use includes a number of tools for sharing health economic model data that forms part of the [ready4 framework](https://www.ready4-dev.com). 
 
 ## Identify data to be shared
 To illustrate how to share data using `ready4use` classes and methods, we will first need some data to publish. In this example, we are going to share `X`, a `Ready4useDyad` [(a data structure explained in another vignette)](https://ready4-dev.github.io/ready4use/V_02.html) that we can create using [data ingested from an online repository](https://ready4-dev.github.io/ready4use/V_03.html).

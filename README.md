@@ -1,6 +1,6 @@
 # ready4use
 
-## Retrieve, Label and Share Model Datasets
+## Author, Ingest, Label and Share Health Economic Model Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -11,13 +11,13 @@
 
 ready4use provides a set of tools for managing data for
 models developed with the ready4 framework
-(https://www.ready4-dev.com/ ).  This development version of the
+(https://www.ready4-dev.com/).  This development version of the
 ready4use package has been made available as part of the process of
 testing and documenting the package.  You should only trial this
 software if you feel confident that you understand what it does and
 have created a sandpit area in which you can safely undertake testing.
 If you have any questions, please contact the authors
-(matthew.hamilton@orygen.org.au).
+(matthew.hamilton1@monash.edu).
 
 To install a development version of this software, run the following commands in your R console:
 
