@@ -4,9 +4,6 @@
     <loc>https://ready4-dev.github.io/ready4use/404.html</loc>
   </url>
   <url>
-    <loc>https://ready4-dev.github.io/ready4use/LICENSE-text.html</loc>
-  </url>
-  <url>
     <loc>https://ready4-dev.github.io/ready4use/LICENSE.html</loc>
   </url>
   <url>
@@ -64,6 +61,9 @@
     <loc>https://ready4-dev.github.io/ready4use/reference/add_dv_meta_to_imp_lup.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/add_fields_from_lup.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/add_files_to_dv.html</loc>
   </url>
   <url>
@@ -82,10 +82,19 @@
     <loc>https://ready4-dev.github.io/ready4use/reference/assert_single_row_tb.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/bind_dyads.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/deprecated.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/dotdata.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/exhibit-methods.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_drop_offs.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/get_file_from_dv.html</loc>
@@ -103,6 +112,12 @@
     <loc>https://ready4-dev.github.io/ready4use/reference/get_r3_from_dv_csv.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_raw_dss.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/get_reference_descs.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/get_valid_path_chr.html</loc>
   </url>
   <url>
@@ -110,6 +125,12 @@
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/ingest-methods.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_correspondences.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_keep_lgl.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_dataverses.html</loc>
@@ -127,10 +148,19 @@
     <loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_mapes.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_period_correspondences.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/make_r3_from_csv_tb.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/make_temporal_lup.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/manufacture-methods.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/nseequals.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/pipe.html</loc>
@@ -170,6 +200,33 @@
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/transform_csv_col_to_ls_col.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/transform_dates.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/transform_dyad_to_series.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/transform_raw_df.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_character_vars.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_correspondences.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_dyad.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_dyad_ls.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_pairs_ls.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/ready4use/reference/update_raw_data.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/ready4use/reference/update_tb_src_loc_to_url_sngl_tb.html</loc>
