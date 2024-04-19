@@ -2,18 +2,18 @@
 % Please edit documentation in R/C3_ready4use_dataverses.R
 \name{make_new_ready4use_dataverses}
 \alias{make_new_ready4use_dataverses}
-\title{make new ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{make new ready4use package dataverses ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 make_new_ready4use_dataverses(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\item{x}{A prototype for the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.}
 }
 \value{
-An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+An unvalidated instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+Create a new unvalidated instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
 Tibble object lookup table of files to be imported from a dataverse.

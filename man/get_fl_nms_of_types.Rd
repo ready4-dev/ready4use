@@ -15,6 +15,6 @@ get_fl_nms_of_types(fl_nms_chr, types_chr)
 Subset of file names (a character vector)
 }
 \description{
-get_fl_nms_of_types() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file names of types. Function argument fl_nms_chr specifies the where to look for the required object. The function returns Subset of file names (a character vector).
+get_fl_nms_of_types() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get file names of types. The function returns Subset of file names (a character vector).
 }
 \keyword{internal}

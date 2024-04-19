@@ -1,6 +1,6 @@
 #' Manufacture a new object
-#' @description manufacture.ready4use_dataverses() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Read (a list of functions).
-#' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description manufacture.ready4use_dataverses() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse. The function returns Read (a list of functions).
+#' @param x An instance of `ready4use_dataverses`, a ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 #' @param type_1L_chr Type (a character vector of length one), Default: 'read_fn'
 #' @return Read (a list of functions)
 #' @rdname manufacture-methods
@@ -22,11 +22,11 @@ manufacture.ready4use_dataverses <- function (x, type_1L_chr = "read_fn")
 #' @importFrom ready4 manufacture
 methods::setMethod("manufacture", methods::className("ready4use_dataverses", package = "ready4use"), manufacture.ready4use_dataverses)
 #' Manufacture a new object
-#' @description manufacture.ready4use_imports() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-#' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @description manufacture.ready4use_imports() is a manufacture method that manufactures a novel R object using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+#' @param x An instance of `ready4use_imports`, a ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
 #' @param script_args_ls Script arguments (a list), Default: NULL
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname manufacture-methods
 #' @export 
 #' @importFrom ready4 procure manufacture
@@ -49,7 +49,7 @@ methods::setMethod("manufacture", methods::className("ready4use_imports", packag
 #' @name manufacture-Ready4useDyad
 #' @description manufacture method applied to Ready4useDyad
 #' @param x An object of class Ready4useDyad
-#' @param correspondences_r3 Correspondences (a ready4 S3), Default: ready4show::ready4show_correspondences()
+#' @param correspondences_r3 Correspondences (a ready4 submodule), Default: ready4show::ready4show_correspondences()
 #' @param dummys_ls Dummys (a list), Default: list()
 #' @param indcs_int Indices (an integer vector), Default: 1
 #' @param flatten_1L_lgl Flatten (a logical vector of length one), Default: F

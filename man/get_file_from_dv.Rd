@@ -51,6 +51,6 @@ get_file_from_dv(
 file_xxx (An object)
 }
 \description{
-get_file_from_dv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file from dataverse. Function argument ds_ui_1L_chr specifies the where to look for the required object. The function is called for its side effects and does not return a value.
+get_file_from_dv() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get file from dataverse. The function is called for its side effects and does not return a value.
 }
 \keyword{internal}

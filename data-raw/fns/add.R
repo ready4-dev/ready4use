@@ -82,6 +82,21 @@ add_dv_meta_to_imp_lup <- function(imp_lup,
                   data_repo_save_type_chr = save_type_1L_chr)
   return(imp_lup)
 }
+add_fields_from_lup <- function(ds_tb,
+                                lup_tb,
+                                match_chr,
+                                target_1L_chr,
+                                vars_chr){
+  ds_tb <- purrr::reduce(vars_chr, .init = ds_tb,
+                         ~ {
+                           target_1L_chr <- .y
+                           .x %>% dplyr::mutate(!!rlang::sym(target_1L_chr) := !!rlang::sym(match_chr[1]) %>% purrr::map_chr(~ready4::get_from_lup_obj(lup_tb, match_var_nm_1L_chr = match_chr[2],
+                                                                                                                                                       match_value_xx = .x,
+                                                                                                                                                       target_var_nm_1L_chr = target_1L_chr) %>% as.character))
+
+                         } )
+  return(ds_tb)
+}
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
                              key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
                              server_1L_chr = Sys.getenv("DATAVERSE_SERVER"))

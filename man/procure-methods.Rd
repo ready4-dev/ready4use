@@ -55,12 +55,14 @@ procure.ready4use_imports(
 \value{
 Data (an output object of multiple potential types)
 
+No return value, called for side effects.
+
 Object (an output object of multiple potential types)
 }
 \description{
-procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
+procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 
-procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 
 procure method applied to Ready4useIngest
 }

@@ -1,20 +1,20 @@
 #' @include C3_ready4use_dataverses.R
 
 setOldClass(c("ready4use_imports","tbl_df", "tbl", "data.frame"))
-#' ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @description Create a new valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @param x A prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import., Default: make_pt_ready4use_imports()
-#' @return A validated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @description Create a new valid instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @param x A prototype for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import., Default: make_pt_ready4use_imports()
+#' @return A validated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @details Tibble object lookup table of sources of raw (un-processed) data to import.
 #' @rdname ready4use_imports
 #' @export 
 ready4use_imports <- function(x = make_pt_ready4use_imports()){ 
 validate_ready4use_imports(make_new_ready4use_imports(x))
 }
-#' make new ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @description Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @param x A prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @return An unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' make new ready4use package imports ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @description Create a new unvalidated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @param x A prototype for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @return An unvalidated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @details Tibble object lookup table of sources of raw (un-processed) data to import.
 #' @rdname make_new_ready4use_imports
 #' @export 
@@ -26,7 +26,7 @@ class(x) <- append(c("ready4use_imports",setdiff(make_pt_ready4use_imports() %>%
 class(x))
 x
 }
-#' make prototype ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' make prototype ready4use package imports ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param file_type_chr File type (a character vector), Default: character(0)
 #' @param file_name_chr File name (a character vector), Default: character(0)
 #' @param data_repo_chr Data repository (a character vector), Default: character(0)
@@ -40,7 +40,7 @@ x
 #' @param inc_file_main_chr Include file main (a character vector), Default: character(0)
 #' @param inc_fls_to_rename_ls Include files to rename (a list), Default: list()
 #' @param new_nms_for_inc_fls_ls New names for include files (a list), Default: list()
-#' @return A prototype for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @return A prototype for ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' 
 #' @rdname ready4use_imports
 #' @export 
@@ -75,10 +75,10 @@ inc_fls_to_rename_ls = inc_fls_to_rename_ls,
 new_nms_for_inc_fls_ls = new_nms_for_inc_fls_ls) %>% ready4::update_pt_fn_args_ls()
 rlang::exec(tibble::tibble,!!!args_ls)
 }
-#' validate ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @description Validate an instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @param x An unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
-#' @return A prototpe for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' validate ready4use package imports ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @description Validate an instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @param x An unvalidated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @return A prototpe for ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @details Tibble object lookup table of sources of raw (un-processed) data to import.
 #' @rdname validate_ready4use_imports
 #' @export 
@@ -124,9 +124,9 @@ call. = FALSE)
 }
 
 x}
-#' is ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' is ready4use package imports ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @return A logical value, TRUE if a valid instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' 
 #' @rdname ready4use_imports
 #' @export 

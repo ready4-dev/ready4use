@@ -2,18 +2,18 @@
 % Please edit documentation in R/C3_ready4use_mapes.R
 \name{make_new_ready4use_mapes}
 \alias{make_new_ready4use_mapes}
-\title{make new ready4use package mean absolute prediction errors ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\title{make new ready4use package mean absolute prediction errors ready4 submodule class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 \usage{
 make_new_ready4use_mapes(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
+\item{x}{A prototype for the ready4 submodule class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.}
 }
 \value{
-An unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+An unvalidated instance of the ready4 submodule class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }
 \description{
-Create a new unvalidated instance of the ready4 S3 class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
+Create a new unvalidated instance of the ready4 submodule class for tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.
 }
 \details{
 Tibble object that stores simulation structural parameters relating to Mean Absolute Prediction Errors.

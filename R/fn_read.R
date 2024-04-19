@@ -1,8 +1,8 @@
 #' Read import from comma separated variables file
-#' @description read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. Function argument file_ref_chr specifies the path to object. The function returns Import (a ready4 S3).
+#' @description read_import_from_csv() is a Read function that reads an R script into memory. Specifically, this function implements an algorithm to read import from comma separated variables file. The function returns Import (a ready4 submodule).
 #' @param file_ref_chr File reference (a character vector)
 #' @param is_url_1L_lgl Is url (a logical vector of length one), Default: F
-#' @return Import (a ready4 S3)
+#' @return Import (a ready4 submodule)
 #' @rdname read_import_from_csv
 #' @export 
 #' @importFrom data.table fread

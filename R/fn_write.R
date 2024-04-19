@@ -56,13 +56,13 @@ write_fls_to_dv_ds <- function (dss_tb, dv_nm_1L_chr, ds_url_1L_chr, wait_time_i
     return(ds_ls)
 }
 #' Write to copy files to dataverse directory
-#' @description write_to_copy_fls_to_dv_dir() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to copy files to dataverse directory. The function is called for its side effects and does not return a value. WARNING: This function writes R scripts to your local environment. Make sure to only use if you want this behaviour
+#' @description write_to_copy_fls_to_dv_dir() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write to copy files to dataverse directory. The function is called for its side effects and does not return a value.
 #' @param files_tb Files (a tibble)
 #' @param local_dv_dir_1L_chr Local dataverse directory (a character vector of length one)
 #' @param consent_1L_chr Consent (a character vector of length one), Default: ''
 #' @param consent_indcs_int Consent indices (an integer vector), Default: 1
 #' @param options_chr Options (a character vector), Default: c("Y", "N")
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname write_to_copy_fls_to_dv_dir
 #' @export 
 #' @importFrom purrr pwalk map_chr

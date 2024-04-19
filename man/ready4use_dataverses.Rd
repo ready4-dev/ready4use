@@ -4,7 +4,7 @@
 \alias{ready4use_dataverses}
 \alias{make_pt_ready4use_dataverses}
 \alias{is_ready4use_dataverses}
-\title{ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 ready4use_dataverses(x = make_pt_ready4use_dataverses())
 
@@ -38,14 +38,14 @@ is_ready4use_dataverses(x)
 \item{data_repo_save_type_chr}{Data repository save type (a character vector), Default: character(0)}
 }
 \value{
-A validated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+A validated instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 
-A prototype for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+A prototype for ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 
-A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+A logical value, TRUE if a valid instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Create a new valid instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+Create a new valid instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
 Tibble object lookup table of files to be imported from a dataverse.

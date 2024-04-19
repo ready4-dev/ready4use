@@ -4,7 +4,7 @@
 \alias{ready4use_imports}
 \alias{make_pt_ready4use_imports}
 \alias{is_ready4use_imports}
-\title{ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 ready4use_imports(x = make_pt_ready4use_imports())
 
@@ -56,14 +56,14 @@ is_ready4use_imports(x)
 \item{new_nms_for_inc_fls_ls}{New names for include files (a list), Default: list()}
 }
 \value{
-A validated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+A validated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 
-A prototype for ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+A prototype for ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 
-A logical value, TRUE if a valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+A logical value, TRUE if a valid instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \description{
-Create a new valid instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+Create a new valid instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \details{
 Tibble object lookup table of sources of raw (un-processed) data to import.

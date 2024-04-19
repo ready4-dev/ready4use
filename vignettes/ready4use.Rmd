@@ -27,5 +27,5 @@ A brief overview of the intended use of ready4use tools is provided in the follo
 - [Label Health Economic Model Datasets](V_02.html)
 - [Share Health Economic Model Datasets](V_01.html)
 
-Additionally, the workflow for finding compatible datasets is described in an [example from youth mental health](https://www.ready4-dev.com/docs/model/datasets/finding-data/search/).
+Additionally, the workflow for finding compatible datasets is described in an [example from youth mental health](https://readyforwhatsnext.org/docs/tutorials/using-modules/).
 

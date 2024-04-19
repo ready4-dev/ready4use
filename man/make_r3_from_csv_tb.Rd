@@ -2,19 +2,19 @@
 % Please edit documentation in R/fn_make.R
 \name{make_r3_from_csv_tb}
 \alias{make_r3_from_csv_tb}
-\title{Make ready4 S3 from comma separated variables file tibble}
+\title{Make ready4 submodule from comma separated variables file tibble}
 \usage{
 make_r3_from_csv_tb(csv_tb, r3_fn)
 }
 \arguments{
 \item{csv_tb}{Comma separated variables file (a tibble)}
 
-\item{r3_fn}{Ready4 S3 (a function)}
+\item{r3_fn}{Ready4 submodule (a function)}
 }
 \value{
-Tibble ready4 S3 (a ready4 S3 extension of tibble)
+Tibble ready4 submodule (a ready4 submodule extension of tibble)
 }
 \description{
-make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make ready4 s3 from comma separated variables file tibble. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
+make_r3_from_csv_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make ready4 submodule from comma separated variables file tibble. The function returns Tibble ready4 submodule (a ready4 submodule extension of tibble).
 }
 \keyword{internal}

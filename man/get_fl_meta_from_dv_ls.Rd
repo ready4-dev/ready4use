@@ -24,6 +24,6 @@ get_fl_meta_from_dv_ls(
 Metadata (an output object of multiple potential types)
 }
 \description{
-get_fl_meta_from_dv_ls() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get file meta from dataverse list. Function argument ds_ls specifies the where to look for the required object. The function returns Metadata (an output object of multiple potential types).
+get_fl_meta_from_dv_ls() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get file meta from dataverse list. The function returns Metadata (an output object of multiple potential types).
 }
 \keyword{internal}

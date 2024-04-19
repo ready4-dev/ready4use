@@ -2,18 +2,18 @@
 % Please edit documentation in R/C3_ready4use_distributions.R
 \name{make_new_ready4use_distributions}
 \alias{make_new_ready4use_distributions}
-\title{make new ready4use package distributions ready4 S3 class for list object that summarises the parameters of each distribution}
+\title{make new ready4use package distributions ready4 submodule class for list object that summarises the parameters of each distribution}
 \usage{
 make_new_ready4use_distributions(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for list object that summarises the parameters of each distribution}
+\item{x}{A prototype for the ready4 submodule class for list object that summarises the parameters of each distribution}
 }
 \value{
-An unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+An unvalidated instance of the ready4 submodule class for list object that summarises the parameters of each distribution
 }
 \description{
-Create a new unvalidated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+Create a new unvalidated instance of the ready4 submodule class for list object that summarises the parameters of each distribution
 }
 \details{
 List object that summarises the parameters of each distribution

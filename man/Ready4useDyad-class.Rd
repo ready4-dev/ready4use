@@ -13,7 +13,7 @@ A dataset and data dictionary pair.
 \describe{
 \item{\code{ds_tb}}{Dataset (a tibble)}
 
-\item{\code{dictionary_r3}}{Dictionary (a ready4 S3)}
+\item{\code{dictionary_r3}}{Dictionary (a ready4 submodule)}
 
 \item{\code{dissemination_1L_chr}}{Dissemination (a character vector of length one)}
 }}

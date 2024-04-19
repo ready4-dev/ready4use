@@ -7,7 +7,7 @@
 \alias{renew,ready4use_imports-method}
 \alias{renew-Ready4useDyad}
 \alias{renew,Ready4useDyad-method}
-\title{Renew values in a dataset}
+\title{Renew (update) values}
 \usage{
 renew.ready4use_dictionary(
   x,
@@ -83,9 +83,9 @@ renew.ready4use_imports(
 
 \item{filter_cdn_1L_chr}{Filter condition (a character vector of length one), Default: 'NA'}
 
-\item{new_cases_r3}{New cases (a ready4 S3), Default: NULL}
+\item{new_cases_r3}{New cases (a ready4 submodule), Default: NULL}
 
-\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 S3), Default: deprecated()}
+\item{new_ready4_dict_r3}{New ready4 dictionary (a ready4 submodule), Default: deprecated()}
 
 \item{slice_indcs_int}{Slice indices (an integer vector), Default: NA}
 
@@ -125,7 +125,7 @@ x (An object of class Ready4useDyad)
 \description{
 renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
 
-renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 
 renew method applied to Ready4useDyad
 }

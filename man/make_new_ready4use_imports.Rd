@@ -2,18 +2,18 @@
 % Please edit documentation in R/C3_ready4use_imports.R
 \name{make_new_ready4use_imports}
 \alias{make_new_ready4use_imports}
-\title{make new ready4use package imports ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\title{make new ready4use package imports ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.}
 \usage{
 make_new_ready4use_imports(x)
 }
 \arguments{
-\item{x}{A prototype for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.}
+\item{x}{A prototype for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.}
 }
 \value{
-An unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+An unvalidated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \description{
-Create a new unvalidated instance of the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+Create a new unvalidated instance of the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 }
 \details{
 Tibble object lookup table of sources of raw (un-processed) data to import.

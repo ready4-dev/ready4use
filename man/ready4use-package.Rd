@@ -2,7 +2,6 @@
 % Please edit documentation in R/pkg_ready4use.R, R/ready4use-package.R
 \docType{package}
 \name{ready4use-package}
-\alias{ready4use}
 \alias{ready4use-package}
 \title{ready4use: Author, Ingest, Label and Share Health Economic Model Datasets}
 \description{
@@ -32,7 +31,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton1@monash.edu} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
+\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton1@monash.edu} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{

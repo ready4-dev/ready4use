@@ -1,3 +1,13 @@
+get_drop_offs <- function(X_Ready4useDyad = Ready4useDyad(),
+                          condition_1L_chr = ">1",
+                          uid_var_nm_1L_chr = "uid_chr"){
+  all_ids_chr <- X_Ready4useDyad@ds_tb %>% dplyr::pull(!!rlang::sym(uid_var_nm_1L_chr))
+  unique_ids_chr <- unique(all_ids_chr)
+  counts_int <- unique_ids_chr %>% purrr::map_int(~sum(all_ids_chr == .x))
+  pass_test_chr <- unique_ids_chr[purrr::map_lgl(counts_int, ~ eval(parse(text=paste0(.x, condition_1L_chr))))]
+  drop_offs_chr <- setdiff(all_ids_chr %>% unique(), pass_test_chr)
+  return(drop_offs_chr)
+}
 get_file_from_dv <- function(ds_ui_1L_chr,
                              fl_nm_1L_chr,
                              save_fmt_1L_chr,
@@ -88,6 +98,22 @@ get_r3_from_dv_csv <- function(file_name_chr,
     procure() %>%
     make_r3_from_csv_tb(r3_fn)
   return(tb_r3)
+}
+get_raw_dss <- function(paths_chr,
+                        names_chr,
+                        read_fn = read.csv){
+  assertthat::assert_that(assertthat::are_equal(length(paths_chr), length(names_chr)), msg = "names_chr must be same length as paths_chr")
+  ds_ls <- purrr::map(paths_chr,
+                      ~ read_fn(.x)#read.csv(eval(parse(text = .x)))
+  ) %>% stats::setNames(names_chr)
+  return(ds_ls)
+}
+get_reference_descs <- function(correspondences_ls,
+                                correspondences_r3 = ready4show::ready4show_correspondences()){
+  reference_descs_chr <- purrr::reduce(correspondences_ls,
+                                       .init = correspondences_r3,
+                                       ~ rbind(.x,.y)) %>% dplyr::pull(new_nms_chr) %>% unique()
+  return(reference_descs_chr)
 }
 get_valid_path_chr <- function(x){
   assert_file_exists(x)

@@ -27,6 +27,6 @@ add_files_to_dv(
 File identities (an integer vector)
 }
 \description{
-add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File identities (an integer vector).
+add_files_to_dv() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add files to dataverse. The function returns File identities (an integer vector).
 }
 \keyword{internal}

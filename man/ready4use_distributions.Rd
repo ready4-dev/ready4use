@@ -4,7 +4,7 @@
 \alias{ready4use_distributions}
 \alias{make_pt_ready4use_distributions}
 \alias{is_ready4use_distributions}
-\title{ready4 S3 class for list object that summarises the parameters of each distribution}
+\title{ready4 submodule class for list object that summarises the parameters of each distribution}
 \usage{
 ready4use_distributions(x = make_pt_ready4use_distributions())
 
@@ -35,14 +35,14 @@ is_ready4use_distributions(x)
 \item{transformation_chr}{Transformation (a character vector), Default: character(0)}
 }
 \value{
-A validated instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+A validated instance of the ready4 submodule class for list object that summarises the parameters of each distribution
 
-A prototype for ready4 S3 class for list object that summarises the parameters of each distribution
+A prototype for ready4 submodule class for list object that summarises the parameters of each distribution
 
-A logical value, TRUE if a valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+A logical value, TRUE if a valid instance of the ready4 submodule class for list object that summarises the parameters of each distribution
 }
 \description{
-Create a new valid instance of the ready4 S3 class for list object that summarises the parameters of each distribution
+Create a new valid instance of the ready4 submodule class for list object that summarises the parameters of each distribution
 }
 \details{
 List object that summarises the parameters of each distribution

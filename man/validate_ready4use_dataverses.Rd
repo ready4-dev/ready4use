@@ -2,18 +2,18 @@
 % Please edit documentation in R/C3_ready4use_dataverses.R
 \name{validate_ready4use_dataverses}
 \alias{validate_ready4use_dataverses}
-\title{validate ready4use package dataverses ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\title{validate ready4use package dataverses ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.}
 \usage{
 validate_ready4use_dataverses(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.}
+\item{x}{An unvalidated instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.}
 }
 \value{
-A prototpe for ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+A prototpe for ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \description{
-Validate an instance of the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+Validate an instance of the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 }
 \details{
 Tibble object lookup table of files to be imported from a dataverse.

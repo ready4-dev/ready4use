@@ -13,6 +13,6 @@ get_valid_path_chr(x)
 Valid path (a character vector)
 }
 \description{
-get_valid_path_chr() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get valid path character vector. Function argument x specifies the where to look for the required object. The function returns Valid path (a character vector).
+get_valid_path_chr() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get valid path character vector. The function returns Valid path (a character vector).
 }
 \keyword{internal}

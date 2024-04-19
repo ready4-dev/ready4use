@@ -5,7 +5,7 @@
 \alias{exhibit,ready4use_dictionary-method}
 \alias{exhibit-Ready4useDyad}
 \alias{exhibit,Ready4useDyad-method}
-\title{Exhibit features of a dataset by printing them to the R console}
+\title{Exhibit features of model module data by printing them to the R console}
 \usage{
 exhibit.ready4use_dictionary(
   x,
@@ -27,11 +27,12 @@ exhibit.ready4use_dictionary(
   x,
   caption_1L_chr = NA_character_,
   display_1L_chr = "all",
+  label_1L_lgl = FALSE,
   mkdn_tbl_ref_1L_chr = "",
   output_type_1L_chr = "HTML",
   type_1L_chr = "ds",
-  use_lbls_as_col_nms_1L_lgl = T,
-  use_rdocx_1L_lgl = F,
+  use_lbls_as_col_nms_1L_lgl = TRUE,
+  use_rdocx_1L_lgl = FALSE,
   ...
 )
 }
@@ -44,15 +45,22 @@ exhibit.ready4use_dictionary(
 
 \item{output_type_1L_chr}{Output type (a character vector of length one), Default: 'HTML'}
 
-\item{use_lbls_as_col_nms_1L_lgl}{Use labels as column names (a logical vector of length one), Default: T}
+\item{use_lbls_as_col_nms_1L_lgl}{Use labels as column names (a logical vector of length one), Default: TRUE}
 
 \item{display_1L_chr}{Display (a character vector of length one), Default: 'all'}
 
+\item{label_1L_lgl}{Label (a logical vector of length one), Default: FALSE}
+
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'ds'}
 
-\item{use_rdocx_1L_lgl}{Use rdocx (a logical vector of length one), Default: F}
+\item{use_rdocx_1L_lgl}{Use rdocx (a logical vector of length one), Default: FALSE}
 
 \item{...}{Additional arguments}
+}
+\value{
+No return value, called for side effects.
+
+No return value, called for side effects.
 }
 \description{
 exhibit.ready4use_dictionary() is an exhibit method that exhibits features of a class instance by printing to console. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.

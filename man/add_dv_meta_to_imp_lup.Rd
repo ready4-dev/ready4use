@@ -24,6 +24,6 @@ add_dv_meta_to_imp_lup(
 Import (a lookup table)
 }
 \description{
-add_dv_meta_to_imp_lup() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. Function argument imp_lup specifies the object to be updated. The function returns Import (a lookup table).
+add_dv_meta_to_imp_lup() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. The function returns Import (a lookup table).
 }
 \keyword{internal}

@@ -1,6 +1,6 @@
 #' Procure items from a dataset
-#' @description procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
-#' @param x An instance of ready4 S3 class for tibble object lookup table of files to be imported from a dataverse.
+#' @description procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
+#' @param x An instance of `ready4use_dataverses`, a ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
 #' @param unlink_1L_lgl Unlink (a logical vector of length one), Default: T
 #' @param server_1L_chr Server (a character vector of length one), Default: Sys.getenv("DATAVERSE_SERVER")
@@ -30,11 +30,11 @@ procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_dataverses", package = "ready4use"), procure.ready4use_dataverses)
 #' Procure items from a dataset
-#' @description procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-#' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' @description procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+#' @param x An instance of `ready4use_imports`, a ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param inc_script_1L_lgl Include script (a logical vector of length one), Default: T
 #' @param forced_choice_chr Forced choice (a character vector), Default: 'NA'
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname procure-methods
 #' @export 
 #' @importFrom purrr discard

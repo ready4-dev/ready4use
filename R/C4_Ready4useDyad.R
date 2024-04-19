@@ -3,7 +3,7 @@
 #' A dataset and data dictionary pair.
 #' 
 #' @slot ds_tb Dataset (a tibble)
-#' @slot dictionary_r3 Dictionary (a ready4 S3)
+#' @slot dictionary_r3 Dictionary (a ready4 submodule)
 #' @slot dissemination_1L_chr Dissemination (a character vector of length one)
 #' @import ready4
 #' @name Ready4useDyad-class

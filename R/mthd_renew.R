@@ -1,13 +1,13 @@
-#' Renew values in a dataset
+#' Renew (update) values
 #' @description renew.ready4use_dictionary() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 s3 class defining a data dictionary tibble. The function is called for its side effects and does not return a value.
-#' @param x An instance of ready4 s3 class defining a data dictionary tibble.
+#' @param x An instance of `ready4use_dictionary`, a ready4 s3 class defining a data dictionary tibble.
 #' @param var_nm_chr Variable name (a character vector), Default: 'NA'
 #' @param var_ctg_chr Variable category (a character vector), Default: 'NA'
 #' @param var_desc_chr Variable description (a character vector), Default: 'NA'
 #' @param var_type_chr Variable type (a character vector), Default: 'NA'
 #' @param filter_cdn_1L_chr Filter condition (a character vector of length one), Default: 'NA'
-#' @param new_cases_r3 New cases (a ready4 S3), Default: NULL
-#' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 S3), Default: deprecated()
+#' @param new_cases_r3 New cases (a ready4 submodule), Default: NULL
+#' @param new_ready4_dict_r3 New ready4 dictionary (a ready4 submodule), Default: deprecated()
 #' @param slice_indcs_int Slice indices (an integer vector), Default: NA
 #' @return x (An object)
 #' @rdname renew-methods
@@ -37,9 +37,9 @@ renew.ready4use_dictionary <- function (x, var_nm_chr = NA_character_, var_ctg_c
 #' @aliases renew,ready4use_dictionary-method
 #' @importFrom ready4 renew
 methods::setMethod("renew", methods::className("ready4use_dictionary", package = "ready4use"), renew.ready4use_dictionary)
-#' Renew values in a dataset
-#' @description renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
-#' @param x An instance of ready4 S3 class for tibble object lookup table of sources of raw (un-processed) data to import.
+#' Renew (update) values
+#' @description renew.ready4use_imports() is a renew method that renews an instance of a class by updating it with new data. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
+#' @param x An instance of `ready4use_imports`, a ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param local_file_src_chr Local file source (a character vector), Default: 'NA'
 #' @param path_to_make_script_chr Path to make script (a character vector), Default: 'NA'
 #' @param download_url_chr Download url (a character vector), Default: 'NA'
@@ -78,7 +78,7 @@ renew.ready4use_imports <- function (x, local_file_src_chr = NA_character_, path
 #' @importFrom ready4 renew
 methods::setMethod("renew", methods::className("ready4use_imports", package = "ready4use"), renew.ready4use_imports)
 #' 
-#' Renew values in a dataset
+#' Renew (update) values
 #' @name renew-Ready4useDyad
 #' @description renew method applied to Ready4useDyad
 #' @param x An object of class Ready4useDyad

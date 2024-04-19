@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_get.R
 \name{get_r3_from_dv_csv}
 \alias{get_r3_from_dv_csv}
-\title{Get ready4 S3 from dataverse comma separated variables file}
+\title{Get ready4 submodule from dataverse comma separated variables file}
 \usage{
 get_r3_from_dv_csv(
   file_name_chr,
@@ -18,11 +18,11 @@ get_r3_from_dv_csv(
 
 \item{data_repo_ui_chr}{Data repository user interface (a character vector), Default: 'NA'}
 
-\item{r3_fn}{Ready4 S3 (a function), Default: ready4use_imports}
+\item{r3_fn}{Ready4 submodule (a function), Default: ready4use_imports}
 }
 \value{
-Tibble ready4 S3 (a ready4 S3 extension of tibble)
+Tibble ready4 submodule (a ready4 submodule extension of tibble)
 }
 \description{
-get_r3_from_dv_csv() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get ready4 s3 from dataverse comma separated variables file. Function argument file_name_chr specifies the where to look for the required object. The function returns Tibble ready4 S3 (a ready4 S3 extension of tibble).
+get_r3_from_dv_csv() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get ready4 submodule from dataverse comma separated variables file. The function returns Tibble ready4 submodule (a ready4 submodule extension of tibble).
 }

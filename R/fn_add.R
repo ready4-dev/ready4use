@@ -1,5 +1,5 @@
 #' Add dataset to dataverse repository
-#' @description add_ds_to_dv_repo() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataset to dataverse repository. Function argument dv_1L_chr specifies the object to be updated. The function returns Dataset url (a character vector of length one).
+#' @description add_ds_to_dv_repo() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dataset to dataverse repository. The function returns Dataset url (a character vector of length one).
 #' @param dv_1L_chr Dataverse (a character vector of length one)
 #' @param ds_meta_ls Dataset meta (a list)
 #' @param key_1L_chr Key (a character vector of length one), Default: Sys.getenv("DATAVERSE_KEY")
@@ -70,7 +70,7 @@ add_ds_to_dv_repo <- function (dv_1L_chr, ds_meta_ls, key_1L_chr = Sys.getenv("D
     return(ds_url_1L_chr)
 }
 #' Add dataverse meta to import lookup table
-#' @description add_dv_meta_to_imp_lup() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. Function argument imp_lup specifies the object to be updated. The function returns Import (a lookup table).
+#' @description add_dv_meta_to_imp_lup() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dataverse meta to import lookup table. The function returns Import (a lookup table).
 #' @param imp_lup Import (a lookup table)
 #' @param ds_ui_1L_chr Dataset user interface (a character vector of length one)
 #' @param file_type_1L_chr File type (a character vector of length one)
@@ -87,8 +87,34 @@ add_dv_meta_to_imp_lup <- function (imp_lup, ds_ui_1L_chr, file_type_1L_chr, sav
         data_repo_file_ext_chr = file_type_1L_chr, data_repo_save_type_chr = save_type_1L_chr)
     return(imp_lup)
 }
+#' Add fields from lookup table
+#' @description add_fields_from_lup() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add fields from lookup table. The function returns Dataset (a tibble).
+#' @param ds_tb Dataset (a tibble)
+#' @param lup_tb Lookup table (a tibble)
+#' @param match_chr Match (a character vector)
+#' @param target_1L_chr Target (a character vector of length one)
+#' @param vars_chr Variables (a character vector)
+#' @return Dataset (a tibble)
+#' @rdname add_fields_from_lup
+#' @export 
+#' @importFrom purrr reduce map_chr
+#' @importFrom dplyr mutate
+#' @importFrom rlang sym
+#' @importFrom ready4 get_from_lup_obj
+#' @keywords internal
+add_fields_from_lup <- function (ds_tb, lup_tb, match_chr, target_1L_chr, vars_chr) 
+{
+    ds_tb <- purrr::reduce(vars_chr, .init = ds_tb, ~{
+        target_1L_chr <- .y
+        .x %>% dplyr::mutate(`:=`(!!rlang::sym(target_1L_chr), 
+            !!rlang::sym(match_chr[1]) %>% purrr::map_chr(~ready4::get_from_lup_obj(lup_tb, 
+                match_var_nm_1L_chr = match_chr[2], match_value_xx = .x, 
+                target_var_nm_1L_chr = target_1L_chr) %>% as.character)))
+    })
+    return(ds_tb)
+}
 #' Add files to dataverse
-#' @description add_files_to_dv() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add files to dataverse. Function argument files_tb specifies the object to be updated. The function returns File identities (an integer vector).
+#' @description add_files_to_dv() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add files to dataverse. The function returns File identities (an integer vector).
 #' @param files_tb Files (a tibble)
 #' @param data_dir_rt_1L_chr Data directory root (a character vector of length one), Default: '.'
 #' @param ds_url_1L_chr Dataset url (a character vector of length one)
@@ -122,7 +148,7 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
     return(fl_ids_int)
 }
 #' Add labels from dictionary
-#' @description add_labels_from_dictionary() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels from dictionary. Function argument ds_tb specifies the object to be updated. The function returns Labelled dataset (a tibble).
+#' @description add_labels_from_dictionary() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add labels from dictionary. The function returns Labelled dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param dictionary_tb Dictionary (a tibble)
 #' @param remove_old_lbls_1L_lgl Remove old labels (a logical vector of length one), Default: F
