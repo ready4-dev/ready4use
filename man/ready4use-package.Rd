@@ -7,11 +7,11 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
+ready4use provides a set of tools for managing data for models developed with the ready4 framework. For detailed documentation about the framework and how to use it visit \url{https://www.ready4-dev.com/}. For a background to the methodological issues that the framework is attempting to help solve, see Hamilton et al. (2024) \doi{10.1007/s40273-024-01378-8}. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/). This development version of the ready4use package has been made available as part of the process of testing and documenting the package. You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
+ready4use provides a set of tools for managing data for models developed with the ready4 framework. For detailed documentation about the framework and how to use it visit \url{https://www.ready4-dev.com/}. For a background to the methodological issues that the framework is attempting to help solve, see Hamilton et al. (2024) \doi{10.1007/s40273-024-01378-8}. This development version of the ready4use package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 }
 \seealso{
 Useful links:

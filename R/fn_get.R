@@ -199,3 +199,20 @@ get_valid_path_chr <- function (x)
     valid_path_chr <- x
     return(valid_path_chr)
 }
+#' Get variables with condition
+#' @description get_vars_with_cdn() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get variables with condition. The function returns Variables (a character vector).
+#' @param data_tb Data (a tibble)
+#' @param cdn_fn Condition (a function)
+#' @return Variables (a character vector)
+#' @rdname get_vars_with_cdn
+#' @export 
+#' @importFrom purrr map_lgl
+#' @importFrom dplyr pull
+#' @importFrom rlang sym
+#' @keywords internal
+get_vars_with_cdn <- function (data_tb, cdn_fn) 
+{
+    vars_chr <- names(data_tb)[names(data_tb) %>% purrr::map_lgl(~cdn_fn(data_tb %>% 
+        dplyr::pull(!!rlang::sym(.x))))]
+    return(vars_chr)
+}

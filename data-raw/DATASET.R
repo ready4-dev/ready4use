@@ -2,9 +2,9 @@ library(ready4)
 library(ready4fun)
 library(ready4show)
 pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Ingest, Label and Share Health Economic Model Datasets" %>% tools::toTitleCase(),
-                                           pkg_desc_1L_chr = "ready4use provides a set of tools for managing data for models developed with the ready4 framework (https://www.ready4-dev.com/).
-  This development version of the ready4use package has been made available as part of the process of testing and documenting the package.
-  You should only trial this software if you feel confident that you understand what it does and have created a sandpit area in which you can safely undertake testing. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).",
+                                           pkg_desc_1L_chr = "ready4use provides a set of tools for managing data for models developed with the ready4 framework.
+                                           For detailed documentation about the framework and how to use it visit <https://www.ready4-dev.com/>. For a background to the methodological issues that the framework is attempting to help solve, see Hamilton et al. (2024) <doi:10.1007/s40273-024-01378-8>.
+  This development version of the ready4use package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).",
                                            authors_prsn = c(utils::person(
                                              given = "Matthew",family = "Hamilton", email =
                                                "matthew.hamilton1@monash.edu",role = c("aut",
@@ -181,10 +181,14 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
   ready4pack::ready4pack_manifest()
 z <- author(z)
 # ready4::write_extra_pkgs_to_actions(path_to_dir_1L_chr = ".github/workflows")
-write_to_edit_workflow("pkgdown.yaml") # In other packages, run for "test-coverage.yaml" as well.
+write_to_edit_workflow("pkgdown.yaml", consent_1L_chr = "Y") # In other packages, run for "test-coverage.yaml" as well.
 # readme_chr <- readLines("README.md")
 # readme_chr[-which(readme_chr %>% purrr::map_lgl(~startsWith(.x, "[![test-coverage]")))] %>%
 #   writeLines(con = "README.md")
-write_to_tidy_pkg(manifest_ls, build_vignettes_1L_lgl = TRUE,
+write_to_tidy_pkg(manifest_ls, build_vignettes_1L_lgl = FALSE,
                   clean_license_1L_lgl = TRUE, consent_1L_chr = "Y",
                   examples_chr = character(0), project_1L_chr = "Framework", suggest_chr = "pkgload")
+readLines("README.md") %>%
+  #gsub(pattern = "doi:10.48550/arXiv.([^&]+)", replacement = "https://arxiv.org/abs/\\1") %>%
+  gsub(pattern = "doi:([^&]+)", replacement = "https://doi.org/\\1") %>%
+  writeLines(con = "README.md")

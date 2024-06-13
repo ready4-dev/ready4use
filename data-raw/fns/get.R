@@ -120,3 +120,8 @@ get_valid_path_chr <- function(x){
   valid_path_chr <- x
   return(valid_path_chr)
 }
+get_vars_with_cdn <- function(data_tb,
+                               cdn_fn){
+  vars_chr <- names(data_tb)[names(data_tb) %>% purrr::map_lgl(~cdn_fn(data_tb %>% dplyr::pull(!!rlang::sym(.x))))]
+  return(vars_chr)
+}

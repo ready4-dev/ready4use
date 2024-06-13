@@ -11,14 +11,14 @@
 <!-- badges: end -->
 
 ready4use provides a set of tools for managing data for
-models developed with the ready4 framework
-(https://www.ready4-dev.com/).  This development version of the
-ready4use package has been made available as part of the process of
-testing and documenting the package.  You should only trial this
-software if you feel confident that you understand what it does and
-have created a sandpit area in which you can safely undertake testing.
-If you have any questions, please contact the authors
-(matthew.hamilton1@monash.edu).
+models developed with the ready4 framework.  For detailed
+documentation about the framework and how to use it visit
+<https://www.ready4-dev.com/>. For a background to the methodological
+issues that the framework is attempting to help solve, see Hamilton et
+al. (2024) <https://doi.org/10.1007/s40273-024-01378-8>.  This development version
+of the ready4use package has been made available as part of the
+process of testing and documenting the package. If you have any
+questions, please contact the authors (matthew.hamilton1@monash.edu).
 
 To install a development version of this software, run the following commands in your R console:
 

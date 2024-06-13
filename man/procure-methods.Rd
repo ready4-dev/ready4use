@@ -7,7 +7,7 @@
 \alias{procure,ready4use_imports-method}
 \alias{procure-Ready4useIngest}
 \alias{procure,Ready4useIngest-method}
-\title{Procure items from a dataset}
+\title{Procure data from a model module}
 \usage{
 procure.ready4use_dataverses(
   x,

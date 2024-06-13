@@ -1,4 +1,4 @@
-#' Procure items from a dataset
+#' Procure data from a model module
 #' @description procure.ready4use_dataverses() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of files to be imported from a dataverse. The function returns Data (an output object of multiple potential types).
 #' @param x An instance of `ready4use_dataverses`, a ready4 submodule class for tibble object lookup table of files to be imported from a dataverse.
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one), Default: ''
@@ -29,7 +29,7 @@ procure.ready4use_dataverses <- function (x, save_dir_path_1L_chr = "", unlink_1
 #' @aliases procure,ready4use_dataverses-method
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_dataverses", package = "ready4use"), procure.ready4use_dataverses)
-#' Procure items from a dataset
+#' Procure data from a model module
 #' @description procure.ready4use_imports() is a procure method that procures data by executing a search and retrieval algorithm using data contained in an instance of a class. This method is implemented for the ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import. The function is called for its side effects and does not return a value.
 #' @param x An instance of `ready4use_imports`, a ready4 submodule class for tibble object lookup table of sources of raw (un-processed) data to import.
 #' @param inc_script_1L_lgl Include script (a logical vector of length one), Default: T
@@ -59,7 +59,7 @@ procure.ready4use_imports <- function (x, inc_script_1L_lgl = T, forced_choice_c
 #' @importFrom ready4 procure
 methods::setMethod("procure", methods::className("ready4use_imports", package = "ready4use"), procure.ready4use_imports)
 #' 
-#' Procure items from a dataset
+#' Procure data from a model module
 #' @name procure-Ready4useIngest
 #' @description procure method applied to Ready4useIngest
 #' @param x An object of class Ready4useIngest
