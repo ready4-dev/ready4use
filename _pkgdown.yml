@@ -35,10 +35,14 @@ reference:
   - Ready4useRecord
 - title: "Functions"
 - contents:
+  - add_dictionary
+  - add_from_lup_prototype
   - add_labels_from_dictionary
+  - add_latest_match
   - assert_matches_chr
   - assert_single_row_tb
   - get_r3_from_dv_csv
+  - make_imputed_distinct_cases
 - title: "Methods"
 - contents:
   - exhibit-Ready4useDyad

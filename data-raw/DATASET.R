@@ -25,10 +25,14 @@ x <- pkg_desc_ls %>%
                                                                        suggests_chr = c("rmarkdown")),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
-                           custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_labels_from_dictionary",
+                           custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c("add_dictionary",
+                                                                                                 "add_from_lup_prototype",
+                                                                                                 "add_labels_from_dictionary",
+                                                                                                 "add_latest_match",
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
-                                                                                                 "get_r3_from_dv_csv"#, "write_fls_to_dv_ds"
+                                                                                                 "get_r3_from_dv_csv",
+                                                                                                 "make_imputed_distinct_cases"#, "write_fls_to_dv_ds"
                            )),
                            copyright_holders_chr = "Matthew Hamilton and Orygen",
                            dev_pkgs_chr = c(#"ready4",
