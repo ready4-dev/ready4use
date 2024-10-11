@@ -25,6 +25,7 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_from_lup_prototype.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_labels_from_dictionary.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_latest_match.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/add_with_join.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/assert_dir_exists.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/assert_file_exists.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/assert_matches_chr.html</loc></url>
@@ -75,6 +76,7 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/transform_dyad_to_series.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/transform_raw_df.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/update_character_vars.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/update_column_names.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/update_correspondences.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/update_dyad.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/update_dyad_ls.html</loc></url>
