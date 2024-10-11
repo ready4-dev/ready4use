@@ -29,4 +29,3 @@ X (A dataset and data dictionary pair.)
 \description{
 bind_dyads() is a Bind function that binds two objects together to create a composite object. Specifically, this function implements an algorithm to bind dyads. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

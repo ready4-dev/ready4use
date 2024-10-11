@@ -8,7 +8,7 @@
 #' @rdname add_dictionary
 #' @export 
 #' @importFrom purrr map_chr
-#' @importFrom dplyr pull arrange
+#' @importFrom dplyr pull arrange filter
 #' @importFrom rlang sym
 add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = ready4use_dictionary(), 
     var_ctg_chr = "Uncategorised", arrange_by_1L_chr = c("category", 
@@ -29,6 +29,8 @@ add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = re
     X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>% 
         dplyr::arrange(!!rlang::sym(ifelse(arrange_by_1L_chr == 
             "name", "var_nm_chr", "var_ctg_chr")))
+    X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>% 
+        dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
     return(X_Ready4useDyad)
 }
 #' Add dataset to dataverse repository
@@ -303,4 +305,22 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
                     .y)), match_var_nm_1L_chr = match_var_nm_1L_chr, 
                   match_value_xx = .x, target_var_nm_1L_chr = target_var_nm_1L_chr)))))
     return(data_tb)
+}
+#' Add with join
+#' @description add_with_join() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add with join. The function is called for its side effects and does not return a value.
+#' @param X_Ready4useDyad PARAM_DESCRIPTION
+#' @param Y_Ready4useDyad PARAM_DESCRIPTION
+#' @return X (A dataset and data dictionary pair.)
+#' @rdname add_with_join
+#' @export 
+#' @importFrom dplyr left_join filter
+#' @importFrom ready4use add_dictionary
+add_with_join <- function (X_Ready4useDyad, Y_Ready4useDyad) 
+{
+    X_Ready4useDyad@ds_tb <- dplyr::left_join(X_Ready4useDyad@ds_tb, 
+        Y_Ready4useDyad@ds_tb)
+    X_Ready4useDyad <- ready4use::add_dictionary(X_Ready4useDyad, 
+        new_cases_r3 = Y_Ready4useDyad@dictionary_r3 %>% dplyr::filter(!var_nm_chr %in% 
+            X_Ready4useDyad@dictionary_r3$var_nm_chr))
+    return(X_Ready4useDyad)
 }

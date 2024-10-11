@@ -60,6 +60,36 @@ update_character_vars <- function (ds_tb, var_nms_chr, as_missing_chr = characte
     }
     return(ds_tb)
 }
+#' Update column names
+#' @description update_column_names() is an Update function that edits an object, while preserving core object attributes. Specifically, this function implements an algorithm to update column names. The function is called for its side effects and does not return a value.
+#' @param X_Ready4useDyad PARAM_DESCRIPTION
+#' @param patterns_ls Patterns (a list), Default: list(c("[[:space:]]", ""))
+#' @param update_desc_1L_lgl Update description (a logical vector of length one), Default: FALSE
+#' @return X (A dataset and data dictionary pair.)
+#' @rdname update_column_names
+#' @export 
+#' @importFrom purrr reduce
+#' @importFrom stringr str_replace_all
+update_column_names <- function (X_Ready4useDyad, patterns_ls = list(c("[[:space:]]", 
+    "")), update_desc_1L_lgl = FALSE) 
+{
+    X_Ready4useDyad <- purrr::reduce(patterns_ls, .init = X_Ready4useDyad, 
+        ~{
+            ds_tb <- .x@ds_tb
+            names(ds_tb) <- names(ds_tb) %>% stringr::str_replace_all(.y[1], 
+                .y[2])
+            dict_r3 <- .x@dictionary_r3
+            dict_r3$var_nm_chr <- dict_r3$var_nm_chr %>% stringr::str_replace_all(.y[1], 
+                .y[2])
+            if (update_desc_1L_lgl) {
+                dict_r3$var_desc_chr <- dict_r3$var_desc_chr %>% 
+                  stringr::str_replace_all(.y[1], .y[2])
+            }
+            Ready4useDyad(ds_tb = ds_tb, dictionary_r3 = dict_r3, 
+                dissemination_1L_chr = X_Ready4useDyad@dissemination_1L_chr)
+        })
+    return(X_Ready4useDyad)
+}
 #' Update correspondences
 #' @description update_correspondences() is an Update function that edits an object, while preserving core object attributes. Specifically, this function implements an algorithm to update correspondences. The function returns Correspondences (a list).
 #' @param correspondences_ls Correspondences (a list)

@@ -1,3 +1,22 @@
+update_column_names <- function(X_Ready4useDyad,
+                                patterns_ls = list(c("[[:space:]]", "")),
+                                update_desc_1L_lgl = FALSE){
+  X_Ready4useDyad <- purrr::reduce(patterns_ls,
+                                   .init = X_Ready4useDyad,
+                                   ~ {
+                                     ds_tb <- .x@ds_tb
+                                     names(ds_tb) <- names(ds_tb) %>% stringr::str_replace_all(.y[1], .y[2])
+                                     dict_r3 <- .x@dictionary_r3
+                                     dict_r3$var_nm_chr <- dict_r3$var_nm_chr %>% stringr::str_replace_all(.y[1], .y[2])
+                                     if(update_desc_1L_lgl){
+                                       dict_r3$var_desc_chr <- dict_r3$var_desc_chr %>% stringr::str_replace_all(.y[1], .y[2])
+                                     }
+                                     Ready4useDyad(ds_tb = ds_tb,
+                                                   dictionary_r3 = dict_r3,
+                                                   dissemination_1L_chr = X_Ready4useDyad@dissemination_1L_chr)
+                                   })
+  return(X_Ready4useDyad)
+}
 update_correspondences <- function(correspondences_ls,
                                    dyad_ls = NULL,
                                    new_ls = NULL,

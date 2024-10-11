@@ -11,7 +11,6 @@
 #' @importFrom purrr discard_at map_dfr reduce
 #' @importFrom dplyr arrange filter pull mutate case_when
 #' @importFrom rlang sym
-#' @keywords internal
 bind_dyads <- function (dyad_ls, drop_chr = character(0), factors_chr = character(0), 
     tfmn_fn = identity, uid_var_nm_1L_chr = character(0)) 
 {

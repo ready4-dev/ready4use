@@ -29,10 +29,13 @@ x <- pkg_desc_ls %>%
                                                                                                  "add_from_lup_prototype",
                                                                                                  "add_labels_from_dictionary",
                                                                                                  "add_latest_match",
+                                                                                                 "add_with_join",
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
+                                                                                                 "bind_dyads",
                                                                                                  "get_r3_from_dv_csv",
-                                                                                                 "make_imputed_distinct_cases"#, "write_fls_to_dv_ds"
+                                                                                                 "make_imputed_distinct_cases",
+                                                                                                 "update_column_names"#, "write_fls_to_dv_ds"
                            )),
                            copyright_holders_chr = "Matthew Hamilton and Orygen",
                            dev_pkgs_chr = c(#"ready4",

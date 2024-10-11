@@ -1,22 +1,23 @@
-add_dictionary <- function(X_Ready4useDyad = Ready4useDyad(),
-                           new_cases_r3 = ready4use_dictionary(),
-                           var_ctg_chr = "Uncategorised",
-                           arrange_by_1L_chr = c("category", "name")){
+add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = ready4use_dictionary(),
+                            var_ctg_chr = "Uncategorised", arrange_by_1L_chr = c("category",
+                                                                                 "name"))
+{
   arrange_by_1L_chr <- match.arg(arrange_by_1L_chr)
-  if(identical(new_cases_r3,  ready4use_dictionary())){
-    X_Ready4useDyad <- renewSlot(X_Ready4useDyad,"dictionary_r3",
-                                 var_nm_chr = names(X_Ready4useDyad@ds_tb),
-                                 var_ctg_chr = var_ctg_chr,
-                                 var_desc_chr = names(X_Ready4useDyad@ds_tb),
-                                 var_type_chr = names(X_Ready4useDyad@ds_tb) %>% purrr::map_chr(~class(X_Ready4useDyad@ds_tb %>% dplyr::pull(.x))[1]))
-  }else{
-    X_Ready4useDyad <- renewSlot(X_Ready4useDyad,"dictionary_r3",
+  if (identical(new_cases_r3, ready4use_dictionary())) {
+    X_Ready4useDyad <- renewSlot(X_Ready4useDyad, "dictionary_r3",
+                                 var_nm_chr = names(X_Ready4useDyad@ds_tb), var_ctg_chr = var_ctg_chr,
+                                 var_desc_chr = names(X_Ready4useDyad@ds_tb), var_type_chr = names(X_Ready4useDyad@ds_tb) %>%
+                                   purrr::map_chr(~class(X_Ready4useDyad@ds_tb %>%
+                                                           dplyr::pull(.x))[1]))
+  }
+  else {
+    X_Ready4useDyad <- renewSlot(X_Ready4useDyad, "dictionary_r3",
                                  new_cases_r3 = new_cases_r3)
   }
-
-  X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>% dplyr::arrange(!!rlang::sym(ifelse(arrange_by_1L_chr=="name",
-                                                                                                        "var_nm_chr",
-                                                                                                        "var_ctg_chr")))
+  X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>%
+    dplyr::arrange(!!rlang::sym(ifelse(arrange_by_1L_chr ==  "name", "var_nm_chr", "var_ctg_chr")))
+  X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>%
+    dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
   return(X_Ready4useDyad)
 }
 add_from_lup_prototype <- function(data_tb,
@@ -235,4 +236,12 @@ add_labels_from_dictionary <- function(ds_tb,
     labelled_ds_tb <- ds_tb
   }
   return(labelled_ds_tb)
+}
+add_with_join <- function (X_Ready4useDyad,
+                           Y_Ready4useDyad){
+  X_Ready4useDyad@ds_tb <- dplyr::left_join(X_Ready4useDyad@ds_tb,
+                                            Y_Ready4useDyad@ds_tb)
+  X_Ready4useDyad <- ready4use::add_dictionary(X_Ready4useDyad,
+                                               new_cases_r3 = Y_Ready4useDyad@dictionary_r3 %>% dplyr::filter(!var_nm_chr %in% X_Ready4useDyad@dictionary_r3$var_nm_chr))
+  return(X_Ready4useDyad)
 }
