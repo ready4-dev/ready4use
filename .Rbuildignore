@@ -83,3 +83,4 @@
 ^data-raw/app/app3\.R$
 ^data-raw/app/functions\.R$
 ^data-raw/fns/bind\.R$
+^data-raw/fns/plot\.R$

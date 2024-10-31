@@ -1,0 +1,708 @@
+---
+title: "Visualise Health Economic Model Datasets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualise Health Economic Model Datasets}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making. 
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ready4)
+library(ready4use)
+```
+
+ready4use includes a number of tools for visualising health economic model data and forms part of the [ready4 framework](https://www.ready4-dev.com). Details of how to find compatible datasets are provided in [another article](https://www.ready4-dev.com/docs/model/datasets/finding-data/search/).  The ready4use visualisation tools illustrated in this vignette provide an interface to functions from the ggpubr library. To work as intended, some (but not most) of these tools also require the ggpubr library to be loaded.
+
+```{r}
+library(ggpubr)
+```
+
+## Ingest and pre-process data
+We begin by ingesting the data from online repository we require into a `Ready4useDyad`, [as illustrated in another vignette](https://ready4-dev.github.io/ready4use/V_03.html).
+
+```{r}
+objects_ls <- Ready4useRepos(dv_nm_1L_chr = "fakes",
+                             dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/HJXYKQ",
+                             dv_server_1L_chr = "dataverse.harvard.edu") %>%
+  ingest(fls_to_ingest_chr = c("ymh_clinical_tb","ymh_clinical_dict_r3"),
+         metadata_1L_lgl = F)
+X <- Ready4useDyad(ds_tb = objects_ls$ymh_clinical_tb,
+                   dictionary_r3 = objects_ls$ymh_clinical_dict_r3) %>% 
+  renew(type_1L_chr = "case")
+
+```
+
+This dataset is a synthetic ("fake") microdata representation of clinic patients with data for each patient reported for up to two data collection rounds (baseline and follow-up). We also need to transform this dataset into other formats to use with some of the plot types we illustrate in this vignette. We first make a dataset with baseline values only.
+
+```{r}
+X1 <- renewSlot(X, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::filter(round=="Baseline"))
+```
+
+Next, we create summary datasets with mean variable values for the entire sample at baseline.
+
+```{r}
+X2 <- renewSlot(X1, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::group_by(d_studying_working) %>%
+                  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), 
+                                                 function(x){ mean(x, na.rm = TRUE)})))
+X3 <- renewSlot(X1, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::group_by(d_studying_working, d_sex_birth_s) %>%
+                  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), 
+                                                 function(x){ mean(x, na.rm = TRUE)}), .groups = 'drop'))
+X4 <- renewSlot(X1, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::group_by(d_sex_birth_s, d_country_bir_s, 
+                                                            d_studying_working, c_p_diag_s,c_clinical_staging_s) %>%
+                  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), 
+                                                 function(x){ mean(x, na.rm = TRUE)}), .groups = 'drop'))
+```
+
+We also create datasets with summaries of mean variable values at both timepoints.
+
+```{r}
+X5 <- renewSlot(X, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::group_by(round) %>%
+                  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), function(x){ mean(x, na.rm = TRUE)})))
+X6 <- renewSlot(X, "ds_tb",
+                procureSlot(X, "ds_tb") %>% dplyr::group_by(round, d_sex_birth_s) %>%
+                  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), function(x){ mean(x, na.rm = TRUE)})))
+```
+
+We make a dataset that is restricted to 50 randomly selected cases for which data is available at two timepoints.
+
+```{r}
+X7 <- renewSlot(X, "ds_tb", 
+                procureSlot(X, "ds_tb") %>% 
+                  dplyr::filter(fkClientID %in% (intersect(procureSlot(X, "ds_tb") %>% dplyr::filter(round=="Follow-up") %>%
+                                                             dplyr::pull(fkClientID), X1@ds_tb$fkClientID) %>% sample(50))))
+```
+
+We next make dataset summaries of the counts at baseline of sample sub-groups.
+
+```{r}
+X8 <- renewSlot(X1, "ds_tb", 
+                procureSlot(X1, "ds_tb") %>% dplyr::filter(!is.na(d_studying_working)) %>% 
+                  dplyr::group_by(d_studying_working) %>% dplyr::summarise(Count = dplyr::n()))
+X9 <- renewSlot(X1, "ds_tb", 
+                table(procureSlot(X1, "ds_tb") %>% dplyr::select(d_studying_working, d_sex_birth_s)) %>% tibble::as_tibble())
+X10 <- renewSlot(X1, "ds_tb", 
+                 table(procureSlot(X1, "ds_tb") %>%
+                         dplyr::select(d_studying_working, d_sex_birth_s, c_p_diag_s, c_clinical_staging_s)) %>% tibble::as_tibble())
+```
+
+Some of the visualisations we will be making will require the labels derived from variable values to be modified (e.g. for brevity). We therefore next make look-up tables for recoding these values.
+
+```{r}
+x <- renew(ready4show::ready4show_correspondences(),
+      old_nms_chr = c("Not studying or working", "Studying only", "Studying and working", "Working only", "Female", "Male"),
+      new_nms_chr = c("NEITHER", "EDUCATION", "BOTH", "EMPLOYMENT", "FEMALE", "MALE"))
+y <- renew(ready4show::ready4show_correspondences(),
+           old_nms_chr = c("Not studying or working", "Studying only", "Studying and working", "Working only", 
+                           "Depression and Anxiety"),
+           new_nms_chr = c("Neither", "Education", "Both", "Employment", "Both"))
+```
+
+##  Plotting options using default plot type (barplot)
+
+### Single plots
+
+#### Plot results for one variable
+
+##### Basic plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working")
+```
+
+##### Drop missing values
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", drop_missing_1L_lgl = T)
+```
+
+##### Drop tick marks and tick lables
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T)
+```
+
+##### Use variable description instead of variable name (via lookup to data dictionary) for X axis and legend labels and remove label from Y axis
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_labels_chr = "", 
+                     z_labels_chr = NA_character_, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T)
+```
+
+##### Specify custom X axis and legend labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+                     z_labels_chr = "", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T)
+```
+
+##### Change Y axis from counts to percentage 
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+                     z_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T)
+```
+
+##### Recode the legend value labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+       z_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T,
+       recode_lup_r3 = x)
+```
+
+##### Stratify results by a second (categorical) variable - in this case, sex
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+       z_vars_chr = "d_sex_birth_s", z_labels_chr = "SEX", as_percent_1L_lgl = T, drop_missing_1L_lgl = T,
+       recode_lup_r3 = x)
+```
+
+##### Stack bars
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+       z_vars_chr = "d_sex_birth_s", z_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T,
+       position_xx = ggplot2::position_stack(), recode_lup_r3 = y)
+```
+
+#### Plot results for two variables - one categorical (x axis) and the other numeric (y axis)
+##### Generate title using variable labels
+
+```{r fig.width=8, fig.height=4}
+depict(X2, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total",
+       y_labels_chr = NA_character_, z_labels_chr = "", drop_missing_1L_lgl = T, 
+       drop_ticks_1L_lgl = T, recode_lup_r3 = x, titles_chr = NA_character_)
+```
+
+##### Stratify results by a third (categorical) variable - in this case, sex
+
+```{r fig.width=8, fig.height=4}
+depict(X3, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_vars_chr = "k6_total",
+                     y_labels_chr = "K6", z_vars_chr = "d_sex_birth_s", z_labels_chr = "SEX", drop_missing_1L_lgl = T,
+                     titles_chr = "PSYCHOLOGICAL DISTRESS BY EDUCATION, EMPLOYMENT AND SEX")
+```
+
+#### Modify palettes
+
+The palette options from the "ggsci" package that are compatible with the ready4use Depict method can be retrieved using the following function call.
+
+```{r}
+get_styles("ggsci")
+```
+
+##### Use Lancet journal palette
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+                     z_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, style_1L_chr = "lancet")
+```
+
+The palette options from "the viridis" package that are compatible with the ready4use Depict method can be retrieved using the following function call.
+
+```{r}
+get_styles("viridis")
+```
+
+##### Use the Viridis Rocket palette
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+       z_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
+       style_1L_chr = "rocket", type_1L_chr = "viridis")
+```
+
+##### Use a custom palette
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", y_labels_chr = "",
+       z_labels_chr = "", as_percent_1L_lgl = T, colours_chr = c("#130d9c","#9c0d39"), drop_missing_1L_lgl = T,
+       drop_ticks_1L_lgl = T, type_1L_chr = "manual")
+```
+
+#### Single colour plots
+##### Use just the first colour from the selected (in this case, default) palette 
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x, 
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS")
+```
+
+##### Single colour plot using AAAS journal palette
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x, style_1L_chr = "aaas", 
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS")
+```
+
+##### Single colour plot using custom colour (black)
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       colours_chr = "black",  drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x,
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS", type_1L_chr = "manual")
+```
+
+#### Supply additional ggpubr arguments
+##### Add label to bars
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x, 
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS", label = T, lab.pos = "in", lab.col = "white")
+```
+
+##### Change orientation of bars
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x, 
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS", orientation = "horiz")
+```
+
+##### Change order of bars
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", y_labels_chr = "", as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, fill_single_1L_lgl = T, recode_lup_r3 = x, 
+       titles_chr = "EDUCATION AND EMPLOYMENT STATUS", order = c("EDUCATION", "EMPLOYMENT","BOTH", "NEITHER"))
+```
+
+### Create multiple plots
+#### Create a list of plots
+
+```{r}
+plot_ls <- depict(X1, x_vars_chr = c("d_sex_birth_s","d_studying_working", "d_country_bir_s"), 
+                  x_labels_chr = NA_character_, y_labels_chr = "" , z_labels_chr = "", 
+                  as_percent_1L_lgl = T, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T)
+```                                
+
+```{r fig.width=8, fig.height=4}
+plot_ls$d_sex_birth_s
+```
+
+```{r fig.width=8, fig.height=4}
+plot_ls$d_studying_working
+```
+
+```{r fig.width=8, fig.height=4}
+plot_ls$d_country_bir_s
+```
+
+#### Create a composite plot, with a common legend
+```{r fig.width=8, fig.height=4}
+depict(X4, x_vars_chr = c("d_country_bir_s", "d_studying_working", "c_p_diag_s", "c_clinical_staging_s"),
+       x_labels_chr = NA_character_, y_vars_chr = "k6_total", y_labels_chr = "K6", 
+       z_vars_chr = "d_sex_birth_s", z_labels_chr = "SEX", arrange_1L_lgl = T,  
+       arrange_args_ls = list(ncol = 2, nrow = 2, common.legend = T), 
+       drop_missing_1L_lgl = T, recode_lup_r3 = y)
+```
+
+##  Other plot types
+### Plot one continuous variable
+#### Density plot
+##### Basic density plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", what_1L_chr = "density")
+```
+
+##### Stratify results by a second (categorical) variable, report percentages rather than probability and look-up labels from dictionary
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", x_labels_chr = NA_character_, y_labels_chr = "Percentatge", 
+       z_vars_chr = "d_studying_working", z_labels_chr = NA_character_,  as_percent_1L_lgl = T,
+       drop_missing_1L_lgl = T, what_1L_chr = "density") 
+```
+
+
+#### Empirical cumulative density function (ECDF)
+##### Basic ECDF plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", what_1L_chr = "ecdf")
+```
+
+##### Stratify results by a second (categorical) variable and customise labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1,x_vars_chr = "k6_total", x_labels_chr = NA_character_, y_labels_chr = "", 
+       z_vars_chr = "d_studying_working", z_labels_chr = "", drop_missing_1L_lgl = T,  
+       what_1L_chr = "ecdf")
+```
+
+
+#### histogram
+##### Basic histogram
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", what_1L_chr = "histogram")
+```
+
+##### Specify the number of bins, report percentages rather than counts and customise labels 
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", x_labels_chr = "K6", y_labels_chr = "", as_percent_1L_lgl = T,
+                     what_1L_chr = "histogram", bins = 10)
+```                     
+
+##### Stratify results by a second (categorical) variable and look-up labels from dictionary
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", x_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s",
+       z_labels_chr = NA_character_, as_percent_1L_lgl = T, drop_missing_1L_lgl = T, 
+       what_1L_chr = "histogram")
+```
+
+
+##### Add custom ggpubr arguments to add density plot and mean lines
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", x_labels_chr = "K6", y_labels_chr = "", 
+       z_vars_chr = "d_sex_birth_s", z_labels_chr = "Sex", as_percent_1L_lgl = T, 
+       drop_missing_1L_lgl = T, what_1L_chr = "histogram", add = "mean", add_density = TRUE)
+```
+
+
+#### QQ Plot
+##### Basic QQ plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total", what_1L_chr = "qqplot")
+```
+
+##### Stratify results by a second (categorical) variable and customise labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "k6_total",  y_labels_chr = "K6", drop_missing_1L_lgl = T,
+       z_vars_chr = "d_studying_working", z_labels_chr = "", what_1L_chr = "qqplot")
+```
+
+
+### Plot two variables (one continuous, one discrete)
+#### Box plot
+##### Basic box plot
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "boxplot")
+```
+
+##### Customise labels and remove x-axis tick-marks
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = "K6", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
+       what_1L_chr = "boxplot")
+```
+
+##### Fill boxes
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
+       what_1L_chr = "boxplot", fill = "round", fill_single_1L_lgl = F)
+```
+
+##### Stratify results by a third (categorical) variable
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, drop_missing_1L_lgl = T, z_vars_chr = "d_sex_birth_s", 
+       z_labels_chr = NA_character_, what_1L_chr = "boxplot", fill = "d_sex_birth_s", fill_single_1L_lgl = F)
+```
+
+##### Add jitter points
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", x_labels_chr = "", y_vars_chr = "k6_total", y_labels_chr = "K6", 
+       drop_missing_1L_lgl = T, z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_, 
+       what_1L_chr = "boxplot", add = "jitter")
+```
+
+
+#### Donut chart
+##### Basic donut chart
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", what_1L_chr = "donutchart")
+```
+
+##### Change colour of separating line, drop missing values and remove label
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", drop_missing_1L_lgl = T,
+       line_1L_chr = "white", what_1L_chr = "donutchart")
+```
+ 
+##### Report percentage rather than counts and change location and colouring of segment labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, 
+                     line_1L_chr = "white", what_1L_chr = "donutchart", lab.pos = "in", lab.font = "white")
+```
+
+#### The same result can be achieved by supplying a dataset with frequency counts. Note, the drop_missing_1L_lgl is ignored if using this method.
+
+```{r fig.width=8, fig.height=4}
+depict(X8, x_vars_chr = "Count", z_vars_chr = "d_studying_working", z_labels_chr = "", as_percent_1L_lgl = T, 
+       line_1L_chr = "white", what_1L_chr = "donutchart", lab.pos = "in", lab.font = "white")
+```
+
+##### Remove legend and change segment labels to names rather than values.
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, drop_legend_1L_lgl = T, drop_missing_1L_lgl = T,
+                     line_1L_chr = "white", what_1L_chr = "donutchart", label = "d_studying_working")
+```
+
+#### Dot chart
+##### Basic dot chart
+
+```{r fig.width=8, fig.height=6}
+depict(X2, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "dotchart")
+```
+
+##### Use a single colour for dots, rotate chart, increase dot-size, customise label orders, recode label values and add and customise segment lines
+
+```{r fig.width=8, fig.height=4}
+depict(X2, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT", 
+       y_vars_chr = "k6_total", y_labels_chr = "K6", drop_missing_1L_lgl = T, fill_single_1L_lgl = T, 
+       recode_lup_r3 = y, what_1L_chr = "dotchart", add = "segment", 
+       add.params = list(color = "lightgray", size = 1.5),  rotate = T, size = 3)
+```
+
+##### Stratify by third (categorical) variable.
+
+```{r fig.width=8, fig.height=4}
+depict(X3, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT",
+       y_vars_chr = "k6_total", y_labels_chr = "K6", z_vars_chr = "d_sex_birth_s", z_labels_chr = "SEX",
+       drop_missing_1L_lgl = T, position_xx = ggplot2::position_dodge(0.3), recode_lup_r3 = x,
+       what_1L_chr = "dotchart", add = "segment", add.params = list(color = "lightgray", size = 1.5),
+       rotate = T, size = 3)
+```
+
+
+#### Dot plot
+##### Basic dot plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "dotplot")
+```
+
+##### Customise and reorder labels, remove missing values and change dot size
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT" ,
+       y_vars_chr = "k6_total",  y_labels_chr = "K6", drop_legend_1L_lgl = T, drop_missing_1L_lgl = T,
+       recode_lup_r3 = x, what_1L_chr = "dotplot", 
+       order = c("EDUCATION", "EMPLOYMENT","BOTH", "NEITHER"), size = 0.3)
+```
+
+##### Stratify by a third (categorical) variable
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPLOYMENT" ,y_vars_chr = "k6_total",  y_labels_chr = "K6", 
+                     z_vars_chr = "d_sex_birth_s", z_labels_chr = "SEX", drop_missing_1L_lgl = T, what_1L_chr = "dotplot", size = 0.35)
+```
+
+
+#### Error plot
+##### Basic error plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "errorplot")
+```
+
+##### Look-up labels and customise positioning and colouring of error lines
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
+       drop_missing_1L_lgl = T, what_1L_chr = "errorplot",
+       palette = "Paired", error.plot = "pointrange", position = ggplot2::position_dodge(0.5))
+```
+
+
+#### Line plot
+##### Basic line plot
+
+```{r fig.width=8, fig.height=4}
+depict(X5, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "line")
+```
+
+##### Plot mean values with error bars, stratify results by third (categorical) variable and look-up labels from dictionary
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
+       drop_missing_1L_lgl = T, position_xx = ggplot2::position_dodge(0.5), 
+       what_1L_chr = "line", add = "mean_se")
+```
+
+
+#### Paired plot
+##### Basic paired plot
+
+```{r fig.width=8, fig.height=4}
+depict(X7, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "paired")
+```
+
+##### Look-up labels, remove x-axis ticks and labels and change line colour
+
+```{r fig.width=8, fig.height=4}
+depict(X7, x_vars_chr = "round", x_labels_chr = "", y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, z_labels_chr = NA_character_, 
+       drop_ticks_1L_lgl = T, line_1L_chr = "lightgray", what_1L_chr = "paired")
+```
+
+
+#### Pie chart
+##### Basic pie chart
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", what_1L_chr = "pie")
+```
+
+##### Report percentage rather than counts, change location and colouring of segment labels and remove labels
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", as_percent_1L_lgl = T, drop_missing_1L_lgl = T, 
+       line_1L_chr = "white", what_1L_chr = "pie", lab.pos = "in", lab.font = "white")
+```
+
+#### The same result can be achieved by supplying a dataset with frequency counts. Note, the drop_missing_1L_lgl is ignored if using this method.
+
+```{r fig.width=8, fig.height=4}
+depict(X8, x_vars_chr = "Count", z_vars_chr = "d_studying_working", z_labels_chr = "",
+       as_percent_1L_lgl = T, drop_missing_1L_lgl = T, line_1L_chr = "white", what_1L_chr = "pie", 
+       lab.pos = "in", lab.font = "white")
+```
+
+
+#### Strip chart
+##### Basic strip chart
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "strip")
+```
+
+##### Look-up labels, drop legend and add mean and standard deviation lines
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+                     y_labels_chr = NA_character_, drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, what_1L_chr = "strip", add = "mean_sd")
+```
+
+
+#### Violin plot
+##### Basic violin plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "violin")
+```
+
+##### Look-up labels, drop legend and add mean and jitter dots
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total",
+       y_labels_chr = NA_character_, drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, 
+       what_1L_chr = "violin", add = "jitter")
+```
+
+
+### For plotting two variables (both continuous)
+
+#### Scatter plot
+##### Basic scatter plot
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "phq9_total", y_vars_chr = "k6_total", what_1L_chr = "scatter")
+```
+
+## Add regression line, change dot sizes and and customise labels.
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "phq9_total", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
+       y_labels_chr = "", drop_missing_1L_lgl = T, what_1L_chr = "scatter", 
+       add = "reg.line", size = 0.5, conf.int = TRUE, cor.coef = TRUE, 
+       cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n"))
+```
+
+
+#### Scatter plot with histograms
+##### Basic scatter plot with histograms
+
+```{r fig.width=8, fig.height=4}
+depict(X1, x_vars_chr = "phq9_total", y_vars_chr = "k6_total", what_1L_chr = "scatterhist")
+```
+
+##### Lookup labels (except for z_labels_chr which currently does not work with this type of plot) and stratify by third categorical variable
+
+```{r fig.width=8, fig.height=4}
+depict(X, x_vars_chr = "phq9_total", x_labels_chr = NA_character_,  y_vars_chr = "k6_total", 
+       y_labels_chr = NA_character_, z_vars_chr = "round", drop_missing_1L_lgl = T, what_1L_chr = "scatterhist")
+```
+
+
+### Contingency table
+
+#### Balloon plot
+
+##### Basic balloon plot
+
+```{r fig.width=8, fig.height=4}
+depict(X9, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", 
+       what_1L_chr = "balloonplot")
+```
+
+##### Single colour balloon plot
+
+```{r fig.width=8, fig.height=4}
+depict(X9, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", what_1L_chr = "balloonplot",  fill_single_1L_lgl = T)
+```
+
+##### Fized size, labelled balloons
+
+```{r fig.width=8, fig.height=4}
+depict(X9, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", 
+       what_1L_chr = "balloonplot", size = 10, show.label=T)
+```
+
+##### Change pallete (from which 3 colours will be selected)
+
+```{r fig.width=8, fig.height=4}
+depict(X9, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", 
+       style_1L_chr = "C", type_1L_chr = "viridis", what_1L_chr = "balloonplot", size = 10, show.label=T)
+```
+
+##### Change pallete (to specify a number of colours other than 3)
+
+```{r fig.width=8, fig.height=4}
+depict(X9, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", 
+       what_1L_chr = "balloonplot", palette = c("blue",  "red"), size = 10, show.label=T)
+```
+
+##### Facet by up to two additional variables
+
+```{r fig.width=8, fig.height=6}
+depict(X10, x_vars_chr = "d_studying_working", y_vars_chr = "d_sex_birth_s", z_vars_chr = "n", 
+       what_1L_chr = "balloonplot", 
+       facet.by = c("c_p_diag_s", "c_clinical_staging_s"), 
+       ggtheme = ggplot2::theme_bw(), palette = c("blue",  "red"))
+```
+
+
+
+

@@ -26,13 +26,13 @@ depict_Ready4useDyad <- function(x,
   what_1L_chr <- match.arg(what_1L_chr)
   custom_args_ls <- list(...)
   call_ls <- sys.call()
-  if("fill" %in% names(call_ls) ){
-    if(!"fill_single_1L_lgl" %in% names(call_ls)){
+  if(!is.logical(fill_single_1L_lgl)){ #"fill" %in% names(call_ls) |
+    # if(!"fill_single_1L_lgl" %in% names(call_ls)){
       fill_single_1L_lgl <- FALSE
-    }else{
-      fill_single_1L_lgl <- call_ls$fill_single_1L_lgl %>% as.character() %>% as.logical()
-    }
-    custom_args_ls$fill <- call_ls$fill %>% as.character()
+    # }else{
+      # fill_single_1L_lgl <- call_ls$fill_single_1L_lgl %>% as.character() %>% as.logical()
+    # }
+    custom_args_ls$fill <- custom_args_ls$fill_single_1L_lgl #call_ls$fill %>% as.character()
     custom_args_ls$fill_single_1L_lgl <- NULL
   }
   if("title" %in% names(call_ls) ){
@@ -51,7 +51,6 @@ depict_Ready4useDyad <- function(x,
       }else{
         x_labels_chr <- x_vars_chr
       }
-
     }else{
       if(is.na(x_labels_chr[1])){
         x_labels_chr <- x_vars_chr %>%
@@ -101,21 +100,22 @@ depict_Ready4useDyad <- function(x,
         z_labels_chr <- z_vars_chr
       }
     }
-    if(is.na(z_labels_chr[1])){
-      if(identical(z_vars_chr, character(0))){
-        z_labels_chr <- x_vars_chr %>%
-          purrr::map_chr(~ready4::get_from_lup_obj(x@dictionary_r3,
-                                                   match_var_nm_1L_chr = "var_nm_chr",
-                                                   match_value_xx = .x,
-                                                   target_var_nm_1L_chr = "var_desc_chr"))
-      }else{
-        z_labels_chr <- z_vars_chr %>%
-          purrr::map_chr(~ready4::get_from_lup_obj(x@dictionary_r3,
-                                                   match_var_nm_1L_chr = "var_nm_chr",
-                                                   match_value_xx = .x,
-                                                   target_var_nm_1L_chr = "var_desc_chr"))
-      }
-
+    if(!identical(z_labels_chr, character(0))){
+      if(is.na(z_labels_chr[1])){
+        if(identical(z_vars_chr, character(0))){
+          z_labels_chr <- x_vars_chr %>%
+            purrr::map_chr(~ready4::get_from_lup_obj(x@dictionary_r3,
+                                                     match_var_nm_1L_chr = "var_nm_chr",
+                                                     match_value_xx = .x,
+                                                     target_var_nm_1L_chr = "var_desc_chr"))
+        }else{
+          z_labels_chr <- z_vars_chr %>%
+            purrr::map_chr(~ready4::get_from_lup_obj(x@dictionary_r3,
+                                                     match_var_nm_1L_chr = "var_nm_chr",
+                                                     match_value_xx = .x,
+                                                     target_var_nm_1L_chr = "var_desc_chr"))
+        }
+    }
     }
     if(length(z_labels_chr)==1){
       z_labels_chr <- rep(z_labels_chr, length(x_vars_chr))
@@ -213,7 +213,7 @@ depict_Ready4useDyad <- function(x,
                                                  y_1L_chr = y_1L_chr,
                                                  y_label_1L_chr = y_label_1L_chr,
                                                  what_1L_chr = what_1L_chr))
-                          rlang::exec(make_journal_plot, x@ds_tb, !!!args_ls)
+                          rlang::exec(plot_for_journal, x@ds_tb, !!!args_ls)
                         })
   if(length(x_vars_chr) == length(unique(x_vars_chr))){
     plot_ls <- plot_ls %>% stats::setNames(x_vars_chr)
