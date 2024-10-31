@@ -33,6 +33,39 @@ add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = re
         dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
     return(X_Ready4useDyad)
 }
+#' Add discrete palette
+#' @description add_discrete_palette() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add discrete palette. The function returns Plot (a plot).
+#' @param plot_plt Plot (a plot)
+#' @param colours_chr Colours (a character vector), Default: c("#de2d26", "#fc9272")
+#' @param missing_1L_chr Missing (a character vector of length one), Default: 'grey50'
+#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
+#' @param what_1L_chr What (a character vector of length one), Default: 'lancet'
+#' @return Plot (a plot)
+#' @rdname add_discrete_palette
+#' @export 
+#' @importFrom ggplot2 scale_fill_manual
+#' @importFrom viridis scale_color_viridis scale_fill_viridis
+#' @keywords internal
+add_discrete_palette <- function (plot_plt, colours_chr = c("#de2d26", "#fc9272"), missing_1L_chr = "grey50", 
+    type_1L_chr = c("ggsci", "manual", "viridis"), what_1L_chr = "lancet") 
+{
+    type_1L_chr <- match.arg(type_1L_chr)
+    if (type_1L_chr == "ggsci") {
+        one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
+        two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
+        plot_plt <- plot_plt + one_fn(na.value = missing_1L_chr) + 
+            two_fn(na.value = missing_1L_chr)
+    }
+    if (type_1L_chr == "manual") {
+        plot_plt <- plot_plt + ggplot2::scale_fill_manual(values = colours_chr)
+    }
+    if (type_1L_chr == "viridis") {
+        plot_plt <- plot_plt + viridis::scale_color_viridis(discrete = TRUE, 
+            option = what_1L_chr) + viridis::scale_fill_viridis(discrete = TRUE, 
+            option = what_1L_chr)
+    }
+    return(plot_plt)
+}
 #' Add dataset to dataverse repository
 #' @description add_ds_to_dv_repo() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dataset to dataverse repository. The function returns Dataset url (a character vector of length one).
 #' @param dv_1L_chr Dataverse (a character vector of length one)

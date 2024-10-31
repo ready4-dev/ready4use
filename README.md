@@ -1,6 +1,6 @@
 # ready4use
 
-## Author, Ingest, Label and Share Health Economic Model Datasets
+## Ingest, Label, Visualise and Share Health Economic Model Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

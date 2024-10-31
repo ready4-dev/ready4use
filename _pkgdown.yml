@@ -43,11 +43,14 @@ reference:
   - assert_matches_chr
   - assert_single_row_tb
   - bind_dyads
+  - get_journal_palette_fn
   - get_r3_from_dv_csv
+  - get_styles
   - make_imputed_distinct_cases
   - update_column_names
 - title: "Methods"
 - contents:
+  - depict-Ready4useDyad
   - exhibit-Ready4useDyad
   - exhibit.ready4use_dictionary
   - ingest-Ready4useRepos

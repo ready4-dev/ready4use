@@ -39,31 +39,6 @@ transform_dates <- function (dates_chr, drop_time_1L_lgl = F)
     dates_dtm <- dates_chr %>% lubridate::as_date()
     return(dates_dtm)
 }
-#' Transform dyad to series
-#' @description transform_dyad_to_series() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dyad to series. The function is called for its side effects and does not return a value.
-#' @param X_Ready4useDyad PARAM_DESCRIPTION, Default: Ready4useDyad()
-#' @param timepoint_vals_chr Timepoint values (a character vector), Default: c("baseline", "follow_up")
-#' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'uid_chr'
-#' @param participation_var_1L_chr Participation variable (a character vector of length one), Default: 'participation'
-#' @param timepoint_var_nm_1L_chr Timepoint variable name (a character vector of length one), Default: 'timing_fct'
-#' @return Z (A longitudinal dataset and its associated dictionary, descriptive statistics and metadata.)
-#' @rdname transform_dyad_to_series
-#' @export 
-#' @importFrom dplyr filter
-#' @importFrom rlang sym
-#' @keywords internal
-transform_dyad_to_series <- function (X_Ready4useDyad = Ready4useDyad(), timepoint_vals_chr = c("baseline", 
-    "follow_up"), id_var_nm_1L_chr = "uid_chr", participation_var_1L_chr = "participation", 
-    timepoint_var_nm_1L_chr = "timing_fct") 
-{
-    Z_YouthvarsSeries <- YouthvarsSeries(a_Ready4useDyad = X_Ready4useDyad, 
-        id_var_nm_1L_chr = id_var_nm_1L_chr, participation_var_1L_chr = participation_var_1L_chr, 
-        timepoint_vals_chr = timepoint_vals_chr, timepoint_var_nm_1L_chr = timepoint_var_nm_1L_chr)
-    Z_YouthvarsSeries@a_Ready4useDyad@ds_tb <- Z_YouthvarsSeries@a_Ready4useDyad@ds_tb %>% 
-        dplyr::filter(!!rlang::sym(timepoint_var_nm_1L_chr) %in% 
-            Z_YouthvarsSeries@timepoint_vals_chr)
-    return(Z_YouthvarsSeries)
-}
 #' Transform raw dataframe
 #' @description transform_raw_df() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform raw dataframe. The function returns Dataset (a tibble).
 #' @param data_df Data (a data.frame)

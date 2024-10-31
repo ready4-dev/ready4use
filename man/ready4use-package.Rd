@@ -3,7 +3,7 @@
 \docType{package}
 \name{ready4use-package}
 \alias{ready4use-package}
-\title{ready4use: Author, Ingest, Label and Share Health Economic Model Datasets}
+\title{ready4use: Ingest, Label, Visualise and Share Health Economic Model Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

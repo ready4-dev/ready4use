@@ -1,3 +1,51 @@
+#' Get colour codes
+#' @description get_colour_codes() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get colour codes. The function returns Colour codes (a character vector).
+#' @param colour_1L_int Colour (an integer vector of length one), Default: 1
+#' @param manual_chr Manual (a character vector), Default: c("#de2d26", "#fc9272")
+#' @param pick_1L_int Pick (an integer vector of length one), Default: integer(0)
+#' @param single_1L_lgl Single (a logical vector of length one), Default: FALSE
+#' @param style_1L_chr Style (a character vector of length one), Default: get_styles()
+#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
+#' @return Colour codes (a character vector)
+#' @rdname get_colour_codes
+#' @export 
+#' @importFrom ggpubr get_palette
+#' @importFrom viridis viridis
+#' @importFrom purrr discard
+#' @keywords internal
+get_colour_codes <- function (colour_1L_int = 1, manual_chr = c("#de2d26", "#fc9272"), 
+    pick_1L_int = integer(0), single_1L_lgl = FALSE, style_1L_chr = get_styles(), 
+    type_1L_chr = c("ggsci", "manual", "viridis")) 
+{
+    style_1L_chr <- match.arg(style_1L_chr)
+    type_1L_chr <- match.arg(type_1L_chr)
+    if (identical(pick_1L_int, integer(0))) {
+        pick_1L_int <- colour_1L_int
+    }
+    if (type_1L_chr == "manual") {
+        colour_codes_chr <- ggpubr::get_palette(manual_chr, k = colour_1L_int)
+    }
+    else {
+        defaults_chr <- get_styles(type_1L_chr)
+        if (!style_1L_chr %in% defaults_chr) {
+            style_1L_chr <- defaults_chr[1]
+        }
+    }
+    if (type_1L_chr == "ggsci") {
+        colour_codes_chr <- ggpubr::get_palette(style_1L_chr, 
+            k = colour_1L_int)
+    }
+    if (type_1L_chr == "viridis") 
+        colour_codes_chr <- viridis::viridis(colour_1L_int, option = style_1L_chr)
+    if (single_1L_lgl) {
+        colour_codes_chr <- colour_codes_chr[pick_1L_int]
+    }
+    else {
+        colour_codes_chr <- colour_codes_chr[1:pick_1L_int]
+    }
+    colour_codes_chr <- colour_codes_chr %>% purrr::discard(is.na)
+    return(colour_codes_chr)
+}
 #' Get drop offs
 #' @description get_drop_offs() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get drop offs. The function returns Drop offs (a character vector).
 #' @param X_Ready4useDyad PARAM_DESCRIPTION, Default: Ready4useDyad()
@@ -111,6 +159,85 @@ get_fl_nms_of_types <- function (fl_nms_chr, types_chr)
     })
     return(subset_of_fl_nms_chr)
 }
+#' Get journal palette function
+#' @description get_journal_palette_fn() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get journal palette function. The function returns Journal palette (a function).
+#' @param type_1L_chr Type (a character vector of length one), Default: c("colour", "fill")
+#' @param what_1L_chr What (a character vector of length one), Default: 'lancet'
+#' @return Journal palette (a function)
+#' @rdname get_journal_palette_fn
+#' @export 
+#' @importFrom ggsci scale_colour_aaas scale_colour_bmj scale_colour_bs5 scale_colour_cosmic scale_colour_d3 scale_colour_flatui scale_colour_frontiers scale_colour_futurama scale_colour_gsea scale_colour_igv scale_colour_jama scale_colour_jco scale_colour_lancet scale_colour_locuszoom scale_colour_material scale_colour_nejm scale_colour_npg scale_colour_observable scale_colour_rickandmorty scale_colour_simpsons scale_colour_startrek scale_colour_tron scale_colour_tw3 scale_colour_uchicago scale_colour_ucscgb scale_fill_aaas scale_fill_bmj scale_fill_bs5 scale_fill_cosmic scale_fill_d3 scale_fill_flatui scale_fill_frontiers scale_fill_futurama scale_fill_gsea scale_fill_igv scale_fill_jama scale_fill_jco scale_fill_lancet scale_fill_locuszoom scale_fill_material scale_fill_nejm scale_fill_npg scale_fill_observable scale_fill_rickandmorty scale_fill_simpsons scale_fill_startrek scale_fill_tron scale_fill_tw3 scale_fill_uchicago scale_fill_ucscgb
+#' @importFrom purrr pluck
+get_journal_palette_fn <- function (type_1L_chr = c("colour", "fill"), what_1L_chr = "lancet") 
+{
+    type_1L_chr <- match.arg(type_1L_chr)
+    options_ls <- list(scale_colour_aaas = ggsci::scale_colour_aaas, 
+        scale_colour_bmj = ggsci::scale_colour_bmj, scale_colour_bs5 = ggsci::scale_colour_bs5, 
+        scale_colour_cosmic = ggsci::scale_colour_cosmic, scale_colour_d3 = ggsci::scale_colour_d3, 
+        scale_colour_flatui = ggsci::scale_colour_flatui, scale_colour_frontiers = ggsci::scale_colour_frontiers, 
+        scale_colour_futurama = ggsci::scale_colour_futurama, 
+        scale_colour_gsea = ggsci::scale_colour_gsea, scale_colour_igv = ggsci::scale_colour_igv, 
+        scale_colour_jama = ggsci::scale_colour_jama, scale_colour_jco = ggsci::scale_colour_jco, 
+        scale_colour_lancet = ggsci::scale_colour_lancet, scale_colour_locuszoom = ggsci::scale_colour_locuszoom, 
+        scale_colour_material = ggsci::scale_colour_material, 
+        scale_colour_nejm = ggsci::scale_colour_nejm, scale_colour_npg = ggsci::scale_colour_npg, 
+        scale_colour_observable = ggsci::scale_colour_observable, 
+        scale_colour_rickandmorty = ggsci::scale_colour_rickandmorty, 
+        scale_colour_simpsons = ggsci::scale_colour_simpsons, 
+        scale_colour_startrek = ggsci::scale_colour_startrek, 
+        scale_colour_tron = ggsci::scale_colour_tron, scale_colour_tw3 = ggsci::scale_colour_tw3, 
+        scale_colour_uchicago = ggsci::scale_colour_uchicago, 
+        scale_colour_ucscgb = ggsci::scale_colour_ucscgb, scale_fill_aaas = ggsci::scale_fill_aaas, 
+        scale_fill_bmj = ggsci::scale_fill_bmj, scale_fill_bs5 = ggsci::scale_fill_bs5, 
+        scale_fill_cosmic = ggsci::scale_fill_cosmic, scale_fill_d3 = ggsci::scale_fill_d3, 
+        scale_fill_flatui = ggsci::scale_fill_flatui, scale_fill_frontiers = ggsci::scale_fill_frontiers, 
+        scale_fill_futurama = ggsci::scale_fill_futurama, scale_fill_gsea = ggsci::scale_fill_gsea, 
+        scale_fill_igv = ggsci::scale_fill_igv, scale_fill_jama = ggsci::scale_fill_jama, 
+        scale_fill_jco = ggsci::scale_fill_jco, scale_fill_lancet = ggsci::scale_fill_lancet, 
+        scale_fill_locuszoom = ggsci::scale_fill_locuszoom, scale_fill_material = ggsci::scale_fill_material, 
+        scale_fill_nejm = ggsci::scale_fill_nejm, scale_fill_npg = ggsci::scale_fill_npg, 
+        scale_fill_observable = ggsci::scale_fill_observable, 
+        scale_fill_rickandmorty = ggsci::scale_fill_rickandmorty, 
+        scale_fill_simpsons = ggsci::scale_fill_simpsons, scale_fill_startrek = ggsci::scale_fill_startrek, 
+        scale_fill_tron = ggsci::scale_fill_tron, scale_fill_tw3 = ggsci::scale_fill_tw3, 
+        scale_fill_uchicago = ggsci::scale_fill_uchicago, scale_fill_ucscgb = ggsci::scale_fill_ucscgb)
+    journal_palette_fn <- options_ls %>% purrr::pluck(paste0("scale_", 
+        type_1L_chr, "_", what_1L_chr))
+    return(journal_palette_fn)
+}
+#' Get journal plot function
+#' @description get_journal_plot_fn() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get journal plot function. The function returns Journal plot (an output object of multiple potential types).
+#' @param what_1L_chr What (a character vector of length one), Default: 'barplot'
+#' @param pkg_1L_chr Package (a character vector of length one), Default: 'ggpubr'
+#' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'gg'
+#' @return Journal plot (an output object of multiple potential types)
+#' @rdname get_journal_plot_fn
+#' @export 
+#' @importFrom ggpubr ggbarplot ggballoonplot ggboxplot ggdensity ggdonutchart ggdotchart ggdotplot ggecdf ggerrorplot gghistogram ggline ggpaired ggpie ggqqplot ggscatter ggscatterhist ggstripchart ggviolin
+#' @importFrom stringr str_sub
+#' @importFrom purrr pluck
+#' @keywords internal
+get_journal_plot_fn <- function (what_1L_chr = "barplot", pkg_1L_chr = "ggpubr", prefix_1L_chr = "gg") 
+{
+    options_ls <- list(ggbarplot = ggpubr::ggbarplot, ggballoonplot = ggpubr::ggballoonplot, 
+        ggboxplot = ggpubr::ggboxplot, ggdensity = ggpubr::ggdensity, 
+        ggdonutchart = ggpubr::ggdonutchart, ggdotchart = ggpubr::ggdotchart, 
+        ggdotplot = ggpubr::ggdotplot, ggecdf = ggpubr::ggecdf, 
+        ggerrorplot = ggpubr::ggerrorplot, gghistogram = ggpubr::gghistogram, 
+        ggline = ggpubr::ggline, ggpaired = ggpubr::ggpaired, 
+        ggpie = ggpubr::ggpie, ggqqplot = ggpubr::ggqqplot, ggscatter = ggpubr::ggscatter, 
+        ggscatterhist = ggpubr::ggscatterhist, ggstripchart = ggpubr::ggstripchart, 
+        ggviolin = ggpubr::ggviolin)
+    if (what_1L_chr == "names") {
+        journal_plot_xx <- names(options_ls) %>% stringr::str_sub(start = nchar(prefix_1L_chr) + 
+            1)
+    }
+    else {
+        journal_plot_xx <- options_ls %>% purrr::pluck(paste0(prefix_1L_chr, 
+            what_1L_chr))
+    }
+    return(journal_plot_xx)
+}
 #' Get local path to dataverse data
 #' @description get_local_path_to_dv_data() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get local path to dataverse data. The function returns Path (a character vector).
 #' @param save_dir_path_1L_chr Save directory path (a character vector of length one)
@@ -185,6 +312,33 @@ get_reference_descs <- function (correspondences_ls, correspondences_r3 = ready4
         .init = correspondences_r3, ~rbind(.x, .y)) %>% dplyr::pull(new_nms_chr) %>% 
         unique()
     return(reference_descs_chr)
+}
+#' Get styles
+#' @description get_styles() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get styles. The function returns Styles (a character vector).
+#' @param what_1L_chr What (a character vector of length one), Default: c("all", "ggsci", "viridis")
+#' @param sort_1L_lgl Sort (a logical vector of length one), Default: FALSE
+#' @return Styles (a character vector)
+#' @rdname get_styles
+#' @export 
+get_styles <- function (what_1L_chr = c("all", "ggsci", "viridis"), sort_1L_lgl = FALSE) 
+{
+    what_1L_chr <- match.arg(what_1L_chr)
+    styles_chr <- character(0)
+    if (what_1L_chr %in% c("all", "ggsci")) {
+        styles_chr <- c(styles_chr, c("npg", "aaas", "lancet", 
+            "jco", "nejm", "ucscgb", "uchicago", "d3", "futurama", 
+            "igv", "locuszoom", "rickandmorty", "startrek", "simpsons", 
+            "tron"))
+    }
+    if (what_1L_chr %in% c("all", "viridis")) {
+        styles_chr <- c(styles_chr, c("magma", "A", "inferno", 
+            "B", "plasma", "C", "viridis", "D", "cividis", "E", 
+            "rocket", "F", "mako", "G", "turbo", "H"))
+    }
+    if (sort_1L_lgl) {
+        styles_chr <- sort(styles_chr)
+    }
+    return(styles_chr)
 }
 #' Get valid path character vector
 #' @description get_valid_path_chr() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get valid path character vector. The function returns Valid path (a character vector).

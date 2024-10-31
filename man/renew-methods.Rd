@@ -63,10 +63,23 @@ renew.ready4use_imports(
 
 \S4method{renew}{Ready4useDyad}(
   x,
+  arrange_by_1L_chr = c("category", "name", "both"),
+  categories_chr = character(0),
+  drop_chr = character(0),
+  dictionary_r3 = ready4use_dictionary(),
+  dummys_ls = NULL,
+  factors_chr = character(0),
+  fn = NULL,
+  fn_args_ls = NULL,
+  names_chr = character(0),
   new_val_xx = NULL,
   remove_old_lbls_1L_lgl = T,
   tfmn_1L_chr = "capitalise",
-  type_1L_chr = "label",
+  type_1L_chr = c("label", "base", "case", "drop", "dummys", "join", "keep", "levels",
+    "mutate", "rbind", "unlabel"),
+  uid_var_nm_1L_chr = character(0),
+  var_ctg_chr = "Uncategorised",
+  what_1L_chr = c("all", "dataset", "dictionary"),
   ...
 )
 }
@@ -75,7 +88,7 @@ renew.ready4use_imports(
 
 \item{var_nm_chr}{Variable name (a character vector), Default: 'NA'}
 
-\item{var_ctg_chr}{Variable category (a character vector), Default: 'NA'}
+\item{var_ctg_chr}{Variable category (a character vector), Default: 'Uncategorised'}
 
 \item{var_desc_chr}{Variable description (a character vector), Default: 'NA'}
 
@@ -105,13 +118,36 @@ renew.ready4use_imports(
 
 \item{urls_vec_chr}{Urls vector (a character vector), Default: 'NA'}
 
+\item{arrange_by_1L_chr}{Arrange by (a character vector of length one), Default: c("category", "name", "both")}
+
+\item{categories_chr}{Categories (a character vector), Default: character(0)}
+
+\item{drop_chr}{Drop (a character vector), Default: character(0)}
+
+\item{dictionary_r3}{Dictionary (a ready4 submodule), Default: ready4use_dictionary()}
+
+\item{dummys_ls}{Dummys (a list), Default: NULL}
+
+\item{factors_chr}{Factors (a character vector), Default: character(0)}
+
+\item{fn}{Function (a function), Default: NULL}
+
+\item{fn_args_ls}{Function arguments (a list), Default: NULL}
+
+\item{names_chr}{Names (a character vector), Default: character(0)}
+
 \item{new_val_xx}{New value (an output object of multiple potential types), Default: NULL}
 
 \item{remove_old_lbls_1L_lgl}{Remove old labels (a logical vector of length one), Default: T}
 
 \item{tfmn_1L_chr}{Transformation (a character vector of length one), Default: 'capitalise'}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'label'}
+\item{type_1L_chr}{Type (a character vector of length one), Default: c("label", "base", "case", "drop", "dummys", "join", "keep",
+"levels", "mutate", "rbind", "unlabel")}
+
+\item{uid_var_nm_1L_chr}{Unique identifier variable name (a character vector of length one), Default: character(0)}
+
+\item{what_1L_chr}{What (a character vector of length one), Default: c("all", "dataset", "dictionary")}
 
 \item{...}{Additional arguments}
 }

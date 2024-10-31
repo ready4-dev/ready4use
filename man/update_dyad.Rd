@@ -6,7 +6,7 @@
 \usage{
 update_dyad(
   X_Ready4useDyad,
-  arrange_1L_chr = c("var_ctg_chr, var_nm_chr"),
+  arrange_1L_chr = c("var_ctg_chr, var_nm_chr", "category", "name", "both"),
   categories_chr = character(0),
   dictionary_r3 = ready4use_dictionary(),
   fn = NULL,
@@ -19,7 +19,7 @@ update_dyad(
 \arguments{
 \item{X_Ready4useDyad}{PARAM_DESCRIPTION}
 
-\item{arrange_1L_chr}{Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr")}
+\item{arrange_1L_chr}{Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr", "category", "name", "both")}
 
 \item{categories_chr}{Categories (a character vector), Default: character(0)}
 

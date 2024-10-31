@@ -106,8 +106,7 @@ get_fl_meta_from_dv_ls <- function (ds_ls,
   }
   return(metadata_xx)
 }
-get_journal_palette_fn <- function (type_1L_chr = c("colour", "fill"), what_1L_chr = "lancet")
-{
+get_journal_palette_fn <- function (type_1L_chr = c("colour", "fill"), what_1L_chr = "lancet"){
   type_1L_chr <- match.arg(type_1L_chr)
   options_ls <- list(scale_colour_aaas = ggsci::scale_colour_aaas,
                      scale_colour_bmj = ggsci::scale_colour_bmj, scale_colour_bs5 = ggsci::scale_colour_bs5,

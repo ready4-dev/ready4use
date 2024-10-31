@@ -1,7 +1,7 @@
 library(ready4)
 library(ready4fun)
 library(ready4show)
-pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Author, Ingest, Label and Share Health Economic Model Datasets" %>% tools::toTitleCase(),
+pkg_desc_ls <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Ingest, Label, Visualise and Share Health Economic Model Datasets" %>% tools::toTitleCase(),
                                            pkg_desc_1L_chr = "ready4use provides a set of tools for managing data for models developed with the ready4 framework.
                                            For detailed documentation about the framework and how to use it visit <https://www.ready4-dev.com/>. For a background to the methodological issues that the framework is attempting to help solve, see Hamilton et al. (2024) <doi:10.1007/s40273-024-01378-8>.
   This development version of the ready4use package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).",
@@ -33,7 +33,9 @@ x <- pkg_desc_ls %>%
                                                                                                  "assert_matches_chr",
                                                                                                  "assert_single_row_tb",
                                                                                                  "bind_dyads",
+                                                                                                 "get_journal_palette_fn",
                                                                                                  "get_r3_from_dv_csv",
+                                                                                                 "get_styles",
                                                                                                  "make_imputed_distinct_cases",
                                                                                                  "update_column_names"#, "write_fls_to_dv_ds"
                            )),

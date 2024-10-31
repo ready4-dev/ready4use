@@ -254,7 +254,7 @@ update_correspondences <- function (correspondences_ls, dyad_ls = NULL, new_ls =
 #' Update dyad
 #' @description update_dyad() is an Update function that edits an object, while preserving core object attributes. Specifically, this function implements an algorithm to update dyad. The function is called for its side effects and does not return a value.
 #' @param X_Ready4useDyad PARAM_DESCRIPTION
-#' @param arrange_1L_chr Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr")
+#' @param arrange_1L_chr Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr", "category", "name", "both")
 #' @param categories_chr Categories (a character vector), Default: character(0)
 #' @param dictionary_r3 Dictionary (a ready4 submodule), Default: ready4use_dictionary()
 #' @param fn Function (a function), Default: NULL
@@ -270,13 +270,16 @@ update_correspondences <- function (correspondences_ls, dyad_ls = NULL, new_ls =
 #' @importFrom rlang sym exec
 #' @importFrom tidyselect all_of
 #' @keywords internal
-update_dyad <- function (X_Ready4useDyad, arrange_1L_chr = c("var_ctg_chr, var_nm_chr"), 
-    categories_chr = character(0), dictionary_r3 = ready4use_dictionary(), 
-    fn = NULL, fn_args_ls = NULL, names_chr = character(0), type_1L_chr = c("keep", 
-        "drop", "mutate"), what_1L_chr = c("all", "dataset", 
-        "dictionary")) 
+update_dyad <- function (X_Ready4useDyad, arrange_1L_chr = c("var_ctg_chr, var_nm_chr", 
+    "category", "name", "both"), categories_chr = character(0), 
+    dictionary_r3 = ready4use_dictionary(), fn = NULL, fn_args_ls = NULL, 
+    names_chr = character(0), type_1L_chr = c("keep", "drop", 
+        "mutate"), what_1L_chr = c("all", "dataset", "dictionary")) 
 {
     type_1L_chr <- match.arg(type_1L_chr)
+    type_1L_chr <- ifelse(type_1L_chr == "category", "var_ctg_chr", 
+        ifelse(type_1L_chr == "name", "var_nm_chr", ifelse(type_1L_chr == 
+            "both", "var_ctg_chr, var_nm_chr", type_1L_chr)))
     what_1L_chr <- match.arg(what_1L_chr)
     if (what_1L_chr %in% c("all", "dataset")) {
         if (type_1L_chr == "mutate") {
