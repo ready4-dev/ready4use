@@ -1,3 +1,35 @@
+get_colour_codes <- function(colour_1L_int = 1,
+                             manual_chr = c("#de2d26","#fc9272"),
+                             pick_1L_int = integer(0),
+                             single_1L_lgl = FALSE,
+                             style_1L_chr = get_styles(),
+                             type_1L_chr = c("ggsci", "manual", "viridis")){
+  style_1L_chr <- match.arg(style_1L_chr)
+  type_1L_chr <- match.arg(type_1L_chr)
+  if(identical(pick_1L_int, integer(0))){
+    pick_1L_int <- colour_1L_int
+  }
+  if(type_1L_chr == "manual"){
+    colour_codes_chr <- ggpubr::get_palette(manual_chr, k=colour_1L_int)
+  }else{
+    defaults_chr <- get_styles(type_1L_chr)
+    if(!style_1L_chr %in% defaults_chr){
+      style_1L_chr <- defaults_chr[1]
+    }
+  }
+  if(type_1L_chr == "ggsci"){
+    colour_codes_chr <- ggpubr::get_palette(style_1L_chr, k=colour_1L_int)
+  }
+  if(type_1L_chr == "viridis")
+    colour_codes_chr <- viridis::viridis(colour_1L_int, option = style_1L_chr)
+  if(single_1L_lgl){
+    colour_codes_chr <- colour_codes_chr[pick_1L_int]
+  }else{
+    colour_codes_chr <- colour_codes_chr[1:pick_1L_int]
+  }
+  colour_codes_chr <- colour_codes_chr %>% purrr::discard(is.na)
+  return(colour_codes_chr)
+}
 get_drop_offs <- function(X_Ready4useDyad = Ready4useDyad(),
                           condition_1L_chr = ">1",
                           uid_var_nm_1L_chr = "uid_chr"){
@@ -74,6 +106,72 @@ get_fl_meta_from_dv_ls <- function (ds_ls,
   }
   return(metadata_xx)
 }
+get_journal_palette_fn <- function (type_1L_chr = c("colour", "fill"), what_1L_chr = "lancet")
+{
+  type_1L_chr <- match.arg(type_1L_chr)
+  options_ls <- list(scale_colour_aaas = ggsci::scale_colour_aaas,
+                     scale_colour_bmj = ggsci::scale_colour_bmj, scale_colour_bs5 = ggsci::scale_colour_bs5,
+                     scale_colour_cosmic = ggsci::scale_colour_cosmic, scale_colour_d3 = ggsci::scale_colour_d3,
+                     scale_colour_flatui = ggsci::scale_colour_flatui, scale_colour_frontiers = ggsci::scale_colour_frontiers,
+                     scale_colour_futurama = ggsci::scale_colour_futurama,
+                     scale_colour_gsea = ggsci::scale_colour_gsea, scale_colour_igv = ggsci::scale_colour_igv,
+                     scale_colour_jama = ggsci::scale_colour_jama, scale_colour_jco = ggsci::scale_colour_jco,
+                     scale_colour_lancet = ggsci::scale_colour_lancet, scale_colour_locuszoom = ggsci::scale_colour_locuszoom,
+                     scale_colour_material = ggsci::scale_colour_material,
+                     scale_colour_nejm = ggsci::scale_colour_nejm, scale_colour_npg = ggsci::scale_colour_npg,
+                     scale_colour_observable = ggsci::scale_colour_observable,
+                     scale_colour_rickandmorty = ggsci::scale_colour_rickandmorty,
+                     scale_colour_simpsons = ggsci::scale_colour_simpsons,
+                     scale_colour_startrek = ggsci::scale_colour_startrek,
+                     scale_colour_tron = ggsci::scale_colour_tron, scale_colour_tw3 = ggsci::scale_colour_tw3,
+                     scale_colour_uchicago = ggsci::scale_colour_uchicago,
+                     scale_colour_ucscgb = ggsci::scale_colour_ucscgb, scale_fill_aaas = ggsci::scale_fill_aaas,
+                     scale_fill_bmj = ggsci::scale_fill_bmj, scale_fill_bs5 = ggsci::scale_fill_bs5,
+                     scale_fill_cosmic = ggsci::scale_fill_cosmic, scale_fill_d3 = ggsci::scale_fill_d3,
+                     scale_fill_flatui = ggsci::scale_fill_flatui, scale_fill_frontiers = ggsci::scale_fill_frontiers,
+                     scale_fill_futurama = ggsci::scale_fill_futurama, scale_fill_gsea = ggsci::scale_fill_gsea,
+                     scale_fill_igv = ggsci::scale_fill_igv, scale_fill_jama = ggsci::scale_fill_jama,
+                     scale_fill_jco = ggsci::scale_fill_jco, scale_fill_lancet = ggsci::scale_fill_lancet,
+                     scale_fill_locuszoom = ggsci::scale_fill_locuszoom, scale_fill_material = ggsci::scale_fill_material,
+                     scale_fill_nejm = ggsci::scale_fill_nejm, scale_fill_npg = ggsci::scale_fill_npg,
+                     scale_fill_observable = ggsci::scale_fill_observable,
+                     scale_fill_rickandmorty = ggsci::scale_fill_rickandmorty,
+                     scale_fill_simpsons = ggsci::scale_fill_simpsons, scale_fill_startrek = ggsci::scale_fill_startrek,
+                     scale_fill_tron = ggsci::scale_fill_tron, scale_fill_tw3 = ggsci::scale_fill_tw3,
+                     scale_fill_uchicago = ggsci::scale_fill_uchicago, scale_fill_ucscgb = ggsci::scale_fill_ucscgb)
+  journal_palette_fn <- options_ls %>% purrr::pluck(paste0("scale_",
+                                                           type_1L_chr, "_", what_1L_chr))
+  return(journal_palette_fn)
+}
+get_journal_plot_fn <- function (what_1L_chr = "barplot",
+                                 pkg_1L_chr = "ggpubr",
+                                 prefix_1L_chr = "gg") {
+  options_ls <- list(ggbarplot = ggpubr::ggbarplot,
+                     ggballoonplot = ggpubr::ggballoonplot,
+                     ggboxplot = ggpubr::ggboxplot,
+                     ggdensity = ggpubr::ggdensity,
+                     ggdonutchart = ggpubr::ggdonutchart,
+                     ggdotchart = ggpubr::ggdotchart,
+                     ggdotplot = ggpubr::ggdotplot,
+                     ggecdf = ggpubr::ggecdf,
+                     ggerrorplot = ggpubr::ggerrorplot,
+                     gghistogram = ggpubr::gghistogram,
+                     ggline = ggpubr::ggline,
+                     # ggmaplot = ggpubr::ggmaplot,
+                     ggpaired = ggpubr::ggpaired,
+                     ggpie = ggpubr::ggpie,
+                     ggqqplot = ggpubr::ggqqplot,
+                     ggscatter = ggpubr::ggscatter,
+                     ggscatterhist = ggpubr::ggscatterhist,
+                     ggstripchart = ggpubr::ggstripchart,
+                     ggviolin = ggpubr::ggviolin)
+  if(what_1L_chr == "names"){
+    journal_plot_xx <- names(options_ls) %>% stringr::str_sub(start = nchar(prefix_1L_chr)+1)
+  }else{
+    journal_plot_xx <- options_ls %>% purrr::pluck(paste0(prefix_1L_chr, what_1L_chr))
+  }
+  return(journal_plot_xx)
+}
 get_local_path_to_dv_data <- function(save_dir_path_1L_chr,
                                       fl_nm_1L_chr,
                                       save_fmt_1L_chr){
@@ -114,6 +212,21 @@ get_reference_descs <- function(correspondences_ls,
                                        .init = correspondences_r3,
                                        ~ rbind(.x,.y)) %>% dplyr::pull(new_nms_chr) %>% unique()
   return(reference_descs_chr)
+}
+get_styles <- function(what_1L_chr = c("all", "ggsci",  "viridis"),
+                       sort_1L_lgl = FALSE){
+  what_1L_chr <- match.arg(what_1L_chr)
+  styles_chr <- character(0)
+  if(what_1L_chr %in% c("all", "ggsci")){
+    styles_chr <- c(styles_chr, c("npg", "aaas", "lancet", "jco", "nejm", "ucscgb", "uchicago", "d3", "futurama", "igv", "locuszoom", "rickandmorty", "startrek", "simpsons", "tron"))
+  }
+  if(what_1L_chr %in% c("all", "viridis")){
+    styles_chr <- c(styles_chr, c("magma","A","inferno", "B", "plasma", "C", "viridis", "D",  "cividis", "E", "rocket", "F", "mako", "G", "turbo",  "H"))
+  }
+  if(sort_1L_lgl){
+    styles_chr <- sort(styles_chr)
+  }
+  return(styles_chr)
 }
 get_valid_path_chr <- function(x){
   assert_file_exists(x)

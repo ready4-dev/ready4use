@@ -19,16 +19,16 @@ transform_dates <- function(dates_chr,
   dates_dtm <- dates_chr %>% lubridate::as_date()
   return(dates_dtm)
 }
-transform_dyad_to_series <- function(X_Ready4useDyad = Ready4useDyad(),
-                                     timepoint_vals_chr = c("baseline","follow_up"),
-                                     id_var_nm_1L_chr = "uid_chr",
-                                     participation_var_1L_chr = "participation",
-                                     timepoint_var_nm_1L_chr = "timing_fct"){
-  Z_YouthvarsSeries <- YouthvarsSeries(a_Ready4useDyad = X_Ready4useDyad, id_var_nm_1L_chr = id_var_nm_1L_chr, participation_var_1L_chr = participation_var_1L_chr,
-                                       timepoint_vals_chr = timepoint_vals_chr, timepoint_var_nm_1L_chr = timepoint_var_nm_1L_chr)
-  Z_YouthvarsSeries@a_Ready4useDyad@ds_tb  <- Z_YouthvarsSeries@a_Ready4useDyad@ds_tb %>% dplyr::filter(!!rlang::sym(timepoint_var_nm_1L_chr) %in% Z_YouthvarsSeries@timepoint_vals_chr)
-  return(Z_YouthvarsSeries)
-}
+# transform_dyad_to_series <- function(X_Ready4useDyad = Ready4useDyad(),
+#                                      timepoint_vals_chr = c("baseline","follow_up"),
+#                                      id_var_nm_1L_chr = "uid_chr",
+#                                      participation_var_1L_chr = "participation",
+#                                      timepoint_var_nm_1L_chr = "timing_fct"){
+#   Z_YouthvarsSeries <- YouthvarsSeries(a_Ready4useDyad = X_Ready4useDyad, id_var_nm_1L_chr = id_var_nm_1L_chr, participation_var_1L_chr = participation_var_1L_chr,
+#                                        timepoint_vals_chr = timepoint_vals_chr, timepoint_var_nm_1L_chr = timepoint_var_nm_1L_chr)
+#   Z_YouthvarsSeries@a_Ready4useDyad@ds_tb  <- Z_YouthvarsSeries@a_Ready4useDyad@ds_tb %>% dplyr::filter(!!rlang::sym(timepoint_var_nm_1L_chr) %in% Z_YouthvarsSeries@timepoint_vals_chr)
+#   return(Z_YouthvarsSeries)
+# }
 transform_raw_df <- function(data_df,
                              cases_start_at_1L_int = 1L){
   ds_tb <- data_df %>% dplyr::slice(cases_start_at_1L_int:nrow(.)) %>% tibble::as_tibble()

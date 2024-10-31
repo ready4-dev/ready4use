@@ -20,76 +20,27 @@ add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = re
     dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
   return(X_Ready4useDyad)
 }
-add_from_lup_prototype <- function(data_tb,
-                                   arrange_1L_chr = character(0),
-                                   exclude_chr = character(0),
-                                   lup_prototype_tb = NULL,
-                                   match_var_nm_1L_chr = "UID_chr",
-                                   method_1L_chr = c("first", "sample"),
-                                   type_1L_chr = c("sequential", "batch", "self"),
-                                   vars_chr = character(0)){
-  method_1L_chr <- match.arg(method_1L_chr)
+add_discrete_palette <- function (plot_plt, colours_chr = c("#de2d26","#fc9272"),
+                                  missing_1L_chr = "grey50",
+                                  type_1L_chr = c("ggsci", "manual",
+                                                  "viridis"),
+                                  what_1L_chr = "lancet")
+{
   type_1L_chr <- match.arg(type_1L_chr)
-  if(type_1L_chr == "sequential"){
-    data_tb <- purrr::reduce(vars_chr,
-                             .init = data_tb,
-                             ~ .x %>%
-                               dplyr::left_join(lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>% dplyr::distinct()))
+  if (type_1L_chr == "ggsci") {
+    one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
+    two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
+    plot_plt <- plot_plt + one_fn(na.value = missing_1L_chr) + two_fn(na.value = missing_1L_chr)
   }
-  if(type_1L_chr == "batch"){
-    distinct_tb <- lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,setdiff(setdiff(names(lup_prototype_tb), names(data_tb)), exclude_chr)))) %>%
-      make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
-                                  method_1L_chr = method_1L_chr)
-    data_tb <- data_tb %>%
-      dplyr::left_join(distinct_tb)
+  if(type_1L_chr == "manual"){
+    plot_plt <- plot_plt + ggplot2::scale_fill_manual(values = colours_chr)
   }
-  if(type_1L_chr == "self"){
-     if(identical(vars_chr, character(0))){
-      vars_chr <- setdiff(names(data_tb), c(match_var_nm_1L_chr, exclude_chr))
-    }
-    data_tb <- purrr::reduce(vars_chr,
-                             .init = data_tb,
-                             ~ {
-                               distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>%
-                                 make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
-                                                             method_1L_chr = method_1L_chr)
-                               complete_tb <- .x %>%
-                                 dplyr::filter(!is.na(!!rlang::sym(.y)))
-                               missing_tb <- .x %>%
-                                 dplyr::filter(is.na(!!rlang::sym(.y)))
-                               imputed_tb <- missing_tb %>% dplyr::select(-tidyselect::all_of(.y)) %>%
-                                 dplyr::left_join(distinct_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,.y))))
-                               dplyr::bind_rows(complete_tb, imputed_tb)
-                             }
-    )
+  if (type_1L_chr == "viridis") {
+    plot_plt <- plot_plt + viridis::scale_color_viridis(discrete = TRUE,
+                                                        option = what_1L_chr) + viridis::scale_fill_viridis(discrete = TRUE,
+                                                                                                            option = what_1L_chr)
   }
-  if(!identical(arrange_1L_chr, character(0)))
-    data_tb <- data_tb %>% dplyr::arrange(!!rlang::sym(arrange_1L_chr))
-  return(data_tb)
-}
-add_latest_match <- function(data_tb,
-                             dynamic_lup,
-                             target_var_nm_1L_chr,
-                             date_var_1L_chr = "Date",
-                             invert_1L_lgl = FALSE,
-                             match_var_nm_1L_chr = "UID_chr",
-                             type_1L_chr = c("chr","dbl","int","lgl")){
-  type_1L_chr <- match.arg(type_1L_chr)
-  exec_ls <- switch(type_1L_chr,
-                    "chr" = list(fn = purrr::map2_chr, missing = NA_character_),
-                    "dbl" = list(fn = purrr::map2_dbl, missing = NA_real_),
-                    "int" = list(fn = purrr::map2_int, missing = NA_integer_),
-                    "lgl" = list(fn = purrr::map2_lgl, missing = NA))
-  test_fn <- ifelse(invert_1L_lgl,`>=`,`<=`)
-  data_tb <- data_tb %>%
-    dplyr::mutate(!!rlang::sym(target_var_nm_1L_chr) := !!rlang::sym(match_var_nm_1L_chr) %>% exec_ls$fn(!!rlang::sym(date_var_1L_chr),~ifelse(is.na(.x) | !.x %in% (dynamic_lup %>% dplyr::pull(!!rlang::sym(match_var_nm_1L_chr))),
-                                                                                                                                               exec_ls$missing,
-                                                                                                                                               ready4::get_from_lup_obj(dynamic_lup %>% dplyr::filter(test_fn(!!rlang::sym(date_var_1L_chr),.y)),
-                                                                                                                                                                        match_var_nm_1L_chr = match_var_nm_1L_chr,
-                                                                                                                                                                        match_value_xx = .x,
-                                                                                                                                                                        target_var_nm_1L_chr = target_var_nm_1L_chr))))
-  return(data_tb)
-
+  return(plot_plt)
 }
 add_ds_to_dv_repo <- function(dv_1L_chr,
                               ds_meta_ls,
@@ -205,13 +156,60 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
                           ..1, "/", ..2, ..3)
     fl_nm_1L_chr <- paste0(..2, ..3)
     ready4::write_fls_to_dv(path_1L_chr,
-                               descriptions_chr = ..4,
-                               ds_url_1L_chr = ds_url_1L_chr,
-                               ds_ls = ds_ls,
-                               key_1L_chr = key_1L_chr,
-                               server_1L_chr = server_1L_chr)
+                            descriptions_chr = ..4,
+                            ds_url_1L_chr = ds_url_1L_chr,
+                            ds_ls = ds_ls,
+                            key_1L_chr = key_1L_chr,
+                            server_1L_chr = server_1L_chr)
   })
   return(fl_ids_int)
+}
+add_from_lup_prototype <- function(data_tb,
+                                   arrange_1L_chr = character(0),
+                                   exclude_chr = character(0),
+                                   lup_prototype_tb = NULL,
+                                   match_var_nm_1L_chr = "UID_chr",
+                                   method_1L_chr = c("first", "sample"),
+                                   type_1L_chr = c("sequential", "batch", "self"),
+                                   vars_chr = character(0)){
+  method_1L_chr <- match.arg(method_1L_chr)
+  type_1L_chr <- match.arg(type_1L_chr)
+  if(type_1L_chr == "sequential"){
+    data_tb <- purrr::reduce(vars_chr,
+                             .init = data_tb,
+                             ~ .x %>%
+                               dplyr::left_join(lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>% dplyr::distinct()))
+  }
+  if(type_1L_chr == "batch"){
+    distinct_tb <- lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,setdiff(setdiff(names(lup_prototype_tb), names(data_tb)), exclude_chr)))) %>%
+      make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
+                                  method_1L_chr = method_1L_chr)
+    data_tb <- data_tb %>%
+      dplyr::left_join(distinct_tb)
+  }
+  if(type_1L_chr == "self"){
+     if(identical(vars_chr, character(0))){
+      vars_chr <- setdiff(names(data_tb), c(match_var_nm_1L_chr, exclude_chr))
+    }
+    data_tb <- purrr::reduce(vars_chr,
+                             .init = data_tb,
+                             ~ {
+                               distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>%
+                                 make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
+                                                             method_1L_chr = method_1L_chr)
+                               complete_tb <- .x %>%
+                                 dplyr::filter(!is.na(!!rlang::sym(.y)))
+                               missing_tb <- .x %>%
+                                 dplyr::filter(is.na(!!rlang::sym(.y)))
+                               imputed_tb <- missing_tb %>% dplyr::select(-tidyselect::all_of(.y)) %>%
+                                 dplyr::left_join(distinct_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,.y))))
+                               dplyr::bind_rows(complete_tb, imputed_tb)
+                             }
+    )
+  }
+  if(!identical(arrange_1L_chr, character(0)))
+    data_tb <- data_tb %>% dplyr::arrange(!!rlang::sym(arrange_1L_chr))
+  return(data_tb)
 }
 add_labels_from_dictionary <- function(ds_tb,
                                        dictionary_tb,
@@ -236,6 +234,30 @@ add_labels_from_dictionary <- function(ds_tb,
     labelled_ds_tb <- ds_tb
   }
   return(labelled_ds_tb)
+}
+add_latest_match <- function(data_tb,
+                             dynamic_lup,
+                             target_var_nm_1L_chr,
+                             date_var_1L_chr = "Date",
+                             invert_1L_lgl = FALSE,
+                             match_var_nm_1L_chr = "UID_chr",
+                             type_1L_chr = c("chr","dbl","int","lgl")){
+  type_1L_chr <- match.arg(type_1L_chr)
+  exec_ls <- switch(type_1L_chr,
+                    "chr" = list(fn = purrr::map2_chr, missing = NA_character_),
+                    "dbl" = list(fn = purrr::map2_dbl, missing = NA_real_),
+                    "int" = list(fn = purrr::map2_int, missing = NA_integer_),
+                    "lgl" = list(fn = purrr::map2_lgl, missing = NA))
+  test_fn <- ifelse(invert_1L_lgl,`>=`,`<=`)
+  data_tb <- data_tb %>%
+    dplyr::mutate(!!rlang::sym(target_var_nm_1L_chr) := !!rlang::sym(match_var_nm_1L_chr) %>% exec_ls$fn(!!rlang::sym(date_var_1L_chr),~ifelse(is.na(.x) | !.x %in% (dynamic_lup %>% dplyr::pull(!!rlang::sym(match_var_nm_1L_chr))),
+                                                                                                                                               exec_ls$missing,
+                                                                                                                                               ready4::get_from_lup_obj(dynamic_lup %>% dplyr::filter(test_fn(!!rlang::sym(date_var_1L_chr),.y)),
+                                                                                                                                                                        match_var_nm_1L_chr = match_var_nm_1L_chr,
+                                                                                                                                                                        match_value_xx = .x,
+                                                                                                                                                                        target_var_nm_1L_chr = target_var_nm_1L_chr))))
+  return(data_tb)
+
 }
 add_with_join <- function (X_Ready4useDyad,
                            Y_Ready4useDyad){

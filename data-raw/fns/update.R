@@ -1,3 +1,43 @@
+update_character_vars <- function(ds_tb,
+                                  var_nms_chr,
+                                  as_missing_chr = character(0),
+                                  missing_1L_chr = NA_character_,
+                                  prefix_1L_chr = character(0),
+                                  remove_end_chr = character(0),
+                                  remove_start_chr = character(0),
+                                  replacement_fn_ls = list(end = stringi::stri_replace_last_fixed,
+                                                           start = stringi::stri_replace_first_fixed),
+                                  x_ready4show_correspondences = ready4show::ready4show_correspondences()){
+  if(!identical(prefix_1L_chr, character(0))){
+    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~.x, .names = paste0(prefix_1L_chr,"_{.col}")))
+    var_nms_chr <- paste0(prefix_1L_chr, "_", var_nms_chr)
+  }
+
+  if(!identical(as_missing_chr, character(0))){
+    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(.x %in% as_missing_chr, missing_1L_chr, .x)))
+  }
+  if(!identical(remove_end_chr, character(0))){
+    ds_tb <- remove_end_chr %>% purrr::reduce(.init = ds_tb,
+                                              ~{
+                                                pattern_1L_chr <- .y
+                                                .x %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(endsWith(.x, pattern_1L_chr), replacement_fn_ls$end(.x, pattern_1L_chr,""), .x)))
+                                              })
+  }
+  if(!identical(remove_start_chr, character(0))){
+    ds_tb <- remove_start_chr %>% purrr::reduce(.init = ds_tb,
+                                                ~{
+                                                  pattern_1L_chr <- .y
+                                                  .x %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(startsWith(.x, pattern_1L_chr), replacement_fn_ls$start(.x, pattern_1L_chr,""), .x)))
+                                                })
+  }
+  if(!identical(x_ready4show_correspondences, ready4show::ready4show_correspondences())){
+    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ .x %>% purrr::map_chr(~ifelse(.x %in% x_ready4show_correspondences$old_nms_chr,
+                                                                                                ready4::get_from_lup_obj(x_ready4show_correspondences, match_var_nm_1L_chr = "old_nms_chr",
+                                                                                                                         match_value_xx = .x, target_var_nm_1L_chr = "new_nms_chr"),
+                                                                                                .x))))
+  }
+  return(ds_tb)
+}
 update_column_names <- function(X_Ready4useDyad,
                                 patterns_ls = list(c("[[:space:]]", "")),
                                 update_desc_1L_lgl = FALSE){
@@ -156,13 +196,7 @@ update_correspondences <- function(correspondences_ls,
 update_dyad_ls <- function(dyad_ls,
                            add_lups_1L_lgl = F,
                            arrange_1L_chr = c("var_ctg_chr, var_nm_chr"),
-
-                           #drop_chr = character(0),
                            factors_chr = character(0),
-                           #tfmn_fn = identity,
-
-                           # lup_var_ctg_1L_chr = "Lookup",
-                           # lup_var_nm_1L_chr = "temporal_lup_ls",
                            range_int = 1L:12L,
                            recode_ls = NULL,
                            reference_1L_int = 2L,
@@ -170,7 +204,6 @@ update_dyad_ls <- function(dyad_ls,
                            standard_spaces_1L_lgl = F,
                            tfmn_cls_1L_chr = "character",
                            tfmns_ls = list(bind = identity, class = as.character),
-                           #tfmn_fn = as.character,
                            type_1L_chr = c("sequence", "composite", "bind", "class", "default", "interval", "reference"),
                            units_chr = c("minute","hour","week","month","year"),
                            uid_var_nm_1L_chr = character(0)){#
@@ -354,48 +387,8 @@ update_dyad_ls <- function(dyad_ls,
   }
   return(dyad_ls)
 }
-update_character_vars <- function(ds_tb,
-                                  var_nms_chr,
-                                  as_missing_chr = character(0),
-                                  missing_1L_chr = NA_character_,
-                                  prefix_1L_chr = character(0),
-                                  remove_end_chr = character(0),
-                                  remove_start_chr = character(0),
-                                  replacement_fn_ls = list(end = stringi::stri_replace_last_fixed,
-                                                           start = stringi::stri_replace_first_fixed),
-                                  x_ready4show_correspondences = ready4show::ready4show_correspondences()){
-  if(!identical(prefix_1L_chr, character(0))){
-    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~.x, .names = paste0(prefix_1L_chr,"_{.col}")))
-    var_nms_chr <- paste0(prefix_1L_chr, "_", var_nms_chr)
-  }
-
-  if(!identical(as_missing_chr, character(0))){
-    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(.x %in% as_missing_chr, missing_1L_chr, .x)))
-  }
-  if(!identical(remove_end_chr, character(0))){
-    ds_tb <- remove_end_chr %>% purrr::reduce(.init = ds_tb,
-                                              ~{
-                                                pattern_1L_chr <- .y
-                                                .x %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(endsWith(.x, pattern_1L_chr), replacement_fn_ls$end(.x, pattern_1L_chr,""), .x)))
-                                              })
-  }
-  if(!identical(remove_start_chr, character(0))){
-    ds_tb <- remove_start_chr %>% purrr::reduce(.init = ds_tb,
-                                                ~{
-                                                  pattern_1L_chr <- .y
-                                                  .x %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ ifelse(startsWith(.x, pattern_1L_chr), replacement_fn_ls$start(.x, pattern_1L_chr,""), .x)))
-                                                })
-  }
-  if(!identical(x_ready4show_correspondences, ready4show::ready4show_correspondences())){
-    ds_tb <- ds_tb %>% dplyr::mutate(dplyr::across(var_nms_chr, ~ .x %>% purrr::map_chr(~ifelse(.x %in% x_ready4show_correspondences$old_nms_chr,
-                                                                                                ready4::get_from_lup_obj(x_ready4show_correspondences, match_var_nm_1L_chr = "old_nms_chr",
-                                                                                                                         match_value_xx = .x, target_var_nm_1L_chr = "new_nms_chr"),
-                                                                                                .x))))
-  }
-  return(ds_tb)
-}
 update_dyad <- function(X_Ready4useDyad, # Add to ready4use
-                        arrange_1L_chr = c("var_ctg_chr, var_nm_chr"),
+                        arrange_1L_chr = c("var_ctg_chr, var_nm_chr", "category", "name", "both"),
                         categories_chr = character(0),
                         dictionary_r3 = ready4use_dictionary(),
                         fn = NULL,
@@ -405,6 +398,9 @@ update_dyad <- function(X_Ready4useDyad, # Add to ready4use
                         what_1L_chr = c("all","dataset","dictionary")
 ){
   type_1L_chr <- match.arg(type_1L_chr)
+  type_1L_chr <- ifelse(type_1L_chr=="category","var_ctg_chr",
+                        ifelse(type_1L_chr=="name","var_nm_chr",
+                               ifelse(type_1L_chr=="both","var_ctg_chr, var_nm_chr",type_1L_chr)))
   what_1L_chr <- match.arg(what_1L_chr)
   if(what_1L_chr %in% c("all","dataset")){
     if(type_1L_chr == "mutate"){
@@ -489,7 +485,9 @@ update_raw_data <- function(ds_tb,
   if(nrow(correspondences_r3)>0){
     if(!identical(intersect(correspondences_r3$old_nms_chr, names(ds_tb)), character(0))){
       ds_tb <- purrr::reduce(intersect(correspondences_r3$old_nms_chr, names(ds_tb)),.init = ds_tb,
-                             ~ .x %>% dplyr::rename(!!rlang::sym(ready4::get_from_lup_obj(correspondences_r3, match_value_xx = .y, match_var_nm_1L_chr = "old_nms_chr", target_var_nm_1L_chr = "new_nms_chr")) := !!rlang::sym(.y)))
+                             ~ .x %>% dplyr::rename(!!rlang::sym(ready4::get_from_lup_obj(correspondences_r3, match_value_xx = .y,
+                                                                                          match_var_nm_1L_chr = "old_nms_chr",
+                                                                                          target_var_nm_1L_chr = "new_nms_chr")) := !!rlang::sym(.y)))
     }
   }
   if(force_integers_1L_lgl){
@@ -533,9 +531,9 @@ update_raw_data <- function(ds_tb,
   return(ds_tb)
 }
 update_tb_src_loc_to_url_sngl_tb <- function(x,
-                                      y,
-                                      local_to_url_vec_chr,
-                                      urls_vec_chr){
+                                             y,
+                                             local_to_url_vec_chr,
+                                             urls_vec_chr){
   updated_tb <- x %>% dplyr::mutate(download_url_chr = purrr::map2_chr(local_file_src_chr,
                                                      download_url_chr,
                                                      ~ ifelse(.x %in% local_to_url_vec_chr,
