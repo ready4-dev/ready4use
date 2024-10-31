@@ -4,6 +4,7 @@
 <url><loc>https://ready4-dev.github.io/ready4use/articles/V_01.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/articles/V_02.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/articles/V_03.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/articles/V_04.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/articles/index.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/articles/ready4use.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/authors.html</loc></url>
@@ -54,7 +55,6 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/ingest-methods.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_correspondences.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_imputed_distinct_cases.html</loc></url>
-<url><loc>https://ready4-dev.github.io/ready4use/reference/make_journal_plot.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_keep_lgl.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_dataverses.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_dictionary.html</loc></url>
@@ -67,6 +67,7 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/manufacture-methods.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/nseequals.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/pipe.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/plot_for_journal.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/procure-methods.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/read_import_from_csv.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/ready4use-package.html</loc></url>
