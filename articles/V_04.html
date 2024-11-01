@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9238</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9239</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -509,8 +509,8 @@ labels from dictionary<a class="anchor" aria-label="anchor" href="#stratify-resu
 </h5>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>,</span>
-<span>       z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
-<span>       what_1L_chr <span class="op">=</span> <span class="st">"histogram"</span><span class="op">)</span></span></code></pre></div>
+<span>       z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, position_xx <span class="op">=</span> <span class="st">"dodge"</span>,</span>
+<span>       what_1L_chr <span class="op">=</span> <span class="st">"histogram"</span>, bins<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-44-1.png" width="768"></p>
 </div>
 <div class="section level5">
@@ -518,7 +518,7 @@ labels from dictionary<a class="anchor" aria-label="anchor" href="#stratify-resu
 </h5>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, x_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, y_labels_chr <span class="op">=</span> <span class="st">""</span>, </span>
-<span>       z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="st">"Sex"</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
+<span>       z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="st">"Sex"</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">F</span>, </span>
 <span>       drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"histogram"</span>, add <span class="op">=</span> <span class="st">"mean"</span>, add_density <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-45-1.png" width="768"></p>
 </div>
