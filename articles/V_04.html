@@ -452,7 +452,7 @@ dictionary<a class="anchor" aria-label="anchor" href="#stratify-results-by-a-sec
 </h5>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_labels_chr <span class="op">=</span> <span class="st">"Percentatge"</span>, </span>
-<span>       z_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,  as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>       z_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, z_labels_chr <span class="op">=</span> <span class="st">""</span>,  as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>       drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"density"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-39-1.png" width="768"></p>
 </div>
@@ -481,7 +481,7 @@ labels<a class="anchor" aria-label="anchor" href="#stratify-results-by-a-second-
 </div>
 </div>
 <div class="section level4">
-<h4 id="histogram">histogram<a class="anchor" aria-label="anchor" href="#histogram"></a>
+<h4 id="histogram">Histogram<a class="anchor" aria-label="anchor" href="#histogram"></a>
 </h4>
 <div class="section level5">
 <h5 id="basic-histogram">Basic histogram<a class="anchor" aria-label="anchor" href="#basic-histogram"></a>
@@ -568,7 +568,7 @@ labels<a class="anchor" aria-label="anchor" href="#stratify-results-by-a-second-
 </h5>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X</span>, x_vars_chr <span class="op">=</span> <span class="st">"round"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, z_labels_chr <span class="op">=</span> <span class="st">""</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
 <span>       what_1L_chr <span class="op">=</span> <span class="st">"boxplot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-49-1.png" width="768"></p>
 </div>
@@ -577,7 +577,7 @@ labels<a class="anchor" aria-label="anchor" href="#stratify-results-by-a-second-
 </h5>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X</span>, x_vars_chr <span class="op">=</span> <span class="st">"round"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
+<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_labels_chr <span class="op">=</span> <span class="st">""</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
 <span>       what_1L_chr <span class="op">=</span> <span class="st">"boxplot"</span>, fill <span class="op">=</span> <span class="st">"round"</span>, fill_single_1L_lgl <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-50-1.png" width="768"></p>
 </div>
@@ -630,9 +630,9 @@ colouring of segment labels<a class="anchor" aria-label="anchor" href="#report-p
 </div>
 </div>
 <div class="section level4">
-<h4 id="the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method-">The same result can be achieved by supplying a dataset with
-frequency counts. Note, the drop_missing_1L_lgl is ignored if using this
-method.<a class="anchor" aria-label="anchor" href="#the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method-"></a>
+<h4 id="the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-drop_missing_1l_lgl-is-ignored-if-using-this-method-">The same result can be achieved by supplying a dataset with
+frequency counts. Note, drop_missing_1L_lgl is ignored if using this
+method.<a class="anchor" aria-label="anchor" href="#the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-drop_missing_1l_lgl-is-ignored-if-using-this-method-"></a>
 </h4>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X8</span>, x_vars_chr <span class="op">=</span> <span class="st">"Count"</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, z_labels_chr <span class="op">=</span> <span class="st">""</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
@@ -733,12 +733,12 @@ size<a class="anchor" aria-label="anchor" href="#customise-and-reorder-labels-re
 <p><img src="V_04_files/figure-html/unnamed-chunk-64-1.png" width="768"></p>
 </div>
 <div class="section level5">
-<h5 id="look-up-labels-and-customise-positioning-and-colouring-of-error-lines">Look-up labels and customise positioning and colouring of error
-lines<a class="anchor" aria-label="anchor" href="#look-up-labels-and-customise-positioning-and-colouring-of-error-lines"></a>
+<h5 id="customise-labels-and-the-positioning-and-colouring-of-error-lines">Customise labels and the positioning and colouring of error
+lines<a class="anchor" aria-label="anchor" href="#customise-labels-and-the-positioning-and-colouring-of-error-lines"></a>
 </h5>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>       drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"errorplot"</span>,</span>
 <span>       palette <span class="op">=</span> <span class="st">"Paired"</span>, error.plot <span class="op">=</span> <span class="st">"pointrange"</span>, position <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-65-1.png" width="768"></p>
@@ -760,7 +760,7 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-and-customise-p
 </h5>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X</span>, x_vars_chr <span class="op">=</span> <span class="st">"round"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_sex_birth_s"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>       drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, position_xx <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>, </span>
 <span>       what_1L_chr <span class="op">=</span> <span class="st">"line"</span>, add <span class="op">=</span> <span class="st">"mean_se"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-67-1.png" width="768"></p>
@@ -777,12 +777,12 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-and-customise-p
 <p><img src="V_04_files/figure-html/unnamed-chunk-68-1.png" width="768"></p>
 </div>
 <div class="section level5">
-<h5 id="look-up-labels-remove-x-axis-ticks-and-labels-and-change-line-colour">Look-up labels, remove x-axis ticks and labels and change line
-colour<a class="anchor" aria-label="anchor" href="#look-up-labels-remove-x-axis-ticks-and-labels-and-change-line-colour"></a>
+<h5 id="customise-labels-remove-x-axis-ticks-and-labels-and-change-line-colour">Customise labels, remove x-axis ticks and labels and change line
+colour<a class="anchor" aria-label="anchor" href="#customise-labels-remove-x-axis-ticks-and-labels-and-change-line-colour"></a>
 </h5>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X7</span>, x_vars_chr <span class="op">=</span> <span class="st">"round"</span>, x_labels_chr <span class="op">=</span> <span class="st">""</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, </span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, z_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, </span>
 <span>       drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">T</span>, line_1L_chr <span class="op">=</span> <span class="st">"lightgray"</span>, what_1L_chr <span class="op">=</span> <span class="st">"paired"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-69-1.png" width="768"></p>
 </div>
@@ -808,9 +808,9 @@ of segment labels and remove labels<a class="anchor" aria-label="anchor" href="#
 </div>
 </div>
 <div class="section level4">
-<h4 id="the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method--1">The same result can be achieved by supplying a dataset with
+<h4 id="the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method-">The same result can be achieved by supplying a dataset with
 frequency counts. Note, the drop_missing_1L_lgl is ignored if using this
-method.<a class="anchor" aria-label="anchor" href="#the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method--1"></a>
+method.<a class="anchor" aria-label="anchor" href="#the-same-result-can-be-achieved-by-supplying-a-dataset-with-frequency-counts--note-the-drop_missing_1l_lgl-is-ignored-if-using-this-method-"></a>
 </h4>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X8</span>, x_vars_chr <span class="op">=</span> <span class="st">"Count"</span>, z_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, z_labels_chr <span class="op">=</span> <span class="st">""</span>,</span>
@@ -837,7 +837,7 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-drop-legend-and
 </h5>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>                     y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, drop_legend_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"strip"</span>, add <span class="op">=</span> <span class="st">"mean_sd"</span><span class="op">)</span></span></code></pre></div>
+<span>                     y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, drop_legend_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"strip"</span>, add <span class="op">=</span> <span class="st">"mean_sd"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-74-1.png" width="768"></p>
 </div>
 </div>
@@ -854,11 +854,11 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-drop-legend-and
 <p><img src="V_04_files/figure-html/unnamed-chunk-75-1.png" width="768"></p>
 </div>
 <div class="section level5">
-<h5 id="look-up-labels-drop-legend-and-add-mean-and-jitter-dots">Look-up labels, drop legend and add mean and jitter dots<a class="anchor" aria-label="anchor" href="#look-up-labels-drop-legend-and-add-mean-and-jitter-dots"></a>
+<h5 id="customise-labels-drop-legend-and-add-mean-and-jitter-dots">Customise labels, drop legend and add mean and jitter dots<a class="anchor" aria-label="anchor" href="#customise-labels-drop-legend-and-add-mean-and-jitter-dots"></a>
 </h5>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"d_studying_working"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>,</span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, drop_legend_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">""</span>, drop_legend_1L_lgl <span class="op">=</span> <span class="cn">T</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, </span>
 <span>       what_1L_chr <span class="op">=</span> <span class="st">"violin"</span>, add <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-76-1.png" width="768"></p>
 </div>
@@ -879,18 +879,17 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-drop-legend-and
 <span><span class="co">## (`geom_point()`).</span></span></code></pre>
 <p><img src="V_04_files/figure-html/unnamed-chunk-77-1.png" width="768"></p>
 </div>
-</div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="add-regression-line-change-dot-sizes-and-and-customise-labels-">Add regression line, change dot sizes and and customise labels.<a class="anchor" aria-label="anchor" href="#add-regression-line-change-dot-sizes-and-and-customise-labels-"></a>
-</h2>
+<div class="section level5">
+<h5 id="add-regression-line-change-dot-sizes-and-and-customise-labels-">Add regression line, change dot sizes and and customise labels.<a class="anchor" aria-label="anchor" href="#add-regression-line-change-dot-sizes-and-and-customise-labels-"></a>
+</h5>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X1</span>, x_vars_chr <span class="op">=</span> <span class="st">"phq9_total"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="st">""</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"scatter"</span>, </span>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"scatter"</span>, </span>
 <span>       add <span class="op">=</span> <span class="st">"reg.line"</span>, size <span class="op">=</span> <span class="fl">0.5</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span>, cor.coef <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>       cor.coeff.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pearson"</span>, label.x <span class="op">=</span> <span class="fl">3</span>, label.sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-78-1.png" width="768"></p>
+</div>
+</div>
 <div class="section level4">
 <h4 id="scatter-plot-with-histograms">Scatter plot with histograms<a class="anchor" aria-label="anchor" href="#scatter-plot-with-histograms"></a>
 </h4>
@@ -921,13 +920,15 @@ lines<a class="anchor" aria-label="anchor" href="#look-up-labels-drop-legend-and
 <p><img src="V_04_files/figure-html/unnamed-chunk-79-2.png" width="768"></p>
 </div>
 <div class="section level5">
-<h5 id="lookup-labels-except-for-z_labels_chr-which-currently-does-not-work-with-this-type-of-plot-and-stratify-by-third-categorical-variable">Lookup labels (except for z_labels_chr which currently does not work
-with this type of plot) and stratify by third categorical variable<a class="anchor" aria-label="anchor" href="#lookup-labels-except-for-z_labels_chr-which-currently-does-not-work-with-this-type-of-plot-and-stratify-by-third-categorical-variable"></a>
+<h5 id="customise-labels-except-for-z_labels_chr-which-currently-does-not-work-with-this-type-of-plot-and-stratify-by-third-categorical-variable">Customise labels (except for z_labels_chr which currently does not
+work with this type of plot) and stratify by third categorical
+variable<a class="anchor" aria-label="anchor" href="#customise-labels-except-for-z_labels_chr-which-currently-does-not-work-with-this-type-of-plot-and-stratify-by-third-categorical-variable"></a>
 </h5>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X</span>, x_vars_chr <span class="op">=</span> <span class="st">"phq9_total"</span>, x_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,  y_vars_chr <span class="op">=</span> <span class="st">"k6_total"</span>, </span>
-<span>       y_labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>, z_vars_chr <span class="op">=</span> <span class="st">"round"</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"scatterhist"</span><span class="op">)</span></span></code></pre></div>
+<span>       y_labels_chr <span class="op">=</span> <span class="st">"K6"</span>, z_vars_chr <span class="op">=</span> <span class="st">"round"</span>, drop_missing_1L_lgl <span class="op">=</span> <span class="cn">T</span>, what_1L_chr <span class="op">=</span> <span class="st">"scatterhist"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="V_04_files/figure-html/unnamed-chunk-80-1.png" width="768"><img src="V_04_files/figure-html/unnamed-chunk-80-2.png" width="768"></p>
+</div>
 </div>
 </div>
 <div class="section level3">
