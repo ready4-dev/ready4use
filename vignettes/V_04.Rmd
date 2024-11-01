@@ -363,8 +363,8 @@ depict(X1, x_vars_chr = "k6_total", x_labels_chr = "K6", y_labels_chr = "", as_p
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "k6_total", x_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s",
-       z_labels_chr = NA_character_, as_percent_1L_lgl = T, drop_missing_1L_lgl = T, 
-       what_1L_chr = "histogram")
+       z_labels_chr = NA_character_, as_percent_1L_lgl = T, drop_missing_1L_lgl = T, position_xx = "dodge",
+       what_1L_chr = "histogram", bins=10)
 ```
 
 
@@ -372,7 +372,7 @@ depict(X1, x_vars_chr = "k6_total", x_labels_chr = NA_character_, z_vars_chr = "
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "k6_total", x_labels_chr = "K6", y_labels_chr = "", 
-       z_vars_chr = "d_sex_birth_s", z_labels_chr = "Sex", as_percent_1L_lgl = T, 
+       z_vars_chr = "d_sex_birth_s", z_labels_chr = "Sex", as_percent_1L_lgl = F, 
        drop_missing_1L_lgl = T, what_1L_chr = "histogram", add = "mean", add_density = TRUE)
 ```
 

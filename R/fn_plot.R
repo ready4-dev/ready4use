@@ -357,8 +357,9 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
         }
         if (what_1L_chr %in% "histogram" & ifelse(identical(y_1L_chr, 
             character(0)), T, !y_1L_chr %in% c("density", "..density.."))) {
-            plot_plt <- plot_plt + ggplot2::aes(y = ggplot2::after_stat(count)/sum(after_stat(count))) + 
-                ggpubr::yscale("percent", .format = TRUE) + ggplot2::labs(y = y_label_1L_chr)
+            plot_plt <- plot_plt + ggplot2::aes(y = ggplot2::after_stat(width) * 
+                (ggplot2::after_stat(density))) + ggpubr::yscale("percent", 
+                .format = TRUE) + ggplot2::labs(y = y_label_1L_chr)
         }
     }
     if (what_1L_chr %in% "balloonplot" & !fill_single_1L_lgl) {
