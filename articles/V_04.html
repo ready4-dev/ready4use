@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9237</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9238</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,9 +159,10 @@ sub-groups.</p>
 <span><span class="va">X10</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html" class="external-link">renewSlot</a></span><span class="op">(</span><span class="va">X1</span>, <span class="st">"ds_tb"</span>, </span>
 <span>                 <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">X1</span>, <span class="st">"ds_tb"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>                         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">d_studying_working</span>, <span class="va">d_sex_birth_s</span>, <span class="va">c_p_diag_s</span>, <span class="va">c_clinical_staging_s</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Some of the visualisations we will be making will require the labels
-derived from variable values to be modified (e.g. for brevity). We
-therefore next make look-up tables for recoding these values.</p>
+<p>Some of the visualisations that we will be generating in this
+vignette will require labels that are derived from variable values to be
+modified (e.g. for brevity). We therefore next make look-up tables for
+recoding these values.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/ready4show_correspondences.html" class="external-link">ready4show_correspondences</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>      old_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Not studying or working"</span>, <span class="st">"Studying only"</span>, <span class="st">"Studying and working"</span>, <span class="st">"Working only"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span>,</span>
@@ -172,8 +173,11 @@ therefore next make look-up tables for recoding these values.</p>
 <span>           new_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Neither"</span>, <span class="st">"Education"</span>, <span class="st">"Both"</span>, <span class="st">"Employment"</span>, <span class="st">"Both"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="plotting-options-using-default-plot-type-barplot">Plotting options using default plot type (barplot)<a class="anchor" aria-label="anchor" href="#plotting-options-using-default-plot-type-barplot"></a>
+<h2 id="options-for-using-the-depict-method-illustrated-with-the-default-plot-type-barplot">Options for using the Depict method illustrated with the default
+plot type (barplot)<a class="anchor" aria-label="anchor" href="#options-for-using-the-depict-method-illustrated-with-the-default-plot-type-barplot"></a>
 </h2>
+<p>Data contained in a Ready4useDyad can be visualised using the
+<code>Depict</code> method.</p>
 <div class="section level3">
 <h3 id="single-plots">Single plots<a class="anchor" aria-label="anchor" href="#single-plots"></a>
 </h3>
