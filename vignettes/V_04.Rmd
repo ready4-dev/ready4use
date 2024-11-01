@@ -324,7 +324,7 @@ depict(X1, x_vars_chr = "k6_total", what_1L_chr = "density")
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "k6_total", x_labels_chr = NA_character_, y_labels_chr = "Percentatge", 
-       z_vars_chr = "d_studying_working", z_labels_chr = NA_character_,  as_percent_1L_lgl = T,
+       z_vars_chr = "d_studying_working", z_labels_chr = "",  as_percent_1L_lgl = T,
        drop_missing_1L_lgl = T, what_1L_chr = "density") 
 ```
 
@@ -345,7 +345,7 @@ depict(X1,x_vars_chr = "k6_total", x_labels_chr = NA_character_, y_labels_chr = 
 ```
 
 
-#### histogram
+#### Histogram
 ##### Basic histogram
 
 ```{r fig.width=8, fig.height=4}
@@ -404,7 +404,7 @@ depict(X, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "boxplot"
 
 ```{r fig.width=8, fig.height=4}
 depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-       y_labels_chr = "K6", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
+       y_labels_chr = "K6", z_labels_chr = "", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
        what_1L_chr = "boxplot")
 ```
 
@@ -412,7 +412,7 @@ depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_t
 
 ```{r fig.width=8, fig.height=4}
 depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-       y_labels_chr = NA_character_, drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
+       y_labels_chr = NA_character_, z_labels_chr = "", drop_missing_1L_lgl = T, drop_ticks_1L_lgl = T, 
        what_1L_chr = "boxplot", fill = "round", fill_single_1L_lgl = F)
 ```
 
@@ -454,7 +454,7 @@ depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "", as_percent_1L_l
                      line_1L_chr = "white", what_1L_chr = "donutchart", lab.pos = "in", lab.font = "white")
 ```
 
-#### The same result can be achieved by supplying a dataset with frequency counts. Note, the drop_missing_1L_lgl is ignored if using this method.
+#### The same result can be achieved by supplying a dataset with frequency counts. Note, drop_missing_1L_lgl is ignored if using this method.
 
 ```{r fig.width=8, fig.height=4}
 depict(X8, x_vars_chr = "Count", z_vars_chr = "d_studying_working", z_labels_chr = "", as_percent_1L_lgl = T, 
@@ -526,11 +526,11 @@ depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = "EDUCATION AND EMPL
 depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "errorplot")
 ```
 
-##### Look-up labels and customise positioning and colouring of error lines
+##### Customise labels and the positioning and colouring of error lines
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-       y_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
+       y_labels_chr = "K6", z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
        drop_missing_1L_lgl = T, what_1L_chr = "errorplot",
        palette = "Paired", error.plot = "pointrange", position = ggplot2::position_dodge(0.5))
 ```
@@ -547,7 +547,7 @@ depict(X5, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "line")
 
 ```{r fig.width=8, fig.height=4}
 depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-       y_labels_chr = NA_character_, z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
+       y_labels_chr = "K6", z_vars_chr = "d_sex_birth_s", z_labels_chr = NA_character_,
        drop_missing_1L_lgl = T, position_xx = ggplot2::position_dodge(0.5), 
        what_1L_chr = "line", add = "mean_se")
 ```
@@ -560,11 +560,11 @@ depict(X, x_vars_chr = "round", x_labels_chr = NA_character_, y_vars_chr = "k6_t
 depict(X7, x_vars_chr = "round", y_vars_chr = "k6_total", what_1L_chr = "paired")
 ```
 
-##### Look-up labels, remove x-axis ticks and labels and change line colour
+##### Customise labels, remove x-axis ticks and labels and change line colour
 
 ```{r fig.width=8, fig.height=4}
 depict(X7, x_vars_chr = "round", x_labels_chr = "", y_vars_chr = "k6_total", 
-       y_labels_chr = NA_character_, z_labels_chr = NA_character_, 
+       y_labels_chr = "K6", z_labels_chr = NA_character_, 
        drop_ticks_1L_lgl = T, line_1L_chr = "lightgray", what_1L_chr = "paired")
 ```
 
@@ -603,7 +603,7 @@ depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_c
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-                     y_labels_chr = NA_character_, drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, what_1L_chr = "strip", add = "mean_sd")
+                     y_labels_chr = "K6", drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, what_1L_chr = "strip", add = "mean_sd")
 ```
 
 
@@ -614,11 +614,11 @@ depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_va
 depict(X1, x_vars_chr = "d_studying_working", y_vars_chr = "k6_total", what_1L_chr = "violin")
 ```
 
-##### Look-up labels, drop legend and add mean and jitter dots
+##### Customise labels, drop legend and add mean and jitter dots
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_vars_chr = "k6_total",
-       y_labels_chr = NA_character_, drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, 
+       y_labels_chr = "", drop_legend_1L_lgl = T, drop_missing_1L_lgl = T, 
        what_1L_chr = "violin", add = "jitter")
 ```
 
@@ -632,28 +632,29 @@ depict(X1, x_vars_chr = "d_studying_working", x_labels_chr = NA_character_, y_va
 depict(X1, x_vars_chr = "phq9_total", y_vars_chr = "k6_total", what_1L_chr = "scatter")
 ```
 
-## Add regression line, change dot sizes and and customise labels.
+##### Add regression line, change dot sizes and and customise labels.
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "phq9_total", x_labels_chr = NA_character_, y_vars_chr = "k6_total", 
-       y_labels_chr = "", drop_missing_1L_lgl = T, what_1L_chr = "scatter", 
+       y_labels_chr = "K6", drop_missing_1L_lgl = T, what_1L_chr = "scatter", 
        add = "reg.line", size = 0.5, conf.int = TRUE, cor.coef = TRUE, 
        cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n"))
 ```
 
 
 #### Scatter plot with histograms
+
 ##### Basic scatter plot with histograms
 
 ```{r fig.width=8, fig.height=4}
 depict(X1, x_vars_chr = "phq9_total", y_vars_chr = "k6_total", what_1L_chr = "scatterhist")
 ```
 
-##### Lookup labels (except for z_labels_chr which currently does not work with this type of plot) and stratify by third categorical variable
+##### Customise labels (except for z_labels_chr which currently does not work with this type of plot) and stratify by third categorical variable
 
 ```{r fig.width=8, fig.height=4}
 depict(X, x_vars_chr = "phq9_total", x_labels_chr = NA_character_,  y_vars_chr = "k6_total", 
-       y_labels_chr = NA_character_, z_vars_chr = "round", drop_missing_1L_lgl = T, what_1L_chr = "scatterhist")
+       y_labels_chr = "K6", z_vars_chr = "round", drop_missing_1L_lgl = T, what_1L_chr = "scatterhist")
 ```
 
 
