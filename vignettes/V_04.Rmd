@@ -97,7 +97,7 @@ X10 <- renewSlot(X1, "ds_tb",
                          dplyr::select(d_studying_working, d_sex_birth_s, c_p_diag_s, c_clinical_staging_s)) %>% tibble::as_tibble())
 ```
 
-Some of the visualisations we will be making will require the labels derived from variable values to be modified (e.g. for brevity). We therefore next make look-up tables for recoding these values.
+Some of the visualisations that we will be generating in this vignette will require labels that are derived from variable values to be modified (e.g. for brevity). We therefore next make look-up tables for recoding these values.
 
 ```{r}
 x <- renew(ready4show::ready4show_correspondences(),
@@ -109,7 +109,8 @@ y <- renew(ready4show::ready4show_correspondences(),
            new_nms_chr = c("Neither", "Education", "Both", "Employment", "Both"))
 ```
 
-##  Plotting options using default plot type (barplot)
+##  Options for using the Depict method illustrated with the default plot type (barplot)
+Data contained in a Ready4useDyad can be visualised using the `Depict` method.
 
 ### Single plots
 

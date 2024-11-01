@@ -263,7 +263,7 @@ add_with_join <- function (X_Ready4useDyad,
                            Y_Ready4useDyad){
   X_Ready4useDyad@ds_tb <- dplyr::left_join(X_Ready4useDyad@ds_tb,
                                             Y_Ready4useDyad@ds_tb)
-  X_Ready4useDyad <- ready4use::add_dictionary(X_Ready4useDyad,
+  X_Ready4useDyad <- add_dictionary(X_Ready4useDyad,
                                                new_cases_r3 = Y_Ready4useDyad@dictionary_r3 %>% dplyr::filter(!var_nm_chr %in% X_Ready4useDyad@dictionary_r3$var_nm_chr))
   return(X_Ready4useDyad)
 }

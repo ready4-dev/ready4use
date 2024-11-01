@@ -26,14 +26,14 @@
 #' @export 
 #' @importFrom ready4show ready4show_correspondences manufacture.ready4show_correspondences
 #' @importFrom dplyr select pull mutate rename
-#' @importFrom tidyselect all_of any_of
+#' @importFrom tidyselect any_of
 #' @importFrom tidyr drop_na
 #' @importFrom rlang sym exec
 #' @importFrom purrr discard
-#' @importFrom ggplot2 position_dodge aes scale_y_continuous labs theme element_blank
+#' @importFrom ggplot2 position_dodge aes scale_y_continuous labs after_stat theme element_blank
 #' @importFrom tibble as_tibble
 #' @importFrom scales label_percent
-#' @importFrom ggpubr gradient_fill
+#' @importFrom ggpubr yscale gradient_fill
 #' @keywords internal
 plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = character(0), 
     colours_chr = c("#de2d26", "#fc9272"), drop_legend_1L_lgl = FALSE, 
@@ -99,10 +99,10 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     else {
         extras_chr <- character(0)
     }
-    data_xx <- data_tb %>% dplyr::select(tidyselect::all_of(c(x_1L_chr, 
+    data_xx <- data_tb %>% dplyr::select(tidyselect::any_of(c(x_1L_chr, 
         y_1L_chr, by_1L_chr, extras_chr)))
     if (drop_missing_1L_lgl) {
-        data_xx <- tidyr::drop_na(data_xx, tidyselect::all_of(c(x_1L_chr, 
+        data_xx <- tidyr::drop_na(data_xx, tidyselect::any_of(c(x_1L_chr, 
             y_1L_chr, by_1L_chr, extras_chr)))
     }
     plot_fn <- get_journal_plot_fn(what_1L_chr)
@@ -295,8 +295,7 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
         else {
             if (what_1L_chr %in% c("histogram") & identical(y_1L_chr, 
                 character(0))) {
-                args_ls <- append(args_ls, list(y = ifelse(as_percent_1L_lgl, 
-                  "density", "count")))
+                args_ls <- append(args_ls, list(y = "count"))
             }
             else {
                 args_ls <- append(args_ls, list(y = y_1L_chr))
@@ -320,7 +319,7 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     if ((what_1L_chr %in% c("donutchart", "pie") & identical(by_1L_chr, 
         character(0))) | (what_1L_chr %in% c("barplot") & identical(y_1L_chr, 
         character(0)))) {
-        data_xx <- table(data_xx %>% dplyr::select(tidyselect::all_of(c(x_1L_chr, 
+        data_xx <- table(data_xx %>% dplyr::select(tidyselect::any_of(c(x_1L_chr, 
             by_1L_chr))), useNA = "ifany") %>% tibble::as_tibble() %>% 
             dplyr::rename(Freq = n)
         if (drop_missing_1L_lgl) {
@@ -352,9 +351,14 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
         if (what_1L_chr %in% c("barplot")) {
             plot_plt <- plot_plt + ggplot2::aes(y = !!rlang::sym(new_by_1L_chr)/sum(!!rlang::sym(new_by_1L_chr)))
         }
-        if (!what_1L_chr %in% c("donutchart", "pie")) {
+        if (!what_1L_chr %in% c("donutchart", "pie", "histogram")) {
             plot_plt <- plot_plt + ggplot2::scale_y_continuous(labels = scales::label_percent()) + 
                 ggplot2::labs(y = y_label_1L_chr)
+        }
+        if (what_1L_chr %in% "histogram" & ifelse(identical(y_1L_chr, 
+            character(0)), T, !y_1L_chr %in% c("density", "..density.."))) {
+            plot_plt <- plot_plt + ggplot2::aes(y = ggplot2::after_stat(count)/sum(after_stat(count))) + 
+                ggpubr::yscale("percent", .format = TRUE) + ggplot2::labs(y = y_label_1L_chr)
         }
     }
     if (what_1L_chr %in% "balloonplot" & !fill_single_1L_lgl) {
