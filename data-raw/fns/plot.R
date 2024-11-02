@@ -225,10 +225,12 @@ plot_for_journal <- function(data_tb,
     new_by_1L_chr <- ifelse(what_1L_chr %in% c("donutchart", "pie"), x_1L_chr, by_1L_chr)
   }
   if(what_1L_chr %in% c("donutchart", "pie") & as_percent_1L_lgl){
-    data_xx <- data_xx %>% dplyr::mutate(!!rlang::sym(new_by_1L_chr) := round(!!rlang::sym(new_by_1L_chr) / sum(!!rlang::sym(new_by_1L_chr)) * 100,0))
+    data_xx <- data_xx %>% dplyr::mutate(new_label_chr = #!!rlang::sym(new_by_1L_chr) :=
+                                           paste0(round(!!rlang::sym(new_by_1L_chr) / sum(!!rlang::sym(new_by_1L_chr)) * 100,0), "%"))
   }
   if(!"label" %in% names(custom_args_ls) & what_1L_chr %in% c("donutchart", "pie") & as_percent_1L_lgl){
-    args_ls <- list(label = paste0(data_xx %>% dplyr::pull(!!rlang::sym(new_by_1L_chr)), "%")) %>% append(args_ls)
+    args_ls <- list(label = "new_label_chr"#paste0(data_xx %>% dplyr::pull(!!rlang::sym(new_by_1L_chr)), "%")
+                    ) %>% append(args_ls)
   }
   if(what_1L_chr %in% "balloonplot" & !fill_single_1L_lgl){
     palette_chr <- args_ls$palette
