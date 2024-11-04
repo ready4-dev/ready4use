@@ -2,6 +2,7 @@ renew_Ready4useDyad <- function(x,
                                 arrange_by_1L_chr = c("category", "name", "both"),
                                 categories_chr = character(0),
                                 drop_chr = character(0),
+                                dictionary_lups_ls = list(),
                                 dictionary_r3 = ready4use_dictionary(), # new_cases_r3 = ready4use_dictionary(),
                                 dummys_ls = NULL,
                                 factors_chr = character(0),
@@ -9,8 +10,6 @@ renew_Ready4useDyad <- function(x,
                                 fn_args_ls = NULL,
                                 names_chr = character(0),
                                 new_val_xx = NULL,
-
-
                                 remove_old_lbls_1L_lgl = T,
                                 tfmn_1L_chr = "capitalise",
                                 type_1L_chr = c("label", "base", "case", "drop", "dummys", "join", "keep", "levels", "mutate", "rbind", "unlabel"),
@@ -20,6 +19,8 @@ renew_Ready4useDyad <- function(x,
                                 ...){
   type_1L_chr <- match.arg(type_1L_chr)
   what_1L_chr <- match.arg(what_1L_chr)
+  assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>% purrr::map_lgl(~ready4show::is_ready4show_correspondences(.x)) %>% all())),
+                          msg = "dictionary_lups_ls must be comprised solely of elements that are ready4show_correspondences.")
   if(type_1L_chr %in% c("label", "base", "case",  "dummys",  "levels",  "unlabel")){
     if(type_1L_chr %in% c("label","case")){
       dictionary_tb <- x@dictionary_r3
@@ -78,6 +79,7 @@ renew_Ready4useDyad <- function(x,
       x <- update_dyad(x,
                        arrange_1L_chr = arrange_1L_chr,
                        categories_chr = categories_chr,
+                       dictionary_lups_ls = dictionary_lups_ls,
                        dictionary_r3 = dictionary_r3,
                        fn = fn,
                        fn_args_ls = fn_args_ls,

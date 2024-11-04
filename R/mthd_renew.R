@@ -85,6 +85,7 @@ methods::setMethod("renew", methods::className("ready4use_imports", package = "r
 #' @param arrange_by_1L_chr Arrange by (a character vector of length one), Default: c("category", "name", "both")
 #' @param categories_chr Categories (a character vector), Default: character(0)
 #' @param drop_chr Drop (a character vector), Default: character(0)
+#' @param dictionary_lups_ls Dictionary lookup tables (a list), Default: list()
 #' @param dictionary_r3 Dictionary (a ready4 submodule), Default: ready4use_dictionary()
 #' @param dummys_ls Dummys (a list), Default: NULL
 #' @param factors_chr Factors (a character vector), Default: character(0)
@@ -104,25 +105,31 @@ methods::setMethod("renew", methods::className("ready4use_imports", package = "r
 #' @rdname renew-methods
 #' @aliases renew,Ready4useDyad-method
 #' @export 
+#' @importFrom assertthat assert_that
+#' @importFrom purrr map_lgl reduce map_chr
+#' @importFrom ready4show is_ready4show_correspondences
 #' @importFrom Hmisc capitalize
 #' @importFrom stringr str_to_title
 #' @importFrom ready4 remove_lbls_from_df get_from_lup_obj renew
-#' @importFrom purrr reduce map_chr
 #' @importFrom dplyr pull mutate
 #' @importFrom rlang sym
 #' @importFrom stringi stri_replace_first_fixed
 methods::setMethod("renew", "Ready4useDyad", function (x, arrange_by_1L_chr = c("category", "name", "both"), 
-    categories_chr = character(0), drop_chr = character(0), dictionary_r3 = ready4use_dictionary(), 
-    dummys_ls = NULL, factors_chr = character(0), fn = NULL, 
-    fn_args_ls = NULL, names_chr = character(0), new_val_xx = NULL, 
-    remove_old_lbls_1L_lgl = T, tfmn_1L_chr = "capitalise", type_1L_chr = c("label", 
-        "base", "case", "drop", "dummys", "join", "keep", "levels", 
-        "mutate", "rbind", "unlabel"), uid_var_nm_1L_chr = character(0), 
+    categories_chr = character(0), drop_chr = character(0), dictionary_lups_ls = list(), 
+    dictionary_r3 = ready4use_dictionary(), dummys_ls = NULL, 
+    factors_chr = character(0), fn = NULL, fn_args_ls = NULL, 
+    names_chr = character(0), new_val_xx = NULL, remove_old_lbls_1L_lgl = T, 
+    tfmn_1L_chr = "capitalise", type_1L_chr = c("label", "base", 
+        "case", "drop", "dummys", "join", "keep", "levels", "mutate", 
+        "rbind", "unlabel"), uid_var_nm_1L_chr = character(0), 
     var_ctg_chr = "Uncategorised", what_1L_chr = c("all", "dataset", 
         "dictionary"), ...) 
 {
     type_1L_chr <- match.arg(type_1L_chr)
     what_1L_chr <- match.arg(what_1L_chr)
+    assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>% 
+        purrr::map_lgl(~ready4show::is_ready4show_correspondences(.x)) %>% 
+        all())), msg = "dictionary_lups_ls must be comprised solely of elements that are ready4show_correspondences.")
     if (type_1L_chr %in% c("label", "base", "case", "dummys", 
         "levels", "unlabel")) {
         if (type_1L_chr %in% c("label", "case")) {
@@ -189,9 +196,10 @@ methods::setMethod("renew", "Ready4useDyad", function (x, arrange_by_1L_chr = c(
     }
     if (type_1L_chr %in% c("drop", "keep", "mutate")) {
         x <- update_dyad(x, arrange_1L_chr = arrange_1L_chr, 
-            categories_chr = categories_chr, dictionary_r3 = dictionary_r3, 
-            fn = fn, fn_args_ls = fn_args_ls, names_chr = names_chr, 
-            type_1L_chr = type_1L_chr, what_1L_chr = what_1L_chr)
+            categories_chr = categories_chr, dictionary_lups_ls = dictionary_lups_ls, 
+            dictionary_r3 = dictionary_r3, fn = fn, fn_args_ls = fn_args_ls, 
+            names_chr = names_chr, type_1L_chr = type_1L_chr, 
+            what_1L_chr = what_1L_chr)
     }
     if (type_1L_chr == "join") {
         x <- purrr::reduce(dyad_ls, ~add_with_join(.x, .y))

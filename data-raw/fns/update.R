@@ -193,6 +193,98 @@ update_correspondences <- function(correspondences_ls,
   }
   return(correspondences_ls)
 }
+update_data_dict <- function (X_Ready4useDyad = Ready4useDyad(), dictionary_lups_ls = list(),
+                              arrange_by_1L_chr = c("category", "var_ctg_chr","name", "var_nm_chr", "both", "var_ctg_chr, var_nm_chr"))
+{
+  assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>% purrr::map_lgl(~ready4show::is_ready4show_correspondences(.x)) %>% all())),
+                          msg = "dictionary_lups_ls must be comprised solely of elements that are ready4show_correspondences.")
+  arrange_by_1L_chr <- match.arg(arrange_by_1L_chr)
+  arrange_by_1L_chr <- ifelse(arrange_by_1L_chr == "var_ctg_chr","category",
+                              ifelse(arrange_by_1L_chr == "var_nm_chr", "name",
+                                     ifelse(arrange_by_1L_chr %in% c("both","var_ctg_chr, var_nm_chr"), "category", arrange_by_1L_chr)))
+  if(!identical(dictionary_lups_ls, list())){
+    X_Ready4useDyad <- 1:length(dictionary_lups_ls) %>% purrr::reduce(.init = X_Ready4useDyad,
+                                                                      ~{
+                                                                        var_1L_chr <- names(dictionary_lups_ls)[.y]
+                                                                        values_lup <- dictionary_lups_ls[[.y]]
+                                                                        values_chr <- ready4show::manufacture.ready4show_correspondences(values_lup,
+                                                                                                                                         .x@dictionary_r3$var_nm_chr, flatten_1L_lgl = T)
+                                                                        renewSlot(.x, "dictionary_r3", .x@dictionary_r3 %>%
+                                                                                    dplyr::mutate(`:=`(!!rlang::sym(var_1L_chr),
+                                                                                                       values_chr)))
+                                                                      })
+
+  }
+  X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>%
+    dplyr::arrange(!!rlang::sym(ifelse(arrange_by_1L_chr == "name", "var_nm_chr", "var_ctg_chr")),
+                   !!rlang::sym(ifelse(arrange_by_1L_chr == "name", "var_ctg_chr", "var_nm_chr")))
+  X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>%
+    dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
+
+  return(X_Ready4useDyad)
+}
+update_dyad <- function (X_Ready4useDyad, arrange_1L_chr = c("var_ctg_chr, var_nm_chr",
+                                                             "category", "name", "both"),
+                         categories_chr = character(0),
+                         dictionary_lups_ls = list(),
+                         dictionary_r3 = ready4use_dictionary(),
+                         fn = NULL, fn_args_ls = NULL,
+                         names_chr = character(0),
+                         type_1L_chr = c("keep", "drop", "mutate"),
+                         what_1L_chr = c("all", "dataset", "dictionary")){
+  arrange_1L_chr<- match.arg(arrange_1L_chr)
+  arrange_1L_chr <- ifelse(arrange_1L_chr == "category", "var_ctg_chr",
+                           ifelse(arrange_1L_chr == "name", "var_nm_chr",
+                                  ifelse(arrange_1L_chr == "both", "var_ctg_chr, var_nm_chr", arrange_1L_chr)))
+  type_1L_chr <- match.arg(type_1L_chr)
+  what_1L_chr <- match.arg(what_1L_chr)
+  if (what_1L_chr %in% c("all", "dataset")) {
+    if (type_1L_chr == "mutate") {
+      fn <- dplyr::mutate
+    }
+    if (!is.null(fn)) {
+      if (identical(fn, dplyr::mutate)) {
+        X_Ready4useDyad@ds_tb <- purrr::reduce(1:length(fn_args_ls),
+                                               .init = X_Ready4useDyad@ds_tb, ~fn(.x, `:=`(!!rlang::sym(names(fn_args_ls)[.y]),
+                                                                                           eval(parse(text = fn_args_ls[[.y]])))))
+      }
+      else {
+        X_Ready4useDyad@ds_tb <- rlang::exec(fn, X_Ready4useDyad@ds_tb,
+                                             !!!fn_args_ls)
+      }
+    }
+    if (type_1L_chr %in% c("keep", "drop")) {
+      names_chr <- c(names_chr, X_Ready4useDyad@dictionary_r3 %>%
+                       dplyr::filter(var_ctg_chr %in% categories_chr) %>%
+                       dplyr::pull(var_nm_chr))
+      if (type_1L_chr == "keep") {
+        names_chr <- names(X_Ready4useDyad@ds_tb)[names(X_Ready4useDyad@ds_tb) %in%
+                                                    names_chr]
+      }
+      else {
+        names_chr <- names(X_Ready4useDyad@ds_tb)[!names(X_Ready4useDyad@ds_tb) %in%
+                                                    names_chr]
+      }
+      X_Ready4useDyad@ds_tb <- dplyr::select(X_Ready4useDyad@ds_tb,
+                                             tidyselect::all_of(names_chr))
+    }
+  }
+  if (what_1L_chr %in% c("all", "dictionary")) {
+    if (!identical(dictionary_r3, ready4use_dictionary())) {
+      X_Ready4useDyad@dictionary_r3 <- dplyr::bind_rows(X_Ready4useDyad@dictionary_r3 %>%
+                                                          dplyr::filter(!var_nm_chr %in% dictionary_r3$var_nm_chr),
+                                                        dictionary_r3)
+      X_Ready4useDyad@dictionary_r3 <- eval(parse(text = paste0("dplyr::arrange(X_Ready4useDyad@dictionary_r3,",
+                                                                arrange_1L_chr, ")")))
+    }
+    if(!identical(dictionary_lups_ls, list())){
+      X_Ready4useDyad <- update_data_dict(X_Ready4useDyad, arrange_by_1L_chr = arrange_1L_chr, dictionary_lups_ls = dictionary_lups_ls)
+    }
+    X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>%
+      dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
+  }
+  return(X_Ready4useDyad)
+}
 update_dyad_ls <- function(dyad_ls,
                            add_lups_1L_lgl = F,
                            arrange_1L_chr = c("var_ctg_chr, var_nm_chr"),
@@ -387,53 +479,7 @@ update_dyad_ls <- function(dyad_ls,
   }
   return(dyad_ls)
 }
-update_dyad <- function(X_Ready4useDyad, # Add to ready4use
-                        arrange_1L_chr = c("var_ctg_chr, var_nm_chr", "category", "name", "both"),
-                        categories_chr = character(0),
-                        dictionary_r3 = ready4use_dictionary(),
-                        fn = NULL,
-                        fn_args_ls = NULL,
-                        names_chr = character(0),
-                        type_1L_chr = c("keep","drop", "mutate"),
-                        what_1L_chr = c("all","dataset","dictionary")
-){
-  type_1L_chr <- match.arg(type_1L_chr)
-  type_1L_chr <- ifelse(type_1L_chr=="category","var_ctg_chr",
-                        ifelse(type_1L_chr=="name","var_nm_chr",
-                               ifelse(type_1L_chr=="both","var_ctg_chr, var_nm_chr",type_1L_chr)))
-  what_1L_chr <- match.arg(what_1L_chr)
-  if(what_1L_chr %in% c("all","dataset")){
-    if(type_1L_chr == "mutate"){
-      fn <- dplyr::mutate
-    }
-    if(!is.null(fn)){
-      if(identical(fn, dplyr::mutate)){
-        X_Ready4useDyad@ds_tb <- purrr::reduce(1:length(fn_args_ls), .init = X_Ready4useDyad@ds_tb, ~ fn(.x, !!rlang::sym(names(fn_args_ls)[.y]) := eval(parse(text = fn_args_ls[[.y]]))))
-      }else{
-        X_Ready4useDyad@ds_tb <- rlang::exec(fn, X_Ready4useDyad@ds_tb, !!!fn_args_ls)
-      }
-    }
-    if(type_1L_chr %in% c("keep","drop")){
-      names_chr <- c(names_chr,
-                     X_Ready4useDyad@dictionary_r3 %>% dplyr::filter(var_ctg_chr %in% categories_chr) %>% dplyr::pull(var_nm_chr))
-      if(type_1L_chr == "keep"){
-        names_chr <- names(X_Ready4useDyad@ds_tb)[names(X_Ready4useDyad@ds_tb) %in% names_chr]
-      }else{
-        names_chr <- names(X_Ready4useDyad@ds_tb)[!names(X_Ready4useDyad@ds_tb) %in% names_chr]
-      }
-      X_Ready4useDyad@ds_tb <- dplyr::select(X_Ready4useDyad@ds_tb, tidyselect::all_of(names_chr))
-    }
-  }
-  if(what_1L_chr %in% c("all", "dictionary")){
-    if(!identical(dictionary_r3, ready4use_dictionary())){
-      X_Ready4useDyad@dictionary_r3 <- dplyr::bind_rows(X_Ready4useDyad@dictionary_r3 %>% dplyr::filter(!var_nm_chr %in% dictionary_r3$var_nm_chr),
-                                                        dictionary_r3)
-      X_Ready4useDyad@dictionary_r3 <- eval(parse(text=paste0("dplyr::arrange(X_Ready4useDyad@dictionary_r3,",arrange_1L_chr,")")))
-    }
-    X_Ready4useDyad@dictionary_r3 <- X_Ready4useDyad@dictionary_r3 %>% dplyr::filter(var_nm_chr %in% names(X_Ready4useDyad@ds_tb))
-  }
-  return(X_Ready4useDyad)
-}
+
 update_pairs_ls <- function(pairs_ls,
                             append_ls = NULL,
                             correspondences_r3 = ready4show::ready4show_correspondences(),

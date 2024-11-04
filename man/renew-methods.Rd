@@ -66,6 +66,7 @@ renew.ready4use_imports(
   arrange_by_1L_chr = c("category", "name", "both"),
   categories_chr = character(0),
   drop_chr = character(0),
+  dictionary_lups_ls = list(),
   dictionary_r3 = ready4use_dictionary(),
   dummys_ls = NULL,
   factors_chr = character(0),
@@ -123,6 +124,8 @@ renew.ready4use_imports(
 \item{categories_chr}{Categories (a character vector), Default: character(0)}
 
 \item{drop_chr}{Drop (a character vector), Default: character(0)}
+
+\item{dictionary_lups_ls}{Dictionary lookup tables (a list), Default: list()}
 
 \item{dictionary_r3}{Dictionary (a ready4 submodule), Default: ready4use_dictionary()}
 
