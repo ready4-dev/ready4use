@@ -88,17 +88,23 @@ methods::setMethod("renew", methods::className("ready4use_imports", package = "r
 #' @param dictionary_lups_ls Dictionary lookup tables (a list), Default: list()
 #' @param dictionary_r3 Dictionary (a ready4 submodule), Default: ready4use_dictionary()
 #' @param dummys_ls Dummys (a list), Default: NULL
+#' @param exclude_chr Exclude (a character vector), Default: character(0)
 #' @param factors_chr Factors (a character vector), Default: character(0)
 #' @param fn Function (a function), Default: NULL
 #' @param fn_args_ls Function arguments (a list), Default: NULL
+#' @param lup_tb Lookup table (a tibble), Default: NULL
+#' @param match_var_nm_1L_chr Match variable name (a character vector of length one), Default: character(0)
+#' @param method_1L_chr Method (a character vector of length one), Default: c("first", "sample")
 #' @param names_chr Names (a character vector), Default: character(0)
 #' @param new_val_xx New value (an output object of multiple potential types), Default: NULL
 #' @param remove_old_lbls_1L_lgl Remove old labels (a logical vector of length one), Default: T
 #' @param tfmn_1L_chr Transformation (a character vector of length one), Default: 'capitalise'
 #' @param type_1L_chr Type (a character vector of length one), Default: c("label", "base", "case", "drop", "dummys", "join", "keep", 
-#'    "levels", "mutate", "rbind", "unlabel")
+#'    "levels", "mutate", "new", "rbind", "unlabel", "update", 
+#'    "sequential", "batch", "self")
 #' @param uid_var_nm_1L_chr Unique identifier variable name (a character vector of length one), Default: character(0)
 #' @param var_ctg_chr Variable category (a character vector), Default: 'Uncategorised'
+#' @param vars_chr Variables (a character vector), Default: character(0)
 #' @param what_1L_chr What (a character vector of length one), Default: c("all", "dataset", "dictionary")
 #' @param ... Additional arguments
 #' @return x (An object of class Ready4useDyad)
@@ -117,21 +123,23 @@ methods::setMethod("renew", methods::className("ready4use_imports", package = "r
 methods::setMethod("renew", "Ready4useDyad", function (x, arrange_by_1L_chr = c("category", "name", "both"), 
     categories_chr = character(0), drop_chr = character(0), dictionary_lups_ls = list(), 
     dictionary_r3 = ready4use_dictionary(), dummys_ls = NULL, 
-    factors_chr = character(0), fn = NULL, fn_args_ls = NULL, 
-    names_chr = character(0), new_val_xx = NULL, remove_old_lbls_1L_lgl = T, 
-    tfmn_1L_chr = "capitalise", type_1L_chr = c("label", "base", 
-        "case", "drop", "dummys", "join", "keep", "levels", "mutate", 
-        "rbind", "unlabel"), uid_var_nm_1L_chr = character(0), 
-    var_ctg_chr = "Uncategorised", what_1L_chr = c("all", "dataset", 
-        "dictionary"), ...) 
+    exclude_chr = character(0), factors_chr = character(0), fn = NULL, 
+    fn_args_ls = NULL, lup_tb = NULL, match_var_nm_1L_chr = character(0), 
+    method_1L_chr = c("first", "sample"), names_chr = character(0), 
+    new_val_xx = NULL, remove_old_lbls_1L_lgl = T, tfmn_1L_chr = "capitalise", 
+    type_1L_chr = c("label", "base", "case", "drop", "dummys", 
+        "join", "keep", "levels", "mutate", "new", "rbind", "unlabel", 
+        "update", "sequential", "batch", "self"), uid_var_nm_1L_chr = character(0), 
+    var_ctg_chr = "Uncategorised", vars_chr = character(0), what_1L_chr = c("all", 
+        "dataset", "dictionary"), ...) 
 {
     type_1L_chr <- match.arg(type_1L_chr)
     what_1L_chr <- match.arg(what_1L_chr)
     assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>% 
         purrr::map_lgl(~ready4show::is_ready4show_correspondences(.x)) %>% 
         all())), msg = "dictionary_lups_ls must be comprised solely of elements that are ready4show_correspondences.")
-    if (type_1L_chr %in% c("label", "base", "case", "dummys", 
-        "levels", "unlabel")) {
+    if (what_1L_chr %in% c("all", "dataset") & type_1L_chr %in% 
+        c("label", "base", "case", "dummys", "levels", "unlabel")) {
         if (type_1L_chr %in% c("label", "case")) {
             dictionary_tb <- x@dictionary_r3
             if (tfmn_1L_chr == "capitalise") {
@@ -189,17 +197,21 @@ methods::setMethod("renew", "Ready4useDyad", function (x, arrange_by_1L_chr = c(
             dyad_ls <- list(x) %>% append(dyad_ls)
         }
     }
-    if (type_1L_chr == "dictionary") {
+    if (what_1L_chr == "dictionary" & type_1L_chr == "new") {
         x <- add_dictionary(x, new_cases_r3 = dictionary_r3, 
             var_ctg_chr = var_ctg_chr, arrange_by_1L_chr = ifelse(arrange_by_1L_chr == 
                 "both", "category", arrange_by_1L_chr))
     }
-    if (type_1L_chr %in% c("drop", "keep", "mutate")) {
-        x <- update_dyad(x, arrange_1L_chr = arrange_1L_chr, 
+    if (type_1L_chr %in% c("drop", "keep", "mutate", "sequential", 
+        "batch", "self") | (what_1L_chr == "dictionary" & type_1L_chr == 
+        "update")) {
+        x <- update_dyad(x, arrange_1L_chr = arrange_by_1L_chr, 
             categories_chr = categories_chr, dictionary_lups_ls = dictionary_lups_ls, 
             dictionary_r3 = dictionary_r3, fn = fn, fn_args_ls = fn_args_ls, 
+            exclude_chr = exclude_chr, lup_prototype_tb = lup_tb, 
+            match_var_nm_1L_chr = match_var_nm_1L_chr, method_1L_chr = method_1L_chr, 
             names_chr = names_chr, type_1L_chr = type_1L_chr, 
-            what_1L_chr = what_1L_chr)
+            vars_chr = vars_chr, what_1L_chr = what_1L_chr)
     }
     if (type_1L_chr == "join") {
         x <- purrr::reduce(dyad_ls, ~add_with_join(.x, .y))

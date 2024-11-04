@@ -10,6 +10,7 @@
 #' @importFrom purrr map_chr
 #' @importFrom dplyr pull arrange filter
 #' @importFrom rlang sym
+#' @keywords internal
 add_dictionary <- function (X_Ready4useDyad = Ready4useDyad(), new_cases_r3 = ready4use_dictionary(), 
     var_ctg_chr = "Uncategorised", arrange_by_1L_chr = c("category", 
         "name")) 
@@ -347,6 +348,7 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
 #' @rdname add_with_join
 #' @export 
 #' @importFrom dplyr left_join filter
+#' @keywords internal
 add_with_join <- function (X_Ready4useDyad, Y_Ready4useDyad) 
 {
     X_Ready4useDyad@ds_tb <- dplyr::left_join(X_Ready4useDyad@ds_tb, 

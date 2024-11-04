@@ -69,17 +69,22 @@ renew.ready4use_imports(
   dictionary_lups_ls = list(),
   dictionary_r3 = ready4use_dictionary(),
   dummys_ls = NULL,
+  exclude_chr = character(0),
   factors_chr = character(0),
   fn = NULL,
   fn_args_ls = NULL,
+  lup_tb = NULL,
+  match_var_nm_1L_chr = character(0),
+  method_1L_chr = c("first", "sample"),
   names_chr = character(0),
   new_val_xx = NULL,
   remove_old_lbls_1L_lgl = T,
   tfmn_1L_chr = "capitalise",
   type_1L_chr = c("label", "base", "case", "drop", "dummys", "join", "keep", "levels",
-    "mutate", "rbind", "unlabel"),
+    "mutate", "new", "rbind", "unlabel", "update", "sequential", "batch", "self"),
   uid_var_nm_1L_chr = character(0),
   var_ctg_chr = "Uncategorised",
+  vars_chr = character(0),
   what_1L_chr = c("all", "dataset", "dictionary"),
   ...
 )
@@ -131,11 +136,19 @@ renew.ready4use_imports(
 
 \item{dummys_ls}{Dummys (a list), Default: NULL}
 
+\item{exclude_chr}{Exclude (a character vector), Default: character(0)}
+
 \item{factors_chr}{Factors (a character vector), Default: character(0)}
 
 \item{fn}{Function (a function), Default: NULL}
 
 \item{fn_args_ls}{Function arguments (a list), Default: NULL}
+
+\item{lup_tb}{Lookup table (a tibble), Default: NULL}
+
+\item{match_var_nm_1L_chr}{Match variable name (a character vector of length one), Default: character(0)}
+
+\item{method_1L_chr}{Method (a character vector of length one), Default: c("first", "sample")}
 
 \item{names_chr}{Names (a character vector), Default: character(0)}
 
@@ -146,9 +159,12 @@ renew.ready4use_imports(
 \item{tfmn_1L_chr}{Transformation (a character vector of length one), Default: 'capitalise'}
 
 \item{type_1L_chr}{Type (a character vector of length one), Default: c("label", "base", "case", "drop", "dummys", "join", "keep",
-"levels", "mutate", "rbind", "unlabel")}
+"levels", "mutate", "new", "rbind", "unlabel", "update",
+"sequential", "batch", "self")}
 
 \item{uid_var_nm_1L_chr}{Unique identifier variable name (a character vector of length one), Default: character(0)}
+
+\item{vars_chr}{Variables (a character vector), Default: character(0)}
 
 \item{what_1L_chr}{What (a character vector of length one), Default: c("all", "dataset", "dictionary")}
 

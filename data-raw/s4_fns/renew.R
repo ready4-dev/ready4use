@@ -5,23 +5,29 @@ renew_Ready4useDyad <- function(x,
                                 dictionary_lups_ls = list(),
                                 dictionary_r3 = ready4use_dictionary(), # new_cases_r3 = ready4use_dictionary(),
                                 dummys_ls = NULL,
+                                exclude_chr = character(0),
                                 factors_chr = character(0),
                                 fn = NULL,
                                 fn_args_ls = NULL,
+                                lup_tb = NULL,
+                                match_var_nm_1L_chr = character(0),
+                                method_1L_chr = c("first", "sample"),
                                 names_chr = character(0),
                                 new_val_xx = NULL,
                                 remove_old_lbls_1L_lgl = T,
                                 tfmn_1L_chr = "capitalise",
-                                type_1L_chr = c("label", "base", "case", "drop", "dummys", "join", "keep", "levels", "mutate", "rbind", "unlabel"),
+                                type_1L_chr = c("label", "base", "case", "drop", "dummys", "join", "keep", "levels", "mutate", "new", "rbind", "unlabel", "update",
+                                                "sequential", "batch", "self"),
                                 uid_var_nm_1L_chr = character(0),
                                 var_ctg_chr = "Uncategorised",
+                                vars_chr = character(0),
                                 what_1L_chr = c("all", "dataset", "dictionary"),
                                 ...){
   type_1L_chr <- match.arg(type_1L_chr)
   what_1L_chr <- match.arg(what_1L_chr)
   assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>% purrr::map_lgl(~ready4show::is_ready4show_correspondences(.x)) %>% all())),
                           msg = "dictionary_lups_ls must be comprised solely of elements that are ready4show_correspondences.")
-  if(type_1L_chr %in% c("label", "base", "case",  "dummys",  "levels",  "unlabel")){
+  if(what_1L_chr %in% c("all", "dataset") & type_1L_chr %in% c("label", "base", "case",  "dummys",  "levels",  "unlabel")){
     if(type_1L_chr %in% c("label","case")){
       dictionary_tb <- x@dictionary_r3
       if(tfmn_1L_chr == "capitalise"){
@@ -69,22 +75,27 @@ renew_Ready4useDyad <- function(x,
     }
   }
   # add_dictionary, add_with_join,
-  if(type_1L_chr == "dictionary"){
+  if(what_1L_chr == "dictionary" & type_1L_chr == "new"){
     x <- add_dictionary(x,
                         new_cases_r3 = dictionary_r3,
                         var_ctg_chr = var_ctg_chr,
-                        arrange_by_1L_chr = ifelse(arrange_by_1L_chr=="both","category",arrange_by_1L_chr))
+                        arrange_by_1L_chr = ifelse(arrange_by_1L_chr=="both", "category", arrange_by_1L_chr))
   }
-  if(type_1L_chr %in% c("drop", "keep", "mutate")){ # "rbind"
+  if(type_1L_chr %in% c("drop", "keep", "mutate", "sequential", "batch", "self") | (what_1L_chr == "dictionary" & type_1L_chr == "update")){ # "rbind"
       x <- update_dyad(x,
-                       arrange_1L_chr = arrange_1L_chr,
+                       arrange_1L_chr = arrange_by_1L_chr,
                        categories_chr = categories_chr,
                        dictionary_lups_ls = dictionary_lups_ls,
                        dictionary_r3 = dictionary_r3,
                        fn = fn,
                        fn_args_ls = fn_args_ls,
+                       exclude_chr = exclude_chr,
+                       lup_prototype_tb = lup_tb,
+                       match_var_nm_1L_chr = match_var_nm_1L_chr,
+                       method_1L_chr = method_1L_chr,
                        names_chr =  names_chr,
                        type_1L_chr = type_1L_chr,#c("keep","drop", "mutate")
+                       vars_chr = vars_chr,
                        what_1L_chr = what_1L_chr)
     }
   if(type_1L_chr == "join"){

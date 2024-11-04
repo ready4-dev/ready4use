@@ -223,14 +223,19 @@ update_data_dict <- function (X_Ready4useDyad = Ready4useDyad(), dictionary_lups
 
   return(X_Ready4useDyad)
 }
-update_dyad <- function (X_Ready4useDyad, arrange_1L_chr = c("var_ctg_chr, var_nm_chr",
-                                                             "category", "name", "both"),
+update_dyad <- function (X_Ready4useDyad,
+                         arrange_1L_chr = c("var_ctg_chr, var_nm_chr", "category", "name", "both", "var_ctg_chr", "var_nm_chr"),
                          categories_chr = character(0),
                          dictionary_lups_ls = list(),
                          dictionary_r3 = ready4use_dictionary(),
+                         exclude_chr = character(0),
                          fn = NULL, fn_args_ls = NULL,
+                         lup_prototype_tb = NULL,
+                         match_var_nm_1L_chr = character(0),
+                         method_1L_chr = c("first", "sample"),
                          names_chr = character(0),
-                         type_1L_chr = c("keep", "drop", "mutate"),
+                         type_1L_chr = c("keep", "drop", "mutate", "update", "sequential", "batch", "self"),
+                         vars_chr = character(0),
                          what_1L_chr = c("all", "dataset", "dictionary")){
   arrange_1L_chr<- match.arg(arrange_1L_chr)
   arrange_1L_chr <- ifelse(arrange_1L_chr == "category", "var_ctg_chr",
@@ -241,6 +246,19 @@ update_dyad <- function (X_Ready4useDyad, arrange_1L_chr = c("var_ctg_chr, var_n
   if (what_1L_chr %in% c("all", "dataset")) {
     if (type_1L_chr == "mutate") {
       fn <- dplyr::mutate
+    }
+    if(type_1L_chr %in% c("sequential", "batch", "self")){
+      fn <- add_from_lup_prototype
+      if(is.null(fn_args_ls)){
+        fn_args_ls <- list
+      }
+      fn_args_ls <- append(fn_args_ls, # allows for ds_tb specific arrange to be passed.
+                           list(exclude_chr = exclude_chr,
+                                lup_prototype_tb = lup_prototype_tb,
+                                match_var_nm_1L_chr = match_var_nm_1L_chr,
+                                method_1L_chr = method_1L_chr,
+                                type_1L_chr = type_1L_chr,
+                                vars_chr = vars_chr) %>% purrr::discard_at(names(fn_args_ls)))
     }
     if (!is.null(fn)) {
       if (identical(fn, dplyr::mutate)) {
