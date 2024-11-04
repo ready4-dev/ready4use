@@ -38,27 +38,26 @@ make_correspondences <- function(dyad_ls, #manufacture method
   }
   return(correspondences_ls)
 }
-make_imputed_distinct_cases <- function(data_tb,
-                                        method_1L_chr = c("first","sample"),
-                                        uid_1L_chr = "UID_chr"){
+make_imputed_distinct_cases <- function (data_tb, method_1L_chr = c("first", "sample"), uid_1L_chr = "UID_chr"){
   method_1L_chr <- match.arg(method_1L_chr)
-  distinct_tb <- data_tb %>%
-    dplyr::filter(!is.na(!!rlang::sym(uid_1L_chr))) %>% dplyr::distinct()
-  most_complete_tb <- distinct_tb %>% dplyr::filter(!!rlang::sym(uid_1L_chr) %in% distinct_tb[,uid_1L_chr][[1]][duplicated(distinct_tb[,uid_1L_chr][[1]])]) %>%
+  distinct_tb <- data_tb %>% dplyr::filter(!is.na(!!rlang::sym(uid_1L_chr))) %>%
+    dplyr::distinct()
+  most_complete_tb <- distinct_tb %>% dplyr::filter(!!rlang::sym(uid_1L_chr) %in%
+                                                      distinct_tb[, uid_1L_chr][[1]][duplicated(distinct_tb[,
+                                                                                                            uid_1L_chr][[1]])]) %>%
     dplyr::group_by(!!rlang::sym(uid_1L_chr)) %>%
-    dplyr::summarise(dplyr::across(dplyr::everything(),
-                                   ~
-                                     if(method_1L_chr=="first"){
-                                       .x[which(!is.na(.x))[1]]
-                                     }else{
-                                       ifelse(identical(which(!is.na(.x)), integer(0)), .x[1],.x[which(!is.na(.x)) %>% sample(1)])
-                                     }
-
-                                   #
-    )) %>%
-    dplyr::ungroup()
-  distinct_tb <- distinct_tb %>% dplyr::filter(!(!!rlang::sym(uid_1L_chr) %in% most_complete_tb[,uid_1L_chr][[1]])) %>%
-    dplyr::bind_rows(most_complete_tb)
+    dplyr::summarise(dplyr::across(dplyr::everything(), ~if (method_1L_chr == "first") {
+      .x[which(!is.na(.x))[1]]
+    }
+    else {
+      if(identical(which(!is.na(.x)), integer(0))){
+        .x[1]
+      }else{
+        .x[which(!is.na(.x)) %>% sample(1)]
+      }
+    })) %>% dplyr::ungroup()
+  distinct_tb <- distinct_tb %>% dplyr::filter(!(!!rlang::sym(uid_1L_chr) %in%
+                                                   most_complete_tb[, uid_1L_chr][[1]])) %>% dplyr::bind_rows(most_complete_tb)
   return(distinct_tb)
 }
 make_keep_lgl <- function(ds_tb,

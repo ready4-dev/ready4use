@@ -79,8 +79,12 @@ make_imputed_distinct_cases <- function (data_tb, method_1L_chr = c("first", "sa
             .x[which(!is.na(.x))[1]]
         }
         else {
-            ifelse(identical(which(!is.na(.x)), integer(0)), 
-                .x[1], .x[which(!is.na(.x)) %>% sample(1)])
+            if (identical(which(!is.na(.x)), integer(0))) {
+                .x[1]
+            }
+            else {
+                .x[which(!is.na(.x)) %>% sample(1)]
+            }
         })) %>% dplyr::ungroup()
     distinct_tb <- distinct_tb %>% dplyr::filter(!(!!rlang::sym(uid_1L_chr) %in% 
         most_complete_tb[, uid_1L_chr][[1]])) %>% dplyr::bind_rows(most_complete_tb)

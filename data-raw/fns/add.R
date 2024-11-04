@@ -143,8 +143,7 @@ add_fields_from_lup <- function(ds_tb,
 }
 add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
                              key_1L_chr = Sys.getenv("DATAVERSE_KEY"),
-                             server_1L_chr = Sys.getenv("DATAVERSE_SERVER"))
-{
+                             server_1L_chr = Sys.getenv("DATAVERSE_SERVER")){
   lifecycle::deprecate_soft("0.0.0.9149", "add_files_to_dv()", "ready4::write_to_dv_from_tbl()")
   ds_ls <- dataverse::get_dataset(ds_url_1L_chr)
   is_draft_1L_lgl <- ds_ls$versionState == "DRAFT"
@@ -164,50 +163,44 @@ add_files_to_dv <- function (files_tb, data_dir_rt_1L_chr = ".", ds_url_1L_chr,
   })
   return(fl_ids_int)
 }
-add_from_lup_prototype <- function(data_tb,
-                                   arrange_1L_chr = character(0),
-                                   exclude_chr = character(0),
-                                   lup_prototype_tb = NULL,
-                                   match_var_nm_1L_chr = "UID_chr",
-                                   method_1L_chr = c("first", "sample"),
-                                   type_1L_chr = c("sequential", "batch", "self"),
-                                   vars_chr = character(0)){
+add_from_lup_prototype <- function (data_tb, arrange_1L_chr = character(0), exclude_chr = character(0),
+                                    lup_prototype_tb = NULL, match_var_nm_1L_chr = "UID_chr",
+                                    method_1L_chr = c("first", "sample"), type_1L_chr = c("sequential",
+                                                                                          "batch", "self"), vars_chr = character(0)){
   method_1L_chr <- match.arg(method_1L_chr)
   type_1L_chr <- match.arg(type_1L_chr)
-  if(type_1L_chr == "sequential"){
-    data_tb <- purrr::reduce(vars_chr,
-                             .init = data_tb,
-                             ~ .x %>%
-                               dplyr::left_join(lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>% dplyr::distinct()))
+  if (type_1L_chr == "sequential") {
+    data_tb <- purrr::reduce(vars_chr, .init = data_tb, ~.x %>%
+                               dplyr::left_join(lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,
+                                                                                                        .y))) %>% dplyr::distinct()))
   }
-  if(type_1L_chr == "batch"){
-    distinct_tb <- lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,setdiff(setdiff(names(lup_prototype_tb), names(data_tb)), exclude_chr)))) %>%
-      make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
-                                  method_1L_chr = method_1L_chr)
-    data_tb <- data_tb %>%
-      dplyr::left_join(distinct_tb)
+  if (type_1L_chr == "batch") {
+    distinct_tb <- lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,
+                                                                           setdiff(setdiff(names(lup_prototype_tb), names(data_tb)),
+                                                                                   exclude_chr)))) %>% make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
+                                                                                                                                   method_1L_chr = method_1L_chr)
+    data_tb <- data_tb %>% dplyr::left_join(distinct_tb)
   }
-  if(type_1L_chr == "self"){
-     if(identical(vars_chr, character(0))){
-      vars_chr <- setdiff(names(data_tb), c(match_var_nm_1L_chr, exclude_chr))
+  if (type_1L_chr == "self") {
+    if (identical(vars_chr, character(0))) {
+      vars_chr <- setdiff(names(data_tb), c(match_var_nm_1L_chr,
+                                            exclude_chr))
     }
-    data_tb <- purrr::reduce(vars_chr,
-                             .init = data_tb,
-                             ~ {
-                               distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, .y))) %>%
-                                 make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
-                                                             method_1L_chr = method_1L_chr)
-                               complete_tb <- .x %>%
-                                 dplyr::filter(!is.na(!!rlang::sym(.y)))
-                               missing_tb <- .x %>%
-                                 dplyr::filter(is.na(!!rlang::sym(.y)))
-                               imputed_tb <- missing_tb %>% dplyr::select(-tidyselect::all_of(.y)) %>%
-                                 dplyr::left_join(distinct_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,.y))))
-                               dplyr::bind_rows(complete_tb, imputed_tb)
-                             }
-    )
+    # excuded_tb <-
+    data_tb <- purrr::reduce(vars_chr, .init = data_tb, ~{
+      distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,
+                                                               .y))) %>%
+        make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr,
+                                    method_1L_chr = method_1L_chr)
+      complete_tb <- .x %>% dplyr::filter(!is.na(!!rlang::sym(.y)))
+      missing_tb <- .x %>% dplyr::filter(is.na(!!rlang::sym(.y)))
+      imputed_tb <- missing_tb %>% dplyr::select(-tidyselect::all_of(.y)) %>%
+        dplyr::left_join(distinct_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr,
+                                                                            .y))))
+      dplyr::bind_rows(complete_tb, imputed_tb)
+    })
   }
-  if(!identical(arrange_1L_chr, character(0)))
+  if (!identical(arrange_1L_chr, character(0)))
     data_tb <- data_tb %>% dplyr::arrange(!!rlang::sym(arrange_1L_chr))
   return(data_tb)
 }
