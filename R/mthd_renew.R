@@ -134,6 +134,7 @@ methods::setMethod("renew", "Ready4useDyad", function (x, arrange_by_1L_chr = c(
     var_ctg_chr = "Uncategorised", vars_chr = character(0), what_1L_chr = c("all",
         "dataset", "dictionary"), ...)
 {
+    arrange_by_1L_chr <- match.arg(arrange_by_1L_chr)
     type_1L_chr <- match.arg(type_1L_chr)
     what_1L_chr <- match.arg(what_1L_chr)
     assertthat::assert_that((is.list(dictionary_lups_ls) & (dictionary_lups_ls %>%
