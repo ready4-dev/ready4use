@@ -69,6 +69,7 @@ renew.ready4use_imports(
   dictionary_lups_ls = list(),
   dictionary_r3 = ready4use_dictionary(),
   dummys_ls = NULL,
+  dyad_ls = NULL,
   exclude_chr = character(0),
   factors_chr = character(0),
   fn = NULL,
@@ -135,6 +136,8 @@ renew.ready4use_imports(
 \item{dictionary_r3}{Dictionary (a ready4 submodule), Default: ready4use_dictionary()}
 
 \item{dummys_ls}{Dummys (a list), Default: NULL}
+
+\item{dyad_ls}{Dummys (a list), Default: NULL}
 
 \item{exclude_chr}{Exclude (a character vector), Default: character(0)}
 
