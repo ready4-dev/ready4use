@@ -11,7 +11,7 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9242</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9243</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,17 +114,22 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 <span>  dictionary_lups_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  dictionary_r3 <span class="op">=</span> <span class="fu"><a href="ready4use_dictionary.html">ready4use_dictionary</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  dummys_ls <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  exclude_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  factors_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  fn <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  fn_args_ls <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  lup_tb <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  match_var_nm_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  method_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"sample"</span><span class="op">)</span>,</span>
 <span>  names_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  new_val_xx <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  remove_old_lbls_1L_lgl <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>  tfmn_1L_chr <span class="op">=</span> <span class="st">"capitalise"</span>,</span>
 <span>  type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"label"</span>, <span class="st">"base"</span>, <span class="st">"case"</span>, <span class="st">"drop"</span>, <span class="st">"dummys"</span>, <span class="st">"join"</span>, <span class="st">"keep"</span>, <span class="st">"levels"</span>,</span>
-<span>    <span class="st">"mutate"</span>, <span class="st">"rbind"</span>, <span class="st">"unlabel"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"mutate"</span>, <span class="st">"new"</span>, <span class="st">"rbind"</span>, <span class="st">"unlabel"</span>, <span class="st">"update"</span>, <span class="st">"sequential"</span>, <span class="st">"batch"</span>, <span class="st">"self"</span><span class="op">)</span>,</span>
 <span>  uid_var_nm_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  var_ctg_chr <span class="op">=</span> <span class="st">"Uncategorised"</span>,</span>
+<span>  vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  what_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"dataset"</span>, <span class="st">"dictionary"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -226,6 +231,10 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 <dd><p>Dummys (a list), Default: NULL</p></dd>
 
 
+<dt id="arg-exclude-chr">exclude_chr<a class="anchor" aria-label="anchor" href="#arg-exclude-chr"></a></dt>
+<dd><p>Exclude (a character vector), Default: character(0)</p></dd>
+
+
 <dt id="arg-factors-chr">factors_chr<a class="anchor" aria-label="anchor" href="#arg-factors-chr"></a></dt>
 <dd><p>Factors (a character vector), Default: character(0)</p></dd>
 
@@ -236,6 +245,18 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 
 <dt id="arg-fn-args-ls">fn_args_ls<a class="anchor" aria-label="anchor" href="#arg-fn-args-ls"></a></dt>
 <dd><p>Function arguments (a list), Default: NULL</p></dd>
+
+
+<dt id="arg-lup-tb">lup_tb<a class="anchor" aria-label="anchor" href="#arg-lup-tb"></a></dt>
+<dd><p>Lookup table (a tibble), Default: NULL</p></dd>
+
+
+<dt id="arg-match-var-nm-l-chr">match_var_nm_1L_chr<a class="anchor" aria-label="anchor" href="#arg-match-var-nm-l-chr"></a></dt>
+<dd><p>Match variable name (a character vector of length one), Default: character(0)</p></dd>
+
+
+<dt id="arg-method-l-chr">method_1L_chr<a class="anchor" aria-label="anchor" href="#arg-method-l-chr"></a></dt>
+<dd><p>Method (a character vector of length one), Default: c("first", "sample")</p></dd>
 
 
 <dt id="arg-names-chr">names_chr<a class="anchor" aria-label="anchor" href="#arg-names-chr"></a></dt>
@@ -256,11 +277,16 @@ renew method applied to Ready4useDyad"><meta property="og:image" content="https:
 
 <dt id="arg-type-l-chr">type_1L_chr<a class="anchor" aria-label="anchor" href="#arg-type-l-chr"></a></dt>
 <dd><p>Type (a character vector of length one), Default: c("label", "base", "case", "drop", "dummys", "join", "keep",
-"levels", "mutate", "rbind", "unlabel")</p></dd>
+"levels", "mutate", "new", "rbind", "unlabel", "update",
+"sequential", "batch", "self")</p></dd>
 
 
 <dt id="arg-uid-var-nm-l-chr">uid_var_nm_1L_chr<a class="anchor" aria-label="anchor" href="#arg-uid-var-nm-l-chr"></a></dt>
 <dd><p>Unique identifier variable name (a character vector of length one), Default: character(0)</p></dd>
+
+
+<dt id="arg-vars-chr">vars_chr<a class="anchor" aria-label="anchor" href="#arg-vars-chr"></a></dt>
+<dd><p>Variables (a character vector), Default: character(0)</p></dd>
 
 
 <dt id="arg-what-l-chr">what_1L_chr<a class="anchor" aria-label="anchor" href="#arg-what-l-chr"></a></dt>

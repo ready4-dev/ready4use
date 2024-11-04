@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ready4use</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9242</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9243</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,14 +47,20 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">update_dyad</span><span class="op">(</span></span>
 <span>  <span class="va">X_Ready4useDyad</span>,</span>
-<span>  arrange_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var_ctg_chr, var_nm_chr"</span>, <span class="st">"category"</span>, <span class="st">"name"</span>, <span class="st">"both"</span><span class="op">)</span>,</span>
+<span>  arrange_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var_ctg_chr, var_nm_chr"</span>, <span class="st">"category"</span>, <span class="st">"name"</span>, <span class="st">"both"</span>,</span>
+<span>    <span class="st">"var_ctg_chr"</span>, <span class="st">"var_nm_chr"</span><span class="op">)</span>,</span>
 <span>  categories_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  dictionary_lups_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  dictionary_r3 <span class="op">=</span> <span class="fu"><a href="ready4use_dictionary.html">ready4use_dictionary</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  exclude_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  fn <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  fn_args_ls <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  lup_prototype_tb <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  match_var_nm_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  method_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"sample"</span><span class="op">)</span>,</span>
 <span>  names_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"drop"</span>, <span class="st">"mutate"</span><span class="op">)</span>,</span>
+<span>  type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"drop"</span>, <span class="st">"mutate"</span>, <span class="st">"update"</span>, <span class="st">"sequential"</span>, <span class="st">"batch"</span>, <span class="st">"self"</span><span class="op">)</span>,</span>
+<span>  vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  what_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"dataset"</span>, <span class="st">"dictionary"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -68,7 +74,8 @@
 
 
 <dt id="arg-arrange-l-chr">arrange_1L_chr<a class="anchor" aria-label="anchor" href="#arg-arrange-l-chr"></a></dt>
-<dd><p>Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr", "category", "name", "both")</p></dd>
+<dd><p>Arrange (a character vector of length one), Default: c("var_ctg_chr, var_nm_chr", "category", "name", "both", "var_ctg_chr",
+"var_nm_chr")</p></dd>
 
 
 <dt id="arg-categories-chr">categories_chr<a class="anchor" aria-label="anchor" href="#arg-categories-chr"></a></dt>
@@ -83,6 +90,10 @@
 <dd><p>Dictionary (a ready4 submodule), Default: ready4use_dictionary()</p></dd>
 
 
+<dt id="arg-exclude-chr">exclude_chr<a class="anchor" aria-label="anchor" href="#arg-exclude-chr"></a></dt>
+<dd><p>Exclude (a character vector), Default: character(0)</p></dd>
+
+
 <dt id="arg-fn">fn<a class="anchor" aria-label="anchor" href="#arg-fn"></a></dt>
 <dd><p>Function (a function), Default: NULL</p></dd>
 
@@ -91,12 +102,29 @@
 <dd><p>Function arguments (a list), Default: NULL</p></dd>
 
 
+<dt id="arg-lup-prototype-tb">lup_prototype_tb<a class="anchor" aria-label="anchor" href="#arg-lup-prototype-tb"></a></dt>
+<dd><p>Lookup table prototype (a tibble), Default: NULL</p></dd>
+
+
+<dt id="arg-match-var-nm-l-chr">match_var_nm_1L_chr<a class="anchor" aria-label="anchor" href="#arg-match-var-nm-l-chr"></a></dt>
+<dd><p>Match variable name (a character vector of length one), Default: character(0)</p></dd>
+
+
+<dt id="arg-method-l-chr">method_1L_chr<a class="anchor" aria-label="anchor" href="#arg-method-l-chr"></a></dt>
+<dd><p>Method (a character vector of length one), Default: c("first", "sample")</p></dd>
+
+
 <dt id="arg-names-chr">names_chr<a class="anchor" aria-label="anchor" href="#arg-names-chr"></a></dt>
 <dd><p>Names (a character vector), Default: character(0)</p></dd>
 
 
 <dt id="arg-type-l-chr">type_1L_chr<a class="anchor" aria-label="anchor" href="#arg-type-l-chr"></a></dt>
-<dd><p>Type (a character vector of length one), Default: c("keep", "drop", "mutate")</p></dd>
+<dd><p>Type (a character vector of length one), Default: c("keep", "drop", "mutate", "update", "sequential", "batch",
+"self")</p></dd>
+
+
+<dt id="arg-vars-chr">vars_chr<a class="anchor" aria-label="anchor" href="#arg-vars-chr"></a></dt>
+<dd><p>Variables (a character vector), Default: character(0)</p></dd>
 
 
 <dt id="arg-what-l-chr">what_1L_chr<a class="anchor" aria-label="anchor" href="#arg-what-l-chr"></a></dt>
