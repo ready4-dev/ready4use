@@ -1,6 +1,6 @@
 Package: ready4use
 Title: Ingest, Label, Visualise and Share Health Economic Model Datasets
-Version: 0.0.0.9244
+Version: 0.0.0.9245
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton1@monash.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-7407-9194")),
