@@ -284,8 +284,8 @@ plot_for_journal <- function (data_tb,
   if ((what_1L_chr %in% c("donutchart", "pie") & identical(by_1L_chr,
                                                            character(0))) | (what_1L_chr %in% c("barplot") & identical(y_1L_chr,
                                                                                                                        character(0)))) {
-    data_xx <- table(data_xx %>% dplyr::select(tidyselect::any_of(c(x_1L_chr,
-                                                                    by_1L_chr))), useNA = "ifany") %>% tibble::as_tibble() %>%
+    data_xx <- table(data_xx %>% dplyr::select(tidyselect::any_of(unique(c(x_1L_chr, by_1L_chr)) #####
+                                                                  )), useNA = "ifany") %>% tibble::as_tibble() %>%
       dplyr::rename(Freq = n)
     if (drop_missing_1L_lgl) {
       data_xx <- tidyr::drop_na(data_xx, tidyselect::any_of(c(x_1L_chr,
@@ -296,9 +296,11 @@ plot_for_journal <- function (data_tb,
     new_by_1L_chr <- ifelse(what_1L_chr %in% c("donutchart",
                                                "pie"), x_1L_chr, by_1L_chr)
   }
-  if(what_1L_chr %in% c("barplot") & !identical(by_1L_chr, x_1L_chr) & !identical(by_1L_chr, character(0)) & as_percent_1L_lgl){
+  if(what_1L_chr %in% c("barplot") & as_percent_1L_lgl){ ####
     y_1L_chr <- ifelse(identical(y_1L_chr, character(0)), "Freq", y_1L_chr)
-    data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(by_1L_chr))
+    if(!identical(by_1L_chr, x_1L_chr) & !identical(by_1L_chr, character(0))){
+      data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(by_1L_chr))
+    }
     data_xx <- data_xx %>% dplyr::mutate(Percent = (!!rlang::sym(y_1L_chr) / sum(!!rlang::sym(y_1L_chr))))
     args_ls$y <- "Percent"
   }
