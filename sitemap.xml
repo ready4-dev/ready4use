@@ -27,6 +27,7 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_from_lup_prototype.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_labels_from_dictionary.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_latest_match.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/add_significance.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/add_with_join.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/assert_dir_exists.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/assert_file_exists.html</loc></url>
@@ -63,11 +64,13 @@
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_new_ready4use_mapes.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_period_correspondences.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_r3_from_csv_tb.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/make_significance_df.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/make_temporal_lup.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/manufacture-methods.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/nseequals.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/pipe.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/plot_for_journal.html</loc></url>
+<url><loc>https://ready4-dev.github.io/ready4use/reference/print_significance.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/procure-methods.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/read_import_from_csv.html</loc></url>
 <url><loc>https://ready4-dev.github.io/ready4use/reference/ready4use-package.html</loc></url>
