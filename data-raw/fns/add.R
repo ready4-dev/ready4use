@@ -252,6 +252,39 @@ add_latest_match <- function(data_tb,
   return(data_tb)
 
 }
+add_significance <- function(plot_plt,
+                             by_1L_chr,
+                             data_tb,
+                             var_1L_chr,
+                             add_1L_dbl = numeric(0),
+                             adjust_1L_dbl = 0.4,
+                             digits_1L_int = 4,
+                             scientific_1L_lgl = F,
+                             show_p_1L_lgl = T,
+                             show_test_1L_lgl = F,
+                             tip_1L_dbl = 0,
+                             ...){
+  df <- make_significance_df(data_tb,
+                             by_1L_chr = by_1L_chr,
+                             vars_chr = var_1L_chr)
+  x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+  if(!identical(add_1L_dbl, numeric(0))){
+    y_axis_max_1L_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% stringr::str_remove_all("%") %>%
+      purrr::discard(is.na) %>% as.numeric() %>% max()
+    y_position <- y_axis_max_1L_dbl + add_1L_dbl
+  }else{
+    y_position <- NULL
+  }
+  label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=",format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl)," ")),
+                         df$stars,
+                         ifelse(show_test_1L_lgl,paste0(" ",df$test),""))
+  plot_plt <- plot_plt +
+    ggsignif::geom_signif(comparisons=list(x_axis_chr[c(1,length(x_axis_chr))]),
+                          annotations=label_1L_chr, tip_length = tip_1L_dbl, vjust = adjust_1L_dbl,
+                          y_position = y_position,
+                          ...)
+  return(plot_plt)
+}
 add_with_join <- function (X_Ready4useDyad,
                            Y_Ready4useDyad){
   X_Ready4useDyad@ds_tb <- dplyr::left_join(X_Ready4useDyad@ds_tb,

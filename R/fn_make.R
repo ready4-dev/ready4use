@@ -224,6 +224,35 @@ make_r3_from_csv_tb <- function (csv_tb, r3_fn)
     tb_r3 <- rlang::exec(r3_fn, tb)
     return(tb_r3)
 }
+#' Make significance dataframe
+#' @description make_significance_df() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make significance dataframe. The function returns Data (a data.frame).
+#' @param data_tb Data (a tibble)
+#' @param by_1L_chr By (a character vector of length one)
+#' @param vars_chr Variables (a character vector)
+#' @param sort_1L_lgl Sort (a logical vector of length one), Default: T
+#' @return Data (a data.frame)
+#' @rdname make_significance_df
+#' @export 
+#' @importFrom stats formula
+#' @importFrom rlang exec
+#' @importFrom arsenal tableby
+#' @importFrom dplyr arrange filter select mutate
+#' @importFrom gtools stars.pval
+#' @keywords internal
+make_significance_df <- function (data_tb, by_1L_chr, vars_chr, sort_1L_lgl = T) 
+{
+    args_ls <- list(formula = paste0(by_1L_chr, " ~ ", paste0(paste0(vars_chr, 
+        collapse = " + "))) %>% stats::formula(), data = data_tb)
+    data_xx <- rlang::exec(arsenal::tableby, !!!args_ls)
+    data_df <- data_xx %>% as.data.frame()
+    if (sort_1L_lgl) {
+        data_df <- data_df %>% dplyr::arrange(p.value)
+    }
+    data_df <- data_df %>% dplyr::filter(!term %in% c("countpct", 
+        "Nmiss")) %>% dplyr::select(variable, test, p.value) %>% 
+        dplyr::mutate(stars = gtools::stars.pval(p.value))
+    return(data_df)
+}
 #' Make temporal lookup table
 #' @description make_temporal_lup() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make temporal lookup table. The function returns Temporal (a lookup table).
 #' @param dyad_ls Dyad (a list)

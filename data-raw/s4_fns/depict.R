@@ -13,6 +13,8 @@ depict_Ready4useDyad <- function(x,
                                  line_1L_chr = "black",
                                  position_xx = NULL,
                                  recode_lup_r3 = ready4show::ready4show_correspondences(),
+                                 significance_1L_lgl = F, #
+                                 significance_args_ls = list(), #
                                  style_1L_chr = get_styles(),
                                  titles_chr = character(0),
                                  type_1L_chr = c("ggsci", "manual", "viridis"),
@@ -26,13 +28,9 @@ depict_Ready4useDyad <- function(x,
   what_1L_chr <- match.arg(what_1L_chr)
   custom_args_ls <- list(...)
   call_ls <- sys.call()
-  if(!is.logical(fill_single_1L_lgl)){ #"fill" %in% names(call_ls) |
-    # if(!"fill_single_1L_lgl" %in% names(call_ls)){
-      fill_single_1L_lgl <- FALSE
-    # }else{
-      # fill_single_1L_lgl <- call_ls$fill_single_1L_lgl %>% as.character() %>% as.logical()
-    # }
-    custom_args_ls$fill <- custom_args_ls$fill_single_1L_lgl #call_ls$fill %>% as.character()
+  if(!is.logical(fill_single_1L_lgl)){
+    fill_single_1L_lgl <- FALSE
+    custom_args_ls$fill <- custom_args_ls$fill_single_1L_lgl
     custom_args_ls$fill_single_1L_lgl <- NULL
   }
   if("title" %in% names(call_ls) ){
@@ -44,6 +42,29 @@ depict_Ready4useDyad <- function(x,
     custom_args_ls$title <- call_ls$title %>% as.character()
     custom_args_ls$titles_chr <- NULL
   }
+  ####
+  lengths_int <- list(x_vars_chr, y_vars_chr, z_vars_chr) %>% purrr::map_int(~length(.x))
+  longest_1L_int <- lengths_int[which(lengths_int==max(lengths_int))][1]
+  if(lengths_int[1]==1 & lengths_int[1] < longest_1L_int){
+    x_vars_chr <- rep(x_vars_chr, longest_1L_int)
+  }
+  if(lengths_int[2]==1 & lengths_int[2] < longest_1L_int){
+    y_vars_chr <- rep(y_vars_chr, longest_1L_int)
+  }
+  if(lengths_int[3]==1 & lengths_int[3] < longest_1L_int){
+    z_vars_chr <- rep(z_vars_chr, longest_1L_int)
+  }
+  functions_lgl <- list(x_labels_chr,  y_labels_chr, z_labels_chr) %>% purrr::map_lgl(~is.function(.x))
+  if(functions_lgl[1]){
+    x_labels_chr <- rlang::exec(x_labels_chr, x_vars_chr)
+  }
+  if(functions_lgl[2]){
+    y_labels_chr <- rlang::exec(y_labels_chr, y_vars_chr)
+  }
+  if(functions_lgl[3]){
+    z_labels_chr <- rlang::exec(z_labels_chr, z_vars_chr)
+  }
+  ####
   if(!identical(x_vars_chr, character(0))){
     if(identical(x_labels_chr, character(0))){
       if(what_1L_chr == "qqplot"){
@@ -115,13 +136,12 @@ depict_Ready4useDyad <- function(x,
                                                      match_value_xx = .x,
                                                      target_var_nm_1L_chr = "var_desc_chr"))
         }
-    }
+      }
     }
     if(length(z_labels_chr)==1){
       z_labels_chr <- rep(z_labels_chr, length(x_vars_chr))
     }
   }
-
   if(!identical(titles_chr, character(0))){
     if(is.na(titles_chr[1])){
       titles_chr <- 1:length(x_vars_chr) %>%
@@ -152,7 +172,6 @@ depict_Ready4useDyad <- function(x,
       titles_chr <- rep(titles_chr, length(x_vars_chr))
     }
   }
-
   plot_ls <- purrr::map(1:length(x_vars_chr),
                         ~ {
                           if(identical(x_vars_chr, character(0))){
@@ -203,6 +222,8 @@ depict_Ready4useDyad <- function(x,
                                                  fill_single_1L_lgl = fill_single_1L_lgl,
                                                  label_fill_1L_chr = label_fill_1L_chr,
                                                  line_1L_chr = line_1L_chr,
+                                                 significance_1L_lgl = significance_1L_lgl, #
+                                                 significance_args_ls = significance_args_ls, #
                                                  position_xx = position_xx,
                                                  style_1L_chr = style_1L_chr,
                                                  title_1L_chr = title_1L_chr,

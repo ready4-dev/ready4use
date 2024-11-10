@@ -340,6 +340,54 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
                   match_value_xx = .x, target_var_nm_1L_chr = target_var_nm_1L_chr)))))
     return(data_tb)
 }
+#' Add significance
+#' @description add_significance() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add significance. The function returns Plot (a plot).
+#' @param plot_plt Plot (a plot)
+#' @param by_1L_chr By (a character vector of length one)
+#' @param data_tb Data (a tibble)
+#' @param var_1L_chr Variable (a character vector of length one)
+#' @param add_1L_dbl Add (a double vector of length one), Default: numeric(0)
+#' @param adjust_1L_dbl Adjust (a double vector of length one), Default: 0.4
+#' @param digits_1L_int Digits (an integer vector of length one), Default: 4
+#' @param scientific_1L_lgl Scientific (a logical vector of length one), Default: F
+#' @param show_p_1L_lgl Show p (a logical vector of length one), Default: T
+#' @param show_test_1L_lgl Show test (a logical vector of length one), Default: F
+#' @param tip_1L_dbl Tip (a double vector of length one), Default: 0
+#' @param ... Additional arguments
+#' @return Plot (a plot)
+#' @rdname add_significance
+#' @export 
+#' @importFrom ggplot2 ggplot_build
+#' @importFrom stringr str_remove_all
+#' @importFrom purrr discard
+#' @importFrom ggsignif geom_signif
+#' @keywords internal
+add_significance <- function (plot_plt, by_1L_chr, data_tb, var_1L_chr, add_1L_dbl = numeric(0), 
+    adjust_1L_dbl = 0.4, digits_1L_int = 4, scientific_1L_lgl = F, 
+    show_p_1L_lgl = T, show_test_1L_lgl = F, tip_1L_dbl = 0, 
+    ...) 
+{
+    df <- make_significance_df(data_tb, by_1L_chr = by_1L_chr, 
+        vars_chr = var_1L_chr)
+    x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+    if (!identical(add_1L_dbl, numeric(0))) {
+        y_axis_max_1L_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% 
+            stringr::str_remove_all("%") %>% purrr::discard(is.na) %>% 
+            as.numeric() %>% max()
+        y_position <- y_axis_max_1L_dbl + add_1L_dbl
+    }
+    else {
+        y_position <- NULL
+    }
+    label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=", 
+        format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl), 
+        " ")), df$stars, ifelse(show_test_1L_lgl, paste0(" ", 
+        df$test), ""))
+    plot_plt <- plot_plt + ggsignif::geom_signif(comparisons = list(x_axis_chr[c(1, 
+        length(x_axis_chr))]), annotations = label_1L_chr, tip_length = tip_1L_dbl, 
+        vjust = adjust_1L_dbl, y_position = y_position, ...)
+    return(plot_plt)
+}
 #' Add with join
 #' @description add_with_join() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add with join. The function is called for its side effects and does not return a value.
 #' @param X_Ready4useDyad PARAM_DESCRIPTION

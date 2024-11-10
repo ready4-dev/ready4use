@@ -69,9 +69,9 @@ renew.ready4use_imports(
   dictionary_lups_ls = list(),
   dictionary_r3 = ready4use_dictionary(),
   dummys_ls = NULL,
-  dyad_ls = NULL,
   exclude_chr = character(0),
   factors_chr = character(0),
+  dyad_ls = NULL,
   fn = NULL,
   fn_args_ls = NULL,
   lup_tb = NULL,
@@ -137,11 +137,11 @@ renew.ready4use_imports(
 
 \item{dummys_ls}{Dummys (a list), Default: NULL}
 
-\item{dyad_ls}{Dummys (a list), Default: NULL}
-
 \item{exclude_chr}{Exclude (a character vector), Default: character(0)}
 
 \item{factors_chr}{Factors (a character vector), Default: character(0)}
+
+\item{dyad_ls}{Dyad (a list), Default: NULL}
 
 \item{fn}{Function (a function), Default: NULL}
 

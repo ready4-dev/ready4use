@@ -135,6 +135,25 @@ make_period_correspondences <- function(descriptions_chr,
   }
   return(correspondences_xx)
 }
+make_significance_df <- function(data_tb,
+                                 by_1L_chr,
+                                 vars_chr,
+                                 sort_1L_lgl = T){
+  args_ls <- list(formula = paste0(by_1L_chr, " ~ ", paste0(paste0(vars_chr, collapse = " + "))) %>% stats::formula(),
+                  data = data_tb)
+  data_xx <- rlang::exec(arsenal::tableby, !!!args_ls)
+  data_df <- data_xx %>%
+    as.data.frame()
+  if(sort_1L_lgl){
+    data_df <- data_df %>% dplyr::arrange(p.value)
+  }
+  data_df <- data_df %>%
+    dplyr::filter(!term %in% c("countpct", "Nmiss")) %>%
+    dplyr::select(variable, test, p.value) %>%
+    dplyr::mutate(stars = gtools::stars.pval(p.value))
+  return(data_df)
+
+}
 make_temporal_lup <- function(dyad_ls,
                               recode_ls,
                               spaced_1L_lgl = TRUE){

@@ -12,6 +12,8 @@
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
+#' @param significance_1L_lgl Significance (a logical vector of length one), Default: F
+#' @param significance_args_ls Significance arguments (a list), Default: list()
 #' @param style_1L_chr Style (a character vector of length one), Default: get_styles()
 #' @param title_1L_chr Title (a character vector of length one), Default: character(0)
 #' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
@@ -25,12 +27,12 @@
 #' @rdname plot_for_journal
 #' @export 
 #' @importFrom ready4show ready4show_correspondences manufacture.ready4show_correspondences
-#' @importFrom dplyr select pull mutate rename
+#' @importFrom dplyr select pull mutate rename group_by
 #' @importFrom tidyselect any_of
 #' @importFrom tidyr drop_na
 #' @importFrom rlang sym exec
 #' @importFrom purrr discard
-#' @importFrom ggplot2 position_dodge aes scale_y_continuous labs after_stat theme element_blank
+#' @importFrom ggplot2 position_dodge scale_y_continuous labs aes after_stat theme element_blank
 #' @importFrom tibble as_tibble
 #' @importFrom scales label_percent
 #' @importFrom ggpubr yscale gradient_fill
@@ -40,10 +42,11 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     drop_missing_1L_lgl = FALSE, drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, 
     label_fill_1L_chr = character(0), line_1L_chr = "black", 
     position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
-    style_1L_chr = get_styles(), title_1L_chr = character(0), 
-    type_1L_chr = c("ggsci", "manual", "viridis"), x_1L_chr = character(0), 
-    x_label_1L_chr = character(0), y_1L_chr = character(0), y_label_1L_chr = character(0), 
-    what_1L_chr = get_journal_plot_fn("names"), ...) 
+    significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = get_styles(), 
+    title_1L_chr = character(0), type_1L_chr = c("ggsci", "manual", 
+        "viridis"), x_1L_chr = character(0), x_label_1L_chr = character(0), 
+    y_1L_chr = character(0), y_label_1L_chr = character(0), what_1L_chr = get_journal_plot_fn("names"), 
+    ...) 
 {
     style_1L_chr <- match.arg(style_1L_chr)
     type_1L_chr <- match.arg(type_1L_chr)
@@ -272,9 +275,9 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
             ifelse(what_1L_chr %in% c("paired") & identical(y_label_1L_chr, 
                 character(0)), y_1L_chr, ifelse(what_1L_chr %in% 
                 c("barplot") & identical(y_1L_chr, character(0)) & 
-                identical(y_label_1L_chr, character(0)), "Count", 
-                ifelse(identical(y_label_1L_chr, character(0)), 
-                  "", y_label_1L_chr))))) %>% append(args_ls)
+                identical(y_label_1L_chr, character(0)), ifelse(as_percent_1L_lgl, 
+                "", "Count"), ifelse(identical(y_label_1L_chr, 
+                character(0)), "", y_label_1L_chr))))) %>% append(args_ls)
     }
     if ((what_1L_chr %in% c("donutchart", "pie") & identical(by_1L_chr, 
         character(0)))) {
@@ -332,6 +335,14 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
         new_by_1L_chr <- ifelse(what_1L_chr %in% c("donutchart", 
             "pie"), x_1L_chr, by_1L_chr)
     }
+    if (what_1L_chr %in% c("barplot") & !identical(by_1L_chr, 
+        x_1L_chr) & !identical(by_1L_chr, character(0)) & as_percent_1L_lgl) {
+        y_1L_chr <- ifelse(identical(y_1L_chr, character(0)), 
+            "Freq", y_1L_chr)
+        data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(by_1L_chr))
+        data_xx <- data_xx %>% dplyr::mutate(Percent = (!!rlang::sym(y_1L_chr)/sum(!!rlang::sym(y_1L_chr))))
+        args_ls$y <- "Percent"
+    }
     if (what_1L_chr %in% c("donutchart", "pie") & as_percent_1L_lgl) {
         data_xx <- data_xx %>% dplyr::mutate(new_label_chr = paste0(round(!!rlang::sym(new_by_1L_chr)/sum(!!rlang::sym(new_by_1L_chr)) * 
             100, 0), "%"))
@@ -346,9 +357,6 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     }
     plot_plt <- rlang::exec(plot_fn, data_xx, !!!args_ls)
     if (as_percent_1L_lgl) {
-        if (what_1L_chr %in% c("barplot")) {
-            plot_plt <- plot_plt + ggplot2::aes(y = !!rlang::sym(new_by_1L_chr)/sum(!!rlang::sym(new_by_1L_chr)))
-        }
         if (!what_1L_chr %in% c("donutchart", "pie", "histogram")) {
             plot_plt <- plot_plt + ggplot2::scale_y_continuous(labels = scales::label_percent()) + 
                 ggplot2::labs(y = y_label_1L_chr)
@@ -375,6 +383,11 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     if (drop_ticks_1L_lgl) {
         plot_plt <- plot_plt + ggplot2::theme(axis.text.x = ggplot2::element_blank(), 
             axis.ticks.x = ggplot2::element_blank())
+    }
+    if (significance_1L_lgl & what_1L_chr %in% c("barplot")) {
+        significance_args_ls <- append(list(by_1L_chr = by_1L_chr, 
+            data_tb = data_tb, var_1L_chr = x_1L_chr), significance_args_ls)
+        plot_plt <- rlang::exec(add_significance, plot_plt, !!!significance_args_ls)
     }
     return(plot_plt)
 }
