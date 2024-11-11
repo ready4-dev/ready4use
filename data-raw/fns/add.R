@@ -258,6 +258,7 @@ add_significance <- function(plot_plt,
                              var_1L_chr,
                              add_1L_dbl = numeric(0),
                              adjust_1L_dbl = 0.4,
+                             as_percent_1L_lgl = F,
                              digits_1L_int = 4,
                              scientific_1L_lgl = F,
                              show_p_1L_lgl = T,
@@ -269,13 +270,20 @@ add_significance <- function(plot_plt,
                              vars_chr = var_1L_chr)
   x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
   if(!identical(add_1L_dbl, numeric(0))){
-    y_axis_max_1L_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% stringr::str_remove_all("%") %>%
-      purrr::discard(is.na) %>% as.numeric() %>% max()
+    y_axis_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% stringr::str_remove_all("%") %>%
+      purrr::discard(is.na) %>% as.numeric()
+    y_axis_max_1L_dbl <- y_axis_dbl  %>% max()
     y_position <- y_axis_max_1L_dbl + add_1L_dbl
+    if(as_percent_1L_lgl){
+      y_position <- y_position/100
+    }
   }else{
     y_position <- NULL
   }
-  label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=",format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl)," ")),
+  if(as_percent_1L_lgl){
+    tip_1L_dbl <- tip_1L_dbl/100
+  }
+  label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=", format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl)," ")),
                          df$stars,
                          ifelse(show_test_1L_lgl,paste0(" ",df$test),""))
   plot_plt <- plot_plt +

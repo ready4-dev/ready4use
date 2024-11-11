@@ -348,6 +348,7 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
 #' @param var_1L_chr Variable (a character vector of length one)
 #' @param add_1L_dbl Add (a double vector of length one), Default: numeric(0)
 #' @param adjust_1L_dbl Adjust (a double vector of length one), Default: 0.4
+#' @param as_percent_1L_lgl As percent (a logical vector of length one), Default: F
 #' @param digits_1L_int Digits (an integer vector of length one), Default: 4
 #' @param scientific_1L_lgl Scientific (a logical vector of length one), Default: F
 #' @param show_p_1L_lgl Show p (a logical vector of length one), Default: T
@@ -363,21 +364,28 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
 #' @importFrom ggsignif geom_signif
 #' @keywords internal
 add_significance <- function (plot_plt, by_1L_chr, data_tb, var_1L_chr, add_1L_dbl = numeric(0), 
-    adjust_1L_dbl = 0.4, digits_1L_int = 4, scientific_1L_lgl = F, 
-    show_p_1L_lgl = T, show_test_1L_lgl = F, tip_1L_dbl = 0, 
-    ...) 
+    adjust_1L_dbl = 0.4, as_percent_1L_lgl = F, digits_1L_int = 4, 
+    scientific_1L_lgl = F, show_p_1L_lgl = T, show_test_1L_lgl = F, 
+    tip_1L_dbl = 0, ...) 
 {
     df <- make_significance_df(data_tb, by_1L_chr = by_1L_chr, 
         vars_chr = var_1L_chr)
     x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
     if (!identical(add_1L_dbl, numeric(0))) {
-        y_axis_max_1L_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% 
+        y_axis_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% 
             stringr::str_remove_all("%") %>% purrr::discard(is.na) %>% 
-            as.numeric() %>% max()
+            as.numeric()
+        y_axis_max_1L_dbl <- y_axis_dbl %>% max()
         y_position <- y_axis_max_1L_dbl + add_1L_dbl
+        if (as_percent_1L_lgl) {
+            y_position <- y_position/100
+        }
     }
     else {
         y_position <- NULL
+    }
+    if (as_percent_1L_lgl) {
+        tip_1L_dbl <- tip_1L_dbl/100
     }
     label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=", 
         format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl), 

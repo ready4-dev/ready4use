@@ -11,6 +11,7 @@ add_significance(
   var_1L_chr,
   add_1L_dbl = numeric(0),
   adjust_1L_dbl = 0.4,
+  as_percent_1L_lgl = F,
   digits_1L_int = 4,
   scientific_1L_lgl = F,
   show_p_1L_lgl = T,
@@ -31,6 +32,8 @@ add_significance(
 \item{add_1L_dbl}{Add (a double vector of length one), Default: numeric(0)}
 
 \item{adjust_1L_dbl}{Adjust (a double vector of length one), Default: 0.4}
+
+\item{as_percent_1L_lgl}{As percent (a logical vector of length one), Default: F}
 
 \item{digits_1L_int}{Digits (an integer vector of length one), Default: 4}
 
