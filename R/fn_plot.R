@@ -8,6 +8,7 @@
 #' @param drop_missing_1L_lgl Drop missing (a logical vector of length one), Default: FALSE
 #' @param drop_ticks_1L_lgl Drop ticks (a logical vector of length one), Default: FALSE
 #' @param fill_single_1L_lgl Fill single (a logical vector of length one), Default: FALSE
+#' @param flip_1L_lgl Flip (a logical vector of length one), Default: F
 #' @param label_fill_1L_chr Label fill (a character vector of length one), Default: character(0)
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
@@ -41,7 +42,7 @@
 plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = character(0), 
     colours_chr = c("#de2d26", "#fc9272"), drop_legend_1L_lgl = FALSE, 
     drop_missing_1L_lgl = FALSE, drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, 
-    label_fill_1L_chr = character(0), line_1L_chr = "black", 
+    flip_1L_lgl = F, label_fill_1L_chr = character(0), line_1L_chr = "black", 
     position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
     significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = get_styles(), 
     title_1L_chr = character(0), type_1L_chr = c("ggsci", "manual", 
@@ -341,7 +342,12 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
             "Freq", y_1L_chr)
         if (!identical(by_1L_chr, x_1L_chr) & !identical(by_1L_chr, 
             character(0))) {
-            data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(by_1L_chr))
+            if (!flip_1L_lgl) {
+                data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(by_1L_chr))
+            }
+            else {
+                data_xx <- data_xx %>% dplyr::group_by(!!rlang::sym(x_1L_chr))
+            }
         }
         data_xx <- data_xx %>% dplyr::mutate(Percent = (!!rlang::sym(y_1L_chr)/sum(!!rlang::sym(y_1L_chr))))
         args_ls$y <- "Percent"

@@ -260,6 +260,7 @@ add_significance <- function(plot_plt,
                              adjust_1L_dbl = 0.4,
                              as_percent_1L_lgl = F,
                              digits_1L_int = 4,
+                             flip_1L_lgl = F, ###############
                              scientific_1L_lgl = F,
                              show_p_1L_lgl = T,
                              show_test_1L_lgl = F,
@@ -268,29 +269,51 @@ add_significance <- function(plot_plt,
   df <- make_significance_df(data_tb,
                              by_1L_chr = by_1L_chr,
                              vars_chr = var_1L_chr)
-  x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+  x_axis_xx <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+  if(identical(add_1L_dbl, numeric(0)) & flip_1L_lgl){
+    add_1L_dbl <- 0
+  }
   if(!identical(add_1L_dbl, numeric(0))){
     y_axis_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% stringr::str_remove_all("%") %>%
       purrr::discard(is.na) %>% as.numeric()
     y_axis_max_1L_dbl <- y_axis_dbl  %>% max()
-    y_position <- y_axis_max_1L_dbl + add_1L_dbl
+    y_axis_min_1L_dbl <- min(y_axis_dbl)
+
+    if(flip_1L_lgl){
+      if(is.numeric(x_axis_xx)){
+        x_val_1L_dbl <- x_axis_xx[length(x_axis_xx)] + add_1L_dbl
+      }else{
+        x_val_1L_dbl <- length(x_axis_xx) + add_1L_dbl
+      }
+      y_position <- y_axis_max_1L_dbl
+    }else{
+      y_position <- y_axis_max_1L_dbl + add_1L_dbl
+    }
     if(as_percent_1L_lgl){
-      y_position <- y_position/100
+      if(flip_1L_lgl){
+        x_val_1L_dbl <- x_val_1L_dbl
+      }
+      y_position <- y_position / 100
+      y_axis_min_1L_dbl <- y_axis_min_1L_dbl / 100
     }
   }else{
     y_position <- NULL
   }
   if(as_percent_1L_lgl){
-    tip_1L_dbl <- tip_1L_dbl/100
+    tip_1L_dbl <- tip_1L_dbl / 100
   }
-  label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=", format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl)," ")),
+  label_1L_chr <- paste0(ifelse(show_p_1L_lgl, paste0("p=",format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl)," ")),
                          df$stars,
                          ifelse(show_test_1L_lgl,paste0(" ",df$test),""))
-  plot_plt <- plot_plt +
-    ggsignif::geom_signif(comparisons=list(x_axis_chr[c(1,length(x_axis_chr))]),
-                          annotations=label_1L_chr, tip_length = tip_1L_dbl, vjust = adjust_1L_dbl,
-                          y_position = y_position,
-                          ...)
+  if(flip_1L_lgl){
+    plot_plt <- plot_plt + ggplot2::geom_segment(x=x_val_1L_dbl, y=y_axis_min_1L_dbl, yend=y_position) + ggplot2::annotate("text",x=x_val_1L_dbl, y=y_position/2, label = label_1L_chr, vjust=adjust_1L_dbl, angle = 90)
+  }else{
+    plot_plt <- plot_plt +
+      ggsignif::geom_signif(comparisons=list(x_axis_xx[c(1,length(x_axis_xx))]),
+                            annotations=label_1L_chr, tip_length = tip_1L_dbl, vjust = adjust_1L_dbl,
+                            y_position = y_position,
+                            ...)
+  }
   return(plot_plt)
 }
 add_with_join <- function (X_Ready4useDyad,

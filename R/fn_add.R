@@ -350,6 +350,7 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
 #' @param adjust_1L_dbl Adjust (a double vector of length one), Default: 0.4
 #' @param as_percent_1L_lgl As percent (a logical vector of length one), Default: F
 #' @param digits_1L_int Digits (an integer vector of length one), Default: 4
+#' @param flip_1L_lgl Flip (a logical vector of length one), Default: F
 #' @param scientific_1L_lgl Scientific (a logical vector of length one), Default: F
 #' @param show_p_1L_lgl Show p (a logical vector of length one), Default: T
 #' @param show_test_1L_lgl Show test (a logical vector of length one), Default: F
@@ -358,27 +359,47 @@ add_latest_match <- function (data_tb, dynamic_lup, target_var_nm_1L_chr, date_v
 #' @return Plot (a plot)
 #' @rdname add_significance
 #' @export 
-#' @importFrom ggplot2 ggplot_build
+#' @importFrom ggplot2 ggplot_build geom_segment annotate
 #' @importFrom stringr str_remove_all
 #' @importFrom purrr discard
 #' @importFrom ggsignif geom_signif
 #' @keywords internal
 add_significance <- function (plot_plt, by_1L_chr, data_tb, var_1L_chr, add_1L_dbl = numeric(0), 
     adjust_1L_dbl = 0.4, as_percent_1L_lgl = F, digits_1L_int = 4, 
-    scientific_1L_lgl = F, show_p_1L_lgl = T, show_test_1L_lgl = F, 
-    tip_1L_dbl = 0, ...) 
+    flip_1L_lgl = F, scientific_1L_lgl = F, show_p_1L_lgl = T, 
+    show_test_1L_lgl = F, tip_1L_dbl = 0, ...) 
 {
     df <- make_significance_df(data_tb, by_1L_chr = by_1L_chr, 
         vars_chr = var_1L_chr)
-    x_axis_chr <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+    x_axis_xx <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$x$get_labels()
+    if (identical(add_1L_dbl, numeric(0)) & flip_1L_lgl) {
+        add_1L_dbl <- 0
+    }
     if (!identical(add_1L_dbl, numeric(0))) {
         y_axis_dbl <- ggplot2::ggplot_build(plot_plt)$layout$panel_params[[1]]$y$get_labels() %>% 
             stringr::str_remove_all("%") %>% purrr::discard(is.na) %>% 
             as.numeric()
         y_axis_max_1L_dbl <- y_axis_dbl %>% max()
-        y_position <- y_axis_max_1L_dbl + add_1L_dbl
+        y_axis_min_1L_dbl <- min(y_axis_dbl)
+        if (flip_1L_lgl) {
+            if (is.numeric(x_axis_xx)) {
+                x_val_1L_dbl <- x_axis_xx[length(x_axis_xx)] + 
+                  add_1L_dbl
+            }
+            else {
+                x_val_1L_dbl <- length(x_axis_xx) + add_1L_dbl
+            }
+            y_position <- y_axis_max_1L_dbl
+        }
+        else {
+            y_position <- y_axis_max_1L_dbl + add_1L_dbl
+        }
         if (as_percent_1L_lgl) {
+            if (flip_1L_lgl) {
+                x_val_1L_dbl <- x_val_1L_dbl
+            }
             y_position <- y_position/100
+            y_axis_min_1L_dbl <- y_axis_min_1L_dbl/100
         }
     }
     else {
@@ -391,9 +412,18 @@ add_significance <- function (plot_plt, by_1L_chr, data_tb, var_1L_chr, add_1L_d
         format(round(df$p.value, digits_1L_int), scientific = scientific_1L_lgl), 
         " ")), df$stars, ifelse(show_test_1L_lgl, paste0(" ", 
         df$test), ""))
-    plot_plt <- plot_plt + ggsignif::geom_signif(comparisons = list(x_axis_chr[c(1, 
-        length(x_axis_chr))]), annotations = label_1L_chr, tip_length = tip_1L_dbl, 
-        vjust = adjust_1L_dbl, y_position = y_position, ...)
+    if (flip_1L_lgl) {
+        plot_plt <- plot_plt + ggplot2::geom_segment(x = x_val_1L_dbl, 
+            y = y_axis_min_1L_dbl, yend = y_position) + ggplot2::annotate("text", 
+            x = x_val_1L_dbl, y = y_position/2, label = label_1L_chr, 
+            vjust = adjust_1L_dbl, angle = 90)
+    }
+    else {
+        plot_plt <- plot_plt + ggsignif::geom_signif(comparisons = list(x_axis_xx[c(1, 
+            length(x_axis_xx))]), annotations = label_1L_chr, 
+            tip_length = tip_1L_dbl, vjust = adjust_1L_dbl, y_position = y_position, 
+            ...)
+    }
     return(plot_plt)
 }
 #' Add with join

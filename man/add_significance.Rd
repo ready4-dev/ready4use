@@ -13,6 +13,7 @@ add_significance(
   adjust_1L_dbl = 0.4,
   as_percent_1L_lgl = F,
   digits_1L_int = 4,
+  flip_1L_lgl = F,
   scientific_1L_lgl = F,
   show_p_1L_lgl = T,
   show_test_1L_lgl = F,
@@ -36,6 +37,8 @@ add_significance(
 \item{as_percent_1L_lgl}{As percent (a logical vector of length one), Default: F}
 
 \item{digits_1L_int}{Digits (an integer vector of length one), Default: 4}
+
+\item{flip_1L_lgl}{Flip (a logical vector of length one), Default: F}
 
 \item{scientific_1L_lgl}{Scientific (a logical vector of length one), Default: F}
 

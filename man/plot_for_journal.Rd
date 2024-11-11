@@ -13,6 +13,7 @@ plot_for_journal(
   drop_missing_1L_lgl = FALSE,
   drop_ticks_1L_lgl = FALSE,
   fill_single_1L_lgl = FALSE,
+  flip_1L_lgl = F,
   label_fill_1L_chr = character(0),
   line_1L_chr = "black",
   position_xx = NULL,
@@ -46,6 +47,8 @@ plot_for_journal(
 \item{drop_ticks_1L_lgl}{Drop ticks (a logical vector of length one), Default: FALSE}
 
 \item{fill_single_1L_lgl}{Fill single (a logical vector of length one), Default: FALSE}
+
+\item{flip_1L_lgl}{Flip (a logical vector of length one), Default: F}
 
 \item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: character(0)}
 
