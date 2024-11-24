@@ -252,17 +252,23 @@ add_from_lup_prototype <- function (data_tb, arrange_1L_chr = character(0), excl
             method_1L_chr = method_1L_chr)
         data_tb <- data_tb %>% dplyr::left_join(distinct_tb)
     }
-    if (type_1L_chr == "self") {
+    if (type_1L_chr %in% c("self", "impute")) {
         if (identical(vars_chr, character(0))) {
             vars_chr <- setdiff(names(data_tb), c(match_var_nm_1L_chr, 
                 exclude_chr))
         }
         data_tb <- purrr::reduce(vars_chr, .init = data_tb, ~{
-            distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, 
-                .y))) %>% make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr, 
-                method_1L_chr = method_1L_chr)
             complete_tb <- .x %>% dplyr::filter(!is.na(!!rlang::sym(.y)))
             missing_tb <- .x %>% dplyr::filter(is.na(!!rlang::sym(.y)))
+            if (is.null(lup_prototype_tb)) {
+                distinct_tb <- .x %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, 
+                  .y))) %>% make_imputed_distinct_cases(uid_1L_chr = match_var_nm_1L_chr, 
+                  method_1L_chr = method_1L_chr)
+            }
+            else {
+                distinct_tb <- lup_prototype_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, 
+                  .y)))
+            }
             imputed_tb <- missing_tb %>% dplyr::select(-tidyselect::all_of(.y)) %>% 
                 dplyr::left_join(distinct_tb %>% dplyr::select(tidyselect::all_of(c(match_var_nm_1L_chr, 
                   .y))))
