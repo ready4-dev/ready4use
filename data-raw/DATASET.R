@@ -37,6 +37,7 @@ x <- pkg_desc_ls %>%
                                                                                                  "get_r3_from_dv_csv",
                                                                                                  "get_styles",
                                                                                                  "make_imputed_distinct_cases",
+                                                                                                 "make_missing_report",
                                                                                                  "update_column_names"#, "write_fls_to_dv_ds"
                            )),
                            copyright_holders_chr = "Matthew Hamilton and Orygen",

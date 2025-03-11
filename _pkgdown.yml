@@ -44,6 +44,7 @@ reference:
   - get_r3_from_dv_csv
   - get_styles
   - make_imputed_distinct_cases
+  - make_missing_report
   - update_column_names
 - title: "Methods"
 - contents:
