@@ -16,13 +16,15 @@ depict_Ready4useDyad <- function(x,
                                  recode_lup_r3 = ready4show::ready4show_correspondences(),
                                  significance_1L_lgl = F, #
                                  significance_args_ls = list(), #
+                                 strict_1L_lgl = FALSE,
                                  style_1L_chr = get_styles(),
                                  titles_chr = character(0),
                                  type_1L_chr = c("ggsci", "manual", "viridis"),
+                                 validate_1L_lgl = TRUE,
+                                 what_1L_chr =  get_journal_plot_fn("names"),
                                  x_labels_chr = character(0),
                                  y_labels_chr = character(0),
                                  z_labels_chr = character(0),
-                                 what_1L_chr =  get_journal_plot_fn("names"),
                                  ...){
   style_1L_chr <- match.arg(style_1L_chr)
   type_1L_chr <- match.arg(type_1L_chr)
@@ -227,12 +229,14 @@ depict_Ready4useDyad <- function(x,
                                                  significance_1L_lgl = significance_1L_lgl, #
                                                  significance_args_ls = significance_args_ls, #
                                                  position_xx = position_xx,
+                                                 strict_1L_lgl = strict_1L_lgl,
                                                  style_1L_chr = style_1L_chr,
                                                  title_1L_chr = title_1L_chr,
                                                  type_1L_chr = type_1L_chr,
                                                  x_1L_chr = x_1L_chr,
                                                  x_label_1L_chr = x_label_1L_chr,
                                                  recode_lup_r3 = recode_lup_r3,
+                                                 validate_1L_lgl = validate_1L_lgl,
                                                  y_1L_chr = y_1L_chr,
                                                  y_label_1L_chr = y_label_1L_chr,
                                                  what_1L_chr = what_1L_chr))

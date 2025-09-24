@@ -4,10 +4,13 @@
 \alias{get_styles}
 \title{Get styles}
 \usage{
-get_styles(what_1L_chr = c("all", "ggsci", "viridis"), sort_1L_lgl = FALSE)
+get_styles(
+  what_1L_chr = c("all", "ggsci", "unicol", "viridis"),
+  sort_1L_lgl = FALSE
+)
 }
 \arguments{
-\item{what_1L_chr}{What (a character vector of length one), Default: c("all", "ggsci", "viridis")}
+\item{what_1L_chr}{What (a character vector of length one), Default: c("all", "ggsci", "unicol", "viridis")}
 
 \item{sort_1L_lgl}{Sort (a logical vector of length one), Default: FALSE}
 }

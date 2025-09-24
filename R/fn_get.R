@@ -4,39 +4,71 @@
 #' @param manual_chr Manual (a character vector), Default: c("#de2d26", "#fc9272")
 #' @param pick_1L_int Pick (an integer vector of length one), Default: integer(0)
 #' @param single_1L_lgl Single (a logical vector of length one), Default: FALSE
+#' @param strict_1L_lgl Strict (a logical vector of length one), Default: FALSE
 #' @param style_1L_chr Style (a character vector of length one), Default: get_styles()
-#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
+#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "unicol", "viridis")
+#' @param validate_1L_lgl Validate (a logical vector of length one), Default: TRUE
 #' @return Colour codes (a character vector)
 #' @rdname get_colour_codes
 #' @export 
+#' @importFrom stats na.omit
 #' @importFrom ggpubr get_palette
 #' @importFrom viridis viridis
 #' @importFrom purrr discard
 #' @keywords internal
 get_colour_codes <- function (colour_1L_int = 1, manual_chr = c("#de2d26", "#fc9272"), 
-    pick_1L_int = integer(0), single_1L_lgl = FALSE, style_1L_chr = get_styles(), 
-    type_1L_chr = c("ggsci", "manual", "viridis")) 
+    pick_1L_int = integer(0), single_1L_lgl = FALSE, strict_1L_lgl = FALSE, 
+    style_1L_chr = get_styles(), type_1L_chr = c("ggsci", "manual", 
+        "unicol", "viridis"), validate_1L_lgl = TRUE) 
 {
-    style_1L_chr <- match.arg(style_1L_chr)
+    if (validate_1L_lgl) {
+        style_1L_chr <- match.arg(style_1L_chr)
+    }
     type_1L_chr <- match.arg(type_1L_chr)
     if (identical(pick_1L_int, integer(0))) {
         pick_1L_int <- colour_1L_int
     }
-    if (type_1L_chr == "manual") {
-        colour_codes_chr <- ggpubr::get_palette(manual_chr, k = colour_1L_int)
-    }
-    else {
+    if (type_1L_chr != "manual" & validate_1L_lgl) {
         defaults_chr <- get_styles(type_1L_chr)
         if (!style_1L_chr %in% defaults_chr) {
             style_1L_chr <- defaults_chr[1]
         }
     }
-    if (type_1L_chr == "ggsci") {
-        colour_codes_chr <- ggpubr::get_palette(style_1L_chr, 
-            k = colour_1L_int)
+    if (strict_1L_lgl) {
+        if (type_1L_chr == "manual") {
+            colour_codes_chr <- manual_chr
+        }
+        if (type_1L_chr == "ggsci") {
+            colour_codes_chr <- eval(parse(text = paste0("ggsci::pal_", 
+                style_1L_chr, "()(", colour_1L_int, ")"))) %>% 
+                stats::na.omit() %>% as.character()
+        }
+        if (type_1L_chr == "unicol") {
+            colour_codes_chr <- eval(parse(text = paste0("unname(unicol::", 
+                style_1L_chr, ")")))
+        }
+        if (length(colour_codes_chr) < colour_1L_int) {
+            warning(paste0(length(colour_codes_chr), " palette colours are available for use - this is less than the number (", 
+                colour_1L_int, ") specified in the colour_1L_int argument."))
+        }
     }
-    if (type_1L_chr == "viridis") 
+    else {
+        if (type_1L_chr == "manual") {
+            colour_codes_chr <- ggpubr::get_palette(manual_chr, 
+                k = colour_1L_int)
+        }
+        if (type_1L_chr == "ggsci") {
+            colour_codes_chr <- ggpubr::get_palette(style_1L_chr, 
+                k = colour_1L_int)
+        }
+        if (type_1L_chr == "unicol") {
+            colour_codes_chr <- ggpubr::get_palette(eval(parse(text = paste0("unname(unicol::", 
+                style_1L_chr, ")"))), k = colour_1L_int)
+        }
+    }
+    if (type_1L_chr == "viridis") {
         colour_codes_chr <- viridis::viridis(colour_1L_int, option = style_1L_chr)
+    }
     if (single_1L_lgl) {
         colour_codes_chr <- colour_codes_chr[pick_1L_int]
     }
@@ -315,12 +347,13 @@ get_reference_descs <- function (correspondences_ls, correspondences_r3 = ready4
 }
 #' Get styles
 #' @description get_styles() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get styles. The function returns Styles (a character vector).
-#' @param what_1L_chr What (a character vector of length one), Default: c("all", "ggsci", "viridis")
+#' @param what_1L_chr What (a character vector of length one), Default: c("all", "ggsci", "unicol", "viridis")
 #' @param sort_1L_lgl Sort (a logical vector of length one), Default: FALSE
 #' @return Styles (a character vector)
 #' @rdname get_styles
 #' @export 
-get_styles <- function (what_1L_chr = c("all", "ggsci", "viridis"), sort_1L_lgl = FALSE) 
+get_styles <- function (what_1L_chr = c("all", "ggsci", "unicol", "viridis"), 
+    sort_1L_lgl = FALSE) 
 {
     what_1L_chr <- match.arg(what_1L_chr)
     styles_chr <- character(0)
@@ -329,6 +362,9 @@ get_styles <- function (what_1L_chr = c("all", "ggsci", "viridis"), sort_1L_lgl 
             "jco", "nejm", "ucscgb", "uchicago", "d3", "futurama", 
             "igv", "locuszoom", "rickandmorty", "startrek", "simpsons", 
             "tron"))
+    }
+    if (what_1L_chr %in% c("all", "unicol")) {
+        styles_chr <- c(styles_chr, sort(getNamespaceExports("unicol")))
     }
     if (what_1L_chr %in% c("all", "viridis")) {
         styles_chr <- c(styles_chr, c("magma", "A", "inferno", 

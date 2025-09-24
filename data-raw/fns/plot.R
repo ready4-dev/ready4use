@@ -13,9 +13,11 @@ plot_for_journal <- function (data_tb,
                               recode_lup_r3 = ready4show::ready4show_correspondences(),
                               significance_1L_lgl = F,
                               significance_args_ls = list(), #
+                              strict_1L_lgl = FALSE,
                               style_1L_chr = get_styles(),
                               title_1L_chr = character(0),
-                              type_1L_chr = c("ggsci", "manual", "viridis"),
+                              type_1L_chr = c("ggsci", "manual", "unicol", "viridis"),
+                              validate_1L_lgl = TRUE,
                               x_1L_chr = character(0),
                               x_label_1L_chr = character(0),
                               y_1L_chr = character(0),
@@ -23,7 +25,9 @@ plot_for_journal <- function (data_tb,
                               what_1L_chr = get_journal_plot_fn("names"),
                               ...)
 {
-  style_1L_chr <- match.arg(style_1L_chr)
+  if(validate_1L_lgl){
+    style_1L_chr <- match.arg(style_1L_chr)
+  }
   type_1L_chr <- match.arg(type_1L_chr)
   what_1L_chr <- match.arg(what_1L_chr)
   if (what_1L_chr %in% c("donutchart", "pie") & !identical(by_1L_chr,
@@ -112,7 +116,7 @@ plot_for_journal <- function (data_tb,
   }
   colour_codes_chr <- get_colour_codes(colour_1L_int = colour_1L_int,
                                        manual_chr = colours_chr, pick_1L_int = pick_1L_int,
-                                       single_1L_lgl = FALSE, style_1L_chr = style_1L_chr, type_1L_chr = type_1L_chr)
+                                       single_1L_lgl = FALSE, strict_1L_lgl = strict_1L_lgl, style_1L_chr = style_1L_chr, type_1L_chr = type_1L_chr, validate_1L_lgl = validate_1L_lgl)
   if (what_1L_chr %in% c("barplot", "boxplot", "dotplot", "paired") &
       identical(by_1L_chr, character(0))) {
     by_1L_chr <- x_1L_chr

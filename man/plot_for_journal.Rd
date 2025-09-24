@@ -20,9 +20,11 @@ plot_for_journal(
   recode_lup_r3 = ready4show::ready4show_correspondences(),
   significance_1L_lgl = F,
   significance_args_ls = list(),
+  strict_1L_lgl = FALSE,
   style_1L_chr = get_styles(),
   title_1L_chr = character(0),
-  type_1L_chr = c("ggsci", "manual", "viridis"),
+  type_1L_chr = c("ggsci", "manual", "unicol", "viridis"),
+  validate_1L_lgl = TRUE,
   x_1L_chr = character(0),
   x_label_1L_chr = character(0),
   y_1L_chr = character(0),
@@ -62,11 +64,15 @@ plot_for_journal(
 
 \item{significance_args_ls}{Significance arguments (a list), Default: list()}
 
+\item{strict_1L_lgl}{Strict (a logical vector of length one), Default: FALSE}
+
 \item{style_1L_chr}{Style (a character vector of length one), Default: get_styles()}
 
 \item{title_1L_chr}{Title (a character vector of length one), Default: character(0)}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")}
+\item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "unicol", "viridis")}
+
+\item{validate_1L_lgl}{Validate (a logical vector of length one), Default: TRUE}
 
 \item{x_1L_chr}{X (a character vector of length one), Default: character(0)}
 

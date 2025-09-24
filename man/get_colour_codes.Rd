@@ -9,8 +9,10 @@ get_colour_codes(
   manual_chr = c("#de2d26", "#fc9272"),
   pick_1L_int = integer(0),
   single_1L_lgl = FALSE,
+  strict_1L_lgl = FALSE,
   style_1L_chr = get_styles(),
-  type_1L_chr = c("ggsci", "manual", "viridis")
+  type_1L_chr = c("ggsci", "manual", "unicol", "viridis"),
+  validate_1L_lgl = TRUE
 )
 }
 \arguments{
@@ -22,9 +24,13 @@ get_colour_codes(
 
 \item{single_1L_lgl}{Single (a logical vector of length one), Default: FALSE}
 
+\item{strict_1L_lgl}{Strict (a logical vector of length one), Default: FALSE}
+
 \item{style_1L_chr}{Style (a character vector of length one), Default: get_styles()}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")}
+\item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "unicol", "viridis")}
+
+\item{validate_1L_lgl}{Validate (a logical vector of length one), Default: TRUE}
 }
 \value{
 Colour codes (a character vector)

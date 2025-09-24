@@ -15,9 +15,11 @@
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
 #' @param significance_1L_lgl Significance (a logical vector of length one), Default: F
 #' @param significance_args_ls Significance arguments (a list), Default: list()
+#' @param strict_1L_lgl Strict (a logical vector of length one), Default: FALSE
 #' @param style_1L_chr Style (a character vector of length one), Default: get_styles()
 #' @param title_1L_chr Title (a character vector of length one), Default: character(0)
-#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
+#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "unicol", "viridis")
+#' @param validate_1L_lgl Validate (a logical vector of length one), Default: TRUE
 #' @param x_1L_chr X (a character vector of length one), Default: character(0)
 #' @param x_label_1L_chr X label (a character vector of length one), Default: character(0)
 #' @param y_1L_chr Y (a character vector of length one), Default: character(0)
@@ -44,13 +46,16 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     drop_missing_1L_lgl = FALSE, drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, 
     flip_1L_lgl = F, label_fill_1L_chr = character(0), line_1L_chr = "black", 
     position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
-    significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = get_styles(), 
-    title_1L_chr = character(0), type_1L_chr = c("ggsci", "manual", 
-        "viridis"), x_1L_chr = character(0), x_label_1L_chr = character(0), 
+    significance_1L_lgl = F, significance_args_ls = list(), strict_1L_lgl = FALSE, 
+    style_1L_chr = get_styles(), title_1L_chr = character(0), 
+    type_1L_chr = c("ggsci", "manual", "unicol", "viridis"), 
+    validate_1L_lgl = TRUE, x_1L_chr = character(0), x_label_1L_chr = character(0), 
     y_1L_chr = character(0), y_label_1L_chr = character(0), what_1L_chr = get_journal_plot_fn("names"), 
     ...) 
 {
-    style_1L_chr <- match.arg(style_1L_chr)
+    if (validate_1L_lgl) {
+        style_1L_chr <- match.arg(style_1L_chr)
+    }
     type_1L_chr <- match.arg(type_1L_chr)
     what_1L_chr <- match.arg(what_1L_chr)
     if (what_1L_chr %in% c("donutchart", "pie") & !identical(by_1L_chr, 
@@ -144,7 +149,9 @@ plot_for_journal <- function (data_tb, as_percent_1L_lgl = FALSE, by_1L_chr = ch
     }
     colour_codes_chr <- get_colour_codes(colour_1L_int = colour_1L_int, 
         manual_chr = colours_chr, pick_1L_int = pick_1L_int, 
-        single_1L_lgl = FALSE, style_1L_chr = style_1L_chr, type_1L_chr = type_1L_chr)
+        single_1L_lgl = FALSE, strict_1L_lgl = strict_1L_lgl, 
+        style_1L_chr = style_1L_chr, type_1L_chr = type_1L_chr, 
+        validate_1L_lgl = validate_1L_lgl)
     if (what_1L_chr %in% c("barplot", "boxplot", "dotplot", "paired") & 
         identical(by_1L_chr, character(0))) {
         by_1L_chr <- x_1L_chr

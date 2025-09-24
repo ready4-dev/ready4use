@@ -24,13 +24,15 @@
   recode_lup_r3 = ready4show::ready4show_correspondences(),
   significance_1L_lgl = F,
   significance_args_ls = list(),
+  strict_1L_lgl = FALSE,
   style_1L_chr = get_styles(),
   titles_chr = character(0),
   type_1L_chr = c("ggsci", "manual", "viridis"),
+  validate_1L_lgl = TRUE,
+  what_1L_chr = get_journal_plot_fn("names"),
   x_labels_chr = character(0),
   y_labels_chr = character(0),
   z_labels_chr = character(0),
-  what_1L_chr = get_journal_plot_fn("names"),
   ...
 )
 }
@@ -71,19 +73,23 @@
 
 \item{significance_args_ls}{Significance arguments (a list), Default: list()}
 
+\item{strict_1L_lgl}{Strict (a logical vector of length one), Default: FALSE}
+
 \item{style_1L_chr}{Style (a character vector of length one), Default: get_styles()}
 
 \item{titles_chr}{Titles (a character vector), Default: character(0)}
 
 \item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")}
 
+\item{validate_1L_lgl}{Validate (a logical vector of length one), Default: TRUE}
+
+\item{what_1L_chr}{What (a character vector of length one), Default: get_journal_plot_fn("names")}
+
 \item{x_labels_chr}{X labels (a character vector), Default: character(0)}
 
 \item{y_labels_chr}{Y labels (a character vector), Default: character(0)}
 
 \item{z_labels_chr}{Z labels (a character vector), Default: character(0)}
-
-\item{what_1L_chr}{What (a character vector of length one), Default: get_journal_plot_fn("names")}
 
 \item{...}{Additional arguments}
 }
