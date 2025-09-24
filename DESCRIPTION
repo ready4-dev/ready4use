@@ -50,6 +50,7 @@ Imports:
     lubridate,
     magrittr,
     methods,
+    naniar,
     piggyback,
     purrr,
     readxl,

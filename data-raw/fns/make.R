@@ -69,6 +69,33 @@ make_keep_lgl <- function(ds_tb,
     purrr::flatten_lgl()
   return(keep_lgl)
 }
+make_missing_report <- function(ds_xx){
+  if(!inherits(ds_xx, "list")){
+    dss_ls <- list(ds_xx)
+  }else{
+    dss_ls <- ds_xx
+  }
+  missing_report_ls <- purrr::map(dss_ls, ~ {
+    if(inherits(.x, "Ready4useDyad")){
+      ds_tb <- .x@ds_tb
+    }else{
+      ds_tb <- .x
+    }
+    naniar::miss_var_summary(ds_tb) %>% dplyr::filter(n_miss>1)
+  }  )
+  if(is.null(names(missing_report_ls))){
+    names(missing_report_ls) <- paste0("Dataset ", 1:length(missing_report_ls))
+  }
+  missing_report_ls <- missing_report_ls %>% purrr::discard(~nrow(.x)==0)
+  if(identical(unname(missing_report_ls), list())){
+    missing_report_xx <- NULL
+  }else{
+    missing_report_xx <- missing_report_ls %>% purrr::map2_dfr(names(missing_report_ls),
+                                                               ~ .x %>% dplyr::mutate(dataset = .y) %>%
+                                                                 dplyr::select(dataset, dplyr::everything()))
+  }
+  return(missing_report_xx)
+}
 make_period_correspondences <- function(descriptions_chr,
                                         integers_1L_lgl = TRUE,
                                         name_1L_chr = "period",
